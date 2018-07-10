@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">U22TeamB</string>
+    <!-- 画面02-->
+    <string name="butio"></string>
 </resources>
