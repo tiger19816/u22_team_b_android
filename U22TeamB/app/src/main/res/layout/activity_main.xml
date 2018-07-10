@@ -7,7 +7,7 @@
 
     <TextView
         style="@style/CodeFont"
-        android:text="login" />
+        android:text="@string/tv_login_title" />
 
     <LinearLayout
         android:layout_width="match_parent"
