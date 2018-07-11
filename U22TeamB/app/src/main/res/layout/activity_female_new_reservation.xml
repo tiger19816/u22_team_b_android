@@ -15,7 +15,8 @@
             android:text="@string/tv_reservation_store_name"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:layout_weight="0.2"/>
+            android:layout_weight="0.2"
+            android:gravity="center_vertical"/>
 
         <TextView
             android:layout_width="0dp"
@@ -40,43 +41,15 @@
         android:layout_height="25dp"
         android:layout_marginTop="30dp"/>
 
-    <LinearLayout
+    <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp">
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"/>
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="0.6"/>
-
-        <Button
-            android:text="@string/bt_reservation_date"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="0.4"/>
-
-    </LinearLayout>
-
-    <LinearLayout
+    <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="0.6"/>
-
-        <Button
-            android:text="@string/bt_reservation_time"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="0.4"/>
-
-    </LinearLayout>
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"/>
 
     <Button
         android:text="@string/bt_reservation_confirmation"
