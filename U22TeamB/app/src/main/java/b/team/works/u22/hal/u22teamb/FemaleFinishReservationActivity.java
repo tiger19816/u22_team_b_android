@@ -9,5 +9,7 @@ public class FemaleFinishReservationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_female_finish_reservation);
+
+        setTitle("予約内容確認");
     }
 }
