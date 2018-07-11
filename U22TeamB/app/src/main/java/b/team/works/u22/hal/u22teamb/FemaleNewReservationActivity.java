@@ -9,5 +9,7 @@ public class FemaleNewReservationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_female_new_reservation);
+
+        setTitle( "予約内容入力" );
     }
 }

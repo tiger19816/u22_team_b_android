@@ -5,7 +5,7 @@
     <string name="tv_reservation_store_name">店名</string>
     <string name="tv_reservation_store_menu">メニュー</string>
     <string name="tv_reservation_datetime">予約時間</string>
-    <string name="bt_reservation_date">日付変更</string>
-    <string name="bt_reservation_time">時間変更</string>
+    <string name="bt_reservation_date">日付</string>
+    <string name="bt_reservation_time">時間</string>
     <string name="bt_reservation_confirmation">次へ</string>
 </resources>

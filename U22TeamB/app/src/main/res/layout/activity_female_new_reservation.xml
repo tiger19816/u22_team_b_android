@@ -41,15 +41,43 @@
         android:layout_height="25dp"
         android:layout_marginTop="30dp"/>
 
-    <EditText
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"/>
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
 
-    <EditText
+        <TextView
+            android:text="@string/bt_reservation_date"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="0.2"/>
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="0.8"/>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"/>
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:text="@string/bt_reservation_time"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="0.2"/>
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="0.8"/>
+
+    </LinearLayout>
 
     <Button
         android:text="@string/bt_reservation_confirmation"
