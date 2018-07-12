@@ -27,10 +27,16 @@ public class FemaleNewReservationActivity extends AppCompatActivity implements N
 //        drawer.addDrawerListener(toggle);
 //        toggle.syncState();
 
+        //左のメインメニュー。
         NavigationView navigationView = findViewById(R.id.nvSideMenuButton);
         navigationView.setNavigationItemSelectedListener( this);
     }
 
+    /**
+     * オプションメニュー作成。
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -38,6 +44,9 @@ public class FemaleNewReservationActivity extends AppCompatActivity implements N
         return true;
     }
 
+    /**
+     * 左サイドメニュー以外をクリックした時。
+     */
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = findViewById(R.id.dlMainContent);
@@ -48,6 +57,11 @@ public class FemaleNewReservationActivity extends AppCompatActivity implements N
         }
     }
 
+    /**
+     * 左サイドメニューのボタンをクリックした時。
+     * @param item
+     * @return
+     */
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
