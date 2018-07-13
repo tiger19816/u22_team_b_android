@@ -2,14 +2,14 @@
     <string name="app_name">U22TeamB</string>
 
     <!-- 画面09 【妻】予約の確認と決済画面 -->
-    <string name="tv_reservation_check_store_name">店舗名</string>
-    <string name="tv_reservation_check_store_menu">メニュー</string>
+    <string name="tv_reservation_check_store_name">店舗名:</string>
+    <string name="tv_reservation_check_store_menu">メニュー:</string>
     <string name="tv_reservation_check_datetime">予約時間</string>
     <string name="tv_reservation_check_date">日付</string>
     <string name="tv_reservation_check_time">時間</string>
     <string name="tv_reservation_check_price_title">決済金額</string>
-    <string name="tv_reservation_check_price_subtotal">小計</string>
-    <string name="tv_reservation_check_price_total">合計</string>
+    <string name="tv_reservation_check_price_subtotal">小計:</string>
+    <string name="tv_reservation_check_price_total">合計:</string>
     <string name="tv_reservation_check_price_circle">円</string>
     <string name="tv_reservation_check_card_title">クレジットカード決済</string>
     <string name="tv_reservation_check_card_no">カード番号:</string>
