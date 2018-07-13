@@ -5,10 +5,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        style="@style/CodeFont"
-        android:text="@string/tv_login_title" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -44,5 +40,7 @@
             android:layout_weight="0.8"/>
 
     </LinearLayout>
+
+    
 
 </LinearLayout>
