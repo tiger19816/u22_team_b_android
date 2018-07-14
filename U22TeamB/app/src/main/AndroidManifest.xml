@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".MaleReservationListActivity" />
         <activity android:name=".FemaleReservationListActivity" />
-        <activity android:name=".FemaleHistoryListActivity"></activity>
+        <activity android:name=".FemaleHistoryListActivity" />
+        <activity android:name=".MaleHistoryListActivity"></activity>
     </application>
 
 </manifest>
