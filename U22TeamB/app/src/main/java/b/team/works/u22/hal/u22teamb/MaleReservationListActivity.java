@@ -26,9 +26,9 @@ public class MaleReservationListActivity extends AppCompatActivity {
 
         _list = createList();
 
-        String[] from = {"storeName", "reservationDate"};
-        int[] to = {R.id.tvStoreName, R.id.tvReservationDate};
-        SimpleAdapter adapter = new SimpleAdapter(MaleReservationListActivity.this, _list, R.layout.row_reservation, from, to);
+        String[] from = {"storeName" , "reservationDate"};
+        int[] to = {R.id.tvStoreName , R.id.tvReservationDate};
+        SimpleAdapter adapter = new SimpleAdapter(MaleReservationListActivity.this , _list , R.layout.row_reservation , from , to);
         adapter.setViewBinder(new CustomViewBinder());
         ListView lvReservationList = findViewById(R.id.lvReservationList);
         lvReservationList.setAdapter(adapter);
@@ -64,7 +64,6 @@ public class MaleReservationListActivity extends AppCompatActivity {
      */
     private List<Map<String , Object>> createList(){
         List<Map<String , Object>> list = new ArrayList<>();
-
         for (int i=0; i<=30; i++){
             Map<String , Object> map = new HashMap<>();
             map.put("storeName" , "店名");

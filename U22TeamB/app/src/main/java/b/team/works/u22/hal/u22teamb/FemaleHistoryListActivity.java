@@ -27,7 +27,7 @@ public class FemaleHistoryListActivity extends AppCompatActivity {
 
         String[] from = {"storeName" , "historyPrice" , "historyDate"};
         int[] to = {R.id.tvStoreName , R.id.tvPrice , R.id.tvHistoryDate};
-        SimpleAdapter adapter = new SimpleAdapter(FemaleHistoryListActivity.this, _list , R.layout.row_history , from , to);
+        SimpleAdapter adapter = new SimpleAdapter(FemaleHistoryListActivity.this , _list , R.layout.row_history , from , to);
         adapter.setViewBinder(new CustomViewBinder());
         ListView lvHistoryList = findViewById(R.id.lvHistoryList);
         lvHistoryList.setAdapter(adapter);
@@ -68,7 +68,6 @@ public class FemaleHistoryListActivity extends AppCompatActivity {
      */
     private List<Map<String , Object>> createList(){
         List<Map<String , Object>> list = new ArrayList<>();
-
         for (int i=0; i<=30; i++){
             Map<String , Object> map = new HashMap<>();
             map.put("storeName" , "店名");
