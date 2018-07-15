@@ -7,11 +7,16 @@
     android:layout_marginRight="5dp"
     android:orientation="vertical">
 
+     <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:orientation="horizontal"
-        android:layout_marginTop="30dp">
+        android:layout_marginTop="10dp">
 
         <TextView
             android:text="@string/tv_reservation_check_store_name"
@@ -32,7 +37,7 @@
         android:text="@string/tv_reservation_check_store_menu"
         android:layout_width="match_parent"
         android:layout_height="25dp"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="15dp"/>
 
     <Spinner
         android:layout_width="match_parent"
@@ -42,13 +47,13 @@
         android:text="予約時間"
         android:layout_width="match_parent"
         android:layout_height="25dp"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="20dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="5dp">
 
         <TextView
             android:text="日付"
@@ -170,5 +175,5 @@
             android:layout_marginTop="10dp"/>
 
     </LinearLayout>
-    
+
 </LinearLayout>
