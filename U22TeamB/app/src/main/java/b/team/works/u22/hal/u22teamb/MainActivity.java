@@ -32,12 +32,12 @@ public class MainActivity extends AppCompatActivity {
 
         //DBチェックの結果により、画面遷移先を変更。
         Intent intent;
-        if ("FEMALE".equals(USER_TYPE)) {
+        if ("0".equals(strId)) {
             //妻がログインした時。
             USER_TYPE = "FEMALE";
 //            intent = new Intent(MainActivity.this , FemaleStoreMapListActivity.class);
 //            startActivity(intent);
-        }else if ("MALE".equals(USER_TYPE)) {
+        }else if ("1".equals(strId)) {
             USER_TYPE = "MALE";
             //夫がログインした時。
 //            intent = new Intent(MainActivity.this , MaleReservationListActivity.class);
