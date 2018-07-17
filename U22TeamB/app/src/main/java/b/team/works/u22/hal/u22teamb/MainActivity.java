@@ -12,7 +12,6 @@ public class MainActivity extends AppCompatActivity {
 
     private String USER_TYPE = "";
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
