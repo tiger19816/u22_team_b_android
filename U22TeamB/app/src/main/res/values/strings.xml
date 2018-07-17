@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">U22TeamB</string>
+  
+    <string name="app_name">夫管理アプリ</string>
 
     <!-- 左のメニュー用 -->
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -12,4 +13,5 @@
     <string name="bt_reservation_date">日付:</string>
     <string name="bt_reservation_time">時間:</string>
     <string name="bt_reservation_confirmation">次へ</string>
+
 </resources>
