@@ -19,6 +19,12 @@
         <activity android:name=".MaleReservationListActivity" />
         <activity android:name=".FemaleReservationListActivity"></activity>
         <activity android:name=".FemaleNewReservationActivity"></activity>
+        <activity android:name=".MaleAdditionalInformationEntryActivity" />
+        <activity android:name=".femaleMaleInformationRegistration" />
+        <activity android:name=".FemaleNewMemberRegistrationActivity" />
+        <activity android:name=".FemaleNewMemberRegistrationConfirmationScreenActivity" />
+        <activity android:name=".femaleCreditCardRegistration" />
+        <activity android:name=".FemaleMyPageActivity"></activity>
     </application>
 
 </manifest>
