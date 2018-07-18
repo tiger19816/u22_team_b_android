@@ -27,7 +27,10 @@ public class MainActivity extends AppCompatActivity {
         EditText etPassword = findViewById(R.id.etPassword);
         String strPassword = etPassword.getText().toString();
 
-        String strMessage = "ここにエラーチェックの結果により、メッセージを記述。";
+        Intent intent = new Intent(MainActivity.this,FemaleChangeReservationActivity.class);
+        startActivity(intent);
+
+      String strMessage = "ここにエラーチェックの結果により、メッセージを記述。";
         //DBチェック
 
         //DBチェックの結果により、画面遷移先を変更。
