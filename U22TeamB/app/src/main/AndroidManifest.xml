@@ -17,6 +17,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".FemaleFinishReservationActivity"></activity>
+        <activity android:name=".MaleReservationListActivity" />
+        <activity android:name=".FemaleReservationListActivity" />
+        <activity android:name=".FemaleHistoryListActivity" />
+        <activity android:name=".MaleHistoryListActivity"></activity>
+        <activity android:name=".FemaleReservationListActivity"></activity>
+        <activity android:name=".FemaleNewReservationActivity"></activity>
     </application>
 
 </manifest>
