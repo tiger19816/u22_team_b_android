@@ -3,7 +3,6 @@ package b.team.works.u22.hal.u22teamb;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -13,25 +12,24 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MaleReservationListActivity extends AppCompatActivity {
+public class MaleHistoryListActivity extends AppCompatActivity {
 
     private List<Map<String , Object>> _list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_male_reservation_list);
-
-        setTitle("予約一覧");
+        setContentView(R.layout.activity_male_history_list);
+        setTitle("履歴一覧");
 
         _list = createList();
 
-        String[] from = {"storeName", "reservationDate"};
-        int[] to = {R.id.tvStoreName, R.id.tvReservationDate};
-        SimpleAdapter adapter = new SimpleAdapter(MaleReservationListActivity.this, _list, R.layout.row_reservation, from, to);
+        String[] from = {"storeName" , "historyPrice" , "historyDate"};
+        int[] to = {R.id.tvStoreName , R.id.tvPrice , R.id.tvHistoryDate};
+        SimpleAdapter adapter = new SimpleAdapter(MaleHistoryListActivity.this , _list , R.layout.row_history , from , to);
         adapter.setViewBinder(new CustomViewBinder());
-        ListView lvReservationList = findViewById(R.id.lvReservationList);
-        lvReservationList.setAdapter(adapter);
+        ListView lvHistoryList = findViewById(R.id.lvHistoryList);
+        lvHistoryList.setAdapter(adapter);
 
     }
 
@@ -48,7 +46,12 @@ public class MaleReservationListActivity extends AppCompatActivity {
                     String strStoreName = (String) data;
                     tvStoreName.setText(strStoreName);
                     return true;
-                case R.id.tvReservationDate:
+                case R.id.tvPrice:
+                    TextView tvPrice = (TextView) view;
+                    String strPrice = (String) data;
+                    tvPrice.setText(strPrice);
+                    return true;
+                case R.id.tvHistoryDate:
                     TextView tvReservationDate = (TextView) view;
                     String strReservationDate = (String) data;
                     tvReservationDate.setText(strReservationDate);
@@ -67,7 +70,8 @@ public class MaleReservationListActivity extends AppCompatActivity {
         for (int i=0; i<=30; i++){
             Map<String , Object> map = new HashMap<>();
             map.put("storeName" , "店名");
-            map.put("reservationDate" , "99月99日(月) 99時99分");
+            map.put("historyPrice" , "利用額:¥1,200");
+            map.put("historyDate" , "9999年99月99日(月) 99時99分");
             list.add(map);
         }
         return list;
