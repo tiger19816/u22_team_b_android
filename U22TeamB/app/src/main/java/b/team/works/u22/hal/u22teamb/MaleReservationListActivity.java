@@ -26,9 +26,9 @@ public class MaleReservationListActivity extends AppCompatActivity {
 
         _list = createList();
 
-        String[] from = {"storeName" , "reservationDate"};
-        int[] to = {R.id.tvStoreName , R.id.tvReservationDate};
-        SimpleAdapter adapter = new SimpleAdapter(MaleReservationListActivity.this , _list , R.layout.row_reservation , from , to);
+        String[] from = {"storeName", "reservationDate"};
+        int[] to = {R.id.tvStoreName, R.id.tvReservationDate};
+        SimpleAdapter adapter = new SimpleAdapter(MaleReservationListActivity.this, _list, R.layout.row_reservation, from, to);
         adapter.setViewBinder(new CustomViewBinder());
         ListView lvReservationList = findViewById(R.id.lvReservationList);
         lvReservationList.setAdapter(adapter);

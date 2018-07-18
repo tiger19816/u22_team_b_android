@@ -21,7 +21,7 @@ public class FemaleReservationListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_female_reservation_list);
 
-        setTitle("予約一覧");
+      setTitle("予約一覧");
 
         _list = createList();
 
