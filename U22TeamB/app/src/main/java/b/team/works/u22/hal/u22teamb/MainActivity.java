@@ -2,6 +2,7 @@ package b.team.works.u22.hal.u22teamb;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    private final static String USER_KEY = "USER_KEY";
     private String USER_TYPE = "";
 
     @Override
@@ -31,17 +33,23 @@ public class MainActivity extends AppCompatActivity {
         //DBチェック
 
         //DBチェックの結果により、画面遷移先を変更。
+        SharedPreferences setting = getSharedPreferences(USER_KEY,0);
+        SharedPreferences.Editor editor = setting.edit();
         Intent intent;
         if ("0".equals(strId)) {
             //妻がログインした時。
             USER_TYPE = "FEMALE";
-//            intent = new Intent(MainActivity.this , FemaleStoreMapListActivity.class);
-//            startActivity(intent);
+            editor.putString(USER_KEY , USER_TYPE);
+            editor.remove(USER_KEY);
+            intent = new Intent(MainActivity.this , FemaleStoreMapListActivity.class);
+            startActivity(intent);
         }else if ("1".equals(strId)) {
             USER_TYPE = "MALE";
+            editor.putString(USER_KEY , USER_TYPE);
+            editor.remove(USER_KEY);
             //夫がログインした時。
-//            intent = new Intent(MainActivity.this , MaleReservationListActivity.class);
-//            startActivity(intent);
+            intent = new Intent(MainActivity.this , MaleReservationListActivity.class);
+            startActivity(intent);
         }else{
             Toast.makeText(MainActivity.this , strMessage , Toast.LENGTH_SHORT).show();
         }
