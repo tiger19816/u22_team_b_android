@@ -11,9 +11,6 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    private final static String USER_KEY = "USER_KEY";
-    private String USER_TYPE = "";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,20 +30,12 @@ public class MainActivity extends AppCompatActivity {
         //DBチェック
 
         //DBチェックの結果により、画面遷移先を変更。
-        SharedPreferences setting = getSharedPreferences(USER_KEY,0);
-        SharedPreferences.Editor editor = setting.edit();
         Intent intent;
         if ("0".equals(strId)) {
             //妻がログインした時。
-            USER_TYPE = "FEMALE";
-            editor.putString(USER_KEY , USER_TYPE);
-            editor.remove(USER_KEY);
             intent = new Intent(MainActivity.this , FemaleStoreMapListActivity.class);
             startActivity(intent);
         }else if ("1".equals(strId)) {
-            USER_TYPE = "MALE";
-            editor.putString(USER_KEY , USER_TYPE);
-            editor.remove(USER_KEY);
             //夫がログインした時。
             intent = new Intent(MainActivity.this , MaleReservationListActivity.class);
             startActivity(intent);

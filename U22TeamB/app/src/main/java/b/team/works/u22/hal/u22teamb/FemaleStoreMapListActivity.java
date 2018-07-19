@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 
 public class FemaleStoreMapListActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -33,6 +34,15 @@ public class FemaleStoreMapListActivity extends AppCompatActivity implements Nav
         NavigationView navigationView = findViewById(R.id.nvSideMenuButton);
         navigationView.setNavigationItemSelectedListener(this);
 
+    }
+
+    /**
+     *予約へのボタンがクリックされた時。
+     * @param view
+     */
+    public void onNextReservationClick(View view){
+        Intent intent = new Intent(FemaleStoreMapListActivity.this,FemaleNewReservationActivity.class);
+        startActivity(intent);
     }
 
     /**

@@ -25,8 +25,12 @@
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-            <!-- ここから各コンテンツを記述!! -->
-            <!-- ここまで各コンテンツを記述!! -->
+            <!-- ここにコンテンツを記述!! -->
+            <Button
+                android:onClick="onNextReservationClick"
+                android:text="@string/bt_next_reservation_page"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
         </android.support.constraint.ConstraintLayout>
 

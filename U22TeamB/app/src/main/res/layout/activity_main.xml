@@ -14,34 +14,34 @@
         android:orientation="vertical"
         android:gravity="center">
 
-    <EditText
-        android:id="@+id/etId"
-        android:hint="@string/tv_login_id"
-        android:layout_width="match_parent"
-        android:layout_height="50dp" />
+        <EditText
+            android:id="@+id/etId"
+            android:hint="@string/tv_login_id"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
 
-    <EditText
-        android:id="@+id/etPassword"
-        android:hint="@string/tv_login_pass"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="40dp"/>
+        <EditText
+            android:id="@+id/etPassword"
+            android:hint="@string/tv_login_pass"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="40dp"/>
 
-    <Button
-        android:onClick="onUserLoginClick"
-        android:text="@string/tv_login_title"
-        android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:layout_marginTop="40dp"/>
+        <Button
+            android:onClick="onUserLoginClick"
+            android:text="@string/tv_login_title"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_marginTop="40dp"/>
 
-    <TextView
-        android:onClick="onNewUserPageClick"
-        android:text="@string/tv_login_new_account"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:gravity="center_horizontal"/>
+        <TextView
+            android:onClick="onNewUserPageClick"
+            android:text="@string/tv_login_new_account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center_horizontal"/>
 
-</LinearLayout>
+    </LinearLayout>
 
 </LinearLayout>
