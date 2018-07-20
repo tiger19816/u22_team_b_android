@@ -41,4 +41,8 @@
     <string name="tv_reservation_check_card_count02">一括払い</string>
     <string name="bt_reservation_check_finish">予約確定</string>
 
+    <!-- 画面13【夫】夫側のパスワード設定-->
+    <string name="PasswordInputDescription">パスワード</string>
+    <string name="RePasswordInputDescription">パスワード再入力</string>
+
 </resources>
