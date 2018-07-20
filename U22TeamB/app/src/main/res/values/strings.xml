@@ -1,6 +1,18 @@
 <resources>
-    <string name="app_name">U22TeamB</string>
-    <!-- 2.妻側-->
+ 
+    <string name="app_name">夫管理アプリ</string>
+
+    <!-- 左のメニュー用 -->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <!-- 画面01 【妻&夫】ログイン画面 -->
+    <string name="tv_login_title">ログイン</string>
+    <string name="tv_login_id">ID</string>
+    <string name="tv_login_pass">Password</string>
+    <string name="tv_login_new_account"><u>アカウントを作成</u></string>
+  
+  <!-- 2.妻側-->
     <string name="female_new_member">あなたの情報を入力してください</string>
     <string name="female_new_name">名前</string>
     <string name="female_new_birthdate">生年月日</string>
@@ -13,7 +25,6 @@
     <string name="female_new_address2">住所2　</string>
     <string name="female_new_registration">登録確認</string>
     <string name="creditCardInformationRegistration">クレジットカード登録へ</string>
-
     <string name="nameInputDescription"></string>
     <string name="BirthdateDescription"></string>
     <string name="PasswordInputDescription"></string>
@@ -37,8 +48,36 @@
     <string name="male_registration_confirmation">旦那様の情報</string>
     <string name="female_registration_confirmation">奥様の情報</string>
 
-    <!-- 13．夫側のパスワード設定-->
-    <string name="RePasswordInputDescription"></string>
+    <!-- 画面07【妻】店の詳細画面 -->
+    <string name="bt_next_reservation_page">予約へ</string>
 
+    <!-- 画面08【妻】予約内容を入力する画面 -->
+    <string name="tv_reservation_store_name">店名:</string>
+    <string name="tv_reservation_store_menu">メニュー:</string>
+    <string name="tv_reservation_datetime">予約時間</string>
+    <string name="bt_reservation_date">日付:</string>
+    <string name="bt_reservation_time">時間:</string>
+    <string name="bt_reservation_confirmation">次へ</string>
+
+    <!-- 画面09 【妻】予約の確認と決済画面 -->
+    <string name="tv_reservation_check_store_name">店舗名:</string>
+    <string name="tv_reservation_check_store_menu">メニュー:</string>
+    <string name="tv_reservation_check_datetime">予約時間</string>
+    <string name="tv_reservation_check_date">日付</string>
+    <string name="tv_reservation_check_time">時間</string>
+    <string name="tv_reservation_check_price_title">決済金額</string>
+    <string name="tv_reservation_check_price_subtotal">小計:</string>
+    <string name="tv_reservation_check_price_total">合計:</string>
+    <string name="tv_reservation_check_price_circle">円</string>
+    <string name="tv_reservation_check_card_title">クレジットカード決済</string>
+    <string name="tv_reservation_check_card_no">カード番号:</string>
+    <string name="tv_reservation_check_card_name">名義名:</string>
+    <string name="tv_reservation_check_card_date">有効期限:</string>
+    <string name="tv_reservation_check_card_count01">支払い回数:</string>
+    <string name="tv_reservation_check_card_count02">一括払い</string>
+    <string name="bt_reservation_check_finish">予約確定</string>
+  
+  <!-- 13．夫側のパスワード設定-->
+    <string name="RePasswordInputDescription"></string>
 
 </resources>

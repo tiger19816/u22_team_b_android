@@ -22,6 +22,16 @@
         <activity android:name=".FemaleNewMemberRegistrationConfirmationScreenActivity" />
         <activity android:name=".femaleCreditCardRegistration" />
         <activity android:name=".FemaleMyPageActivity"></activity>
+        <activity android:name=".FemaleFinishReservationActivity" />
+        <activity android:name=".FemaleChangeReservationActivity" />
+        <activity android:name=".FemaleFinishReservationActivity" />
+        <activity android:name=".MaleReservationListActivity" />
+        <activity android:name=".FemaleReservationListActivity" />
+        <activity android:name=".FemaleHistoryListActivity" />
+        <activity android:name=".MaleHistoryListActivity" />
+        <activity android:name=".FemaleReservationListActivity" />
+        <activity android:name=".FemaleNewReservationActivity" />
+        <activity android:name=".FemaleStoreMapListActivity"></activity>
     </application>
 
 </manifest>
