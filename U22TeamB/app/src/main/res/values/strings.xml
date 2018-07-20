@@ -36,7 +36,6 @@
 
     <string name="nameInputDescription"></string>
     <string name="BirthdateDescription"></string>
-    <string name="PasswordInputDescription"></string>
     <string name="CreditCardNumberInputDescription"></string>
     <string name="credit_card_expiration_date_input_description"></string>
     <string name="card_holder_input_description"></string>
@@ -58,7 +57,8 @@
     <string name="female_registration_confirmation">奥様の情報</string>
 
     <!-- 13．夫側のパスワード設定-->
-    <string name="RePasswordInputDescription"></string>
+    <string name="PasswordInputDescription">パスワード</string>
+    <string name="RePasswordInputDescription">パスワード再入力</string>
 
 </resources>
 

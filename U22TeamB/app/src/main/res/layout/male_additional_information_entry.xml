@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    style="@style/maleMain">
 
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="25sp"
+        style="@style/maleMain"
+        android:layout_marginTop="35dp"
         android:orientation="vertical">
 
         <FrameLayout
@@ -22,7 +20,7 @@
                 android:layout_gravity="center_vertical"
                 android:gravity="center_horizontal"
                 android:text="パスワードの設定"
-                android:textSize="25sp" />
+                style="@style/maleTopTitle" />
         </FrameLayout>
 
         <!-- 　　　　　　　　　　　　　　　　　パスワードの入力説明＆入力　　　　　　　　　　　　　　　　　　　　　　　　-->
@@ -39,7 +37,7 @@
                 android:layout_marginLeft="25dp"
                 android:layout_gravity="center_vertical"
                 android:text="@string/PasswordInputDescription"
-                android:textSize="15sp" />
+                style="@style/itemText" />
         </LinearLayout>
 
         <LinearLayout
@@ -54,7 +52,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
                 android:layout_marginRight="25dp"
-                android:hint="@string/female_new_password"
                 android:layout_weight="1"
                 android:inputType="textPassword"/>
 
@@ -73,7 +70,7 @@
                 android:layout_marginLeft="25dp"
                 android:layout_gravity="center_vertical"
                 android:text="@string/RePasswordInputDescription"
-                android:textSize="15sp" />
+                style="@style/itemText" />
         </LinearLayout>
 
         <LinearLayout
@@ -88,7 +85,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
                 android:layout_marginRight="25dp"
-                android:hint="@string/female_new_password"
                 android:layout_weight="1"
                 android:inputType="textPassword"/>
 
@@ -103,12 +99,9 @@
 
             <Button
                 android:id="@+id/btClick"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
                 android:layout_marginLeft="25dp"
                 android:layout_marginRight="25dp"
-                android:background="@drawable/button_background"
-                android:textSize="35sp"
+                style="@style/maleMainButton"
                 android:text="@string/female_new_registration"/>
 
         </LinearLayout>
