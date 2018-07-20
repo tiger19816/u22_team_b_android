@@ -12,7 +12,7 @@
     <string name="tv_login_pass">Password</string>
     <string name="tv_login_new_account"><u>アカウントを作成</u></string>
   
-  <!-- 2.妻側-->
+  <!-- 画面02 【妻】新規会員登録-妻情報入力画面 -->
     <string name="female_new_member">あなたの情報を入力してください</string>
     <string name="female_new_name">名前</string>
     <string name="female_new_birthdate">生年月日</string>
@@ -25,16 +25,8 @@
     <string name="female_new_address2">住所2　</string>
     <string name="female_new_registration">登録確認</string>
     <string name="creditCardInformationRegistration">クレジットカード登録へ</string>
-    <string name="nameInputDescription"></string>
-    <string name="BirthdateDescription"></string>
-    <string name="PasswordInputDescription"></string>
-    <string name="CreditCardNumberInputDescription"></string>
-    <string name="credit_card_expiration_date_input_description"></string>
-    <string name="card_holder_input_description"></string>
-    <string name="security_code_input_description"></string>
-    <string name="address_input_description"></string>
 
-    <!-- 3.夫側-->
+    <!-- 画面03 【妻】新規会員登録-夫情報入力画面 -->
     <string name="male_new_member">旦那様の情報を入力してください</string>t
     <string name="male_height">旦那様の身長を入力してください（任意）</string>
     <string name="male_weight">旦那様の体重を入力してください（任意）</string>
@@ -43,7 +35,7 @@
     <string name="weight_input_description"></string>
     <string name="occupation_input_description"></string>
 
-    <!-- 4.登録確認 -->
+    <!-- 画面04 【妻】新規会員登録確認画面-妻・夫情報 -->
     <string name="registration">登録</string>
     <string name="male_registration_confirmation">旦那様の情報</string>
     <string name="female_registration_confirmation">奥様の情報</string>
@@ -76,9 +68,6 @@
     <string name="tv_reservation_check_card_count01">支払い回数:</string>
     <string name="tv_reservation_check_card_count02">一括払い</string>
     <string name="bt_reservation_check_finish">予約確定</string>
-  
-  <!-- 13．夫側のパスワード設定-->
-    <string name="RePasswordInputDescription"></string>
 
     <!-- 画面13【夫】夫側のパスワード設定-->
     <string name="PasswordInputDescription">パスワード</string>

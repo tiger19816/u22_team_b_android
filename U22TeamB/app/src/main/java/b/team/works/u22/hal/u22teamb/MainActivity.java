@@ -43,4 +43,9 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(MainActivity.this , strMessage , Toast.LENGTH_SHORT).show();
         }
     }
+
+    public void onNewUserPageClick(View view){
+        Intent intent = new Intent(MainActivity.this,FemaleNewMemberRegistrationActivity.class);
+        startActivity(intent);
+    }
 }

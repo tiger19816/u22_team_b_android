@@ -41,7 +41,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
                 android:layout_gravity="center_vertical"
-                android:text="@string/CreditCardNumberInputDescription"
                 android:textColor="#000000"
                 android:textSize="18sp" />
         </LinearLayout>
@@ -78,7 +77,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
                 android:layout_gravity="center_vertical"
-                android:text="@string/credit_card_expiration_date_input_description"
                 android:textColor="#000000"
                 android:textSize="18sp" />
         </LinearLayout>
@@ -114,7 +112,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
                 android:layout_gravity="center_vertical"
-                android:text="@string/card_holder_input_description"
                 android:textColor="#000000"
                 android:textSize="14sp" />
         </LinearLayout>
@@ -150,7 +147,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
                 android:layout_gravity="center_vertical"
-                android:text="@string/security_code_input_description"
                 android:textColor="#000000"
                 android:textSize="18sp" />
         </LinearLayout>
