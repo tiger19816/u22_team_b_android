@@ -124,6 +124,9 @@ public class MaleReservationListActivity extends AppCompatActivity implements Na
         } else if (id == R.id.nav_history) {
             intent = new Intent(MaleReservationListActivity.this,MaleHistoryListActivity.class);
             startActivity(intent);
+        }else if (id == R.id.nav_logout){
+            intent = new Intent(MaleReservationListActivity.this,MainActivity.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = findViewById(R.id.dlMainContent);

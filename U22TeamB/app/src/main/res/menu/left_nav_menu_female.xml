@@ -21,4 +21,12 @@
             android:title="MyPage" />
     </group>
 
+    <item tools:ignore="MenuTitle">
+        <menu>
+            <item
+                android:id="@+id/nav_logout"
+                android:title="ログアウト" />
+        </menu>
+    </item>
+
 </menu>

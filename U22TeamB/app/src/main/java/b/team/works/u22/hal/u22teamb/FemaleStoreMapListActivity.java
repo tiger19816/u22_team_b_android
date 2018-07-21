@@ -81,6 +81,9 @@ public class FemaleStoreMapListActivity extends AppCompatActivity implements Nav
         } else if (id == R.id.nav_my_page) {
             intent = new Intent(FemaleStoreMapListActivity.this,FemaleStoreMapListActivity.class);
             startActivity(intent);
+        }else if (id == R.id.nav_logout){
+            intent = new Intent(FemaleStoreMapListActivity.this,MainActivity.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = findViewById(R.id.dlMainContent);

@@ -129,6 +129,9 @@ public class MaleHistoryListActivity extends AppCompatActivity implements Naviga
         } else if (id == R.id.nav_history) {
             intent = new Intent(MaleHistoryListActivity.this,MaleHistoryListActivity.class);
             startActivity(intent);
+        }else if (id == R.id.nav_logout){
+            intent = new Intent(MaleHistoryListActivity.this,MainActivity.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = findViewById(R.id.dlMainContent);
