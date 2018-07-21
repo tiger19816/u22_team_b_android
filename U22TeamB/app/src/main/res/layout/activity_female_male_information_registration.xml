@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--<ScrollView-->
+    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent">-->
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25sp"
+        android:orientation="vertical">
+
+        <!-- 　　　　　　　　　　　　　　　　　　　　　　　　ヘッダー　　　　　　　　　　　　　　　　　　　　　　　　　　　　　-->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvTitleEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_horizontal"
+                android:text="@string/male_new_member"
+                android:textSize="25sp" />
+        </FrameLayout>
+
+        <!-- 　　　　　　　　　　　　　　　　　　　　　　　　　名前の入力説明＆入力　　　　　　　　　　　　　　　　　　　　　　　　-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="25sp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_gravity="center_vertical"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="0sp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/etInputName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:hint="@string/female_new_name"
+                android:layout_weight="1"
+                android:inputType="textPersonName"/>
+
+        </LinearLayout>
+
+        <!-- 　　　　　　　　　　　　　　　　　　　　　　　生年月日の入力説明＆入力　　　　　　　　　　　　　　　　　　　　　　　-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="25sp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvBirthdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_gravity="center_vertical"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0sp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/etInputBirthdate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:hint="@string/female_new_birthdate"
+                android:layout_weight="1"
+                android:inputType="date"/>
+
+        </LinearLayout>
+
+        <!-- 　　　　　　　　　　　　　　　　　　　　　　　夫の身長の入力説明＆入力　　　　　　　　　　　　　　　　　　　　　　　-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="25sp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvmaleHeight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_gravity="center_vertical"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0sp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/etInputmaleHeight"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:hint="@string/male_height"
+                android:layout_weight="1"
+                android:inputType="number"/>
+
+        </LinearLayout>
+
+        <!-- 　　　　　　　　　　　　　　　　　　　　　　　夫の体重の入力説明＆入力　　　　　　　　　　　　　　　　　　　　　　　-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="25sp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvmaleWeight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_gravity="center_vertical"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0sp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/etInputmaleWeight"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:hint="@string/male_weight"
+                android:layout_weight="1"
+                android:inputType="number"/>
+
+        </LinearLayout>
+
+        <!-- 　　　　　　　　　　　　　　　　　　　　　　　夫の職業の入力説明＆入力　　　　　　　　　　　　　　　　　　　　　　　-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="25sp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvmaleOccupation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_gravity="center_vertical"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0sp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/etInputmaleOccupation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:hint="@string/male_occupation"
+                android:layout_weight="1"
+                android:inputType="number"/>
+
+        </LinearLayout>
+
+
+        <!--                 　　　　　　　　　　　　　　　　　　　登録確認ボタンの詳細   　　　　　　　　　　　　　　　　　　            -->
+        <LinearLayoutt
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="35sp"
+            android:layout_marginBottom="30sp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btClick"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:text="@string/female_new_registration"/>
+
+        </LinearLayoutt>
+
+    </LinearLayout>
+<!--</ScrollView>-->

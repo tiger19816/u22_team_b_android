@@ -1,3 +1,76 @@
 <resources>
-    <string name="app_name">U22TeamB</string>
+ 
+    <string name="app_name">夫管理アプリ</string>
+
+    <!-- 左のメニュー用 -->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <!-- 画面01 【妻&夫】ログイン画面 -->
+    <string name="tv_login_title">ログイン</string>
+    <string name="tv_login_id">ID</string>
+    <string name="tv_login_pass">Password</string>
+    <string name="tv_login_new_account"><u>アカウントを作成</u></string>
+  
+  <!-- 画面02 【妻】新規会員登録-妻情報入力画面 -->
+    <string name="female_new_member">あなたの情報を入力してください</string>
+    <string name="female_new_name">名前</string>
+    <string name="female_new_birthdate">生年月日</string>
+    <string name="female_new_password">パスワード</string>
+    <string name="female_new_credit_card_number">クレジットカード番号</string>
+    <string name="female_new_card_expiration_date">カードの有効期限</string>
+    <string name="female_new_card_security_code">セキュリティコード</string>
+    <string name="female_new_card_card_holder">カード名義人</string>
+    <string name="female_new_address1">住所1　</string>
+    <string name="female_new_address2">住所2　</string>
+    <string name="female_new_registration">登録確認</string>
+    <string name="creditCardInformationRegistration">クレジットカード登録へ</string>
+
+    <!-- 画面03 【妻】新規会員登録-夫情報入力画面 -->
+    <string name="male_new_member">旦那様の情報を入力してください</string>t
+    <string name="male_height">旦那様の身長を入力してください（任意）</string>
+    <string name="male_weight">旦那様の体重を入力してください（任意）</string>
+    <string name="male_occupation">旦那様の職業を入力してください（任意）</string>
+    <string name="height_input_description"></string>
+    <string name="weight_input_description"></string>
+    <string name="occupation_input_description"></string>
+
+    <!-- 画面04 【妻】新規会員登録確認画面-妻・夫情報 -->
+    <string name="registration">登録</string>
+    <string name="male_registration_confirmation">旦那様の情報</string>
+    <string name="female_registration_confirmation">奥様の情報</string>
+
+    <!-- 画面07【妻】店の詳細画面 -->
+    <string name="bt_next_reservation_page">予約へ</string>
+
+    <!-- 画面08【妻】予約内容を入力する画面 -->
+    <string name="tv_reservation_store_name">店名:</string>
+    <string name="tv_reservation_store_menu">メニュー:</string>
+    <string name="tv_reservation_datetime">予約時間</string>
+    <string name="bt_reservation_date">日付:</string>
+    <string name="bt_reservation_time">時間:</string>
+    <string name="bt_reservation_confirmation">次へ</string>
+
+    <!-- 画面09 【妻】予約の確認と決済画面 -->
+    <string name="tv_reservation_check_store_name">店舗名:</string>
+    <string name="tv_reservation_check_store_menu">メニュー:</string>
+    <string name="tv_reservation_check_datetime">予約時間</string>
+    <string name="tv_reservation_check_date">日付</string>
+    <string name="tv_reservation_check_time">時間</string>
+    <string name="tv_reservation_check_price_title">決済金額</string>
+    <string name="tv_reservation_check_price_subtotal">小計:</string>
+    <string name="tv_reservation_check_price_total">合計:</string>
+    <string name="tv_reservation_check_price_circle">円</string>
+    <string name="tv_reservation_check_card_title">クレジットカード決済</string>
+    <string name="tv_reservation_check_card_no">カード番号:</string>
+    <string name="tv_reservation_check_card_name">名義名:</string>
+    <string name="tv_reservation_check_card_date">有効期限:</string>
+    <string name="tv_reservation_check_card_count01">支払い回数:</string>
+    <string name="tv_reservation_check_card_count02">一括払い</string>
+    <string name="bt_reservation_check_finish">予約確定</string>
+
+    <!-- 画面13【夫】夫側のパスワード設定-->
+    <string name="PasswordInputDescription">パスワード</string>
+    <string name="RePasswordInputDescription">パスワード再入力</string>
+
 </resources>
