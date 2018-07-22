@@ -1,11 +1,15 @@
 package b.team.works.u22.hal.u22teamb;
 
+import android.os.Parcelable;
+
+import java.io.Serializable;
+
 /**
  * 妻テーブル用クラス。
  * @autho Honoka Takada
  */
 
-public class Female {
+public class Female implements Serializable{
 
     private String femaleId;
     private String femaleName;
@@ -96,6 +100,8 @@ public class Female {
     }
 
     public Boolean getInputChecked() { return isInputChecked; }
+    public void setInputChecked() { this.isInputChecked = true; }
+
 
     public String getFemaleId(){return femaleId;}
     public String getFemaleIdErrorMessage(){return this.femaleIdErrorMessage;}

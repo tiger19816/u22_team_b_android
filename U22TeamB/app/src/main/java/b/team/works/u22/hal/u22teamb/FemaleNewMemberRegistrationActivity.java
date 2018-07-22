@@ -52,7 +52,7 @@ public class FemaleNewMemberRegistrationActivity extends AppCompatActivity {
 
         if(female.getInputChecked()) {
             Intent intent = new Intent(FemaleNewMemberRegistrationActivity.this, FemaleCardRegistrationActivity.class);
-            intent.putExtra("FEMALE", (Parcelable) female);
+            intent.putExtra("FEMALE", female);
             startActivity(intent);
         }else{
             Toast.makeText(FemaleNewMemberRegistrationActivity.this , "入力チェック完了" , Toast.LENGTH_SHORT).show();
