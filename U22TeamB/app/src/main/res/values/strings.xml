@@ -1,5 +1,5 @@
 <resources>
- 
+
     <string name="app_name">夫管理アプリ</string>
 
     <!-- 左のメニュー用 -->
@@ -11,29 +11,31 @@
     <string name="tv_login_id">ID</string>
     <string name="tv_login_pass">Password</string>
     <string name="tv_login_new_account"><u>アカウントを作成</u></string>
-  
-  <!-- 画面02 【妻】新規会員登録-妻情報入力画面 -->
+
+    <!-- 画面02 【妻】新規会員登録-妻情報入力画面 -->
     <string name="female_new_member">あなたの情報を入力してください</string>
     <string name="female_new_name">名前</string>
-    <string name="female_new_birthdate">生年月日</string>
+    <string name="female_new_birthday">生年月日</string>
     <string name="female_new_password">パスワード</string>
+    <string name="female_new_mail">メールアドレス</string>
+    <string name="female_new_icon">アイコン画像</string>
+    <string name="creditCardInformationRegistration">次へ</string>
+
+    <!-- 画面 【妻】新規会員登録-カード情報入力 -->
     <string name="female_new_credit_card_number">クレジットカード番号</string>
     <string name="female_new_card_expiration_date">カードの有効期限</string>
     <string name="female_new_card_security_code">セキュリティコード</string>
     <string name="female_new_card_card_holder">カード名義人</string>
-    <string name="female_new_address1">住所1　</string>
-    <string name="female_new_address2">住所2　</string>
-    <string name="female_new_registration">登録確認</string>
-    <string name="creditCardInformationRegistration">クレジットカード登録へ</string>
+    <string name="female_new_registration">次へ</string>
 
     <!-- 画面03 【妻】新規会員登録-夫情報入力画面 -->
-    <string name="male_new_member">旦那様の情報を入力してください</string>t
-    <string name="male_height">旦那様の身長を入力してください（任意）</string>
-    <string name="male_weight">旦那様の体重を入力してください（任意）</string>
-    <string name="male_occupation">旦那様の職業を入力してください（任意）</string>
-    <string name="height_input_description"></string>
-    <string name="weight_input_description"></string>
-    <string name="occupation_input_description"></string>
+    <string name="male_new_member">旦那様の情報を入力してください</string>
+    <string name="male_birthday">生年月日を入力してください（任意）</string>
+    <string name="male_height">身長（任意）</string>
+    <string name="male_weight">体重（任意）</string>
+    <string name="male_occupation">職業（任意）</string>
+    <string name="female_new_place">登録時点</string>
+    <string name="bt_female_check">登録確認へ</string>
 
     <!-- 画面04 【妻】新規会員登録確認画面-妻・夫情報 -->
     <string name="registration">登録</string>

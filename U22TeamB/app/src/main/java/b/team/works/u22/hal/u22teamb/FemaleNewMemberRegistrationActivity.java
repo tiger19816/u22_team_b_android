@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 
 public class FemaleNewMemberRegistrationActivity extends AppCompatActivity {
 
@@ -13,8 +14,27 @@ public class FemaleNewMemberRegistrationActivity extends AppCompatActivity {
         setContentView(R.layout.female_new_member_registration);
     }
 
+    /**
+     *「次へボタンをクリックした時。」
+     * @param view
+     */
     public void onMaleInformationClick(View view){
-        Intent intent = new Intent(FemaleNewMemberRegistrationActivity.this,femaleMaleInformationRegistration.class);
+
+        EditText etFemaleName = findViewById(R.id.etInputName);
+        String FemaleName = etFemaleName.getText().toString();
+
+        EditText etFemaleBirthday = findViewById(R.id.etInputBirthdate);
+        String FemaleBirthday = etFemaleBirthday.getText().toString();
+
+        EditText etFemaleMail = findViewById(R.id.etInputMail);
+        String FemaleMail = etFemaleMail.getText().toString();
+
+        EditText etFemalePassword = findViewById(R.id.etInputPassword);
+        String FemalePassword = etFemalePassword.getText().toString();
+
+
+
+        Intent intent = new Intent(FemaleNewMemberRegistrationActivity.this,FemaleCardRegistrationActivity.class);
         startActivity(intent);
     }
 }

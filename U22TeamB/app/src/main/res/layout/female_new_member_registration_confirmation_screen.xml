@@ -12,126 +12,123 @@
         android:layout_marginTop="25sp"
         android:orientation="vertical">
 
-        <!-- 　　　　　　　　　　　　　　　　　　　　　　　　ヘッダー　　　　　　　　　　　　　　　　　　　　　　　　　　　　　-->
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/tvfemaleInformation"
+                android:id="@+id/tvFemaleInformation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:gravity="center_horizontal"
-                android:text="@string/female_registration_confirmation"
-                android:textSize="25sp" />
+                android:text="@string/female_registration_confirmation"/>
+
         </FrameLayout>
-        <!-- -->
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="35sp"
             android:layout_marginBottom="30sp"
-            android:layout_marginLeft="20sp"
-            android:layout_marginRight="20sp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:background="@drawable/layout_shape"
             android:orientation="vertical" >
 
-
             <TextView
-                android:id="@+id/tvfemaleName"
+                android:id="@+id/tvFemaleName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:layout_gravity="center_vertical"
-                android:text="・氏名"
-                android:textSize="15sp" />
+                android:text="・氏名"/>
 
             <TextView
                 android:id="@+id/tvfemaleBirthday"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:layout_marginTop="5sp"
                 android:layout_gravity="center_vertical"
-                android:text="・生年月日"
-                android:textSize="15sp" />
+                android:text="・生年月日"/>
 
             <TextView
-                android:id="@+id/tvfemalePassword"
+                android:id="@+id/tvFemalePassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:layout_marginTop="5sp"
                 android:layout_gravity="center_vertical"
-                android:text="・パスワード"
-                android:textSize="15sp" />
+                android:text="・パスワード"/>
 
             <TextView
                 android:id="@+id/tvfemaleCreditCardNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:layout_marginTop="5sp"
                 android:layout_gravity="center_vertical"
-                android:text="・カード番号"
-                android:textSize="15sp" />
+                android:text="・カード番号"/>
 
             <TextView
-                android:id="@+id/tvfemaleCreditCardExpirationDate"
+                android:id="@+id/tvFemaleCreditCardExpirationDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:layout_marginTop="5sp"
                 android:layout_gravity="center_vertical"
-                android:text="・カードの有効期限"
-                android:textSize="15sp" />
+                android:text="・カードの有効期限"/>
 
             <TextView
-                android:id="@+id/tvfemaleCreditCardSecurityNumber"
+                android:id="@+id/tvFemaleCreditCardSecurityNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:layout_marginTop="5sp"
                 android:layout_gravity="center_vertical"
-                android:text="・カードのセキュリティ番号"
-                android:textSize="15sp" />
+                android:text="・カードのセキュリティ番号"/>
 
             <TextView
-                android:id="@+id/tvfemaleCreditCardHolder"
+                android:id="@+id/tvFemaleCreditCardHolder"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:layout_marginTop="5sp"
                 android:layout_gravity="center_vertical"
-                android:text="・カードの名義人"
-                android:textSize="15sp" />
+                android:text="・カードの名義人"/>
 
             <TextView
-                android:id="@+id/tvfemaleAddress"
+                android:id="@+id/tvFemaleAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:layout_marginTop="5sp"
                 android:layout_gravity="center_vertical"
-                android:text="・住所"
-                android:textSize="15sp" />
-
+                android:text="・住所"/>
 
         </LinearLayout>
-        <!--                                                                                  -->
+
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/tvmaleInformation"
+                android:id="@+id/tvMaleInformation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:gravity="center_horizontal"
-                android:text="@string/male_registration_confirmation"
-                android:textSize="25sp" />
+                android:text="@string/male_registration_confirmation"/>
+
         </FrameLayout>
 
         <LinearLayout
@@ -139,91 +136,80 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="35sp"
             android:layout_marginBottom="30sp"
-            android:layout_marginLeft="20sp"
-            android:layout_marginRight="20sp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:background="@drawable/layout_shape"
             android:orientation="vertical" >
 
             <TextView
-                android:id="@+id/tvmaleName"
+                android:id="@+id/tvMaleName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:layout_gravity="center_vertical"
-                android:text="・氏名"
-                android:textSize="15sp" />
+                android:text="・氏名"/>
 
             <TextView
-                android:id="@+id/tvmaleBirthdate"
+                android:id="@+id/tvMaleBirthdate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:layout_marginTop="5sp"
                 android:layout_gravity="center_vertical"
-                android:text="・生年月日"
-                android:textSize="15sp" />
+                android:text="・生年月日"/>
 
             <TextView
-                android:id="@+id/tvmaleHeight"
+                android:id="@+id/tvMaleHeight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:layout_marginTop="5sp"
                 android:layout_gravity="center_vertical"
-                android:text="・身長（任意）"
-                android:textSize="15sp" />
+                android:text="・身長（任意）"/>
 
             <TextView
-                android:id="@+id/tvmaleWeight"
+                android:id="@+id/tvMaleWeight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:layout_marginTop="5sp"
                 android:layout_gravity="center_vertical"
-                android:text="・体重（任意）"
-                android:textSize="15sp" />
+                android:text="・体重（任意）"/>
 
             <TextView
-                android:id="@+id/tvmaleOccupation"
+                android:id="@+id/tvMaleOccupation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:layout_marginTop="5sp"
                 android:layout_gravity="center_vertical"
-                android:text="・職業（任意）"
-                android:textSize="15sp" />
+                android:text="・職業（任意）"/>
 
             <TextView
-                android:id="@+id/tvmaleAllergic"
+                android:id="@+id/tvMaleAllergic"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:layout_marginTop="5sp"
                 android:layout_gravity="center_vertical"
-                android:text="・アレルギー情報"
-                android:textSize="15sp" />
-
+                android:text="・アレルギー情報"/>
 
         </LinearLayout>
 
-        <LinearLayout
+        <Button
+            android:onClick="onFinishRegistrationClick"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_marginTop="35sp"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
             android:layout_marginBottom="30sp"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btClick"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
-                android:background="@drawable/button_background"
-                android:textSize="35sp"
-                android:text="@string/registration"/>
-
-        </LinearLayout>
+            android:text="@string/registration"/>
 
     </LinearLayout>
+
 </ScrollView>
