@@ -22,6 +22,7 @@
     <string name="creditCardInformationRegistration">次へ</string>
 
     <!-- 画面 【妻】新規会員登録-カード情報入力 -->
+    <string name="female_new_credit_card_title">クレジットカードの情報を入力してください</string>
     <string name="female_new_credit_card_number">クレジットカード番号</string>
     <string name="female_new_card_expiration_date">カードの有効期限</string>
     <string name="female_new_card_security_code">セキュリティコード</string>

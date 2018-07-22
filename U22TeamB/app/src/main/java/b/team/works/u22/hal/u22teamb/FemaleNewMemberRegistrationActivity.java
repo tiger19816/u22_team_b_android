@@ -1,12 +1,20 @@
 package b.team.works.u22.hal.u22teamb;
 
 import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class FemaleNewMemberRegistrationActivity extends AppCompatActivity {
+
+    private List<String> _list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,21 +28,34 @@ public class FemaleNewMemberRegistrationActivity extends AppCompatActivity {
      */
     public void onMaleInformationClick(View view){
 
+        //妻情報のエンティティークラス
+        Female female = new Female();
+
+        String femaleIcon = "icon.jpg";
+        female.setFemaleIcon(femaleIcon);
+
         EditText etFemaleName = findViewById(R.id.etInputName);
-        String FemaleName = etFemaleName.getText().toString();
+        String femaleName = etFemaleName.getText().toString();
+        female.setFemaleName(femaleName);
 
         EditText etFemaleBirthday = findViewById(R.id.etInputBirthdate);
-        String FemaleBirthday = etFemaleBirthday.getText().toString();
+        String femaleBirthday = etFemaleBirthday.getText().toString();
+        female.setFemaleBirthDay(femaleBirthday);
 
         EditText etFemaleMail = findViewById(R.id.etInputMail);
-        String FemaleMail = etFemaleMail.getText().toString();
+        String femaleMail = etFemaleMail.getText().toString();
+        female.setFemaleMail(femaleMail);
 
         EditText etFemalePassword = findViewById(R.id.etInputPassword);
-        String FemalePassword = etFemalePassword.getText().toString();
+        String femalePassword = etFemalePassword.getText().toString();
+        female.setFemalePassword(femalePassword);
 
-
-
-        Intent intent = new Intent(FemaleNewMemberRegistrationActivity.this,FemaleCardRegistrationActivity.class);
-        startActivity(intent);
+        if(female.getInputChecked()) {
+            Intent intent = new Intent(FemaleNewMemberRegistrationActivity.this, FemaleCardRegistrationActivity.class);
+            intent.putExtra("FEMALE", (Parcelable) female);
+            startActivity(intent);
+        }else{
+            Toast.makeText(FemaleNewMemberRegistrationActivity.this , "入力チェック完了" , Toast.LENGTH_SHORT).show();
+        }
     }
 }
