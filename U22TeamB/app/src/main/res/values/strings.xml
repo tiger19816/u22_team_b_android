@@ -1,5 +1,5 @@
 <resources>
- 
+
     <string name="app_name">夫管理アプリ</string>
 
     <!-- 左のメニュー用 -->
@@ -11,8 +11,8 @@
     <string name="tv_login_id">ID</string>
     <string name="tv_login_pass">Password</string>
     <string name="tv_login_new_account"><u>アカウントを作成</u></string>
-  
-  <!-- 画面02 【妻】新規会員登録-妻情報入力画面 -->
+
+    <!-- 画面02 【妻】新規会員登録-妻情報入力画面 -->
     <string name="female_new_member">あなたの情報を入力してください</string>
     <string name="female_new_name">名前</string>
     <string name="female_new_birthdate">生年月日</string>
@@ -72,5 +72,6 @@
     <!-- 画面13【夫】夫側のパスワード設定-->
     <string name="PasswordInputDescription">パスワード</string>
     <string name="RePasswordInputDescription">パスワード再入力</string>
+    <string name="title_activity_maps">Map</string>
 
 </resources>

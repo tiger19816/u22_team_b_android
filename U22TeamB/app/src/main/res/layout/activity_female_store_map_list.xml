@@ -7,34 +7,53 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:openDrawer="start">
+    tools:openDrawer="start"
+    tools:context=".FemaleStoreMapListActivity">
 
     <android.support.design.widget.CoordinatorLayout
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        android:layout_height="match_parent">
 
         <include
             layout="@layout/app_bar_main"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <android.support.constraint.ConstraintLayout
+        <!-- ここからコンテンツを記述!! -->
+
+        <LinearLayout
+            android:id="@+id/llStoreMapMain"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:orientation="vertical"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-            <!-- ここからコンテンツを記述!! -->
-            <Button
-                android:onClick="onNextReservationClick"
-                android:text="@string/bt_next_reservation_page"
+            <fragment
+                android:id="@+id/storeMaps"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <!-- ここまでにコンテンツを記述!! -->
+                android:layout_height="0dp"
+                android:layout_weight="1" />
 
-        </android.support.constraint.ConstraintLayout>
+            <ListView
+                android:id="@+id/lvStoreList"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:background="@color/colorPrimaryDark" />
+        </LinearLayout>
+        <!-- ここまでにコンテンツを記述!! -->
 
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fabOpenList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="10dp"
+            android:onClick="onFabOpenListClick"
+            android:src="@drawable/ic_action_list"
+            app:layout_anchor="@id/storeMaps"
+            app:layout_anchorGravity="bottom|right"/>
     </android.support.design.widget.CoordinatorLayout>
 
     <android.support.design.widget.NavigationView
@@ -45,5 +64,4 @@
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/left_navi_menu_header"
         app:menu="@menu/left_nav_menu_female" />
-
 </android.support.v4.widget.DrawerLayout>
