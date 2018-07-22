@@ -21,13 +21,6 @@
         android:text="@string/female_new_place"/>
 
     <EditText
-        android:id="@+id/etInputName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/female_new_name"
-        android:inputType="textPersonName"/>
-
-    <EditText
         android:id="@+id/etInputBirthday"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
