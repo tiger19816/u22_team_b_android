@@ -5,9 +5,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
 public class FemaleCardRegistrationActivity extends AppCompatActivity {
 
@@ -15,6 +20,18 @@ public class FemaleCardRegistrationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_female_card_registration);
+
+        Calendar calendar = Calendar.getInstance();
+        int nowYear = calendar.get(Calendar.YEAR);
+
+        Spinner etCardDoneDeadlineYear = findViewById(R.id.etInputCardExpirationYear);
+        List<String> items = new ArrayList<String>();
+        items.add("年");
+        for(int i=(nowYear); i<(nowYear+7); i++){
+            items.add(String.valueOf(i));
+        }
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this , android.R.layout.simple_spinner_dropdown_item , items);
+        etCardDoneDeadlineYear.setAdapter(adapter);
     }
 
     public void onMaleInformationClick(View view){
@@ -26,8 +43,9 @@ public class FemaleCardRegistrationActivity extends AppCompatActivity {
         String cardNo = etCardNo.getText().toString();
         female.setFemaleCardNo(cardNo);
 
-        Spinner etCardDoneDeadline = findViewById(R.id.etInputCardExpirationDate);
-        String cardDoneDeadline = etCardDoneDeadline.toString();
+        Spinner etCardDoneDeadlineMonth = findViewById(R.id.etInputCardExpirationDate);
+        Spinner etCardDoneDeadlineYear = findViewById(R.id.etInputCardExpirationYear);
+        String cardDoneDeadline = etCardDoneDeadlineMonth.toString() + "/" + etCardDoneDeadlineYear.toString();
         female.setFemaleCardExpirationDate(cardDoneDeadline);
 
         EditText etCardNominalName = findViewById(R.id.etInputCreditCardNumber);

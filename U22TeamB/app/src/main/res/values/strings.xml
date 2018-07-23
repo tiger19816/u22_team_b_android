@@ -25,6 +25,22 @@
     <string name="female_new_credit_card_title">クレジットカードの情報を入力してください</string>
     <string name="female_new_credit_card_number">クレジットカード番号</string>
     <string name="female_new_card_expiration_date">カードの有効期限</string>
+    <string-array name="sp_month_list">
+        <item>月</item>
+        <item>01</item>
+        <item>02</item>
+        <item>03</item>
+        <item>04</item>
+        <item>05</item>
+        <item>06</item>
+        <item>07</item>
+        <item>08</item>
+        <item>09</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+    </string-array>
+    <string name="tv_credit_card_slash">/</string>
     <string name="female_new_card_security_code">セキュリティコード</string>
     <string name="female_new_card_card_holder">カード名義人</string>
     <string name="female_new_registration">次へ</string>

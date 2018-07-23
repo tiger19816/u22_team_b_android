@@ -36,17 +36,31 @@
             <TextView
                 android:layout_width="65dp"
                 android:layout_height="wrap_content"
-                android:hint="@string/female_new_card_expiration_date"/>
+                android:text="@string/female_new_card_expiration_date"/>
 
-            <Spinner
-                android:id="@+id/etInputCardExpirationDate"
-                android:layout_width="100dp"
-                android:layout_height="match_parent"></Spinner>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal">
 
-            <Spinner
-                android:id="@+id/etInputCardExpirationYear"
-                android:layout_width="100dp"
-                android:layout_height="match_parent"></Spinner>
+                <Spinner
+                    android:id="@+id/etInputCardExpirationDate"
+                    android:layout_width="110dp"
+                    android:layout_height="match_parent"
+                    android:entries="@array/sp_month_list"></Spinner>
+
+                <TextView
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="@string/tv_credit_card_slash" />
+
+                <Spinner
+                    android:id="@+id/etInputCardExpirationYear"
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"></Spinner>
+
+            </LinearLayout>
 
         </LinearLayout>
 
