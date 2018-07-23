@@ -27,7 +27,6 @@ public class FemaleNewMemberRegistrationActivity extends AppCompatActivity {
     private int nowYear;
     private int nowMonth;
     private int nowDayOfMonth;
-    private String dateData;
     private SimpleDateFormat dfBirthday = new SimpleDateFormat("yyyy年MM月dd日");
     private SimpleDateFormat dfYear = new SimpleDateFormat("yyyy");
     private SimpleDateFormat dfMonth = new SimpleDateFormat("MM");

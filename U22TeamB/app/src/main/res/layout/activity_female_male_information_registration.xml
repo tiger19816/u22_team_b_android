@@ -15,38 +15,67 @@
         android:gravity="center_horizontal"
         android:text="@string/male_new_member"/>
 
-    <Button
+    <EditText
+        android:id="@+id/etInputAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/female_new_place"/>
+        android:hint="@string/female_new_place"
+        android:inputType="text"/>
 
     <EditText
         android:id="@+id/etInputBirthday"
+        android:onClick="onDateClick"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/female_new_birthday"
         android:inputType="date"/>
 
-    <EditText
-        android:id="@+id/etInputmaleHeight"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/male_height"
-        android:inputType="number"/>
+        android:orientation="horizontal">
 
-    <EditText
-        android:id="@+id/etInputmaleWeight"
+        <EditText
+            android:id="@+id/etInputmaleHeight"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:hint="@string/male_height"
+            android:inputType="number"/>
+
+        <TextView
+            android:text="@string/tv_male_height_unit"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal|center_vertical"/>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/male_weight"
-        android:inputType="number"/>
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/etInputmaleWeight"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:hint="@string/male_weight"
+            android:inputType="number"/>
+
+        <TextView
+            android:text="@string/tv_male_weight_unit"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal|center_vertical"/>
+
+    </LinearLayout>
 
     <EditText
         android:id="@+id/etInputmaleOccupation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/male_occupation"
-        android:inputType="number"/>
+        android:inputType="text"/>
 
     <Button
         android:onClick="onCardRegistrationClick"

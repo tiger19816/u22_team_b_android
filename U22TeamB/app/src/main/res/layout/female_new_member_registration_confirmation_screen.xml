@@ -12,6 +12,11 @@
         android:layout_marginTop="25sp"
         android:orientation="vertical">
 
+        <ImageView
+            android:id="@+id/ivFemaleIcon"
+            android:layout_width="match_parent"
+            android:layout_height="150dp" />
+
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -29,8 +34,8 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="35sp"
-            android:layout_marginBottom="30sp"
+            android:layout_marginTop="5sp"
+            android:layout_marginBottom="10sp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/layout_shape"
@@ -46,7 +51,7 @@
                 android:text="・氏名"/>
 
             <TextView
-                android:id="@+id/tvfemaleBirthday"
+                android:id="@+id/tvFemaleBirthday"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
@@ -66,7 +71,27 @@
                 android:text="・パスワード"/>
 
             <TextView
-                android:id="@+id/tvfemaleCreditCardNumber"
+                android:id="@+id/tvFemaleAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5sp"
+                android:layout_gravity="center_vertical"
+                android:text="・住所"/>
+
+            <TextView
+                android:id="@+id/tvFemaleMail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5sp"
+                android:layout_gravity="center_vertical"
+                android:text="・メールアドレス"/>
+
+            <TextView
+                android:id="@+id/tvFemaleCreditCardNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
@@ -105,16 +130,6 @@
                 android:layout_gravity="center_vertical"
                 android:text="・カードの名義人"/>
 
-            <TextView
-                android:id="@+id/tvFemaleAddress"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="5sp"
-                android:layout_gravity="center_vertical"
-                android:text="・住所"/>
-
         </LinearLayout>
 
         <FrameLayout
@@ -134,7 +149,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="35sp"
+            android:layout_marginTop="10sp"
             android:layout_marginBottom="30sp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
@@ -142,23 +157,13 @@
             android:orientation="vertical" >
 
             <TextView
-                android:id="@+id/tvMaleName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_gravity="center_vertical"
-                android:text="・氏名"/>
-
-            <TextView
-                android:id="@+id/tvMaleBirthdate"
+                android:id="@+id/tvMaleBirthday"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_marginTop="5sp"
-                android:layout_gravity="center_vertical"
-                android:text="・生年月日"/>
+                android:layout_gravity="center_vertical"/>
 
             <TextView
                 android:id="@+id/tvMaleHeight"
@@ -167,8 +172,7 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_marginTop="5sp"
-                android:layout_gravity="center_vertical"
-                android:text="・身長（任意）"/>
+                android:layout_gravity="center_vertical"/>
 
             <TextView
                 android:id="@+id/tvMaleWeight"
@@ -177,28 +181,16 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_marginTop="5sp"
-                android:layout_gravity="center_vertical"
-                android:text="・体重（任意）"/>
+                android:layout_gravity="center_vertical"/>
 
             <TextView
-                android:id="@+id/tvMaleOccupation"
+                android:id="@+id/tvMaleProfession"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_marginTop="5sp"
-                android:layout_gravity="center_vertical"
-                android:text="・職業（任意）"/>
-
-            <TextView
-                android:id="@+id/tvMaleAllergic"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="5sp"
-                android:layout_gravity="center_vertical"
-                android:text="・アレルギー情報"/>
+                android:layout_gravity="center_vertical"/>
 
         </LinearLayout>
 

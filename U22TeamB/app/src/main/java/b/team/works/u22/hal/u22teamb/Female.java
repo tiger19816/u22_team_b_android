@@ -1,8 +1,14 @@
 package b.team.works.u22.hal.u22teamb;
 
+import android.content.Context;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Parcelable;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 /**
  * 妻テーブル用クラス。
@@ -21,6 +27,7 @@ public class Female implements Serializable{
     private String femaleCardExpirationDate;
     private String femaleCardSecurityCode;
     private String femaleCardNominee;
+    private String femaleAddress;
     private String femaleLatitude;//緯度
     private String femaleLongitude;//経度
 
@@ -36,6 +43,7 @@ public class Female implements Serializable{
     private String femaleCardExpirationDateErrorMessage;
     private String femaleCardSecurityCodeErrorMessage;
     private String femaleCardNomineeErrorMessage;
+    private String femaleAddressErrorMessage;
     private String femaleLatitudeErrorMessage;//緯度
     private String femaleLongitudeErrorMessage;//経度
 
@@ -50,6 +58,7 @@ public class Female implements Serializable{
         this.femaleCardExpirationDate = "";
         this.femaleCardSecurityCode = "";
         this.femaleCardNominee = "";
+        this.femaleAddress = "";
         this.femaleLatitude = "";//緯度
         this.femaleLongitude = "";//経度
 
@@ -65,11 +74,12 @@ public class Female implements Serializable{
         this.femaleCardExpirationDateErrorMessage = "";
         this.femaleCardSecurityCodeErrorMessage = "";
         this.femaleCardNomineeErrorMessage = "";
+        this.femaleAddressErrorMessage = "";
         this.femaleLatitudeErrorMessage = "";//緯度
         this.femaleLongitudeErrorMessage = "";//経度
     }
 
-    public Female(String femaleId , String femaleName , String femaleBirthDay , String femaleMail , String femalePassword , String femaleIcon , String femaleCardNo , String femaleCardExpirationDate , String femaleCardSecurityCode , String femaleCardNominee , String femaleLatitude , String femaleLongitude){
+    public Female(String femaleId , String femaleName , String femaleBirthDay , String femaleMail , String femalePassword , String femaleIcon , String femaleCardNo , String femaleCardExpirationDate , String femaleCardSecurityCode , String femaleCardNominee , String femaleAddress , String femaleLatitude , String femaleLongitude){
         this.femaleId = femaleId;
         this.femaleName = femaleName;
         this.femaleBirthDay = femaleBirthDay;
@@ -80,6 +90,7 @@ public class Female implements Serializable{
         this.femaleCardExpirationDate = femaleCardExpirationDate;
         this.femaleCardSecurityCode = femaleCardSecurityCode;
         this.femaleCardNominee = femaleCardNominee;
+        this.femaleAddress = femaleAddress;
         this.femaleLatitude = femaleLatitude;//緯度
         this.femaleLongitude = femaleLongitude;//経度
 
@@ -95,6 +106,7 @@ public class Female implements Serializable{
         this.femaleCardExpirationDateErrorMessage = "";
         this.femaleCardSecurityCodeErrorMessage = "";
         this.femaleCardNomineeErrorMessage = "";
+        this.femaleAddressErrorMessage = "";
         this.femaleLatitudeErrorMessage = "";//緯度
         this.femaleLongitudeErrorMessage = "";//経度
     }
@@ -203,6 +215,21 @@ public class Female implements Serializable{
         }
     }
 
+    public String getFemaleAddress(){return femaleAddress;}
+    public String getFemaleAddressErrorMessage(){return  femaleAddressErrorMessage;}
+    public void setFemaleAddress(Context context , String femaleAddress){
+        this.femaleAddress = femaleAddress;
+        if("".equals(femaleAddress)){
+            this.femaleAddressErrorMessage = "住所を入力してください";
+            this.isInputChecked = false;
+        }else{
+            //住所から緯度経度を求める。
+            List<String> _price = getLatLongFromAddress(context , femaleAddress);
+            this.femaleLatitude = _price.get(0);
+            this.femaleLongitude = _price.get(1);
+        }
+    }
+
     public String getFemaleLatitude(){return femaleLatitude;}
     public String getFemaleLatitudeErrorMessage(){return femaleLatitudeErrorMessage;}
     public void setFemaleLatitude(String femaleLatitude){
@@ -221,5 +248,29 @@ public class Female implements Serializable{
             this.femaleLongitudeErrorMessage = "登録時点を選択してください";
             this.isInputChecked = false;
         }
+    }
+
+    /**
+     * 住所から、緯度経度を取得するメソッド。
+     * @param address
+     * @return
+     */
+    public static List<String> getLatLongFromAddress(Context context , String address)
+    {
+        Geocoder geoCoder = new Geocoder(context , Locale.getDefault());
+        List<String> latLong = new ArrayList<String>();
+        try {
+            List<Address> addresses = geoCoder.getFromLocationName(address , 1);
+            if (addresses.size() > 0) {
+                latLong.add(String.valueOf(addresses.get(0).getLatitude()));
+                latLong.add(String.valueOf(addresses.get(0).getLongitude()));
+            }
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+            return latLong;
+        }
+
+        return latLong;
     }
 }

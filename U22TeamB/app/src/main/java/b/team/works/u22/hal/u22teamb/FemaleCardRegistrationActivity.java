@@ -24,7 +24,7 @@ public class FemaleCardRegistrationActivity extends AppCompatActivity {
         Calendar calendar = Calendar.getInstance();
         int nowYear = calendar.get(Calendar.YEAR);
 
-        Spinner etCardDoneDeadlineYear = findViewById(R.id.etInputCardExpirationYear);
+        Spinner etCardDoneDeadlineYear = findViewById(R.id.spInputCardExpirationYear);
         List<String> items = new ArrayList<String>();
         items.add("年");
         for(int i=(nowYear); i<(nowYear+7); i++){
@@ -43,9 +43,9 @@ public class FemaleCardRegistrationActivity extends AppCompatActivity {
         String cardNo = etCardNo.getText().toString();
         female.setFemaleCardNo(cardNo);
 
-        Spinner etCardDoneDeadlineMonth = findViewById(R.id.etInputCardExpirationDate);
-        Spinner etCardDoneDeadlineYear = findViewById(R.id.etInputCardExpirationYear);
-        String cardDoneDeadline = etCardDoneDeadlineMonth.toString() + "/" + etCardDoneDeadlineYear.toString();
+        Spinner etCardDoneDeadlineMonth = findViewById(R.id.spInputCardExpirationMonth);
+        Spinner etCardDoneDeadlineYear = findViewById(R.id.spInputCardExpirationYear);
+        String cardDoneDeadline = etCardDoneDeadlineMonth.getSelectedItem() + "/" + etCardDoneDeadlineYear.getSelectedItem();
         female.setFemaleCardExpirationDate(cardDoneDeadline);
 
         EditText etCardNominalName = findViewById(R.id.etInputCreditCardNumber);

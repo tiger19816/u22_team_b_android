@@ -44,7 +44,7 @@
                 android:gravity="center_horizontal">
 
                 <Spinner
-                    android:id="@+id/etInputCardExpirationDate"
+                    android:id="@+id/spInputCardExpirationMonth"
                     android:layout_width="110dp"
                     android:layout_height="match_parent"
                     android:entries="@array/sp_month_list"></Spinner>
@@ -56,7 +56,7 @@
                     android:text="@string/tv_credit_card_slash" />
 
                 <Spinner
-                    android:id="@+id/etInputCardExpirationYear"
+                    android:id="@+id/spInputCardExpirationYear"
                     android:layout_width="120dp"
                     android:layout_height="match_parent"></Spinner>
 
@@ -69,14 +69,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/female_new_card_card_holder"
-            android:inputType="textEmailAddress"/>
+            android:inputType="textCapCharacters"/>
 
         <EditText
             android:id="@+id/etInputCardSecurityCode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/female_new_card_security_code"
-            android:inputType="date"/>
+            android:inputType="number"/>
 
         <Button
             android:onClick="onMaleInformationClick"
