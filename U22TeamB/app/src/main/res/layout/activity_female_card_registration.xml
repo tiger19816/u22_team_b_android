@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:orientation="vertical">
@@ -27,12 +28,27 @@
             android:hint="@string/female_new_credit_card_number"
             android:inputType="number"/>
 
-        <EditText
-            android:id="@+id/etInputCardExpirationDate"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/female_new_card_expiration_date"
-            android:inputType="number"/>
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="65dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/female_new_card_expiration_date"/>
+
+            <Spinner
+                android:id="@+id/etInputCardExpirationDate"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"></Spinner>
+
+            <Spinner
+                android:id="@+id/etInputCardExpirationYear"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"></Spinner>
+
+        </LinearLayout>
 
         <EditText
             android:id="@+id/etInputCardCardHolder"

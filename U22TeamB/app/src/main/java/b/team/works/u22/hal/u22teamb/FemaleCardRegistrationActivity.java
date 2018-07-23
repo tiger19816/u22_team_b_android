@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 public class FemaleCardRegistrationActivity extends AppCompatActivity {
@@ -25,8 +26,8 @@ public class FemaleCardRegistrationActivity extends AppCompatActivity {
         String cardNo = etCardNo.getText().toString();
         female.setFemaleCardNo(cardNo);
 
-        EditText etCardDoneDeadline = findViewById(R.id.etInputCardExpirationDate);
-        String cardDoneDeadline = etCardDoneDeadline.getText().toString();
+        Spinner etCardDoneDeadline = findViewById(R.id.etInputCardExpirationDate);
+        String cardDoneDeadline = etCardDoneDeadline.toString();
         female.setFemaleCardExpirationDate(cardDoneDeadline);
 
         EditText etCardNominalName = findViewById(R.id.etInputCreditCardNumber);

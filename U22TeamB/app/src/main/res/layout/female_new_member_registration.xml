@@ -32,6 +32,7 @@
             android:inputType="textPersonName"/>
 
         <EditText
+            android:onClick="onDateClick"
             android:id="@+id/etInputBirthdate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -41,7 +42,8 @@
             android:id="@+id/etInputMail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/female_new_mail"/>
+            android:hint="@string/female_new_mail"
+            android:inputType="textEmailAddress"/>
 
         <EditText
             android:id="@+id/etInputPassword"
