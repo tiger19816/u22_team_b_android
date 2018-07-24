@@ -53,7 +53,7 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/etInputmaleHeight"
+                android:id="@+id/etInputMaleHeight"
                 android:layout_width="150dp"
                 android:layout_height="match_parent"
                 android:hint="@string/male_height"
@@ -73,7 +73,7 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/etInputmaleWeight"
+                android:id="@+id/etInputMaleWeight"
                 android:layout_width="150dp"
                 android:layout_height="match_parent"
                 android:hint="@string/male_weight"
@@ -87,12 +87,11 @@
 
         </LinearLayout>
 
-        <EditText
-            android:id="@+id/etInputmaleOccupation"
+        <Spinner
+            android:id="@+id/spInputMaleOccupation"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/male_occupation"
-            android:inputType="text"/>
+            android:layout_height="50dp"
+            android:entries="@array/sp_male_profession"></Spinner>
 
         <Button
             android:onClick="onCardRegistrationClick"

@@ -1,5 +1,6 @@
 package b.team.works.u22.hal.u22teamb;
 
+import android.app.DatePickerDialog;
 import android.app.Fragment;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -26,6 +27,9 @@ import java.io.Serializable;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class FemaleNewMemberRegistrationConfirmationScreenActivity extends AppCompatActivity {
 
@@ -33,6 +37,7 @@ public class FemaleNewMemberRegistrationConfirmationScreenActivity extends AppCo
      * URL。
      */
     private static final String LOGIN_URL = "http://10.0.2.2:8080/U22Verification/Servlet";
+
 
     private String femaleName;
     private String femaleBirthday;
@@ -148,7 +153,7 @@ public class FemaleNewMemberRegistrationConfirmationScreenActivity extends AppCo
         tvMaleWeight.setText(maleWeight);
 
         TextView tvMaleProfession = findViewById(R.id.tvMaleProfession);
-        tvMaleProfession.setText(maleProfession);
+        tvMaleProfession.setText(male.setMaleProfessionName(maleProfession));
     }
 
     /**
@@ -167,9 +172,11 @@ public class FemaleNewMemberRegistrationConfirmationScreenActivity extends AppCo
         @Override
         public String doInBackground(String... params) {
 
+            Female female = new Female();
+
             String urlStr = params[0];
             String femaleName = params[1];
-            String femaleBirthday = params[2];
+            String femaleBirthday = female.getDataConversion(params[2]);
             String femalePassword = params[3];
             String femaleMail = params[4];
             String femaleIcon = params[5];
@@ -180,7 +187,7 @@ public class FemaleNewMemberRegistrationConfirmationScreenActivity extends AppCo
             String femaleAddress = params[10];
             String femaleLatitude = params[11];
             String femaleLongitude = params[12];
-            String maleBirthday = params[13];
+            String maleBirthday = female.getDataConversion(params[13]);
             String maleMail = params[14];
             String maleHeight = params[15];
             String maleWeight = params[16];

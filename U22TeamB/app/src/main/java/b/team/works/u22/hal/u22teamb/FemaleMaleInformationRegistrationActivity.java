@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.text.ParseException;
@@ -79,16 +80,16 @@ public class FemaleMaleInformationRegistrationActivity extends AppCompatActivity
         String maleMail = etMaleMail.getText().toString();
         male.setMaleMail(maleMail);
 
-        EditText etMaleHeight = findViewById(R.id.etInputmaleHeight);
+        EditText etMaleHeight = findViewById(R.id.etInputMaleHeight);
         String maleHeight = etMaleHeight.getText().toString();
         male.setMaleHeight(maleHeight);
 
-        EditText etMaleWeight = findViewById(R.id.etInputmaleWeight);
+        EditText etMaleWeight = findViewById(R.id.etInputMaleWeight);
         String maleWeight = etMaleWeight.getText().toString();
         male.setMaleWeight(maleWeight);
 
-        EditText etMaleProfession = findViewById(R.id.etInputmaleOccupation);
-        String maleProfession = etMaleProfession.getText().toString();
+        Spinner spMaleProfession = findViewById(R.id.spInputMaleOccupation);
+        String maleProfession = String.valueOf(spMaleProfession.getSelectedItemPosition());
         male.setMaleProfession(maleProfession);
 
         if(female.getInputChecked() && male.getInputChecked()) {

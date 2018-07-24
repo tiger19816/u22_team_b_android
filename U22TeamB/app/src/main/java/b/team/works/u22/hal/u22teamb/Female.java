@@ -1,12 +1,17 @@
 package b.team.works.u22.hal.u22teamb;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Parcelable;
+import android.util.Log;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -272,5 +277,24 @@ public class Female implements Serializable{
         }
 
         return latLong;
+    }
+
+    /**
+     *
+     * @param date
+     * @return
+     */
+    public String getDataConversion(String date){
+        String strData = "";
+        SimpleDateFormat dfBirthday01 = new SimpleDateFormat("yyyy年MM月dd日");
+        SimpleDateFormat dfBirthday02 = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date d = dfBirthday01.parse(date);
+           strData = dfBirthday02.format(d);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            Log.e("データ変換失敗", "Femaleクラスの時。");
+        }
+        return strData;
     }
 }

@@ -11,6 +11,7 @@ public class Male  implements Serializable {
     private String maleHeight;
     private String maleWeight;
     private String maleProfession;
+    private String maleProfessionName;
 
     private Boolean isInputChecked;
 
@@ -30,6 +31,7 @@ public class Male  implements Serializable {
         this.maleHeight = "";
         this.maleWeight = "";
         this.maleProfession = "";
+        this.maleProfessionName = "";
 
         this.isInputChecked = true;
 
@@ -50,6 +52,7 @@ public class Male  implements Serializable {
         this.maleHeight = maleHeight;
         this.maleWeight = maleWeight;
         this.maleProfession = maleProfession;
+        this.maleProfessionName = setMaleProfessionName(maleProfession);
 
         this.isInputChecked = true;
 
@@ -130,10 +133,46 @@ public class Male  implements Serializable {
     public String getMaleProfessionErrorMessage() { return maleProfessionErrorMessage; }
     public void setMaleProfession(String maleProfession) {
         this.maleProfession = maleProfession;
-        if("".equals(maleProfession)){
+        if("0".equals(maleProfession)){
             this.maleProfessionErrorMessage = "職業を入力してください。";
             this.isInputChecked = false;
+        }else{
+            setMaleProfessionName(maleProfession);
         }
+    }
+
+    public String setMaleProfessionName(String maleProfessionId){
+
+        switch (Integer.parseInt(maleProfessionId)){
+            case 1:
+                this.maleProfessionName = "公務員";
+                break;
+            case 2:
+                this.maleProfessionName = "経営者・役員";
+                break;
+            case 3:
+                this.maleProfessionName = "会社員";
+                break;
+            case 4:
+                this.maleProfessionName = "自営業";
+                break;
+            case 5:
+                this.maleProfessionName = "自由業";
+                break;
+            case 6:
+                this.maleProfessionName = "専業主夫";
+                break;
+            case 7:
+                this.maleProfessionName = "パート・アルバイト";
+                break;
+            case 8:
+                this.maleProfessionName = "学生";
+                break;
+            case 9:
+                this.maleProfessionName = "その他";
+                break;
+        }
+        return maleProfessionName;
     }
 }
 
