@@ -47,7 +47,8 @@
 
     <!-- 画面03 【妻】新規会員登録-夫情報入力画面 -->
     <string name="male_new_member">旦那様の情報を入力してください</string>
-    <string name="male_birthday">生年月日を入力してください（任意）</string>
+    <string name="male_birthday">生年月日</string>
+    <string name="male_mail">メールアドレス</string>
     <string name="male_height">身長（任意）</string>
     <string name="tv_male_height_unit">cm</string>
     <string name="male_weight">体重（任意）</string>

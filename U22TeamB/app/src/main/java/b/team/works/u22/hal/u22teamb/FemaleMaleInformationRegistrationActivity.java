@@ -75,6 +75,10 @@ public class FemaleMaleInformationRegistrationActivity extends AppCompatActivity
         String maleBirthDate = etMaleBirthDate.getText().toString();
         male.setMaleBirthday(maleBirthDate);
 
+        EditText etMaleMail = findViewById(R.id.etInputMail);
+        String maleMail = etMaleMail.getText().toString();
+        male.setMaleMail(maleMail);
+
         EditText etMaleHeight = findViewById(R.id.etInputmaleHeight);
         String maleHeight = etMaleHeight.getText().toString();
         male.setMaleHeight(maleHeight);

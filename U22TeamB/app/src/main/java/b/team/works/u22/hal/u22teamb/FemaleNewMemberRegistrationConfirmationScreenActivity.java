@@ -48,6 +48,7 @@ public class FemaleNewMemberRegistrationConfirmationScreenActivity extends AppCo
     private String femaleLongitude;//経度
 
     private String maleBirthday;
+    private String maleMail;
     private String maleHeight;
     private String maleWeight;
     private String maleProfession;
@@ -78,7 +79,7 @@ public class FemaleNewMemberRegistrationConfirmationScreenActivity extends AppCo
         //非同期処理を開始する。
         LoginTaskReceiver receiver = new LoginTaskReceiver();
         //ここで渡した引数はLoginTaskReceiverクラスのdoInBackground(String... params)で受け取れる。
-        receiver.execute(LOGIN_URL , femaleName , femaleBirthday , femalePassword , femaleMail , femaleIcon , femaleCardNo , femaleCardDoneDeadline , femaleCardSecurityCode, femaleCardNomineeName , femaleAddress , femaleLatitude , femaleLongitude , maleBirthday , maleHeight , maleWeight , maleProfession);
+        receiver.execute(LOGIN_URL , femaleName , femaleBirthday , femalePassword , femaleMail , femaleIcon , femaleCardNo , femaleCardDoneDeadline , femaleCardSecurityCode, femaleCardNomineeName , femaleAddress , femaleLatitude , femaleLongitude , maleBirthday , maleMail , maleHeight , maleWeight , maleProfession);
     }
 
     public void setUserTextCreate(){
@@ -100,6 +101,7 @@ public class FemaleNewMemberRegistrationConfirmationScreenActivity extends AppCo
         this.femaleLongitude = female.getFemaleLongitude();
 
         this.maleBirthday = male.getMaleBirthday();
+        this.maleMail = male.getMaleMail();
         this.maleHeight = male.getMaleHeight();
         this.maleWeight = male.getMaleWeight();
         this.maleProfession = male.getMaleProfession();
@@ -135,6 +137,9 @@ public class FemaleNewMemberRegistrationConfirmationScreenActivity extends AppCo
         //夫情報
         TextView tvMaleBirthDay = findViewById(R.id.tvMaleBirthday);
         tvMaleBirthDay.setText(maleBirthday);
+
+        TextView tvMaleMail = findViewById(R.id.tvMaleMail);
+        tvMaleMail.setText(maleMail);
 
         TextView tvMaleHeight = findViewById(R.id.tvMaleHeight);
         tvMaleHeight.setText(maleHeight);
@@ -176,13 +181,14 @@ public class FemaleNewMemberRegistrationConfirmationScreenActivity extends AppCo
             String femaleLatitude = params[11];
             String femaleLongitude = params[12];
             String maleBirthday = params[13];
-            String maleHeight = params[14];
-            String maleWeight = params[15];
-            String maleProfession = params[16];
+            String maleMail = params[14];
+            String maleHeight = params[15];
+            String maleWeight = params[16];
+            String maleProfession = params[17];
 
             //POSTで送りたいデータ
             String postData = "femaleName=" + femaleName + "&femaleBirthday=" + femaleBirthday + "&femalePassword=" + femalePassword + "&femaleMail=" + femaleMail + "&femaleIcon=" + femaleIcon + "&femaleCardNo=" + femaleCardNo + "&femaleCardDoneDeadline=" + femaleCardDoneDeadLine + "&femaleSecurityCode=" + femaleCardSecurityCode + "&femaleCardNomineeName=" + femaleCardNomineeName + "&femaleAddress=" + femaleAddress + "&femaleLatitude=" + femaleLatitude + "&femaleLongitude=" + femaleLongitude
-                    + "&maleBirthday=" + maleBirthday + "&maleHeight=" + maleHeight + "&maleWeight=" + maleWeight + "&maleProfession=" + maleProfession;
+                    + "&maleBirthday=" + maleBirthday + "&maleMail=" + maleMail + "&maleHeight=" + maleHeight + "&maleWeight=" + maleWeight + "&maleProfession=" + maleProfession;
 
             HttpURLConnection con = null;
             InputStream is = null;

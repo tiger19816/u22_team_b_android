@@ -37,8 +37,15 @@
             android:onClick="onDateClick"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/female_new_birthday"
+            android:hint="@string/male_birthday"
             android:inputType="date"/>
+
+        <EditText
+            android:id="@+id/etInputMail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/male_mail"
+            android:inputType="textEmailAddress"/>
 
         <LinearLayout
             android:layout_width="match_parent"

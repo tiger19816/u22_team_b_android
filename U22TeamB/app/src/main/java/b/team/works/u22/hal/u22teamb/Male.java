@@ -7,6 +7,7 @@ public class Male  implements Serializable {
     private String maleId;
     private String malePassword;
     private String maleBirthday;
+    private String maleMail;
     private String maleHeight;
     private String maleWeight;
     private String maleProfession;
@@ -16,6 +17,7 @@ public class Male  implements Serializable {
     private String maleIdErrorMessage;
     private String malePasswordErrorMessage;
     private String maleBirthdayErrorMessage;
+    private String maleMailErrorMessage;
     private String maleHeightErrorMessage;
     private String maleWeightErrorMessage;
     private String maleProfessionErrorMessage;
@@ -24,6 +26,7 @@ public class Male  implements Serializable {
         this.maleId = "";
         this.malePassword = "";
         this.maleBirthday = "";
+        this.maleMail = "";
         this.maleHeight = "";
         this.maleWeight = "";
         this.maleProfession = "";
@@ -33,15 +36,17 @@ public class Male  implements Serializable {
         this.maleIdErrorMessage = "";
         this.malePasswordErrorMessage = "";
         this.maleBirthdayErrorMessage = "";
+        this.maleMailErrorMessage = "";
         this.maleHeightErrorMessage = "";
         this.maleWeightErrorMessage = "";
         this.maleProfessionErrorMessage = "";
     }
 
-    public Male(String maleId , String malePassword , String maleBirthday , String maleHeight , String maleWeight , String maleProfession){
+    public Male(String maleId , String malePassword , String maleBirthday , String maleMail , String maleHeight , String maleWeight , String maleProfession){
         this.maleId = maleId;
         this.malePassword = malePassword;
         this.maleBirthday = maleBirthday;
+        this.maleMail = maleMail;
         this.maleHeight = maleHeight;
         this.maleWeight = maleWeight;
         this.maleProfession = maleProfession;
@@ -51,6 +56,7 @@ public class Male  implements Serializable {
         this.maleIdErrorMessage = "";
         this.malePasswordErrorMessage = "";
         this.maleBirthdayErrorMessage = "";
+        this.maleMailErrorMessage = "";
         this.maleHeightErrorMessage = "";
         this.maleWeightErrorMessage = "";
         this.maleProfessionErrorMessage = "";
@@ -76,6 +82,16 @@ public class Male  implements Serializable {
         this.malePassword = malePassword;
         if("".equals(malePassword)){
             this.malePasswordErrorMessage = "パスワードを入力してください。";
+            this.isInputChecked = false;
+        }
+    }
+
+    public String getMaleMail(){return maleMail;}
+    public String getMaleMailErrorMessage(){return maleMailErrorMessage;}
+    public void setMaleMail(String maleMail){
+        this.maleMail = maleMail;
+        if("".equals(maleMail)){
+            this.maleMailErrorMessage = "メールアドレスを入力してください。";
             this.isInputChecked = false;
         }
     }
