@@ -127,7 +127,7 @@ public class FemaleReservationListActivity extends AppCompatActivity implements 
             intent = new Intent(FemaleReservationListActivity.this,FemaleHistoryListActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_my_page) {
-            intent = new Intent(FemaleReservationListActivity.this,FemaleStoreMapListActivity.class);
+            intent = new Intent(FemaleReservationListActivity.this,FemaleMyPageActivity.class);
             startActivity(intent);
         }else if (id == R.id.nav_logout){
             intent = new Intent(FemaleReservationListActivity.this,MainActivity.class);
