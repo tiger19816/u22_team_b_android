@@ -2,6 +2,8 @@ package b.team.works.u22.hal.u22teamb;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,8 +13,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.io.BufferedInputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -32,6 +36,7 @@ public class FemaleNewMemberRegistrationActivity extends AppCompatActivity {
     private SimpleDateFormat dfYear = new SimpleDateFormat("yyyy");
     private SimpleDateFormat dfMonth = new SimpleDateFormat("MM");
     private SimpleDateFormat dfDayOfMonth = new SimpleDateFormat("dd");
+    private static final int REQUEST_GALLERY = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +55,9 @@ public class FemaleNewMemberRegistrationActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
+        ImageView imFemaleIcon = findViewById(R.id.imInputIcon);
+        imFemaleIcon.setImageResource(R.drawable.icon);
+
         this.cal = Calendar.getInstance();
         this.nowYear = cal.get(Calendar.YEAR);
         this.nowMonth = cal.get(Calendar.MONTH);
@@ -58,6 +66,36 @@ public class FemaleNewMemberRegistrationActivity extends AppCompatActivity {
         EditText etBirthday = findViewById(R.id.etInputBirthdate);
         etBirthday.setFocusable(false);
 
+    }
+
+    /**
+     * アイコン画像をクリックした時。
+     * @param view
+     */
+    public void onIconImageClick(View view){
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent, REQUEST_GALLERY);
+    }
+
+    /**
+     * 画像選択用メソッド。
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_GALLERY && resultCode == RESULT_OK) {
+            try {
+                BufferedInputStream inputStream = new BufferedInputStream(getContentResolver().openInputStream(data.getData()));
+                Bitmap image = BitmapFactory.decodeStream(inputStream);
+                ImageView imFemaleIcon = findViewById(R.id.imInputIcon);
+                imFemaleIcon.setImageBitmap(image);
+            } catch (Exception e) {
+            }
+        }
     }
 
     /**
@@ -97,7 +135,7 @@ public class FemaleNewMemberRegistrationActivity extends AppCompatActivity {
     }
 
     /**
-     *「次へボタンをクリックした時。」
+     *「次へ」ボタンをクリックした時。
      * @param view
      */
     public void onMaleInformationClick(View view){

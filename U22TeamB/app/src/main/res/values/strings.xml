@@ -8,7 +8,7 @@
 
     <!-- 画面01 【妻&夫】ログイン画面 -->
     <string name="tv_login_title">ログイン</string>
-    <string name="tv_login_id">ID</string>
+    <string name="tv_login_id">MailAddress</string>
     <string name="tv_login_pass">Password</string>
     <string name="tv_login_new_account"><u>アカウントを作成</u></string>
 

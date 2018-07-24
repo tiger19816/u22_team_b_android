@@ -3,6 +3,7 @@ package b.team.works.u22.hal.u22teamb;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -20,8 +21,8 @@ public class MainActivity extends AppCompatActivity {
     public void onUserLoginClick(View view){
 
         //ユーザーID
-        EditText etId = findViewById(R.id.etId);
-        String strId = etId.getText().toString();
+        EditText etMail = findViewById(R.id.etMail);
+        String strMail = etMail.getText().toString();
         //パスワード
         EditText etPassword = findViewById(R.id.etPassword);
         String strPassword = etPassword.getText().toString();
@@ -31,11 +32,11 @@ public class MainActivity extends AppCompatActivity {
 
         //DBチェックの結果により、画面遷移先を変更。
         Intent intent;
-        if ("0".equals(strId)) {
+        if ("0".equals(strMail)) {
             //妻がログインした時。
             intent = new Intent(MainActivity.this , FemaleStoreMapListActivity.class);
             startActivity(intent);
-        }else if ("1".equals(strId)) {
+        }else if ("1".equals(strMail)) {
             //夫がログインした時。
             intent = new Intent(MainActivity.this , MaleReservationListActivity.class);
             startActivity(intent);
@@ -44,8 +45,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * 新規登録が押された時のイベント処理用メソッド。
+     */
     public void onNewUserPageClick(View view){
-        Intent intent = new Intent(MainActivity.this,FemaleNewMemberRegistrationActivity.class);
-        startActivity(intent);
+        FullDialogFragment dialog = new FullDialogFragment();
+        FragmentManager manager = getSupportFragmentManager();
+        dialog.show(manager,"FullDialogFragment");
     }
 }

@@ -42,7 +42,7 @@ public class FemaleCardRegistrationActivity extends AppCompatActivity {
         List<String> items = new ArrayList<String>();
         items.add("年");
         for(int i=(nowYear); i<(nowYear+7); i++){
-            items.add(String.valueOf(i));
+            items.add(String.valueOf(i).substring(2 , 4));
         }
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this , android.R.layout.simple_spinner_dropdown_item , items);
         etCardDoneDeadlineYear.setAdapter(adapter);
