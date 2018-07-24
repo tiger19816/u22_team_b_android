@@ -1,17 +1,36 @@
 package b.team.works.u22.hal.u22teamb;
 
 import android.app.Fragment;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.io.Serializable;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class FemaleNewMemberRegistrationConfirmationScreenActivity extends AppCompatActivity {
+
+    /**
+     * ログインする先のURL。
+     */
+    private static final String LOGIN_URL = "http://10.0.2.2:8080/U22Verification/LoginServlet";
 
     private String femaleName;
     private String femaleBirthday;
@@ -41,8 +60,10 @@ public class FemaleNewMemberRegistrationConfirmationScreenActivity extends AppCo
     }
 
     public void onFinishRegistrationClick(View view){
-        Intent intent = new Intent(FemaleNewMemberRegistrationConfirmationScreenActivity.this,FemaleStoreMapListActivity.class);
-        startActivity(intent);
+        //非同期処理を開始する。
+        LoginTaskReceiver receiver = new LoginTaskReceiver();
+        //ここで渡した引数はLoginTaskReceiverクラスのdoInBackground(String... params)で受け取れる。
+        receiver.execute(LOGIN_URL , femaleName , femaleBirthday , femalePassword , femaleMail , femaleIcon , femaleCardNo , femaleCardDoneDeadline , femaleCardSecurityCode, femaleCardNomineeName , femaleAddress , femaleLatitude , femaleLongitude , maleBirthday , maleHeight , maleWeight , maleProfession);
     }
 
     public void setUserTextCreate(){
@@ -108,6 +129,144 @@ public class FemaleNewMemberRegistrationConfirmationScreenActivity extends AppCo
 
         TextView tvMaleProfession = findViewById(R.id.tvMaleProfession);
         tvMaleProfession.setText(maleProfession);
+    }
 
+    /**
+     * 非同期通信を行うAsyncTaskクラスを継承したメンバクラス.
+     */
+    private class LoginTaskReceiver extends AsyncTask<String, Void, String> {
+
+        private static final String DEBUG_TAG = "RestAccess";
+
+        /**
+         * 非同期に処理したい内容を記述するメソッド.
+         *
+         * @param params String型の配列。（可変長）
+         * @return String型の結果JSONデータ。
+         */
+        @Override
+        public String doInBackground(String... params) {
+
+            String urlStr = params[0];
+            String femaleName = params[1];
+            String femaleBirthday = params[2];
+            String femalePassword = params[3];
+            String femaleMail = params[4];
+            String femaleIcon = params[5];
+            String femaleCardNo = params[6];
+            String femaleCardDoneDeadLine = params[7];
+            String femaleCardSecurityCode = params[8];
+            String femaleCardNomineeName = params[9];
+            String femaleAddress = params[10];
+            String femaleLatitude = params[11];
+            String femaleLongitude = params[12];
+            String maleBirthday = params[13];
+            String maleHeight = params[14];
+            String maleWeight = params[15];
+            String maleProfession = params[16];
+
+            //POSTで送りたいデータ
+            String postData = "femaleName=" + femaleName + "&femaleBirthday=" + femaleBirthday + "&femalePassword=" + femalePassword + "&femaleMail=" + femaleMail + "&femaleIcon=" + femaleIcon + "&femaleCardNo=" + femaleCardNo + "&femaleCardDoneDeadline=" + femaleCardDoneDeadLine + "&femaleSecurityCode=" + femaleCardSecurityCode + "&femaleCardNomineeName=" + femaleCardNomineeName + "&femaleAddress=" + femaleAddress + "&femaleLatitude=" + femaleLatitude + "&femaleLongitude=" + femaleLongitude
+                    + "&maleBirthday=" + maleBirthday + "&maleHeight=" + maleHeight + "&maleWeight=" + maleWeight + "&maleProfession=" + maleProfession;
+
+            HttpURLConnection con = null;
+            InputStream is = null;
+            String result = "";
+
+            try {
+                URL url = new URL(urlStr);
+                con = (HttpURLConnection) url.openConnection();
+
+                //GET通信かPOST通信かを指定する。
+                con.setRequestMethod("POST");
+
+                //自動リダイレクトを許可するかどうか。
+                con.setInstanceFollowRedirects(false);
+
+                //時間制限。（ミリ秒単位）
+                con.setReadTimeout(10000);
+                con.setConnectTimeout(20000);
+
+                con.connect();
+
+                //POSTデータ送信処理。InputStream処理よりも先に記述する。
+                OutputStream os = null;
+                try {
+                    os = con.getOutputStream();
+
+                    //送信する値をByteデータに変換する（UTF-8）
+                    os.write(postData.getBytes("UTF-8"));
+                    os.flush();
+                }
+                catch (IOException ex) {
+                    Log.e(DEBUG_TAG, "POST送信エラー", ex);
+                }
+                finally {
+                    if(os != null) {
+                        try {
+                            os.close();
+                        }
+                        catch (IOException ex) {
+                            Log.e(DEBUG_TAG, "OutputStream解放失敗", ex);
+                        }
+                    }
+                }
+
+                is = con.getInputStream();
+
+                result = is2String(is);
+            }
+            catch (MalformedURLException ex) {
+                Log.e(DEBUG_TAG, "URL変換失敗", ex);
+            }
+            catch (IOException ex) {
+                Log.e(DEBUG_TAG, "通信失敗", ex);
+            }
+            finally {
+                if(con != null) {
+                    con.disconnect();
+                }
+                if(is != null) {
+                    try {
+                        is.close();
+                    }
+                    catch (IOException ex) {
+                        Log.e(DEBUG_TAG, "InputStream解放失敗", ex);
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        @Override
+        public void onPostExecute(String result) {
+            Boolean isInsert = false;
+            try {
+                JSONObject rootJSON = new JSONObject(result);
+                isInsert = rootJSON.getBoolean("result");
+            }
+            catch (JSONException ex) {
+                Log.e(DEBUG_TAG, "JSON解析失敗", ex);
+            }
+            if (isInsert) {
+                Toast.makeText(FemaleNewMemberRegistrationConfirmationScreenActivity.this , "登録されました。" , Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(FemaleNewMemberRegistrationConfirmationScreenActivity.this,FemaleStoreMapListActivity.class);
+                startActivity(intent);
+            }else{
+                Toast.makeText(FemaleNewMemberRegistrationConfirmationScreenActivity.this , "登録が失敗しました。もう一度お願いいたします。" , Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        private String is2String(InputStream is) throws IOException {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+            StringBuffer sb = new StringBuffer();
+            char[] b = new char[1024];
+            int line;
+            while (0 <= (line = reader.read(b))) {
+                sb.append(b, 0, line);
+            }
+            return sb.toString();
+        }
     }
 }
