@@ -39,8 +39,7 @@
             <ListView
                 android:id="@+id/lvStoreList"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:background="@color/colorPrimaryDark" />
+                android:layout_height="250dp"/>
         </LinearLayout>
         <!-- ここまでにコンテンツを記述!! -->
 
