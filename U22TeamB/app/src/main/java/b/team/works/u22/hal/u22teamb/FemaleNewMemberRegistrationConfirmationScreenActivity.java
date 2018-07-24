@@ -32,7 +32,7 @@ public class FemaleNewMemberRegistrationConfirmationScreenActivity extends AppCo
     /**
      * ログインする先のURL。
      */
-    private static final String LOGIN_URL = "http://10.0.2.2:8080/U22Verification/LoginServlet";
+    private static final String LOGIN_URL = "http://10.0.2.2:8080/U22Verification/Servlet";
 
     private String femaleName;
     private String femaleBirthday;
