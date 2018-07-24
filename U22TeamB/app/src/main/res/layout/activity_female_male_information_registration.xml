@@ -2,85 +2,97 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginLeft="5dp"
-    android:layout_marginRight="5dp"
+    android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tvTitleEdit"
+    <include
+        layout="@layout/app_bar_main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:gravity="center_horizontal"
-        android:text="@string/male_new_member"/>
-
-    <EditText
-        android:id="@+id/etInputAddress"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/female_new_place"
-        android:inputType="text"/>
-
-    <EditText
-        android:id="@+id/etInputBirthday"
-        android:onClick="onDateClick"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/female_new_birthday"
-        android:inputType="date"/>
+        android:layout_height="wrap_content" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <EditText
-            android:id="@+id/etInputmaleHeight"
-            android:layout_width="150dp"
-            android:layout_height="match_parent"
-            android:hint="@string/male_height"
-            android:inputType="number"/>
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:orientation="vertical">
 
         <TextView
-            android:text="@string/tv_male_height_unit"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center_horizontal|center_vertical"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+            android:id="@+id/tvTitleEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_horizontal"
+            android:text="@string/male_new_member"/>
 
         <EditText
-            android:id="@+id/etInputmaleWeight"
-            android:layout_width="150dp"
-            android:layout_height="match_parent"
-            android:hint="@string/male_weight"
-            android:inputType="number"/>
+            android:id="@+id/etInputAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/female_new_place"
+            android:inputType="text"/>
 
-        <TextView
-            android:text="@string/tv_male_weight_unit"
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/etInputBirthday"
+            android:onClick="onDateClick"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/female_new_birthday"
+            android:inputType="date"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/etInputmaleHeight"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:hint="@string/male_height"
+                android:inputType="number"/>
+
+            <TextView
+                android:text="@string/tv_male_height_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal|center_vertical"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/etInputmaleWeight"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:hint="@string/male_weight"
+                android:inputType="number"/>
+
+            <TextView
+                android:text="@string/tv_male_weight_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal|center_vertical"/>
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/etInputmaleOccupation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/male_occupation"
+            android:inputType="text"/>
+
+        <Button
+            android:onClick="onCardRegistrationClick"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center_horizontal|center_vertical"/>
+            android:text="@string/bt_female_check"/>
 
     </LinearLayout>
-
-    <EditText
-        android:id="@+id/etInputmaleOccupation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/male_occupation"
-        android:inputType="text"/>
-
-    <Button
-        android:onClick="onCardRegistrationClick"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/bt_female_check"/>
 
 </LinearLayout>

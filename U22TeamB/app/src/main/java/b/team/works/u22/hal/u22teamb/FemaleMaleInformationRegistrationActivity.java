@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,6 +32,12 @@ public class FemaleMaleInformationRegistrationActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_female_male_information_registration);
+
+        setTitle("夫情報入力画面");
+
+        //ツールバー(レイアウトを変更可)。
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         // アクションバーに前画面に戻る機能をつける
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
@@ -126,6 +133,11 @@ public class FemaleMaleInformationRegistrationActivity extends AppCompatActivity
         }
     }
 
+    /**
+     * アクションバー。
+     * @param item
+     * @return boolean
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {

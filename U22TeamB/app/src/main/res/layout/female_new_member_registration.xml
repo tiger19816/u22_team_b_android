@@ -1,65 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="5dp"
-    android:layout_marginRight="5dp">
+    android:orientation="vertical">
 
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <include
+        layout="@layout/app_bar_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp">
 
-        <TextView
-            android:id="@+id/tvTitleEdit"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:gravity="center_horizontal"
-            android:text="@string/female_new_member"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="150dp" />
+            <TextView
+                android:id="@+id/tvTitleEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_horizontal"
+                android:text="@string/female_new_member"/>
 
-        <EditText
-            android:id="@+id/etInputName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/female_new_name"
-            android:inputType="textPersonName"/>
+            <ImageView
+                android:id="@+id/imInputIcon"
+                android:onClick="onIconImageClick"
+                android:layout_width="match_parent"
+                android:layout_height="150dp" />
 
-        <EditText
-            android:onClick="onDateClick"
-            android:id="@+id/etInputBirthdate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/female_new_birthday"/>
+            <EditText
+                android:id="@+id/etInputName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/female_new_name"
+                android:inputType="textPersonName"/>
 
-        <EditText
-            android:id="@+id/etInputMail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/female_new_mail"
-            android:inputType="textEmailAddress"/>
+            <EditText
+                android:onClick="onDateClick"
+                android:id="@+id/etInputBirthdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/female_new_birthday"/>
 
-        <EditText
-            android:id="@+id/etInputPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/female_new_password"
-            android:inputType="textPassword"/>
+            <EditText
+                android:id="@+id/etInputMail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/female_new_mail"
+                android:inputType="textEmailAddress"/>
 
+            <EditText
+                android:id="@+id/etInputPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/female_new_password"
+                android:inputType="textPassword"/>
 
-        <Button
-            android:onClick="onMaleInformationClick"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_gravity="center_horizontal"
-            android:text="@string/creditCardInformationRegistration" />
+            <Button
+                android:onClick="onMaleInformationClick"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/creditCardInformationRegistration" />
 
-    </LinearLayout>
+        </LinearLayout>
 
-</ScrollView>
+    </ScrollView>
+
+</LinearLayout>

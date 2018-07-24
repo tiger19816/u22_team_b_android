@@ -38,7 +38,7 @@ public class FemaleNewReservationActivity extends AppCompatActivity {
     }
 
     /**
-     * アクションバーの戻るボタン用。
+     * アクションバー。
      * @param item
      * @return boolean
      */

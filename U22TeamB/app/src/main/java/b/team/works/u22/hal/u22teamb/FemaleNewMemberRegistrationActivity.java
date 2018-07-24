@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -22,7 +24,6 @@ import java.util.zip.DataFormatException;
 
 public class FemaleNewMemberRegistrationActivity extends AppCompatActivity {
 
-    private List<String> _list;
     private Calendar cal;
     private int nowYear;
     private int nowMonth;
@@ -37,6 +38,18 @@ public class FemaleNewMemberRegistrationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.female_new_member_registration);
 
+        setTitle("妻情報入力画面");
+
+        //ツールバー(レイアウトを変更可)。
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        // アクションバーに前画面に戻る機能をつける
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+
         this.cal = Calendar.getInstance();
         this.nowYear = cal.get(Calendar.YEAR);
         this.nowMonth = cal.get(Calendar.MONTH);
@@ -44,6 +57,7 @@ public class FemaleNewMemberRegistrationActivity extends AppCompatActivity {
 
         EditText etBirthday = findViewById(R.id.etInputBirthdate);
         etBirthday.setFocusable(false);
+
     }
 
     /**
@@ -117,5 +131,20 @@ public class FemaleNewMemberRegistrationActivity extends AppCompatActivity {
         }else{
             Toast.makeText(FemaleNewMemberRegistrationActivity.this , "入力チェック完了" , Toast.LENGTH_SHORT).show();
         }
+    }
+
+    /**
+     * アクションバー。
+     * @param item
+     * @return boolean
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
