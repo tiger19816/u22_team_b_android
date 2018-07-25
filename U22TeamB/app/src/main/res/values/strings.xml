@@ -73,8 +73,14 @@
     <string name="male_registration_confirmation">旦那様の情報</string>
     <string name="female_registration_confirmation">奥様の情報</string>
 
+    <!-- 画面06【妻】店の一覧表示-Map画面 -->
+    <string name="row_bt_store_detail">詳細</string>
+    <string name="row_bt_store_reservation">予約</string>
+
     <!-- 画面07【妻】店の詳細画面 -->
     <string name="bt_next_reservation_page">予約へ</string>
+    <string name="tab_title_detail">詳細</string>
+    <string name="tab_title_map">マップ</string>
 
     <!-- 画面08【妻】予約内容を入力する画面 -->
     <string name="tv_reservation_store_name">店名:</string>
@@ -105,5 +111,6 @@
     <!-- 画面13【夫】夫側のパスワード設定-->
     <string name="PasswordInputDescription">パスワード</string>
     <string name="RePasswordInputDescription">パスワード再入力</string>
+    <string name="title_activity_maps">Map</string>
 
 </resources>
