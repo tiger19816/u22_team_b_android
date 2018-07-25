@@ -31,7 +31,7 @@ public class FemaleMyPageActivity extends AppCompatActivity implements Navigatio
     /**
      * URLを入れる定数.
      */
-    private static final String LOGIN_URL = "http://10.0.2.2:8080/U22Verification/LoginServlet";
+    private static final String LOGIN_URL = "http://10.0.2.2:8080/http://192.168.1.106:8080/U22TeamB/MypageJsonTestServlet";
     private String _id = "1";
 
     @Override
@@ -58,7 +58,7 @@ public class FemaleMyPageActivity extends AppCompatActivity implements Navigatio
         //非同期処理を開始する。
         LoginTaskReceiver receiver = new LoginTaskReceiver();
         //ここで渡した引数はLoginTaskReceiverクラスのdoInBackground(String... params)で受け取れる。
-        receiver.execute(LOGIN_URL, "aa" , "aa");
+        receiver.execute(LOGIN_URL , "1" );
     }
 
     /**
@@ -79,10 +79,9 @@ public class FemaleMyPageActivity extends AppCompatActivity implements Navigatio
         public String doInBackground(String... params) {
             String urlStr = params[0];
             String id = params[1];
-            String password = params[2];
 
             //POSTで送りたいデータ
-            String postData = "id=" + id + "&password=" + password;
+            String postData = "id=" + id;
 
             HttpURLConnection con = null;
             InputStream is = null;
@@ -156,17 +155,18 @@ public class FemaleMyPageActivity extends AppCompatActivity implements Navigatio
 
         @Override
         public void onPostExecute(String result) {
-            Boolean isLogin = false;
+            Boolean isLogin = true;
+            String femaleName = "";
             try {
                 JSONObject rootJSON = new JSONObject(result);
-                isLogin = rootJSON.getBoolean("result");
-                String name = rootJSON.getString("name");
+                femaleName = rootJSON.getString("femaleName");
             }
             catch (JSONException ex) {
                 Log.e(DEBUG_TAG, "JSON解析失敗", ex);
             }
             if (isLogin) {
-                Toast.makeText(FemaleMyPageActivity.this , "成功" , Toast.LENGTH_SHORT).show();
+                Log.e("結果" , femaleName);
+                Toast.makeText(FemaleMyPageActivity.this , femaleName , Toast.LENGTH_SHORT).show();
             }else{
                 Toast.makeText(FemaleMyPageActivity.this , "失敗" , Toast.LENGTH_SHORT).show();
             }
