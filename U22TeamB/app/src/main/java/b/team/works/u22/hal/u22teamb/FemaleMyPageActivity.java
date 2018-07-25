@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -155,20 +156,37 @@ public class FemaleMyPageActivity extends AppCompatActivity implements Navigatio
 
         @Override
         public void onPostExecute(String result) {
-            Boolean isLogin = true;
-            String femaleName = "";
             try {
                 JSONObject rootJSON = new JSONObject(result);
-                femaleName = rootJSON.getString("femaleName");
+
+                //妻情報
+
+                String femaleName = rootJSON.getString("femaleName");
+                TextView tvFemaleName = findViewById(R.id.tvFemaleName);
+                tvFemaleName.setText(femaleName);
+                String femaleBirthday = rootJSON.getString("femaleBirthday");
+                String femalePassword = rootJSON.getString("femalePassword");
+                String femaleIcon = rootJSON.getString("femaleIcon");
+                String femaleAddress = rootJSON.getString("femaleAddress");
+                String femaleMail = rootJSON.getString("femaleMail");
+                String femaleCardNo = rootJSON.getString("cardNumber");
+                String femaleCardDoneDeadline = rootJSON.getString("cardExpirationDate");
+                String femaleCardSecurityCode = rootJSON.getString("cardSecurityCode");
+                String femaleCardNominee = rootJSON.getString("cardNominee");
+                String femalePointLatitude = rootJSON.getString("pointLatitude");
+                String femalePointLongitude = rootJSON.getString("pointLongitude");
+
+                //夫情報
+                String maleName = rootJSON.getString("maleName");
+                String maleMail = rootJSON.getString("maleMail");
+                String malePassword = rootJSON.getString("malePassword");
+                String maleBirthday = rootJSON.getString("maleBirthday");
+                String maleHeight = rootJSON.getString("height");
+                String maleWeight = rootJSON.getString("weight");
+                String maleProfession = rootJSON.getString("profession");
             }
             catch (JSONException ex) {
                 Log.e(DEBUG_TAG, "JSON解析失敗", ex);
-            }
-            if (isLogin) {
-                Log.e("結果" , femaleName);
-                Toast.makeText(FemaleMyPageActivity.this , femaleName , Toast.LENGTH_SHORT).show();
-            }else{
-                Toast.makeText(FemaleMyPageActivity.this , "失敗" , Toast.LENGTH_SHORT).show();
             }
         }
 

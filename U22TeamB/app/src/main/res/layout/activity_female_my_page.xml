@@ -70,8 +70,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
                             android:layout_marginRight="5dp"
-                            android:layout_gravity="center_vertical"
-                            android:text="・氏名"/>
+                            android:layout_gravity="center_vertical"/>
 
                         <TextView
                             android:id="@+id/tvFemaleBirthday"
@@ -80,8 +79,7 @@
                             android:layout_marginLeft="5dp"
                             android:layout_marginRight="5dp"
                             android:layout_marginTop="5sp"
-                            android:layout_gravity="center_vertical"
-                            android:text="・生年月日"/>
+                            android:layout_gravity="center_vertical"/>
 
                         <TextView
                             android:id="@+id/tvFemalePassword"
@@ -90,8 +88,7 @@
                             android:layout_marginLeft="5dp"
                             android:layout_marginRight="5dp"
                             android:layout_marginTop="5sp"
-                            android:layout_gravity="center_vertical"
-                            android:text="・パスワード"/>
+                            android:layout_gravity="center_vertical"/>
 
                         <TextView
                             android:id="@+id/tvFemaleAddress"
@@ -100,8 +97,7 @@
                             android:layout_marginLeft="5dp"
                             android:layout_marginRight="5dp"
                             android:layout_marginTop="5sp"
-                            android:layout_gravity="center_vertical"
-                            android:text="・住所"/>
+                            android:layout_gravity="center_vertical"/>
 
                         <TextView
                             android:id="@+id/tvFemaleMail"
@@ -110,8 +106,7 @@
                             android:layout_marginLeft="5dp"
                             android:layout_marginRight="5dp"
                             android:layout_marginTop="5sp"
-                            android:layout_gravity="center_vertical"
-                            android:text="・メールアドレス"/>
+                            android:layout_gravity="center_vertical"/>
 
                         <TextView
                             android:id="@+id/tvFemaleCreditCardNumber"
@@ -120,8 +115,7 @@
                             android:layout_marginLeft="5dp"
                             android:layout_marginRight="5dp"
                             android:layout_marginTop="5sp"
-                            android:layout_gravity="center_vertical"
-                            android:text="・カード番号"/>
+                            android:layout_gravity="center_vertical"/>
 
                         <TextView
                             android:id="@+id/tvFemaleCreditCardExpirationDate"
@@ -130,8 +124,7 @@
                             android:layout_marginLeft="5dp"
                             android:layout_marginRight="5dp"
                             android:layout_marginTop="5sp"
-                            android:layout_gravity="center_vertical"
-                            android:text="・カードの有効期限"/>
+                            android:layout_gravity="center_vertical"/>
 
                         <TextView
                             android:id="@+id/tvFemaleCreditCardSecurityNumber"
@@ -140,8 +133,7 @@
                             android:layout_marginLeft="5dp"
                             android:layout_marginRight="5dp"
                             android:layout_marginTop="5sp"
-                            android:layout_gravity="center_vertical"
-                            android:text="・カードのセキュリティ番号"/>
+                            android:layout_gravity="center_vertical"/>
 
                         <TextView
                             android:id="@+id/tvFemaleCreditCardHolder"
@@ -150,8 +142,7 @@
                             android:layout_marginLeft="5dp"
                             android:layout_marginRight="5dp"
                             android:layout_marginTop="5sp"
-                            android:layout_gravity="center_vertical"
-                            android:text="・カードの名義人"/>
+                            android:layout_gravity="center_vertical"/>
 
                     </LinearLayout>
 
