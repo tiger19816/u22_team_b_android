@@ -1,7 +1,10 @@
 package b.team.works.u22.hal.u22teambstore;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -31,6 +34,9 @@ public class ShopRegisterActivity extends AppCompatActivity {
     EditText etNo; //項番
     EditText etFreeName; //フリーワード
 
+    //インテントオブジェクト
+    Intent _intent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,8 +44,62 @@ public class ShopRegisterActivity extends AppCompatActivity {
 
         //各部品取得
         findViewAll();
+    }
 
+    /**
+     * 確認ボタンが押されたときの処理
+     * @param view　画面部品
+     */
+    public void onClickConfirm(View view) {
+        _intent = new Intent(ShopRegisterActivity.this, ShopRegisterConfirmActivity.class);
 
+        _intent.putExtra("shopId", etShopId.getText().toString());
+        _intent.putExtra("shopName", etShopName.getText().toString());
+        _intent.putExtra("phonetic", etPhonetic.getText().toString());
+        _intent.putExtra("openTime", etOpenTime.getText().toString());
+        _intent.putExtra("tel", etTel.getText().toString());
+        _intent.putExtra("address", etAddress.getText().toString());
+        _intent.putExtra("averageBudget", etAverageBudget.getText().toString());
+        _intent.putExtra("pointLatitude", etPointLatitude.getText().toString());
+        _intent.putExtra("pointLongitude", etPointLongitude.getText().toString());
+
+        //ランチ営業有りか無しか
+        String lunchService;
+        if(rbLunchServiceAvailable.isChecked()) {
+            lunchService = "有";
+        }
+        else {
+            lunchService = "無";
+        }
+        _intent.putExtra("lunchService", lunchService);
+
+        //禁煙席有りか無しか
+        String nonSmokingSeat;
+        if(rbNonSmokingSeatAvailable.isChecked()) {
+            nonSmokingSeat = "有";
+        }
+        else {
+            nonSmokingSeat = "無";
+        }
+        _intent.putExtra("nonSmokingSeat", nonSmokingSeat);
+
+        //カード利用有りか無しか
+        String cardUsage;
+        if(rbCardUsageAvailable.isChecked()) {
+            cardUsage = "有";
+        }
+        else {
+            cardUsage = "無";
+        }
+        _intent.putExtra("cardUsage", cardUsage);
+
+        //TODO:画像はどうすれば
+
+        _intent.putExtra("password", etPassword.getText().toString());
+        _intent.putExtra("no", etNo.getText().toString());
+        _intent.putExtra("freeName", etFreeName.getText().toString());
+
+        startActivity(_intent);
     }
 
     /**

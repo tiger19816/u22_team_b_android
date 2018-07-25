@@ -238,7 +238,8 @@
                     android:id="@+id/rbLunchServiceAvailable"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/rb_lunch_service_available"/>
+                    android:checked="true"
+                    android:text="@string/rb_lunch_service_available" />
 
                 <RadioButton
                     android:id="@+id/rbLunchServiceNotAvailable"
@@ -265,7 +266,8 @@
                     android:id="@+id/rbNonSmokingSeatAvailable"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/rb_non_smoking_seat_available"/>
+                    android:checked="true"
+                    android:text="@string/rb_non_smoking_seat_available" />
 
                 <RadioButton
                     android:id="@+id/rbNonSmokingSeatNotAvailable"
@@ -292,7 +294,8 @@
                     android:id="@+id/rbCardUsageAvailable"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/rb_card_usage_available"/>
+                    android:checked="true"
+                    android:text="@string/rb_card_usage_available" />
 
                 <RadioButton
                     android:id="@+id/rbCardUsageNotAvailable"
