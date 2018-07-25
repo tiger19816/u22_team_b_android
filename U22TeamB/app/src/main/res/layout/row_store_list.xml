@@ -37,6 +37,7 @@
         android:id="@+id/rowTvStoreName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:textSize="20sp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
@@ -47,7 +48,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/rowTvStoreTel"
+        android:id="@+id/rowTvStoreShortPr"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -57,5 +58,5 @@
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toStartOf="@+id/rowBtStoreDetail"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rowBtStoreDetail" />
+        app:layout_constraintTop_toBottomOf="@+id/rowTvStoreName" />
 </android.support.constraint.ConstraintLayout>
