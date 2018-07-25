@@ -14,6 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -193,12 +194,18 @@ public class FemaleStoreMapListActivity extends AppCompatActivity implements Nav
                     FemaleStoreMapAnimation closeAnimation = new FemaleStoreMapAnimation(lvStoreList, -originalHeight, originalHeight);
                     closeAnimation.setDuration(DURATION);
                     lvStoreList.startAnimation(closeAnimation);
+                    ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) fab.getLayoutParams();
+                    params.bottomMargin = 190;
+                    fab.setLayoutParams(params);
                 } else {
 
                     // 内容エリアが閉じている時、内容エリアを開くアニメーション
                     FemaleStoreMapAnimation openAnimation = new FemaleStoreMapAnimation(lvStoreList, originalHeight, 0);
                     openAnimation.setDuration(DURATION);    // アニメーションにかける時間(ミリ秒)
                     lvStoreList.startAnimation(openAnimation);   // アニメーション開始
+                    ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) fab.getLayoutParams();
+                    params.bottomMargin = originalHeight + 170;
+                    fab.setLayoutParams(params);
                 }
             }
         });
@@ -210,6 +217,25 @@ public class FemaleStoreMapListActivity extends AppCompatActivity implements Nav
      * @param view 画面部品。
      */
     public void onFabOpenListClick(View view) {
+    }
+
+    public void onButtonClick(View view) {
+        int id = view.getId();
+        Intent intent;
+        switch (id) {
+            case R.id.rowBtStoreDetail:
+                intent = new Intent(FemaleStoreMapListActivity.this, FemaleStoreDetailsActivity.class);
+//                Map<String, String> map = (Map<String, String>) adapter.getItem(position);
+//                intent.putExtra("id", map.get("id"));
+                startActivity(intent);
+                break;
+            case R.id.rowBtStoreReservation:
+                intent = new Intent(FemaleStoreMapListActivity.this, FemaleNewReservationActivity.class);
+//                Map<String, String> map = (Map<String, String>) adapter.getItem(position);
+//                intent.putExtra("id", map.get("id"));
+                startActivity(intent);
+                break;
+        }
     }
 
 
@@ -347,6 +373,16 @@ public class FemaleStoreMapListActivity extends AppCompatActivity implements Nav
             String[] from = {"name", "tel"};
             int[] to = {R.id.rowTvStoreName, R.id.rowTvStoreTel};
             final SimpleAdapter adapter = new SimpleAdapter(FemaleStoreMapListActivity.this, restList, R.layout.row_store_list, from, to);
+//            adapter.setViewBinder(new SimpleAdapter.ViewBinder() {
+//                @Override
+//                public boolean setViewValue(View view, Object data, String textRepresentation) {
+//                    int id = view.getId();
+//                    switch (id) {
+//                        case R.id.row
+//                    }
+//                    return false;
+//                }
+//            });
             lvStoreList.setAdapter(adapter);
             lvStoreList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
