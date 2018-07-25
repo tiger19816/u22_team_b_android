@@ -280,7 +280,7 @@ public class Female implements Serializable{
     }
 
     /**
-     *
+     *yyyy年MM年dd日からyyyy-MM-ddに変換。
      * @param date
      * @return
      */
@@ -291,6 +291,25 @@ public class Female implements Serializable{
         try {
             Date d = dfBirthday01.parse(date);
            strData = dfBirthday02.format(d);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            Log.e("データ変換失敗", "Femaleクラスの時。");
+        }
+        return strData;
+    }
+
+    /**
+     *yyyy-MM-ddからyyyy年MM年dd日に変換。
+     * @param date
+     * @return
+     */
+    public String getDataConversion2(String date){
+        String strData = "";
+        SimpleDateFormat dfBirthday01 = new SimpleDateFormat("yyyy年MM月dd日");
+        SimpleDateFormat dfBirthday02 = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date d = dfBirthday02.parse(date);
+            strData = dfBirthday01.format(d);
         } catch (ParseException e) {
             e.printStackTrace();
             Log.e("データ変換失敗", "Femaleクラスの時。");

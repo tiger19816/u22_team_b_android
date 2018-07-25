@@ -60,7 +60,7 @@ public class FemaleMyPageActivity extends AppCompatActivity implements Navigatio
         //非同期処理を開始する。
         LoginTaskReceiver receiver = new LoginTaskReceiver();
         //ここで渡した引数はLoginTaskReceiverクラスのdoInBackground(String... params)で受け取れる。
-        receiver.execute(LOGIN_URL , "1" );
+        receiver.execute(LOGIN_URL , _id );
     }
 
     /**
@@ -160,48 +160,81 @@ public class FemaleMyPageActivity extends AppCompatActivity implements Navigatio
             try {
                 JSONObject rootJSON = new JSONObject(result);
 
+                Male male = new Male();
+                Female female = new Female();
+
                 //妻情報
                 String femaleName = rootJSON.getString("femaleName");
                 TextView tvFemaleName = findViewById(R.id.tvFemaleName);
                 tvFemaleName.setText(femaleName);
+
                 String femaleBirthday = rootJSON.getString("femaleBirthday");
                 TextView tvFemaleBirthday = findViewById(R.id.tvFemaleBirthday);
-                tvFemaleBirthday.setText(femaleBirthday);
+                tvFemaleBirthday.setText(female.getDataConversion2(femaleBirthday));
+
                 String femalePassword = rootJSON.getString("femalePassword");
                 TextView tvFemalePassword = findViewById(R.id.tvFemalePassword);
                 tvFemalePassword.setText(femalePassword);
+
                 String femaleIcon = rootJSON.getString("femaleIcon");
-                ImageView imFemaleIcon = findViewById(R.id.imInputIcon);
+                ImageView imFemaleIcon = findViewById(R.id.ivFemaleIcon);
                 imFemaleIcon.setImageResource(R.drawable.icon);
+
                 String femaleAddress = rootJSON.getString("femaleAddress");
                 TextView tvFemaleAddress = findViewById(R.id.tvFemaleAddress);
                 tvFemaleAddress.setText(femaleAddress);
+
                 String femaleMail = rootJSON.getString("femaleMail");
                 TextView tvFemaleMail = findViewById(R.id.tvFemaleMail);
                 tvFemaleMail.setText(femaleMail);
+
                 String femaleCardNo = rootJSON.getString("cardNumber");
                 TextView tvFemaleCardNo = findViewById(R.id.tvFemaleCreditCardNumber);
                 tvFemaleCardNo.setText(femaleCardNo);
+
                 String femaleCardDoneDeadline = rootJSON.getString("cardExpirationDate");
                 TextView tvFemaleCardDoneDeadline = findViewById(R.id.tvFemaleCreditCardExpirationDate);
                 tvFemaleCardDoneDeadline.setText(femaleCardDoneDeadline);
+
                 String femaleCardSecurityCode = rootJSON.getString("cardSecurityCode");
                 TextView tvFemaleCardSecurityCode = findViewById(R.id.tvFemaleCreditCardSecurityNumber);
                 tvFemaleCardSecurityCode.setText(femaleCardSecurityCode);
+
                 String femaleCardNominee = rootJSON.getString("cardNominee");
                 TextView tvFemaleNomineeName = findViewById(R.id.tvFemaleCreditCardHolder);
                 tvFemaleNomineeName.setText(femaleCardNominee);
+
 //                String femalePointLatitude = rootJSON.getString("pointLatitude");//緯度
 //                String femalePointLongitude = rootJSON.getString("pointLongitude");//経度
 
                 //夫情報
                 String maleName = rootJSON.getString("maleName");
+                TextView tvMaleName = findViewById(R.id.tvMaleName);
+                tvMaleName.setText(maleName);
+
                 String maleMail = rootJSON.getString("maleMail");
+                TextView tvMaleMail = findViewById(R.id.tvMaleMail);
+                tvMaleMail.setText(maleMail);
+
                 String malePassword = rootJSON.getString("malePassword");
+                TextView tvMalePassword = findViewById(R.id.tvMalePassword);
+                tvMalePassword.setText(malePassword);
+
                 String maleBirthday = rootJSON.getString("maleBirthday");
+                TextView tvMaleBirthday = findViewById(R.id.tvMaleBirthday);
+                tvMaleBirthday.setText(female.getDataConversion2(maleBirthday));
+
                 String maleHeight = rootJSON.getString("height");
+                TextView tvMaleHeight = findViewById(R.id.tvMaleHeight);
+                tvMaleHeight.setText(maleHeight + "cm");
+
                 String maleWeight = rootJSON.getString("weight");
+                TextView tvMaleWeight = findViewById(R.id.tvMaleWeight);
+                tvMaleWeight.setText(maleWeight + "kg");
+
                 String maleProfession = rootJSON.getString("profession");
+                TextView tvMaleProfession = findViewById(R.id.tvMaleProfession);
+                tvMaleProfession.setText(male.setMaleProfessionName(maleProfession));
             }
             catch (JSONException ex) {
                 Log.e(DEBUG_TAG, "JSON解析失敗", ex);
