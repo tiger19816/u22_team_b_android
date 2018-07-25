@@ -31,7 +31,7 @@ public class FemaleMyPageActivity extends AppCompatActivity implements Navigatio
     /**
      * URLを入れる定数.
      */
-    private static final String LOGIN_URL = "http://10.0.2.2:8080/http://192.168.1.106:8080/U22TeamB/MypageJsonTestServlet";
+    private static final String LOGIN_URL = Word.USER_MYPAGE_URL;
     private String _id = "1";
 
     @Override
