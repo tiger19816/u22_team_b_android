@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -160,21 +161,38 @@ public class FemaleMyPageActivity extends AppCompatActivity implements Navigatio
                 JSONObject rootJSON = new JSONObject(result);
 
                 //妻情報
-
                 String femaleName = rootJSON.getString("femaleName");
                 TextView tvFemaleName = findViewById(R.id.tvFemaleName);
                 tvFemaleName.setText(femaleName);
                 String femaleBirthday = rootJSON.getString("femaleBirthday");
+                TextView tvFemaleBirthday = findViewById(R.id.tvFemaleBirthday);
+                tvFemaleBirthday.setText(femaleBirthday);
                 String femalePassword = rootJSON.getString("femalePassword");
+                TextView tvFemalePassword = findViewById(R.id.tvFemalePassword);
+                tvFemalePassword.setText(femalePassword);
                 String femaleIcon = rootJSON.getString("femaleIcon");
+                ImageView imFemaleIcon = findViewById(R.id.imInputIcon);
+                imFemaleIcon.setImageResource(R.drawable.icon);
                 String femaleAddress = rootJSON.getString("femaleAddress");
+                TextView tvFemaleAddress = findViewById(R.id.tvFemaleAddress);
+                tvFemaleAddress.setText(femaleAddress);
                 String femaleMail = rootJSON.getString("femaleMail");
+                TextView tvFemaleMail = findViewById(R.id.tvFemaleMail);
+                tvFemaleMail.setText(femaleMail);
                 String femaleCardNo = rootJSON.getString("cardNumber");
+                TextView tvFemaleCardNo = findViewById(R.id.tvFemaleCreditCardNumber);
+                tvFemaleCardNo.setText(femaleCardNo);
                 String femaleCardDoneDeadline = rootJSON.getString("cardExpirationDate");
+                TextView tvFemaleCardDoneDeadline = findViewById(R.id.tvFemaleCreditCardExpirationDate);
+                tvFemaleCardDoneDeadline.setText(femaleCardDoneDeadline);
                 String femaleCardSecurityCode = rootJSON.getString("cardSecurityCode");
+                TextView tvFemaleCardSecurityCode = findViewById(R.id.tvFemaleCreditCardSecurityNumber);
+                tvFemaleCardSecurityCode.setText(femaleCardSecurityCode);
                 String femaleCardNominee = rootJSON.getString("cardNominee");
-                String femalePointLatitude = rootJSON.getString("pointLatitude");
-                String femalePointLongitude = rootJSON.getString("pointLongitude");
+                TextView tvFemaleNomineeName = findViewById(R.id.tvFemaleCreditCardHolder);
+                tvFemaleNomineeName.setText(femaleCardNominee);
+//                String femalePointLatitude = rootJSON.getString("pointLatitude");//緯度
+//                String femalePointLongitude = rootJSON.getString("pointLongitude");//経度
 
                 //夫情報
                 String maleName = rootJSON.getString("maleName");
