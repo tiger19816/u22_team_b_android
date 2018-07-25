@@ -26,7 +26,8 @@
     <string name="tv_password">パスワード</string>
 
     <!-- フリーワードテーブル -->
-    <string name="tv_free_id">フリーワードID</string>
     <string name="tv_no">項番</string>
     <string name="tv_free_name">フリーワード</string>
+
+    <string name="bt_confirm">確認</string>
 </resources>
