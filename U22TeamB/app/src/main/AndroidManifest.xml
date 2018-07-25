@@ -2,6 +2,21 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="b.team.works.u22.hal.u22teamb">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+
+    <meta-data
+        android:name="com.google.android.gms.version"
+        android:value="@integer/google_play_services_version" />
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -21,7 +36,7 @@
         <activity android:name=".FemaleNewMemberRegistrationActivity" />
         <activity android:name=".FemaleNewMemberRegistrationConfirmationScreenActivity" />
         <activity android:name=".femaleCreditCardRegistration" />
-        <activity android:name=".FemaleMyPageActivity"></activity>
+        <activity android:name=".FemaleMyPageActivity" />
         <activity android:name=".FemaleFinishReservationActivity" />
         <activity android:name=".FemaleChangeReservationActivity" />
         <activity android:name=".FemaleFinishReservationActivity" />
@@ -31,7 +46,13 @@
         <activity android:name=".MaleHistoryListActivity" />
         <activity android:name=".FemaleReservationListActivity" />
         <activity android:name=".FemaleNewReservationActivity" />
-        <activity android:name=".FemaleStoreMapListActivity"></activity>
+        <activity android:name=".FemaleStoreMapListActivity" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity android:name=".FemaleStoreDetailsActivity"></activity>
     </application>
 
 </manifest>
