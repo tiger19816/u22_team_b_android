@@ -208,7 +208,7 @@ public class FemaleHistoryListActivity extends AppCompatActivity  implements Nav
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Intent intent = new Intent(FemaleHistoryListActivity.this, FemaleStoreDetailsActivity.class);
 //                        Map<String, String> map = (Map<String, String>) marker.getTag();
-                        intent.putExtra("id", "7116760");
+                        intent.putExtra("id", "kbzg701");
                         startActivity(intent);
                     }
                 });
