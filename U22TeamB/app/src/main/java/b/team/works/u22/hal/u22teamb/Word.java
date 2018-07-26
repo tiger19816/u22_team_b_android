@@ -10,4 +10,5 @@ public class Word {
     public static final String STORE_MAP_URL = SERVER_URL + "StoreListServlet";
     public static final String STORE_DETAILS_URL = SERVER_URL + "StoreDetailsServlet";
     public static final String USER_MYPAGE_URL = SERVER_URL + "MypageJsonTestServlet";
+    public static final String RESERVATION_LIST_URL = SERVER_URL + "ReservationListJsonServlet";
 }
