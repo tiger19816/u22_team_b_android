@@ -27,6 +27,15 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tvNewRegister"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:text="@string/tv_new_register"
+                android:textSize="24sp" />
+
+            <TextView
                 android:id="@+id/tvShopId"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -238,7 +247,6 @@
                     android:id="@+id/rbLunchServiceAvailable"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:checked="true"
                     android:text="@string/rb_lunch_service_available" />
 
                 <RadioButton
@@ -266,7 +274,6 @@
                     android:id="@+id/rbNonSmokingSeatAvailable"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:checked="true"
                     android:text="@string/rb_non_smoking_seat_available" />
 
                 <RadioButton
@@ -294,7 +301,6 @@
                     android:id="@+id/rbCardUsageAvailable"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:checked="true"
                     android:text="@string/rb_card_usage_available" />
 
                 <RadioButton

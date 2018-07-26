@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ShopRegisterActivity">
 
-
     <ScrollView
         android:layout_width="368dp"
         android:layout_height="495dp"
@@ -27,7 +26,15 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tvShopId"
+                android:id="@+id/tvConfirm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:text="@string/tv_confirm"
+                android:textSize="24sp" />
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
@@ -35,8 +42,8 @@
                 android:text="@string/tv_shop_id"
                 android:textSize="14sp"/>
 
-            <EditText
-                android:id="@+id/etShopId"
+            <TextView
+                android:id="@+id/tvShopId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -45,20 +52,18 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:textSize="14sp"/>
+                android:textSize="14sp" />
 
 
             <TextView
-                android:id="@+id/tvShopName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginStart="8dp"
                 android:text="@string/tv_shop_name" />
 
-            <EditText
-                android:id="@+id/etShopName"
+            <TextView
+                android:id="@+id/tvShopName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -67,19 +72,17 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:ems="10"
-                android:inputType="textPersonName"
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/tvPhonetic"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginStart="8dp"
                 android:text="@string/tv_phonetic" />
 
-            <EditText
-                android:id="@+id/etPhonetic"
+            <TextView
+                android:id="@+id/tvPhonetic"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -88,19 +91,17 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:ems="10"
-                android:inputType="textPersonName"
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/tvOpenTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginStart="8dp"
                 android:text="@string/tv_open_time"/>
 
-            <EditText
-                android:id="@+id/etOpenTime"
+            <TextView
+                android:id="@+id/tvOpenTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -109,19 +110,17 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:ems="10"
-                android:inputType="textPersonName"
                 android:textSize="14sp"/>
 
             <TextView
-                android:id="@+id/tvTel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginStart="8dp"
                 android:text="@string/tv_tel" />
 
-            <EditText
-                android:id="@+id/etTel"
+            <TextView
+                android:id="@+id/tvTel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -130,19 +129,17 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:ems="10"
-                android:inputType="textPersonName"
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/tvAddress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginStart="8dp"
                 android:text="@string/tv_address"/>
 
-            <EditText
-                android:id="@+id/etAddress"
+            <TextView
+                android:id="@+id/tvAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -151,11 +148,9 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:ems="10"
-                android:inputType="textPersonName"
                 android:textSize="14sp"/>
 
             <TextView
-                android:id="@+id/tvAverageBudget"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
@@ -163,8 +158,8 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/tv_average_budget" />
 
-            <EditText
-                android:id="@+id/etAverageBudget"
+            <TextView
+                android:id="@+id/tvAverageBudget"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -173,11 +168,9 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:ems="10"
-                android:inputType="textPersonName"
                 android:textSize="14sp"  />
 
             <TextView
-                android:id="@+id/tvPointLatitude"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
@@ -185,8 +178,8 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/tv_point_latitude" />
 
-            <EditText
-                android:id="@+id/etPointLatitude"
+            <TextView
+                android:id="@+id/tvPointLatitude"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -195,11 +188,9 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:ems="10"
-                android:inputType="textPersonName"
                 android:textSize="14sp"  />
 
             <TextView
-                android:id="@+id/tvPointLongitude"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
@@ -207,8 +198,8 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/tv_point_longitude" />
 
-            <EditText
-                android:id="@+id/etPointLongitude"
+            <TextView
+                android:id="@+id/tvPointLongitude"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -217,11 +208,9 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:ems="10"
-                android:inputType="textPersonName"
                 android:textSize="14sp"  />
 
             <TextView
-                android:id="@+id/tvLunchService"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
@@ -229,8 +218,8 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/tv_lunch_service" />
 
-            <EditText
-                android:id="@+id/etLunchServiceAvailable"
+            <TextView
+                android:id="@+id/tvLunchService"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -239,11 +228,9 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:ems="10"
-                android:inputType="textPersonName"
                 android:textSize="14sp"  />
 
             <TextView
-                android:id="@+id/tvNonSmokingSeat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
@@ -251,8 +238,8 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/tv_non_smoking_seat" />
 
-            <EditText
-                android:id="@+id/etNonSmokingSeatAvailable"
+            <TextView
+                android:id="@+id/tvNonSmokingSeat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -261,11 +248,9 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:ems="10"
-                android:inputType="textPersonName"
                 android:textSize="14sp"  />
 
             <TextView
-                android:id="@+id/tvCardUsage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
@@ -273,8 +258,8 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/tv_card_usage" />
 
-            <EditText
-                android:id="@+id/etCardUsageAvailable"
+            <TextView
+                android:id="@+id/tvCardUsage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -283,11 +268,9 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:ems="10"
-                android:inputType="textPersonName"
                 android:textSize="14sp"  />
 
             <TextView
-                android:id="@+id/tvImage1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
@@ -295,14 +278,19 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/tv_image_1" />
 
-            <ImageView
-                android:id="@+id/ivImage1"
+            <TextView
+                android:id="@+id/tvImage1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/ic_launcher_foreground"/>
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:textSize="14sp"  />
 
             <TextView
-                android:id="@+id/tvImage2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
@@ -310,14 +298,19 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/tv_image_2" />
 
-            <ImageView
-                android:id="@+id/ivImage2"
+            <TextView
+                android:id="@+id/tvImage2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/ic_launcher_foreground"/>
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:textSize="14sp"  />
 
             <TextView
-                android:id="@+id/tvPassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
@@ -325,8 +318,8 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/tv_password" />
 
-            <EditText
-                android:id="@+id/etPassword"
+            <TextView
+                android:id="@+id/tvPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -335,12 +328,10 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:ems="10"
-                android:inputType="textPersonName"
                 android:textSize="14sp"  />
 
             <!-- フリーワードテーブル部分 -->
             <TextView
-                android:id="@+id/tvNo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
@@ -348,8 +339,8 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/tv_no" />
 
-            <EditText
-                android:id="@+id/etNo"
+            <TextView
+                android:id="@+id/tvNo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -358,11 +349,9 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:ems="10"
-                android:inputType="textPersonName"
                 android:textSize="14sp"  />
 
             <TextView
-                android:id="@+id/tvFreeName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
@@ -370,8 +359,8 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/tv_free_name" />
 
-            <EditText
-                android:id="@+id/etFreeName"
+            <TextView
+                android:id="@+id/tvFreeName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -380,15 +369,27 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:ems="10"
-                android:inputType="textPersonName"
                 android:textSize="14sp"  />
 
-            <Button
-                android:id="@+id/btSend"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:onClick="onClickConfirm"
-                android:text="@string/bt_send"/>
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btBack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:onClick="onClickBack"
+                    android:text="@string/bt_back"/>
+
+                <Button
+                    android:id="@+id/btSend"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:onClick="onClickSend"
+                    android:text="@string/bt_send"/>
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 </android.support.constraint.ConstraintLayout>

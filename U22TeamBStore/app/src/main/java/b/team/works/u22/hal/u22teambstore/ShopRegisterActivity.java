@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ShopRegisterActivity extends AppCompatActivity {
 
@@ -93,13 +94,18 @@ public class ShopRegisterActivity extends AppCompatActivity {
         }
         _intent.putExtra("cardUsage", cardUsage);
 
-        //TODO:画像はどうすれば
+        //画像
+        _intent.putExtra("image1", "2018-07-24-00-00-01.jpg");
+        _intent.putExtra("image2", "2018-07-24-00-00-02.jpg");
 
         _intent.putExtra("password", etPassword.getText().toString());
         _intent.putExtra("no", etNo.getText().toString());
         _intent.putExtra("freeName", etFreeName.getText().toString());
 
-        startActivity(_intent);
+        //エラーがなければ次画面へ遷移する
+        if( !isErrorCheck() ) {
+            startActivity(_intent);
+        }
     }
 
     /**
@@ -126,5 +132,64 @@ public class ShopRegisterActivity extends AppCompatActivity {
         etPassword = findViewById(R.id.etPassword);
         etNo = findViewById(R.id.etNo);
         etFreeName = findViewById(R.id.etFreeName);
+    }
+
+    /**
+     * 未入力チェックを行うメソッド
+     */
+    public Boolean isErrorCheck() {
+        //エラーがあることを示すフラグ
+        Boolean flag = false;
+
+        if( "".equals( etShopId.getText().toString() ) ) {
+            etShopId.setError("店舗IDを入力してください。");
+            flag = true;
+        }
+        else if( "".equals( etShopName.getText().toString() ) ) {
+            etShopName.setError("店舗名を入力してください。");
+            flag = true;
+        }
+        else if( "".equals( etPhonetic.getText().toString() ) ) {
+            etPhonetic.setError("店舗名（カナ）を入力してください。");
+            flag = true;
+        }
+        else if( "".equals( etOpenTime.getText().toString() ) ) {
+            etOpenTime.setError("営業時間を入力してください。");
+            flag = true;
+        }
+        else if( "".equals( etTel.getText().toString() ) ) {
+            etTel.setError("電話番号を入力してください。");
+            flag = true;
+        }
+        else if( "".equals( etAddress.getText().toString() ) ) {
+            etAddress.setError("住所を入力してください。");
+            flag = true;
+        }
+        else if( "".equals( etAverageBudget.getText().toString() ) ) {
+            etAverageBudget.setError("平均予算を入力してください。");
+            flag = true;
+        }
+        else if( "".equals( etPointLatitude.getText().toString() ) ) {
+            etPointLatitude.setError("緯度を入力してください。");
+            flag = true;
+        }
+        else if( "".equals( etPointLongitude.getText().toString() ) ) {
+            etPointLongitude.setError("経度を入力してください。");
+            flag = true;
+        }
+        else if( "".equals( etPassword.getText().toString() ) ) {
+            etPassword.setError("パスワードを入力してください。");
+            flag = true;
+        }
+        else if( "".equals( etNo.getText().toString() ) ) {
+            etNo.setError("項番を入力してください。");
+            flag = true;
+        }
+        else if( "".equals( etFreeName.getText().toString() ) ) {
+            etFreeName.setError("フリーワードを入力してください。");
+            flag = true;
+        }
+
+        return flag;
     }
 }
