@@ -16,9 +16,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -225,14 +227,12 @@ public class FemaleStoreMapListActivity extends AppCompatActivity implements Nav
         switch (id) {
             case R.id.rowBtStoreDetail:
                 intent = new Intent(FemaleStoreMapListActivity.this, FemaleStoreDetailsActivity.class);
-//                Map<String, String> map = (Map<String, String>) adapter.getItem(position);
-//                intent.putExtra("id", map.get("id"));
+                intent.putExtra("id", (String) view.getTag());
                 startActivity(intent);
                 break;
             case R.id.rowBtStoreReservation:
                 intent = new Intent(FemaleStoreMapListActivity.this, FemaleNewReservationActivity.class);
-//                Map<String, String> map = (Map<String, String>) adapter.getItem(position);
-//                intent.putExtra("id", map.get("id"));
+                intent.putExtra("id", (String) view.getTag());
                 startActivity(intent);
                 break;
         }
@@ -302,10 +302,9 @@ public class FemaleStoreMapListActivity extends AppCompatActivity implements Nav
                     }
                 }
 
-
                 is = con.getInputStream();
 
-                result = is2String(is);
+                result = Tools.is2String(is);
             }
             catch (MalformedURLException ex) {
                 Log.e(DEBUG_TAG, "URL変換失敗", ex);
@@ -345,7 +344,8 @@ public class FemaleStoreMapListActivity extends AppCompatActivity implements Nav
                     map.put("latitude", restNow.getString("latitude"));
                     map.put("longitude", restNow.getString("longitude"));
                     map.put("opentime", restNow.getString("opentime"));
-                    map.put("tel", restNow.getString("tel"));
+                    JSONObject pr = restNow.getJSONObject("pr");
+                    map.put("short_pr", pr.getString("pr_short"));
                     restList.add(map);
                 }
             }
@@ -356,7 +356,7 @@ public class FemaleStoreMapListActivity extends AppCompatActivity implements Nav
             for(Map<String, String> map : restList) {
                 //マーカー表示
                 LatLng latLng = new LatLng(Float.parseFloat(map.get("latitude")), Float.parseFloat(map.get("longitude")));
-                mMap.addMarker(new MarkerOptions().position(latLng).title(map.get("name")).snippet(map.get("opentime"))).setTag(map);
+                mMap.addMarker(new MarkerOptions().position(latLng).title(map.get("name"))).setTag(map);
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,15));
             }
 
@@ -370,19 +370,32 @@ public class FemaleStoreMapListActivity extends AppCompatActivity implements Nav
                 }
             });
 
-            String[] from = {"name", "tel"};
-            int[] to = {R.id.rowTvStoreName, R.id.rowTvStoreTel};
+            String[] from = {"name", "short_pr", "id", "id"};
+            int[] to = {R.id.rowTvStoreName, R.id.rowTvStoreShortPr, R.id.rowBtStoreDetail, R.id.rowBtStoreReservation};
             final SimpleAdapter adapter = new SimpleAdapter(FemaleStoreMapListActivity.this, restList, R.layout.row_store_list, from, to);
-//            adapter.setViewBinder(new SimpleAdapter.ViewBinder() {
-//                @Override
-//                public boolean setViewValue(View view, Object data, String textRepresentation) {
-//                    int id = view.getId();
-//                    switch (id) {
-//                        case R.id.row
-//                    }
-//                    return false;
-//                }
-//            });
+            adapter.setViewBinder(new SimpleAdapter.ViewBinder() {
+                @Override
+                public boolean setViewValue(View view, Object data, String textRepresentation) {
+                    int id = view.getId();
+                    String strData = (String) data;
+                    switch (id) {
+                        case R.id.rowTvStoreName:
+                            TextView tvStoreName = (TextView) view;
+                            tvStoreName.setText(strData);
+                            return true;
+                        case R.id.rowTvStoreShortPr:
+                            TextView rowTvStoreShortPr = (TextView) view;
+                            rowTvStoreShortPr.setText(Tools.replaceBr(strData));
+                            return true;
+                        case R.id.rowBtStoreDetail:
+                        case R.id.rowBtStoreReservation:
+                            Button btStore = (Button) view;
+                            btStore.setTag(strData);
+                            return true;
+                    }
+                    return false;
+                }
+            });
             lvStoreList.setAdapter(adapter);
             lvStoreList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
@@ -393,17 +406,6 @@ public class FemaleStoreMapListActivity extends AppCompatActivity implements Nav
                     startActivity(intent);
                 }
             });
-        }
-
-        private String is2String(InputStream is) throws IOException {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
-            StringBuffer sb = new StringBuffer();
-            char[] b = new char[1024];
-            int line;
-            while (0 <= (line = reader.read(b))) {
-                sb.append(b, 0, line);
-            }
-            return sb.toString();
         }
     }
 }
