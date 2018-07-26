@@ -103,9 +103,9 @@ public class ShopRegisterActivity extends AppCompatActivity {
         _intent.putExtra("freeName", etFreeName.getText().toString());
 
         //エラーがなければ次画面へ遷移する
-        if( !isErrorCheck() ) {
+       // if( !isErrorCheck() ) {
             startActivity(_intent);
-        }
+       // }
     }
 
     /**
