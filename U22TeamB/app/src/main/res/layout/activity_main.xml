@@ -15,7 +15,7 @@
         android:gravity="center">
 
         <EditText
-            android:id="@+id/etId"
+            android:id="@+id/etMail"
             android:hint="@string/tv_login_id"
             android:layout_width="match_parent"
             android:layout_height="50dp" />

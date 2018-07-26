@@ -161,7 +161,7 @@ public class FemaleStoreMapListActivity extends AppCompatActivity implements Nav
             intent = new Intent(FemaleStoreMapListActivity.this,FemaleHistoryListActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_my_page) {
-            intent = new Intent(FemaleStoreMapListActivity.this,FemaleStoreMapListActivity.class);
+            intent = new Intent(FemaleStoreMapListActivity.this,FemaleMyPageActivity.class);
             startActivity(intent);
         }else if (id == R.id.nav_logout){
             intent = new Intent(FemaleStoreMapListActivity.this,MainActivity.class);

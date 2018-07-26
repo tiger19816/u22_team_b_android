@@ -1,13 +1,13 @@
-package b.team.works.u22.hal.u22teamb;
+package b.team.works.u22.hal.u22teambstore;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class femaleMaleInformationRegistration extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_female_male_information_registration);
+        setContentView(R.layout.activity_main);
     }
 }

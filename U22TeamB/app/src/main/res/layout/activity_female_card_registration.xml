@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/app_bar_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvCardTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_horizontal"
+                android:text="@string/female_new_credit_card_title"/>
+
+            <EditText
+                android:id="@+id/etInputCreditCardNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/female_new_credit_card_number"
+                android:inputType="number"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="65dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/female_new_card_expiration_date"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal">
+
+                    <Spinner
+                        android:id="@+id/spInputCardExpirationMonth"
+                        android:layout_width="110dp"
+                        android:layout_height="match_parent"
+                        android:entries="@array/sp_month_list"></Spinner>
+
+                    <TextView
+                        android:layout_width="30dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:text="@string/tv_credit_card_slash" />
+
+                    <Spinner
+                        android:id="@+id/spInputCardExpirationYear"
+                        android:layout_width="120dp"
+                        android:layout_height="match_parent"></Spinner>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/etInputCardCardHolder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/female_new_card_card_holder"
+                android:inputType="textCapCharacters"/>
+
+            <EditText
+                android:id="@+id/etInputCardSecurityCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/female_new_card_security_code"
+                android:inputType="number"/>
+
+            <Button
+                android:onClick="onMaleInformationClick"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="@string/female_new_registration"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
