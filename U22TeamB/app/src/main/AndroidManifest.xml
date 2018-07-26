@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="b.team.works.u22.hal.u22teamb">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -32,26 +33,28 @@
             </intent-filter>
         </activity>
         <activity android:name=".MaleAdditionalInformationEntryActivity" />
-        <activity android:name=".femaleMaleInformationRegistration" />
         <activity android:name=".FemaleNewMemberRegistrationActivity" />
         <activity android:name=".FemaleNewMemberRegistrationConfirmationScreenActivity" />
-        <activity android:name=".femaleCreditCardRegistration" />
         <activity android:name=".FemaleMyPageActivity" />
         <activity android:name=".FemaleFinishReservationActivity" />
         <activity android:name=".FemaleChangeReservationActivity" />
-        <activity android:name=".FemaleFinishReservationActivity" />
+        <activity
+            android:name=".FemaleFinishReservationActivity"
+            tools:ignore="DuplicateActivity" />
         <activity android:name=".MaleReservationListActivity" />
         <activity android:name=".FemaleReservationListActivity" />
         <activity android:name=".FemaleHistoryListActivity" />
         <activity android:name=".MaleHistoryListActivity" />
-        <activity android:name=".FemaleReservationListActivity" />
+        <activity
+            android:name=".FemaleReservationListActivity"
+            tools:ignore="DuplicateActivity" />
         <activity android:name=".FemaleNewReservationActivity" />
         <activity android:name=".FemaleStoreMapListActivity" />
-
+        <activity android:name=".FemaleMaleInformationRegistrationActivity" />
+        <activity android:name=".FemaleCardRegistrationActivity"></activity>
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
-
         <activity android:name=".FemaleStoreDetailsActivity"></activity>
     </application>
 

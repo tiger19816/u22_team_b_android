@@ -133,7 +133,10 @@ public class FemaleHistoryListActivity extends AppCompatActivity  implements Nav
             intent = new Intent(FemaleHistoryListActivity.this,FemaleHistoryListActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_my_page) {
-            intent = new Intent(FemaleHistoryListActivity.this,FemaleStoreMapListActivity.class);
+            intent = new Intent(FemaleHistoryListActivity.this,FemaleMyPageActivity.class);
+            startActivity(intent);
+        }else if (id == R.id.nav_logout){
+            intent = new Intent(FemaleHistoryListActivity.this,MainActivity.class);
             startActivity(intent);
         }
 
