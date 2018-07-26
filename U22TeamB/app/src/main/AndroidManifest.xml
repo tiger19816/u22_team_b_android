@@ -58,7 +58,8 @@
             android:value="@string/google_maps_key" />
 
         <activity android:name=".FemaleStoreDetailsActivity" />
-        <activity android:name=".MaleEnterShopActivity"></activity>
+        <activity android:name=".MaleEnterShopActivity" />
+        <activity android:name=".MaleHistoryEditActivity"></activity>
     </application>
 
 </manifest>

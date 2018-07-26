@@ -45,12 +45,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * 【妻】店の詳細画面のアクティビティクラス.
- *
- * @author Taiga Hirai
- */
-public class FemaleStoreDetailsActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener, StoreDetailsTab1Fragment.OnFragmentInteractionListener, StoreDetailsTab2Fragment.OnFragmentInteractionListener, OnMapReadyCallback {
+public class MaleHistoryEditActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener, StoreDetailsTab1Fragment.OnFragmentInteractionListener, StoreDetailsTab2Fragment.OnFragmentInteractionListener, OnMapReadyCallback {
 
     public String storeId;
     public GoogleMap mMap;
@@ -59,7 +54,7 @@ public class FemaleStoreDetailsActivity extends AppCompatActivity implements Vie
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_female_store_details);
+        setContentView(R.layout.activity_male_history_edit);
 
         setTitle("店舗詳細");
 
@@ -136,7 +131,7 @@ public class FemaleStoreDetailsActivity extends AppCompatActivity implements Vie
      * @param view
      */
     public void onNextReservationClick(View view){
-        Intent intent = new Intent(FemaleStoreDetailsActivity.this,FemaleNewReservationActivity.class);
+        Intent intent = new Intent(MaleHistoryEditActivity.this,FemaleNewReservationActivity.class);
         startActivity(intent);
     }
 
@@ -321,7 +316,7 @@ public class FemaleStoreDetailsActivity extends AppCompatActivity implements Vie
             tvStoreDetail.setText(Tools.replaceBr(map.get("pr_long")));
 
             //非同期処理を開始する。
-            FemaleStoreDetailsActivity.StoreImageGetTaskReceiver imageGetTaskReceiver = new FemaleStoreDetailsActivity.StoreImageGetTaskReceiver();
+            StoreImageGetTaskReceiver imageGetTaskReceiver = new StoreImageGetTaskReceiver();
 
             //ここで渡した引数はLoginTaskReceiverクラスのdoInBackground(String... params)で受け取れる。
             imageGetTaskReceiver.execute(map.get("image1"));
