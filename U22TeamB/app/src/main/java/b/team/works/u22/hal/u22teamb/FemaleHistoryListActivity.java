@@ -36,7 +36,7 @@ import java.util.Map;
 
 public class FemaleHistoryListActivity extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener {
 
-    private static final String LOGIN_URL = Word.RESERVATION_LIST_URL;
+    private static final String LOGIN_URL = Word.HISTORY_LIST_URL;
     private String _id = "1";
 
     @Override
@@ -164,14 +164,15 @@ public class FemaleHistoryListActivity extends AppCompatActivity  implements Nav
             try {
                 JSONObject rootJSON = new JSONObject(result);
 
-                JSONArray datas = rootJSON.getJSONArray("reservationList");
+                JSONArray datas = rootJSON.getJSONArray("historyList");
 
                 //履歴情報
                 for (int i = 0; i < datas.length(); i++) {
                     JSONObject data = datas.getJSONObject(i);
                     Map map = new HashMap<String , Object>();
                     map.put("storeName" , data.getString("storeName"));
-                    map.put("reservationDate" , data.getString("reservationDate"));
+                    map.put("historyPrice" , data.getString("historyPrice"));
+                    map.put("historyDate" , data.getString("historyDate"));
                     _list.add(map);
                 }
 
@@ -190,7 +191,7 @@ public class FemaleHistoryListActivity extends AppCompatActivity  implements Nav
                                 return true;
                             case R.id.tvPrice:
                                 TextView tvPrice = (TextView) view;
-                                tvPrice.setText(strData);
+                                tvPrice.setText(strData + "円");
                                 return true;
                             case R.id.tvHistoryDate:
                                 TextView tvHistryDate = (TextView) view;
