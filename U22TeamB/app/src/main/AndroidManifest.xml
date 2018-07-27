@@ -51,11 +51,15 @@
         <activity android:name=".FemaleNewReservationActivity" />
         <activity android:name=".FemaleStoreMapListActivity" />
         <activity android:name=".FemaleMaleInformationRegistrationActivity" />
-        <activity android:name=".FemaleCardRegistrationActivity"></activity>
+        <activity android:name=".FemaleCardRegistrationActivity" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
-        <activity android:name=".FemaleStoreDetailsActivity"></activity>
+
+        <activity android:name=".FemaleStoreDetailsActivity" />
+        <activity android:name=".MaleEnterShopActivity" />
+        <activity android:name=".MaleHistoryEditActivity"></activity>
     </application>
 
 </manifest>
