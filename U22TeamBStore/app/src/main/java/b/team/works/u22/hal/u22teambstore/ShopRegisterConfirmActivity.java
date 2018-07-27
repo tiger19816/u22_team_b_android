@@ -41,14 +41,14 @@ public class ShopRegisterConfirmActivity extends AppCompatActivity {
     //取得した画面部品にセットされた値を格納する変数
     String shopId;
     String shopName;
-    String phonetice;
+    String phonetic;
     String openTime;
     String tel;
     String address;
     String averageBudget;
     String pointLatitude;
     String pointLongitude;
-    String LunchService;
+    String lunchService;
     String nonSmokingSeat;
     String cardUsage;
     String image1;
@@ -75,8 +75,6 @@ public class ShopRegisterConfirmActivity extends AppCompatActivity {
 
         //取得した画面部品に値をセット
         viewSet();
-
-
     }
 
     /**
@@ -91,10 +89,28 @@ public class ShopRegisterConfirmActivity extends AppCompatActivity {
      * 送信ボタンが押されたとき
      */
     public void onClickSend(View view) {
-        //サーブレットへと値送信
         //非同期処理を開始する。
         LoginTaskReceiver receiver = new LoginTaskReceiver();
-        receiver.execute(LOGIN_URL, shopName);
+        receiver.execute(
+                LOGIN_URL,
+                shopId,
+                shopName,
+                phonetic,
+                openTime,
+                tel,
+                address,
+                averageBudget,
+                pointLatitude,
+                pointLongitude,
+                lunchService,
+                nonSmokingSeat,
+                cardUsage,
+                image1,
+                image2,
+                password,
+                no,
+                freeName
+        );
     }
 
     /**
@@ -113,10 +129,38 @@ public class ShopRegisterConfirmActivity extends AppCompatActivity {
         @Override
         public String doInBackground(String... params) {
             String urlStr = params[0];
-            String name = params[1];
+            String shopIdStr = params[1];
+            String shopNameStr = params[2];
+            String phoneticStr = params[3];
+            String openTimeStr = params[4];
+            String telStr = params[5];
+            String addressStr = params[6];
+            String averageBudgetStr = params[7];
+            String pointLatitudeStr = params[8];
+            String pointLongitudeStr = params[9];
+            String lunchServiceStr = params[10];
+            String nonSmokingSeatStr = params[11];
+            String cardUsageStr = params[12];
+            String passwordStr = params[13];
+            String noStr = params[14];
+            String freeNameStr = params[15];
 
             //POSTで送りたいデータ
-            String postData = name;
+            String postShopId = shopIdStr;
+            String postShopName = shopNameStr;
+            String postPhonetic = phoneticStr;
+            String postOpenTime = openTimeStr;
+            String postTel = telStr;
+            String postAddress = addressStr;
+            String postAverageBudget = averageBudgetStr;
+            String postPointLatitude = pointLatitudeStr;
+            String postPointLongitude = pointLongitudeStr;
+            String postLunchService = lunchServiceStr;
+            String postNonSmokingSeat = nonSmokingSeatStr;
+            String postCardUsage = cardUsageStr;
+            String postPassword = passwordStr;
+            String postNo = noStr;
+            String postFreeName = freeNameStr;
 
             HttpURLConnection con = null;
             InputStream is = null;
@@ -144,7 +188,22 @@ public class ShopRegisterConfirmActivity extends AppCompatActivity {
                     os = con.getOutputStream();
 
                     //送信する値をByteデータに変換する（UTF-8）
-                    os.write(postData.getBytes("UTF-8"));
+                    os.write(postShopId.getBytes("UTF-8"));
+                    os.write(postShopName.getBytes("UTF-8"));
+                    os.write(postPhonetic.getBytes("UTF-8"));
+                    os.write(postOpenTime.getBytes("UTF-8"));
+                    os.write(postTel.getBytes("UTF-8"));
+                    os.write(postAddress.getBytes("UTF-8"));
+                    os.write(postAverageBudget.getBytes("UTF-8"));
+                    os.write(postPointLatitude.getBytes("UTF-8"));
+                    os.write(postPointLongitude.getBytes("UTF-8"));
+                    os.write(postLunchService.getBytes("UTF-8"));
+                    os.write(postNonSmokingSeat.getBytes("UTF-8"));
+                    os.write(postCardUsage.getBytes("UTF-8"));
+                    os.write(postPassword.getBytes("UTF-8"));
+                    os.write(postNo.getBytes("UTF-8"));
+                    os.write(postFreeName.getBytes("UTF-8"));
+
                     os.flush();
                 } catch (IOException ex) {
                     Log.e(DEBUG_TAG, "POST送信エラー", ex);
@@ -194,30 +253,74 @@ public class ShopRegisterConfirmActivity extends AppCompatActivity {
     }
 
     /**
-     * インテントから取得した値を各画面部品にセットするメソッド
+     * インテントから取得した値を各画面部品にセット＋変数へ格納するメソッド
      */
     private void viewSet() {
+        //店舗ID
         tvShopId.setText( _intent.getStringExtra("shopId") );
+        shopId = tvShopId.getText().toString();
+
+        //店舗名
         tvShopName.setText( _intent.getStringExtra("shopName") );
         shopName = tvShopName.getText().toString();
+
+        //店舗名（カナ）
         tvPhonetic.setText( _intent.getStringExtra("phonetic") );
+        phonetic = tvPhonetic.getText().toString();
+
+        //営業時間
         tvOpenTime.setText( _intent.getStringExtra("openTime") );
+        openTime = tvOpenTime.getText().toString();
+
+        //電話番号
         tvTel.setText( _intent.getStringExtra("tel") );
+        tel = tvTel.getText().toString();
+
+        //住所
         tvAddress.setText( _intent.getStringExtra("address") );
+        address = tvAddress.getText().toString();
+
+        //平均予算
         tvAverageBudget.setText( _intent.getStringExtra("averageBudget") );
+        averageBudget = tvAverageBudget.getText().toString();
+
+        //緯度
         tvPointLatitude.setText( _intent.getStringExtra("pointLatitude") );
+        pointLatitude = tvPointLatitude.getText().toString();
+
+        //経度
         tvPointLongitude.setText( _intent.getStringExtra("pointLongitude") );
+        pointLongitude = tvPointLongitude.getText().toString();
+
+        //ランチ営業
         tvLunchService.setText( _intent.getStringExtra("lunchService") );
+        lunchService = tvLunchService.getText().toString();
+
+        //禁煙席
         tvNonSmokingSeat.setText( _intent.getStringExtra("nonSmokingSeat") );
+        nonSmokingSeat = tvNonSmokingSeat.getText().toString();
+
+        //カード利用
         tvCardUsage.setText( _intent.getStringExtra("cardUsage") );
+        cardUsage = tvCardUsage.getText().toString();
 
-        //画像
+        //画像（※ファイルパスを想定してます）
         tvImage1.setText( _intent.getStringExtra("image1") );
+        image1 = tvImage1.getText().toString();
         tvImage2.setText( _intent.getStringExtra("image2") );
+        image2 = tvImage2.getText().toString();
 
+        //パスワード
         tvPassword.setText( _intent.getStringExtra("password") );
+        password = tvPassword.getText().toString();
+
+        //項番
         tvNo.setText( _intent.getStringExtra("no") );
+        no = tvNo.getText().toString();
+
+        //フリーワード
         tvFreeName.setText( _intent.getStringExtra("freeName") );
+        freeName = tvFreeName.getText().toString();
     }
 
     /**
