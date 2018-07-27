@@ -1,6 +1,8 @@
 package b.team.works.u22.hal.u22teamb;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.os.AsyncTask;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -8,13 +10,29 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -22,7 +40,8 @@ import java.util.Map;
 
 public class MaleReservationListActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    private List<Map<String , Object>> _list;
+    private static final String LOGIN_URL = Word.RESERVATION_LIST_URL;
+    private String _id = "1";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,53 +64,172 @@ public class MaleReservationListActivity extends AppCompatActivity implements Na
         NavigationView navigationView = findViewById(R.id.nvSideMenuButton);
         navigationView.setNavigationItemSelectedListener(this);
 
-        _list = createList();
-
-        String[] from = {"storeName", "reservationDate"};
-        int[] to = {R.id.tvStoreName, R.id.tvReservationDate};
-        SimpleAdapter adapter = new SimpleAdapter(MaleReservationListActivity.this, _list, R.layout.row_reservation, from, to);
-        adapter.setViewBinder(new CustomViewBinder());
-        ListView lvReservationList = findViewById(R.id.lvReservationList);
-        lvReservationList.setAdapter(adapter);
+        //非同期処理を開始する。
+        ReservationTaskReceiver receiver = new ReservationTaskReceiver();
+        //ここで渡した引数はLoginTaskReceiverクラスのdoInBackground(String... params)で受け取れる。
+        receiver.execute(LOGIN_URL , _id );
 
     }
 
     /**
-     * リストビューのカスタムビューバインダークラス。
+     * 非同期通信を行うAsyncTaskクラスを継承したメンバクラス.
      */
-    private class CustomViewBinder implements SimpleAdapter.ViewBinder{
+    private class ReservationTaskReceiver extends AsyncTask<String, Void, String> {
+
+        private static final String DEBUG_TAG = "RestAccess";
+        private List<Map<String, Object>> _list = new ArrayList<Map<String, Object>>();
+
+        /**
+         * 非同期に処理したい内容を記述するメソッド.
+         * このメソッドは必ず実装する必要がある。
+         *
+         * @param params String型の配列。（可変長）
+         * @return String型の結果JSONデータ。
+         */
         @Override
-        public boolean setViewValue(View view , Object data , String textRepresentation){
-            int viewId = view.getId();
-            switch (viewId){
-                case R.id.tvStoreName:
-                    TextView tvStoreName = (TextView) view;
-                    String strStoreName = (String) data;
-                    tvStoreName.setText(strStoreName);
-                    return true;
-                case R.id.tvReservationDate:
-                    TextView tvReservationDate = (TextView) view;
-                    String strReservationDate = (String) data;
-                    tvReservationDate.setText(strReservationDate);
-                    return true;
-            }
-            return false;
-        }
-    }
+        public String doInBackground(String... params) {
+            String urlStr = params[0];
+            String id = params[1];
 
-    /**
-     * リストビューに表示させるリストデータを生成するメソッド。
-     * @return List<Map<String , Object>> 生成されたリストデータ。
-     */
-    private List<Map<String , Object>> createList(){
-        List<Map<String , Object>> list = new ArrayList<>();
-        for (int i=0; i<=30; i++){
-            Map<String , Object> map = new HashMap<>();
-            map.put("storeName" , "店名");
-            map.put("reservationDate" , "99月99日(月) 99時99分");
-            list.add(map);
+            //POSTで送りたいデータ
+            String postData = "id=" + id;
+
+            HttpURLConnection con = null;
+            InputStream is = null;
+            String result = "";
+
+            try {
+                URL url = new URL(urlStr);
+                con = (HttpURLConnection) url.openConnection();
+
+                //GET通信かPOST通信かを指定する。
+                con.setRequestMethod("POST");
+
+                //自動リダイレクトを許可するかどうか。
+                con.setInstanceFollowRedirects(false);
+
+                //時間制限。（ミリ秒単位）
+                con.setReadTimeout(10000);
+                con.setConnectTimeout(20000);
+
+                con.connect();
+
+                //POSTデータ送信処理。InputStream処理よりも先に記述する。
+                OutputStream os = null;
+                try {
+                    os = con.getOutputStream();
+
+                    //送信する値をByteデータに変換する（UTF-8）
+                    os.write(postData.getBytes("UTF-8"));
+                    os.flush();
+                }
+                catch (IOException ex) {
+                    Log.e(DEBUG_TAG, "POST送信エラー", ex);
+                }
+                finally {
+                    if(os != null) {
+                        try {
+                            os.close();
+                        }
+                        catch (IOException ex) {
+                            Log.e(DEBUG_TAG, "OutputStream解放失敗", ex);
+                        }
+                    }
+                }
+
+                is = con.getInputStream();
+
+                result = is2String(is);
+            }
+            catch (MalformedURLException ex) {
+                Log.e(DEBUG_TAG, "URL変換失敗", ex);
+            }
+            catch (IOException ex) {
+                Log.e(DEBUG_TAG, "通信失敗", ex);
+            }
+            finally {
+                if(con != null) {
+                    con.disconnect();
+                }
+                if(is != null) {
+                    try {
+                        is.close();
+                    }
+                    catch (IOException ex) {
+                        Log.e(DEBUG_TAG, "InputStream解放失敗", ex);
+                    }
+                }
+            }
+
+            return result;
         }
-        return list;
+
+        @Override
+        public void onPostExecute(String result) {
+            try {
+                JSONObject rootJSON = new JSONObject(result);
+
+                JSONArray datas = rootJSON.getJSONArray("reservationList");
+
+                //予約情報
+                for (int i = 0; i < datas.length(); i++) {
+                    JSONObject data = datas.getJSONObject(i);
+                    Map map = new HashMap<String , Object>();
+                    map.put("storeName" , data.getString("storeName"));
+                    map.put("reservationDate" , data.getString("reservationDate"));
+                    _list.add(map);
+                }
+
+                String[] from = {"storeName", "reservationDate"};
+                int[] to = {R.id.tvStoreName, R.id.tvReservationDate};
+                final SimpleAdapter adapter = new SimpleAdapter(MaleReservationListActivity.this, _list, R.layout.row_reservation, from, to);
+                adapter.setViewBinder(new SimpleAdapter.ViewBinder() {
+                    @Override
+                    public boolean setViewValue(View view, Object data, String textRepresentation) {
+                        int id = view.getId();
+                        String strData = (String) data;
+                        switch (id) {
+                            case R.id.tvStoreName:
+                                TextView tvStoreName = (TextView) view;
+                                tvStoreName.setText(strData);
+                                return true;
+                            case R.id.tvReservationDate:
+                                TextView rowTvStoreShortPr = (TextView) view;
+                                rowTvStoreShortPr.setText(Tools.replaceBr(strData));
+                                return true;
+                        }
+                        return false;
+                    }
+                });
+                ListView lvReservationList = findViewById(R.id.lvReservationList);
+                lvReservationList.setAdapter(adapter);
+                lvReservationList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Intent intent = new Intent(MaleReservationListActivity.this, MaleEnterShopActivity.class);
+                        Map<String, String> map = (Map<String, String>) adapter.getItem(position);
+                        intent.putExtra("storeName", map.get("storeName"));
+                        intent.putExtra("maleId", _id);
+                        startActivity(intent);
+                    }
+                });
+
+            }
+            catch (JSONException ex) {
+                Log.e(DEBUG_TAG, "JSON解析失敗", ex);
+            }
+        }
+
+        private String is2String(InputStream is) throws IOException {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+            StringBuffer sb = new StringBuffer();
+            char[] b = new char[1024];
+            int line;
+            while (0 <= (line = reader.read(b))) {
+                sb.append(b, 0, line);
+            }
+            return sb.toString();
+        }
     }
 
     /**

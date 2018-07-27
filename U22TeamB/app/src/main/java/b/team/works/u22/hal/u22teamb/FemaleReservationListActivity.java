@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -176,12 +177,39 @@ public class FemaleReservationListActivity extends AppCompatActivity implements 
                     _list.add(map);
                 }
 
-                String[] from = {"storeName" , "reservationDate"};
-                int[] to = {R.id.tvStoreName , R.id.tvReservationDate};
-                SimpleAdapter adapter = new SimpleAdapter(FemaleReservationListActivity.this , _list , R.layout.row_reservation , from , to);
-                adapter.setViewBinder(new CustomViewBinder());
+                String[] from = {"storeName", "reservationDate"};
+                int[] to = {R.id.tvStoreName, R.id.tvReservationDate};
+                final SimpleAdapter adapter = new SimpleAdapter(FemaleReservationListActivity.this, _list, R.layout.row_reservation, from, to);
+                adapter.setViewBinder(new SimpleAdapter.ViewBinder() {
+                    @Override
+                    public boolean setViewValue(View view, Object data, String textRepresentation) {
+                        int id = view.getId();
+                        String strData = (String) data;
+                        switch (id) {
+                            case R.id.tvStoreName:
+                                TextView tvStoreName = (TextView) view;
+                                tvStoreName.setText(strData);
+                                return true;
+                            case R.id.tvReservationDate:
+                                TextView rowTvStoreShortPr = (TextView) view;
+                                rowTvStoreShortPr.setText(Tools.replaceBr(strData));
+                                return true;
+                        }
+                        return false;
+                    }
+                });
                 ListView lvReservationList = findViewById(R.id.lvReservationList);
                 lvReservationList.setAdapter(adapter);
+                lvReservationList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Intent intent = new Intent(FemaleReservationListActivity.this, FemaleStoreDetailsActivity.class);
+                        Map<String, String> map = (Map<String, String>) adapter.getItem(position);
+                        intent.putExtra("maleId", map.get("storeName"));
+//                        intent.putExtra("maleId", _id);
+                        startActivity(intent);
+                    }
+                });
 
             }
             catch (JSONException ex) {
