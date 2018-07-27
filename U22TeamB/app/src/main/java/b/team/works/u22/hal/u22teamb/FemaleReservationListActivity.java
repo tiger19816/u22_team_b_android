@@ -203,7 +203,7 @@ public class FemaleReservationListActivity extends AppCompatActivity implements 
                 lvReservationList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Intent intent = new Intent(FemaleReservationListActivity.this, MaleEnterShopActivity.class);
+                        Intent intent = new Intent(FemaleReservationListActivity.this, FemaleStoreDetailsActivity.class);
                         Map<String, String> map = (Map<String, String>) adapter.getItem(position);
                         intent.putExtra("maleId", map.get("storeName"));
 //                        intent.putExtra("maleId", _id);

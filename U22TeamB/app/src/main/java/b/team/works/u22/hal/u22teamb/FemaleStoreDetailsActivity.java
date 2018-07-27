@@ -125,7 +125,7 @@ public class FemaleStoreDetailsActivity extends AppCompatActivity implements Vie
         tabLayout.setupWithViewPager(viewPager);
 
         //非同期処理を開始する。
-        StoreDetailsTaskReceiver receiver = new StoreDetailsTaskReceiver();
+        FemaleStoreDetailsActivity.StoreDetailsTaskReceiver receiver = new FemaleStoreDetailsActivity.StoreDetailsTaskReceiver();
 
         //ここで渡した引数はLoginTaskReceiverクラスのdoInBackground(String... params)で受け取れる。
         receiver.execute(Word.STORE_DETAILS_URL);
