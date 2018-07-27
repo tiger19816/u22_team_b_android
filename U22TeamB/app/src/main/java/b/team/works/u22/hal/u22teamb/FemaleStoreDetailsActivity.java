@@ -137,6 +137,8 @@ public class FemaleStoreDetailsActivity extends AppCompatActivity implements Vie
      */
     public void onNextReservationClick(View view){
         Intent intent = new Intent(FemaleStoreDetailsActivity.this,FemaleNewReservationActivity.class);
+        intent.putExtra("id", map.get("id"));
+        intent.putExtra("name", map.get("name"));
         startActivity(intent);
     }
 
