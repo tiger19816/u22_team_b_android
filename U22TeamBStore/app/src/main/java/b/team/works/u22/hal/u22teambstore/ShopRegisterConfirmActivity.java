@@ -61,7 +61,7 @@ public class ShopRegisterConfirmActivity extends AppCompatActivity {
     Intent _intent;
 
     //URL
-    private static final String LOGIN_URL = "http://10.0.2.2:8080/u22_team_b_web/ShopRegisterServlet";
+    private static final String LOGIN_URL = "http://localhost:8080/u22_team_b_web/ShopRegisterServlet";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
