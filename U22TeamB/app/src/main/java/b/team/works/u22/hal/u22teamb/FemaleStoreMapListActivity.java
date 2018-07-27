@@ -232,12 +232,13 @@ public class FemaleStoreMapListActivity extends AppCompatActivity implements Nav
                 break;
             case R.id.rowBtStoreReservation:
                 intent = new Intent(FemaleStoreMapListActivity.this, FemaleNewReservationActivity.class);
-                intent.putExtra("id", (String) view.getTag());
+                StoreMapListReservationButtonTag reservationButtonTag = (StoreMapListReservationButtonTag) view.getTag();
+                intent.putExtra("id", reservationButtonTag.getId());
+                intent.putExtra("name", reservationButtonTag.getName());
                 startActivity(intent);
                 break;
         }
     }
-
 
     /**
      * 非同期通信を行うAsyncTaskクラスを継承したメンバクラス.
@@ -366,6 +367,7 @@ public class FemaleStoreMapListActivity extends AppCompatActivity implements Nav
                     Intent intent = new Intent(FemaleStoreMapListActivity.this, FemaleStoreDetailsActivity.class);
                     Map<String, String> map = (Map<String, String>) marker.getTag();
                     intent.putExtra("id", map.get("id"));
+                    intent.putExtra("name", map.get("name"));
                     startActivity(intent);
                 }
             });
@@ -374,6 +376,7 @@ public class FemaleStoreMapListActivity extends AppCompatActivity implements Nav
             int[] to = {R.id.rowTvStoreName, R.id.rowTvStoreShortPr, R.id.rowBtStoreDetail, R.id.rowBtStoreReservation};
             final SimpleAdapter adapter = new SimpleAdapter(FemaleStoreMapListActivity.this, restList, R.layout.row_store_list, from, to);
             adapter.setViewBinder(new SimpleAdapter.ViewBinder() {
+                private String strStoreName = "";
                 @Override
                 public boolean setViewValue(View view, Object data, String textRepresentation) {
                     int id = view.getId();
@@ -382,15 +385,22 @@ public class FemaleStoreMapListActivity extends AppCompatActivity implements Nav
                         case R.id.rowTvStoreName:
                             TextView tvStoreName = (TextView) view;
                             tvStoreName.setText(strData);
+                            strStoreName = strData;
                             return true;
                         case R.id.rowTvStoreShortPr:
                             TextView rowTvStoreShortPr = (TextView) view;
                             rowTvStoreShortPr.setText(Tools.replaceBr(strData));
                             return true;
                         case R.id.rowBtStoreDetail:
+                            Button btStoreDetail = (Button) view;
+                            btStoreDetail.setTag(strData);
+                            return true;
                         case R.id.rowBtStoreReservation:
-                            Button btStore = (Button) view;
-                            btStore.setTag(strData);
+                            Button btStoreReservation = (Button) view;
+                            StoreMapListReservationButtonTag reservationButtonTag = new StoreMapListReservationButtonTag();
+                            reservationButtonTag.setId(strData);
+                            reservationButtonTag.setName(strStoreName);
+                            btStoreReservation.setTag(reservationButtonTag);
                             return true;
                     }
                     return false;
@@ -403,6 +413,7 @@ public class FemaleStoreMapListActivity extends AppCompatActivity implements Nav
                     Intent intent = new Intent(FemaleStoreMapListActivity.this, FemaleStoreDetailsActivity.class);
                     Map<String, String> map = (Map<String, String>) adapter.getItem(position);
                     intent.putExtra("id", map.get("id"));
+                    intent.putExtra("name", map.get("name"));
                     startActivity(intent);
                 }
             });

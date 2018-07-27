@@ -5,6 +5,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+/**
+ * staticメソッドを集めたクラス.
+ *
+ * @author Taiga Hirai
+ */
 public class Tools {
 
     public static String is2String(InputStream is) throws IOException {
