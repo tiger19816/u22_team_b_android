@@ -18,14 +18,16 @@
             android:id="@+id/etMail"
             android:hint="@string/tv_login_id"
             android:layout_width="match_parent"
-            android:layout_height="50dp" />
+            android:layout_height="50dp"
+            android:inputType="textEmailAddress"/>
 
         <EditText
             android:id="@+id/etPassword"
             android:hint="@string/tv_login_pass"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginTop="40dp"/>
+            android:layout_marginTop="40dp"
+            android:inputType="textPassword"/>
 
         <Button
             android:onClick="onUserLoginClick"

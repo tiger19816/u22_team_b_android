@@ -205,7 +205,8 @@ public class FemaleReservationListActivity extends AppCompatActivity implements 
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Intent intent = new Intent(FemaleReservationListActivity.this, FemaleStoreDetailsActivity.class);
                         Map<String, String> map = (Map<String, String>) adapter.getItem(position);
-                        intent.putExtra("maleId", map.get("storeName"));
+//                        intent.putExtra("maleId", map.get("storeName"));
+                        intent.putExtra("id", "kbzg701");
 //                        intent.putExtra("maleId", _id);
                         startActivity(intent);
                     }
