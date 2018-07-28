@@ -73,9 +73,9 @@
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="0.8"
-                android:onClick="onDateClick"
+                android:focusable="false"
                 android:inputType="date"
-                android:focusable="false" />
+                android:onClick="onDateClickDialog" />
         </LinearLayout>
 
         <LinearLayout
@@ -95,7 +95,8 @@
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="0.8"
-                android:focusable="false" />
+                android:focusable="false"
+                android:onClick="onTimeClickDialog" />
 
         </LinearLayout>
 
