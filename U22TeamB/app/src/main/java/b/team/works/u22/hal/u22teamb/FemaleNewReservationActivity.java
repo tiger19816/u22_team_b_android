@@ -1,6 +1,7 @@
 package b.team.works.u22.hal.u22teamb;
 
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import java.text.ParseException;
@@ -67,7 +69,7 @@ public class FemaleNewReservationActivity extends AppCompatActivity {
     /**
      * 日付選択ダイアログ表示ボタンが押された時のイベント処理用メソッド。
      */
-    public void onDateClick(View view){
+    public void onDateClickDialog(View view){
         EditText etDate = findViewById(R.id.etDate);
         String strDate = etDate.getText().toString();
         if(!"".equals(strDate)) {
@@ -101,10 +103,36 @@ public class FemaleNewReservationActivity extends AppCompatActivity {
     }
 
     /**
+     * 時間選択ダイアログ表示ボタンが押された時のイベント処理用メソッド。
+     *
+     * @param view 画面部品。
+     */
+    public void onTimeClickDialog(View view) {
+        TimePickerDialog dialog = new TimePickerDialog(FemaleNewReservationActivity.this, new TimePickerDialogTimeSetListener(), 0, 0, true);
+        dialog.show();
+    }
+
+
+    /**
+     * 時間選択ダイアログの完了ボタンが押された時処理が記述されたメンバクラス。
+     */
+    private class TimePickerDialogTimeSetListener implements TimePickerDialog.OnTimeSetListener {
+
+        @Override
+        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+            String time = hourOfDay + "時" + minute + "分";
+            EditText etTime = findViewById(R.id.etTime);
+            etTime.setText(time);
+        }
+    }
+
+    /**
      * 次へボタンがクリックされた時。
      * @param view
      */
     public void onFinishReservationClick(View view){
+
+        reservation.setHasNoError(true);
 
         Spinner spMenu = findViewById(R.id.spMenu);
         reservation.setMenuNo(spMenu.getSelectedItemPosition() + "");
