@@ -1,6 +1,11 @@
 package b.team.works.u22.hal.u22teamb;
 
+import android.util.Log;
+
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Reservation implements Serializable {
 
@@ -52,6 +57,10 @@ public class Reservation implements Serializable {
 
     public void setMenuNo(String menuNo) {
         this.menuNo = menuNo;
+        if("0".equals(menuNo)) {
+            this.errorMenuNo = "メニューを選択してください。";
+            this.hasNoError = false;
+        }
     }
 
     public String getDate() {
@@ -60,7 +69,11 @@ public class Reservation implements Serializable {
 
     public void setDate(String date) {
         this.date = date;
-    }
+        if("".equals(date)) {
+            this.errorDate = "日付を選択してください。";
+            this.hasNoError = false;
+        }
+     }
 
     public String getTime() {
         return time;
@@ -68,6 +81,10 @@ public class Reservation implements Serializable {
 
     public void setTime(String time) {
         this.time = time;
+        if("".equals(time)) {
+            this.errorTime = "時刻を選択してください。";
+            this.hasNoError = false;
+        }
     }
 
     public String getErrorMenuNo() {
@@ -100,5 +117,23 @@ public class Reservation implements Serializable {
 
     public void setHasNoError(boolean hasError) {
         this.hasNoError = hasError;
+    }
+
+    /**
+     *yyyy年MM年dd日からyyyy-MM-ddに変換。
+     * @return
+     */
+    public String getDataConversion(){
+        String strData = "";
+        SimpleDateFormat dfBirthday01 = new SimpleDateFormat("yyyy年MM月dd日 HH時mm分");
+        SimpleDateFormat dfBirthday02 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        try {
+            Date d = dfBirthday01.parse(date +  " " + time);
+            strData = dfBirthday02.format(d);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            Log.e("データ変換失敗", "Femaleクラスの時。");
+        }
+        return strData;
     }
 }
