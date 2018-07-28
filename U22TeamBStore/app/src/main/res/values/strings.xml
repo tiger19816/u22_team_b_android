@@ -1,3 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">U22TeamBStore</string>
+
+    <!-- 店情報 -->
+    <string name="tv_shop_id">店舗ID</string>
+    <string name="tv_shop_name">店舗名</string>
+    <string name="tv_phonetic">店舗名（カナ）</string>
+    <string name="tv_open_time">営業時間</string>
+    <string name="tv_tel">電話番号</string>
+    <string name="tv_address">住所</string>
+    <string name="tv_average_budget">平均予算</string>
+    <string name="tv_point_latitude">緯度</string>
+    <string name="tv_point_longitude">経度</string>
+    <string name="tv_lunch_service">ランチ営業</string>
+    <string name="rb_lunch_service_available">有</string>
+    <string name="rb_lunch_service_not_available">無</string>
+    <string name="tv_non_smoking_seat">禁煙席</string>
+    <string name="rb_non_smoking_seat_available">有</string>
+    <string name="rb_non_smoking_seat_not_available">無</string>
+    <string name="tv_card_usage">カード利用</string>
+    <string name="rb_card_usage_available">有</string>
+    <string name="rb_card_usage_not_available">無</string>
+    <string name="tv_image_1">店舗画像01</string>
+    <string name="tv_image_2">店舗画像02</string>
+    <string name="tv_password">パスワード</string>
+
+    <!-- フリーワードテーブル -->
+    <string name="tv_no">項番</string>
+    <string name="tv_free_name">フリーワード</string>
+
+    <string name="tv_new_register">新規登録画面</string>
+    <string name="tv_confirm">確認画面</string>
+    <string name="bt_confirm">確認</string>
+    <string name="bt_send">送信</string>
+    <string name="bt_back">戻る</string>
 </resources>
