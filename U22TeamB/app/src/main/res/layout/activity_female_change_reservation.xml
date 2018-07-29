@@ -31,6 +31,7 @@
             android:gravity="center_vertical"/>
 
         <EditText
+            android:id="@+id/tvStoreName"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_weight="0.7"
@@ -45,8 +46,10 @@
         android:layout_marginTop="15dp"/>
 
     <Spinner
+        android:id="@+id/spMenu"
         android:layout_width="match_parent"
-        android:layout_height="50dp"></Spinner>
+        android:layout_height="50dp"
+        android:entries="@array/sp_reservation_store_menu_list"/>
 
     <TextView
         android:text="予約時間"
@@ -67,9 +70,12 @@
             android:layout_weight="0.2"/>
 
         <EditText
+            android:id="@+id/etDate"
+            android:onClick="onDateClickDialog"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:layout_weight="0.8"/>
+            android:layout_weight="0.8"
+            android:focusable="false"/>
 
     </LinearLayout>
 
@@ -83,12 +89,15 @@
             android:text="時間"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:layout_weight="0.2"/>
+            android:layout_weight="0.2" />
 
         <EditText
+            android:id="@+id/etTime"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:layout_weight="0.8"/>
+            android:layout_weight="0.8"
+            android:onClick="onTimeClickDialog"
+            android:focusable="false"/>
 
     </LinearLayout>
 
