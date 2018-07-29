@@ -15,9 +15,11 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -39,6 +41,8 @@ public class FemaleChangeReservationActivity extends AppCompatActivity {
     private static final String LOGIN_URL = Word.RESERVATION_DATA_URL;
     private String reservationId;
     private String storeId;
+    private String SIGNAL_VERSION = "START";
+    private Reservation reservation;
 
     private Calendar cal;
     private int nowYear;
@@ -70,11 +74,60 @@ public class FemaleChangeReservationActivity extends AppCompatActivity {
         this.reservationId = intent.getStringExtra("reservationId");
         this.storeId = intent.getStringExtra("storeId");
 
+        this.SIGNAL_VERSION = "START";
+
         //非同期処理を開始する。
         ReservationTaskReceiver receiver = new ReservationTaskReceiver();
         //ここで渡した引数はLoginTaskReceiverクラスのdoInBackground(String... params)で受け取れる。
-        receiver.execute(LOGIN_URL , reservationId );
+        receiver.execute(LOGIN_URL , "false" , reservationId );
 
+    }
+
+    public void onReservationUpdateClick(View view){
+
+        this.SIGNAL_VERSION = "UPDATE";
+        Boolean isUpdate = false;
+
+        Reservation reservation2 = new Reservation();
+
+        Spinner spMenu = findViewById(R.id.spMenu);
+        reservation2.setMenuNo(spMenu.getSelectedItemPosition() + "");
+        String menuNo = "";
+        if(!reservation.getMenuNo().equals(reservation2.getMenuNo())){
+            menuNo = reservation2.getMenuNo();
+            isUpdate = true;
+        }
+
+        EditText etDate = findViewById(R.id.etDate);
+        reservation2.setDate(etDate.getText().toString());
+        String date = "";
+        if(!reservation.getDate().equals(reservation2.getDate())){
+            date = reservation2.getDate();
+            isUpdate = true;
+        }
+
+        EditText etTime = findViewById(R.id.etTime);
+        reservation2.setTime(etTime.getText().toString());
+        String time = "";
+        if(!reservation.getTime().equals(reservation2.getTime())){
+            time = reservation2.getTime();
+            isUpdate = true;
+        }
+
+        TextView tvSubtotal = findViewById(R.id.tvSubtotal);
+        tvSubtotal.setText("650");
+
+        TextView tvTotal = findViewById(R.id.tvTotal);
+        tvTotal.setText("650");
+
+        if(reservation2.isHasNoError()) {
+            //非同期処理を開始する。
+            ReservationTaskReceiver receiver = new ReservationTaskReceiver();
+            //ここで渡した引数はLoginTaskReceiverクラスのdoInBackground(String... params)で受け取れる。
+            receiver.execute(LOGIN_URL, String.valueOf(isUpdate),  reservationId , menuNo , date , time);
+        }else{
+            Toast.makeText(FemaleChangeReservationActivity.this , "入力チェック完了" , Toast.LENGTH_SHORT).show();
+        }
     }
 
     /**
@@ -95,10 +148,21 @@ public class FemaleChangeReservationActivity extends AppCompatActivity {
         @Override
         public String doInBackground(String... params) {
             String urlStr = params[0];
-            String id = params[1];
 
-            //POSTで送りたいデータ(予約ID)
-            String postData = "id=" + id;
+            String postData = "";
+            if("START".equals(SIGNAL_VERSION)) {
+                String isStart = params[1];
+                String id = params[2];
+                //POSTで送りたいデータ(予約ID)
+                 postData = "version" + isStart + "&id=" + id;
+            }else{
+                String isStart = params[1];
+                String id = params[2];
+                String menuNo = params[3];
+                String date = params[4];
+                String time = params[5];
+                postData = "version" + isStart + "&id=" + id + "&menuNo=" + menuNo + "&date=" + date + "&time=" + time;
+            }
 
             HttpURLConnection con = null;
             InputStream is = null;
@@ -173,36 +237,52 @@ public class FemaleChangeReservationActivity extends AppCompatActivity {
         @Override
         public void onPostExecute(String result) {
             try {
-                JSONObject rootJSON = new JSONObject(result);
 
-                //予約情報
+                if("START".equals(SIGNAL_VERSION)) {
 
-                //データ変換用クラス。
-                DataConversion dataConversion = new DataConversion();
+                    JSONObject rootJSON = new JSONObject(result);
 
-                String reservationId = rootJSON.getString("reservationId");
-                String storeId = rootJSON.getString("shopId");
+                    //予約情報
+                    reservation = new Reservation();
 
+                    //データ変換用クラス。
+                    DataConversion dataConversion = new DataConversion();
 
-                TextView tvStoreName = findViewById(R.id.tvStoreName);
-                String storeName = rootJSON.getString("shopName");
-                tvStoreName.setText(storeName);
+                    String reservationId = rootJSON.getString("reservationId");
+                    reservation.setId(reservationId);
 
-                Spinner spMenu = findViewById(R.id.spMenu);
-                String menuNo = rootJSON.getString("menuNo");
+                    String storeId = rootJSON.getString("shopId");
 
+                    TextView tvStoreName = findViewById(R.id.tvStoreName);
+                    String storeName = rootJSON.getString("shopName");
+                    reservation.setName(storeName);
+                    tvStoreName.setText(storeName);
 
+                    Spinner spMenu = findViewById(R.id.spMenu);
+                    String menuNo = rootJSON.getString("menuNo");
+                    reservation.setMenuNo(menuNo);
+                    spMenu.setSelection(Integer.parseInt(menuNo));
 
-                EditText etDate = findViewById(R.id.etDate);
-                String date = rootJSON.getString("dateTime");
-                date = dataConversion.getDataConversion02(date);
-                etDate.setText(date);
+                    EditText etDate = findViewById(R.id.etDate);
+                    String date = rootJSON.getString("dateTime");
+                    reservation.setDate(date);
+                    date = dataConversion.getDataConversion02(date);
+                    etDate.setText(date);
 
-                EditText etTime = findViewById(R.id.etTime);
-                String time = rootJSON.getString("dateTime");
-                time = dataConversion.getTimeConversion02(time);
-                etTime.setText(time);
+                    EditText etTime = findViewById(R.id.etTime);
+                    String time = rootJSON.getString("dateTime");
+                    reservation.setTime(time);
+                    time = dataConversion.getTimeConversion02(time);
+                    etTime.setText(time);
 
+                    TextView tvSubtotal = findViewById(R.id.tvSubtotal);
+                    tvSubtotal.setText("650");
+
+                    TextView tvTotal = findViewById(R.id.tvTotal);
+                    tvTotal.setText("650");
+                }
+                else{
+                }
             }
             catch (JSONException ex) {
                 Log.e(DEBUG_TAG, "JSON解析失敗", ex);
