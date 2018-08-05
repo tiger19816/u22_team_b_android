@@ -173,6 +173,7 @@ public class FemaleHistoryListActivity extends AppCompatActivity  implements Nav
                     map.put("storeName" , data.getString("storeName"));
                     map.put("historyPrice" , data.getString("historyPrice"));
                     map.put("historyDate" , data.getString("historyDate"));
+                    map.put("storeId" , data.getString("storeId"));
                     _list.add(map);
                 }
 
@@ -207,8 +208,8 @@ public class FemaleHistoryListActivity extends AppCompatActivity  implements Nav
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Intent intent = new Intent(FemaleHistoryListActivity.this, FemaleStoreDetailsActivity.class);
-//                        Map<String, String> map = (Map<String, String>) marker.getTag();
-                        intent.putExtra("id", "kbzg701");
+                        Map<String, String> map = (Map<String, String>) adapter.getItem(position);
+                        intent.putExtra("id", map.get("storeId"));
                         startActivity(intent);
                     }
                 });

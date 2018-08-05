@@ -174,6 +174,8 @@ public class FemaleReservationListActivity extends AppCompatActivity implements 
                     Map map = new HashMap<String , Object>();
                     map.put("storeName" , data.getString("storeName"));
                     map.put("reservationDate" , data.getString("reservationDate"));
+                    map.put("reservationId" , data.getString("reservationId"));
+                    map.put("storeId" , data.getString("storeId"));
                     _list.add(map);
                 }
 
@@ -205,10 +207,8 @@ public class FemaleReservationListActivity extends AppCompatActivity implements 
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Intent intent = new Intent(FemaleReservationListActivity.this, FemaleChangeReservationActivity.class);
                         Map<String, String> map = (Map<String, String>) adapter.getItem(position);
-//                        intent.putExtra("maleId", map.get("storeName"));
-                        intent.putExtra("reservationId" , "1");
-                        intent.putExtra("storeId", "kbzg701");
-                        intent.putExtra("storeName", "店舗名");
+                        intent.putExtra("storeId", map.get("storeId"));
+                        intent.putExtra("reservationId" , map.get("reservationId"));
                         startActivity(intent);
                     }
                 });

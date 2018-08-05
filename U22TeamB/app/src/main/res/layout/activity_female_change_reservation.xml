@@ -30,7 +30,7 @@
             android:layout_weight="0.3"
             android:gravity="center_vertical"/>
 
-        <EditText
+        <TextView
             android:id="@+id/tvStoreName"
             android:layout_width="0dp"
             android:layout_height="40dp"

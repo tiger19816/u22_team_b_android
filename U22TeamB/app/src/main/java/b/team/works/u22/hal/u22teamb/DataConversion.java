@@ -29,7 +29,9 @@ public class DataConversion {
     public String getDataConversion01(String date){
         String strData = "";
         try {
+            Log.e("確認" , date);
             Date d = dfDate01.parse(date);
+            Log.e("確認" , String.valueOf(d));
             strData = dfDate02.format(d);
         } catch (ParseException e) {
             e.printStackTrace();
@@ -63,8 +65,7 @@ public class DataConversion {
     public String getTimeConversion01(String date){
         String strData = "";
         try {
-            Log.e("日" , date);
-            Date d = dfTime02.parse(date);
+            Date d = dfTime01.parse(date);
             strData = dfTime02.format(d);
         } catch (ParseException e) {
             e.printStackTrace();

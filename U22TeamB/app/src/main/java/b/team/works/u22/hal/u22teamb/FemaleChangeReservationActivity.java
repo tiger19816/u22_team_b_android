@@ -72,6 +72,7 @@ public class FemaleChangeReservationActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         this.reservationId = intent.getStringExtra("reservationId");
+        Log.e("クリックした予約ID" , reservationId);
         this.storeId = intent.getStringExtra("storeId");
 
         this.SIGNAL_VERSION = "START";
@@ -89,6 +90,7 @@ public class FemaleChangeReservationActivity extends AppCompatActivity {
         Boolean isUpdate = false;
 
         Reservation reservation2 = new Reservation();
+        DataConversion dataConversion = new DataConversion();
 
         Spinner spMenu = findViewById(R.id.spMenu);
         reservation2.setMenuNo(spMenu.getSelectedItemPosition() + "");
@@ -99,7 +101,7 @@ public class FemaleChangeReservationActivity extends AppCompatActivity {
         }
 
         EditText etDate = findViewById(R.id.etDate);
-        reservation2.setDate(etDate.getText().toString());
+        reservation2.setDate(dataConversion.getDataConversion01(etDate.getText().toString()));
         String date = "";
         if(!reservation.getDate().equals(reservation2.getDate())){
             date = reservation2.getDate();
@@ -107,7 +109,7 @@ public class FemaleChangeReservationActivity extends AppCompatActivity {
         }
 
         EditText etTime = findViewById(R.id.etTime);
-        reservation2.setTime(etTime.getText().toString());
+        reservation2.setTime(dataConversion.getTimeConversion01(etTime.getText().toString()));
         String time = "";
         if(!reservation.getTime().equals(reservation2.getTime())){
             time = reservation2.getTime();
@@ -154,14 +156,14 @@ public class FemaleChangeReservationActivity extends AppCompatActivity {
                 String isStart = params[1];
                 String id = params[2];
                 //POSTで送りたいデータ(予約ID)
-                 postData = "version" + isStart + "&id=" + id;
+                 postData = "version=" + isStart + "&id=" + id;
             }else{
                 String isStart = params[1];
                 String id = params[2];
                 String menuNo = params[3];
                 String date = params[4];
                 String time = params[5];
-                postData = "version" + isStart + "&id=" + id + "&menuNo=" + menuNo + "&date=" + date + "&time=" + time;
+                postData = "version=" + isStart + "&id=" + id + "&menuNo=" + menuNo + "&date=" + date + "&time=" + time;
             }
 
             HttpURLConnection con = null;
@@ -282,6 +284,13 @@ public class FemaleChangeReservationActivity extends AppCompatActivity {
                     tvTotal.setText("650");
                 }
                 else{
+                    JSONObject rootJSON = new JSONObject(result);
+                    Boolean executionResult = rootJSON.getBoolean("result");
+                    if(executionResult){
+                        Toast.makeText(FemaleChangeReservationActivity.this , "変更完了" , Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(FemaleChangeReservationActivity.this , "変更されませんでした。" , Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
             catch (JSONException ex) {
