@@ -2,6 +2,7 @@ package b.team.works.u22.hal.u22teamb;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -34,7 +35,7 @@ public class FemaleMyPageActivity extends AppCompatActivity implements Navigatio
      * URLを入れる定数.
      */
     private static final String LOGIN_URL = Word.USER_MYPAGE_URL;
-    private String _id = "1";
+    private String _id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,10 @@ public class FemaleMyPageActivity extends AppCompatActivity implements Navigatio
         setContentView(R.layout.activity_female_my_page);
 
         setTitle("MyPage");
+
+        //ユーザーIDの取得。
+        SharedPreferences setting = getSharedPreferences("USER" , 0);
+        _id = setting.getString("ID" , "");
 
         //ツールバー(レイアウトを変更可)。
         Toolbar toolbar = findViewById(R.id.toolbar);

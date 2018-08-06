@@ -42,6 +42,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //ユーザーIDの取得。
+        SharedPreferences setting = getSharedPreferences("USER" , 0);
+        _id = setting.getString("ID" , "");
+        if(_id != null){
+            Intent intent = new Intent(MainActivity.this, FemaleStoreMapListActivity.class);
+            startActivity(intent);
+        }
     }
 
     public void onUserLoginClick(View view){
@@ -170,15 +178,19 @@ public class MainActivity extends AppCompatActivity {
 
                 //DBチェックの結果により、画面遷移先を変更。
                 Intent intent;
+                SharedPreferences setting = getSharedPreferences("USER" , 0);
+                SharedPreferences.Editor editor = setting.edit();
                 if (userSex == 0) {
                     //妻がログインした時。
+                    editor.putString("ID" , userId);
+                    editor.commit();
                     intent = new Intent(MainActivity.this, FemaleStoreMapListActivity.class);
-                    intent.putExtra("femaleId", userId);
                     startActivity(intent);
                 } else if (userSex == 1) {
                     //夫がログインした時。
+                    editor.putString("ID" , userId);
+                    editor.commit();
                     intent = new Intent(MainActivity.this, MaleReservationListActivity.class);
-                    intent.putExtra("maleId", userId);
                     startActivity(intent);
                 } else {
                     Toast.makeText(MainActivity.this, "メールアドレスか、パスワードを間違えています。", Toast.LENGTH_SHORT).show();
