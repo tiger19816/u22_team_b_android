@@ -233,34 +233,6 @@ public class FemaleHistoryListActivity extends AppCompatActivity  implements Nav
     }
 
     /**
-     * リストビューのカスタムビューバインダークラス。
-     */
-    private class CustomViewBinder implements SimpleAdapter.ViewBinder{
-        @Override
-        public boolean setViewValue(View view , Object data , String textRepresentation){
-            int viewId = view.getId();
-            switch (viewId){
-                case R.id.tvStoreName:
-                    TextView tvStoreName = (TextView) view;
-                    String strStoreName = (String) data;
-                    tvStoreName.setText(strStoreName);
-                    return true;
-                case R.id.tvPrice:
-                    TextView tvPrice = (TextView) view;
-                    String strPrice = (String) data;
-                    tvPrice.setText(strPrice);
-                    return true;
-                case R.id.tvHistoryDate:
-                    TextView tvReservationDate = (TextView) view;
-                    String strReservationDate = (String) data;
-                    tvReservationDate.setText(strReservationDate);
-                    return true;
-            }
-            return false;
-        }
-    }
-
-    /**
      * レフトナビ以外をクリックした時の動き。
      */
     @Override

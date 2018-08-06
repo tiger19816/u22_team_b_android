@@ -253,8 +253,6 @@ public class FemaleChangeReservationActivity extends AppCompatActivity {
                     String reservationId = rootJSON.getString("reservationId");
                     reservation.setId(reservationId);
 
-                    String storeId = rootJSON.getString("shopId");
-
                     TextView tvStoreName = findViewById(R.id.tvStoreName);
                     String storeName = rootJSON.getString("shopName");
                     reservation.setName(storeName);

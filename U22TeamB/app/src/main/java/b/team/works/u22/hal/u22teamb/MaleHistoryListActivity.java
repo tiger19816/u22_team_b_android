@@ -34,7 +34,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MaleHistoryListActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MaleHistoryListActivity extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener {
 
     private static final String LOGIN_URL = Word.HISTORY_LIST_URL;
     private String _id = "1";
@@ -173,6 +173,7 @@ public class MaleHistoryListActivity extends AppCompatActivity implements Naviga
                     map.put("storeName" , data.getString("storeName"));
                     map.put("historyPrice" , data.getString("historyPrice"));
                     map.put("historyDate" , data.getString("historyDate"));
+                    map.put("storeId" , data.getString("storeId"));
                     _list.add(map);
                 }
 
@@ -207,8 +208,8 @@ public class MaleHistoryListActivity extends AppCompatActivity implements Naviga
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Intent intent = new Intent(MaleHistoryListActivity.this, FemaleStoreDetailsActivity.class);
-//                        Map<String, String> map = (Map<String, String>) marker.getTag();
-                        intent.putExtra("id", "kbzg701");
+                        Map<String, String> map = (Map<String, String>) adapter.getItem(position);
+                        intent.putExtra("id", map.get("storeId"));
                         startActivity(intent);
                     }
                 });
@@ -230,7 +231,6 @@ public class MaleHistoryListActivity extends AppCompatActivity implements Naviga
             return sb.toString();
         }
     }
-
 
     /**
      * レフトナビ以外をクリックした時の動き。
@@ -271,4 +271,5 @@ public class MaleHistoryListActivity extends AppCompatActivity implements Naviga
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }
