@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MaleHistoryEditActivity">
+    tools:context=".FemaleStoreDetailsActivity">
 
     <include
         android:id="@+id/include"
@@ -21,6 +21,12 @@
         android:textSize="20dp"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="5dp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onNextReservationClick"
+        android:text="@string/bt_next_reservation_page" />
 
     <android.support.design.widget.TabLayout
         android:id="@+id/tabs"

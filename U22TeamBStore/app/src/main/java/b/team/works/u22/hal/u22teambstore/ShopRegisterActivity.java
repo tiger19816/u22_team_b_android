@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -45,6 +46,14 @@ public class ShopRegisterActivity extends AppCompatActivity {
 
         //各部品取得
         findViewAll();
+
+        setTitle("新規登録");
+
+        // アクションバーに前画面に戻る機能をつける
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
     }
 
     /**
@@ -191,5 +200,20 @@ public class ShopRegisterActivity extends AppCompatActivity {
         }
 
         return flag;
+    }
+
+    /**
+     * アクションバー。
+     * @param item
+     * @return boolean
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
