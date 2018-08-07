@@ -41,7 +41,7 @@ public class FullDialogFragment extends DialogFragment {
                 case DialogInterface.BUTTON_NEUTRAL:
                     break;
                 case DialogInterface.BUTTON_NEGATIVE:
-                    intent = new Intent(parent,MaleQrCodeReadingActivity.class);
+                    intent = new Intent(parent,MaleAdditionalInformationEntryActivity.class);
                     startActivity(intent);
             }
         }

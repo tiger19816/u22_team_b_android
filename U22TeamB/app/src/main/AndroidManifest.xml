@@ -60,7 +60,6 @@
         <activity android:name=".FemaleStoreDetailsActivity" />
         <activity android:name=".MaleEnterShopActivity" />
         <activity android:name=".MaleHistoryEditActivity" />
-        <activity android:name=".MaleQrCodeReadingActivity"></activity>
     </application>
 
 </manifest>
