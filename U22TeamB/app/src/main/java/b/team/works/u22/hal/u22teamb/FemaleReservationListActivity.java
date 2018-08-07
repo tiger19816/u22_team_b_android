@@ -297,7 +297,12 @@ public class FemaleReservationListActivity extends AppCompatActivity implements 
             intent = new Intent(FemaleReservationListActivity.this,FemaleMyPageActivity.class);
             startActivity(intent);
         }else if (id == R.id.nav_logout){
+            SharedPreferences setting = getSharedPreferences("USER" , 0);
+            SharedPreferences.Editor editor = setting.edit();
+            editor.remove("ID");
+            editor.commit();
             intent = new Intent(FemaleReservationListActivity.this,MainActivity.class);
+            finish();
             startActivity(intent);
         }
 

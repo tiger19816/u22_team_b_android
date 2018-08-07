@@ -274,7 +274,12 @@ public class FemaleHistoryListActivity extends AppCompatActivity  implements Nav
             intent = new Intent(FemaleHistoryListActivity.this,FemaleMyPageActivity.class);
             startActivity(intent);
         }else if (id == R.id.nav_logout){
+            SharedPreferences setting = getSharedPreferences("USER" , 0);
+            SharedPreferences.Editor editor = setting.edit();
+            editor.remove("ID");
+            editor.commit();
             intent = new Intent(FemaleHistoryListActivity.this,MainActivity.class);
+            finish();
             startActivity(intent);
         }
 
