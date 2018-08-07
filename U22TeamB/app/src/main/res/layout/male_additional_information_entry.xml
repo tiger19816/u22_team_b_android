@@ -1,117 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <include
+        layout="@layout/app_bar_main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="25sp"
-        android:orientation="vertical">
+        android:layout_height="wrap_content" />
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/tvTitleEdit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:gravity="center_horizontal"
-                android:text="パスワードの設定"
-                android:textSize="25sp" />
-        </FrameLayout>
-
-        <!-- 　　　　　　　　　　　　　　　　　パスワードの入力説明＆入力　　　　　　　　　　　　　　　　　　　　　　　　-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="25sp"
-            android:orientation="horizontal">
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tvPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
                 android:layout_gravity="center_vertical"
-                android:text="@string/PasswordInputDescription"
-                android:textSize="15sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="0sp"
-            android:orientation="horizontal">
+                android:text="@string/PasswordInputDescription"/>
 
             <EditText
                 android:id="@+id/etInputPassword"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
                 android:hint="@string/female_new_password"
-                android:layout_weight="1"
                 android:inputType="textPassword"/>
-
-        </LinearLayout>
-        <!-- 　　　　　　　　　　　　　　　　　パスワードの再入力説明＆再入力　　　　　　　　　　　　　　　　　　　　　　　　-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="25sp"
-            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/tvPasswordRe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
                 android:layout_gravity="center_vertical"
-                android:text="@string/RePasswordInputDescription"
-                android:textSize="15sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="0sp"
-            android:orientation="horizontal">
+                android:text="@string/RePasswordInputDescription"/>
 
             <EditText
                 android:id="@+id/etInputPasswordRe"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
                 android:hint="@string/female_new_password"
-                android:layout_weight="1"
                 android:inputType="textPassword"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_marginTop="35sp"
-            android:layout_marginBottom="30sp"
-            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/btClick"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
-                android:background="@drawable/button_background"
-                android:textSize="35sp"
                 android:text="@string/female_new_registration"/>
 
         </LinearLayout>
 
-    </LinearLayout>
-</ScrollView>
+    </ScrollView>
+
+</LinearLayout>
