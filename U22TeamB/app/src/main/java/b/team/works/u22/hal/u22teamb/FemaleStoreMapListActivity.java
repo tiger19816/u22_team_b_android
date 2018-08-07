@@ -2,6 +2,7 @@ package b.team.works.u22.hal.u22teamb;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -168,7 +169,13 @@ public class FemaleStoreMapListActivity extends AppCompatActivity implements Nav
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         }else if (id == R.id.nav_logout){
+            //ユーザーID削除。
+            SharedPreferences setting = getSharedPreferences("USER" , 0);
+            SharedPreferences.Editor editor = setting.edit();
+            editor.remove("ID");
+            editor.commit();
             intent = new Intent(FemaleStoreMapListActivity.this,MainActivity.class);
+            finish();
             startActivity(intent);
         }
 
