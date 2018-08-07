@@ -132,7 +132,7 @@ public class Reservation implements Serializable {
             strData = dfBirthday02.format(d);
         } catch (ParseException e) {
             e.printStackTrace();
-            Log.e("データ変換失敗", "Femaleクラスの時。");
+            Log.e("データ変換失敗", "予約用クラスの時。");
         }
         return strData;
     }

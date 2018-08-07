@@ -41,7 +41,6 @@ public class MaleEnterShopActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String storeName = intent.getStringExtra("storeName");
         _id = intent.getStringExtra("maleId");
-        _id = "1";
 
         TextView tvReservationStoreName = findViewById(R.id.tvReservationStoreName);
         tvReservationStoreName.setText(storeName);

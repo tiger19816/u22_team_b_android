@@ -1,6 +1,7 @@
 package b.team.works.u22.hal.u22teamb;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.support.design.widget.NavigationView;
@@ -41,7 +42,7 @@ import java.util.Map;
 public class MaleReservationListActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private static final String LOGIN_URL = Word.RESERVATION_LIST_URL;
-    private String _id = "1";
+    private String _id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +50,10 @@ public class MaleReservationListActivity extends AppCompatActivity implements Na
         setContentView(R.layout.activity_male_reservation_list);
 
         setTitle("予約一覧");
+
+        //ユーザーIDの取得。
+        SharedPreferences setting = getSharedPreferences("USER" , 0);
+        _id = setting.getString("ID" , "");
 
         //ツールバー(レイアウトを変更可)。
         Toolbar toolbar = findViewById(R.id.toolbar);

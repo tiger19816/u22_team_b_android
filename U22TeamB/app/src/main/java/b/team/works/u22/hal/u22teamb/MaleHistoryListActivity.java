@@ -1,6 +1,7 @@
 package b.team.works.u22.hal.u22teamb;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -34,10 +35,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MaleHistoryListActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MaleHistoryListActivity extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener {
 
     private static final String LOGIN_URL = Word.HISTORY_LIST_URL;
-    private String _id = "1";
+    private String _id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +46,10 @@ public class MaleHistoryListActivity extends AppCompatActivity implements Naviga
         setContentView(R.layout.activity_male_history_list);
 
         setTitle("履歴一覧");
+
+        //ユーザーIDの取得。
+        SharedPreferences setting = getSharedPreferences("USER" , 0);
+        _id = setting.getString("ID" , "");
 
         //ツールバー(レイアウトを変更可)。
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -173,6 +178,7 @@ public class MaleHistoryListActivity extends AppCompatActivity implements Naviga
                     map.put("storeName" , data.getString("storeName"));
                     map.put("historyPrice" , data.getString("historyPrice"));
                     map.put("historyDate" , data.getString("historyDate"));
+                    map.put("storeId" , data.getString("storeId"));
                     _list.add(map);
                 }
 
@@ -207,8 +213,8 @@ public class MaleHistoryListActivity extends AppCompatActivity implements Naviga
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Intent intent = new Intent(MaleHistoryListActivity.this, FemaleStoreDetailsActivity.class);
-//                        Map<String, String> map = (Map<String, String>) marker.getTag();
-                        intent.putExtra("id", "kbzg701");
+                        Map<String, String> map = (Map<String, String>) adapter.getItem(position);
+                        intent.putExtra("id", map.get("storeId"));
                         startActivity(intent);
                     }
                 });
@@ -230,7 +236,6 @@ public class MaleHistoryListActivity extends AppCompatActivity implements Naviga
             return sb.toString();
         }
     }
-
 
     /**
      * レフトナビ以外をクリックした時の動き。
@@ -271,4 +276,5 @@ public class MaleHistoryListActivity extends AppCompatActivity implements Naviga
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }
