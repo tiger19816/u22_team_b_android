@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         //ユーザーIDの取得。
         SharedPreferences setting = getSharedPreferences("USER" , 0);
         _id = setting.getString("ID" , "");
-        if("".equals(_id)){
+        if(!"".equals(_id)){
             Intent intent = new Intent(MainActivity.this, FemaleStoreMapListActivity.class);
             startActivity(intent);
         }
