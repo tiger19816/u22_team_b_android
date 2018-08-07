@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import com.google.zxing.integration.android.IntentIntegrator;
+
 public class MaleQrCodeReadingActivity extends AppCompatActivity {
 
     @Override
@@ -23,6 +25,9 @@ public class MaleQrCodeReadingActivity extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+
+        //QRコードリーダを起動する。
+        new IntentIntegrator(MaleQrCodeReadingActivity.this).initiateScan();
     }
 
     /**
