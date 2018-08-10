@@ -47,7 +47,8 @@
         <Spinner
             android:id="@+id/spMenu"
             android:layout_width="match_parent"
-            android:layout_height="50dp"></Spinner>
+            android:layout_height="50dp"
+            android:entries="@array/sp_reservation_store_menu_list" />
 
         <TextView
             android:text="@string/tv_reservation_datetime"
@@ -71,8 +72,10 @@
                 android:id="@+id/etDate"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
-                android:layout_weight="0.8"/>
-
+                android:layout_weight="0.8"
+                android:focusable="false"
+                android:inputType="date"
+                android:onClick="onDateClickDialog" />
         </LinearLayout>
 
         <LinearLayout
@@ -91,7 +94,9 @@
                 android:id="@+id/etTime"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
-                android:layout_weight="0.8"/>
+                android:layout_weight="0.8"
+                android:focusable="false"
+                android:onClick="onTimeClickDialog" />
 
         </LinearLayout>
 

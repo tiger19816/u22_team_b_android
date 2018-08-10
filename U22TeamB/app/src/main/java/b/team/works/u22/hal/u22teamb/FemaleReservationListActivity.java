@@ -1,6 +1,7 @@
 package b.team.works.u22.hal.u22teamb;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -37,7 +39,7 @@ import java.util.Map;
 public class FemaleReservationListActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private static final String LOGIN_URL = Word.RESERVATION_LIST_URL;
-    private String _id = "1";
+    private String _id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,10 @@ public class FemaleReservationListActivity extends AppCompatActivity implements 
         setContentView(R.layout.activity_female_reservation_list);
 
         setTitle("予約一覧");
+
+        //ユーザーIDの取得。
+        SharedPreferences setting = getSharedPreferences("USER" , 0);
+        _id = setting.getString("ID" , "");
 
         //ツールバー(レイアウトを変更可)。
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -173,15 +179,44 @@ public class FemaleReservationListActivity extends AppCompatActivity implements 
                     Map map = new HashMap<String , Object>();
                     map.put("storeName" , data.getString("storeName"));
                     map.put("reservationDate" , data.getString("reservationDate"));
+                    map.put("reservationId" , data.getString("reservationId"));
+                    map.put("storeId" , data.getString("storeId"));
                     _list.add(map);
                 }
 
-                String[] from = {"storeName" , "reservationDate"};
-                int[] to = {R.id.tvStoreName , R.id.tvReservationDate};
-                SimpleAdapter adapter = new SimpleAdapter(FemaleReservationListActivity.this , _list , R.layout.row_reservation , from , to);
-                adapter.setViewBinder(new CustomViewBinder());
+                String[] from = {"storeName", "reservationDate"};
+                int[] to = {R.id.tvStoreName, R.id.tvReservationDate};
+                final SimpleAdapter adapter = new SimpleAdapter(FemaleReservationListActivity.this, _list, R.layout.row_reservation, from, to);
+                adapter.setViewBinder(new SimpleAdapter.ViewBinder() {
+                    @Override
+                    public boolean setViewValue(View view, Object data, String textRepresentation) {
+                        int id = view.getId();
+                        String strData = (String) data;
+                        switch (id) {
+                            case R.id.tvStoreName:
+                                TextView tvStoreName = (TextView) view;
+                                tvStoreName.setText(strData);
+                                return true;
+                            case R.id.tvReservationDate:
+                                TextView rowTvStoreShortPr = (TextView) view;
+                                rowTvStoreShortPr.setText(Tools.replaceBr(strData));
+                                return true;
+                        }
+                        return false;
+                    }
+                });
                 ListView lvReservationList = findViewById(R.id.lvReservationList);
                 lvReservationList.setAdapter(adapter);
+                lvReservationList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Intent intent = new Intent(FemaleReservationListActivity.this, FemaleChangeReservationActivity.class);
+                        Map<String, String> map = (Map<String, String>) adapter.getItem(position);
+                        intent.putExtra("storeId", map.get("storeId"));
+                        intent.putExtra("reservationId" , map.get("reservationId"));
+                        startActivity(intent);
+                    }
+                });
 
             }
             catch (JSONException ex) {
