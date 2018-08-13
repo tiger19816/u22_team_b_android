@@ -52,6 +52,9 @@ import java.util.Map;
  */
 public class FemaleStoreDetailsActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener, StoreDetailsTab1Fragment.OnFragmentInteractionListener, StoreDetailsTab2Fragment.OnFragmentInteractionListener, OnMapReadyCallback {
 
+    public static final int MODE_FEMALE = 0;
+    public static final int MODE_MALE = 1;
+
     public String storeId;
     public GoogleMap mMap;
     public Map<String, String> map = new HashMap<>();
@@ -74,6 +77,12 @@ public class FemaleStoreDetailsActivity extends AppCompatActivity implements Vie
         //IDの取得
         Intent intent = getIntent();
         storeId = intent.getStringExtra("id");
+        int mode = intent.getIntExtra("mode", 0);
+
+        if(mode == MODE_MALE) {
+            Button btNextReservation = findViewById(R.id.btNextReservation);
+            btNextReservation.setVisibility(View.GONE);
+        }
 
         //xmlからTabLayoutの取得
         TabLayout tabLayout = findViewById(R.id.tabs);
