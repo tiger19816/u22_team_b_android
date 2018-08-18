@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String LOGIN_URL = Word.USER_LOGIN_URL;
     private String _id;
+    private Boolean _maleRegistered = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

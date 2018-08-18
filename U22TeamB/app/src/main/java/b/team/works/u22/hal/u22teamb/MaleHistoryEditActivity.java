@@ -69,7 +69,6 @@ public class MaleHistoryEditActivity extends AppCompatActivity implements ViewPa
         //IDの取得
         Intent intent = getIntent();
         storeId = intent.getStringExtra("id");
-        Log.e("送信された店舗ID" , storeId);
 
         //xmlからTabLayoutの取得
         TabLayout tabLayout = findViewById(R.id.tabs);
