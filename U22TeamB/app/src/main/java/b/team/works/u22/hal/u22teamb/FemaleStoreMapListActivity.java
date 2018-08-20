@@ -27,6 +27,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -60,6 +61,8 @@ public class FemaleStoreMapListActivity extends AppCompatActivity implements Nav
     private FloatingActionButton fab;
     private final static int DURATION = 400;    // アニメーションにかける時間(ミリ秒)
     private GoogleMap mMap;
+    private ArrayList<Marker> markers;
+    private String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +74,10 @@ public class FemaleStoreMapListActivity extends AppCompatActivity implements Nav
         mapFragment.getMapAsync(this);
 
         setTitle("店一覧");
+
+        //ユーザーIDの取得。
+        SharedPreferences setting = getSharedPreferences("USER" , 0);
+        id = setting.getString("ID" , "");
 
         //ツールバー(レイアウトを変更可)。
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -102,7 +109,6 @@ public class FemaleStoreMapListActivity extends AppCompatActivity implements Nav
         lvStoreList.startAnimation(closeAnimation);
     }
 
-
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
@@ -116,17 +122,11 @@ public class FemaleStoreMapListActivity extends AppCompatActivity implements Nav
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-//        LatLng sydney = new LatLng(34.699886, 135.493033);
-//        mMap.addMarker(new MarkerOptions().position(sydney).title("HAL大阪"));
-//        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-
         //非同期処理を開始する。
-        StoreMapTaskReceiver receiver = new StoreMapTaskReceiver();
+        UserLatLngTaskReceiver receiver = new UserLatLngTaskReceiver();
         //ここで渡した引数はLoginTaskReceiverクラスのdoInBackground(String... params)で受け取れる。
-        receiver.execute(Word.STORE_MAP_URL);
+        receiver.execute(Word.USER_LAT_LNG_URL);
     }
-
 
     /**
      * レフトナビ以外をクリックした時の動き。
@@ -232,6 +232,11 @@ public class FemaleStoreMapListActivity extends AppCompatActivity implements Nav
     public void onFabOpenListClick(View view) {
     }
 
+    /**
+     * ボタンが押された時の処理.
+     *
+     * @param view 画面部品。
+     */
     public void onButtonClick(View view) {
         int id = view.getId();
         Intent intent;
@@ -248,6 +253,129 @@ public class FemaleStoreMapListActivity extends AppCompatActivity implements Nav
                 intent.putExtra("name", reservationButtonTag.getName());
                 startActivity(intent);
                 break;
+            case R.id.btSurroundingStore:
+                Button btSurroundingStore = (Button) view;
+                btSurroundingStore.setVisibility(View.INVISIBLE);
+                for(Marker marker : markers) {
+                    marker.remove();
+                }
+                //カメラの位置を取得する。
+                CameraPosition position = mMap.getCameraPosition();
+                //非同期処理を開始する。
+                StoreMapTaskReceiver receiver = new StoreMapTaskReceiver();
+                //ここで渡した引数はLoginTaskReceiverクラスのdoInBackground(String... params)で受け取れる。
+                receiver.execute(Word.STORE_MAP_URL, position.target.latitude + "", position.target.longitude + "");
+                break;
+        }
+    }
+
+    /**
+     * 非同期通信を行うAsyncTaskクラスを継承したメンバクラス.
+     */
+    private class UserLatLngTaskReceiver extends AsyncTask<String, Void, String> {
+
+        private static final String DEBUG_TAG = "RestAccess";
+
+        /**
+         * 非同期に処理したい内容を記述するメソッド.
+         * このメソッドは必ず実装する必要がある。
+         *
+         * @param params String型の配列。（可変長）
+         * @return String型の結果JSONデータ。
+         */
+        @Override
+        public String doInBackground(String... params) {
+            String urlStr = params[0];
+
+            HttpURLConnection con = null;
+            InputStream is = null;
+            String result = "";
+            String postData = "id=" + id;
+
+            try {
+                URL url = new URL(urlStr);
+                con = (HttpURLConnection) url.openConnection();
+
+                //GET通信かPOST通信かを指定する。
+                con.setRequestMethod("POST");
+
+                //自動リダイレクトを許可するかどうか。
+                con.setInstanceFollowRedirects(false);
+
+                //時間制限。（ミリ秒単位）
+                con.setReadTimeout(10000);
+                con.setConnectTimeout(20000);
+
+//                con.connect();
+                con.setDoOutput(true);
+
+                //POSTデータ送信処理。InputStream処理よりも先に記述する。
+                OutputStream os = null;
+                try {
+                    os = con.getOutputStream();
+
+                    //送信する値をByteデータに変換する（UTF-8）
+                    os.write(postData.getBytes("UTF-8"));
+                    os.flush();
+                }
+                catch (IOException ex) {
+                    Log.e(DEBUG_TAG, "POST送信エラー", ex);
+                }
+                finally {
+                    if(os != null) {
+                        try {
+                            os.close();
+                        }
+                        catch (IOException ex) {
+                            Log.e(DEBUG_TAG, "OutputStream解放失敗", ex);
+                        }
+                    }
+                }
+
+                is = con.getInputStream();
+
+                result = Tools.is2String(is);
+            }
+            catch (MalformedURLException ex) {
+                Log.e(DEBUG_TAG, "URL変換失敗", ex);
+            }
+            catch (IOException ex) {
+                Log.e(DEBUG_TAG, "通信失敗", ex);
+            }
+            finally {
+                if(con != null) {
+                    con.disconnect();
+                }
+                if(is != null) {
+                    try {
+                        is.close();
+                    }
+                    catch (IOException ex) {
+                        Log.e(DEBUG_TAG, "InputStream解放失敗", ex);
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        @Override
+        public void onPostExecute(String result) {
+            final List<Map<String, String>> restList = new ArrayList<>();
+            String lat = "";
+            String lng = "";
+            try {
+                JSONObject rootJSON = new JSONObject(result);
+                lat = rootJSON.getString("lat");
+                lng = rootJSON.getString("lng");
+            } catch (JSONException ex) {
+                Log.e(DEBUG_TAG, "JSON解析失敗", ex);
+            }
+
+            //非同期処理を開始する。
+            StoreMapTaskReceiver receiver = new StoreMapTaskReceiver();
+            //ここで渡した引数はLoginTaskReceiverクラスのdoInBackground(String... params)で受け取れる。
+            receiver.execute(Word.STORE_MAP_URL, lat, lng);
         }
     }
 
@@ -268,11 +396,13 @@ public class FemaleStoreMapListActivity extends AppCompatActivity implements Nav
         @Override
         public String doInBackground(String... params) {
             String urlStr = params[0];
+            String lat = params[1];
+            String lon = params[2];
 
             HttpURLConnection con = null;
             InputStream is = null;
             String result = "";
-            String postData = "lat=34.699886&lon=135.493033";
+            String postData = "lat=" + lat + "&lon=" + lon;
 
             try {
                 URL url = new URL(urlStr);
@@ -365,10 +495,13 @@ public class FemaleStoreMapListActivity extends AppCompatActivity implements Nav
                 Log.e(DEBUG_TAG, "JSON解析失敗", ex);
             }
 
+            markers = new ArrayList<>();
+
             for(Map<String, String> map : restList) {
                 //マーカー表示
                 LatLng latLng = new LatLng(Float.parseFloat(map.get("latitude")), Float.parseFloat(map.get("longitude")));
-                mMap.addMarker(new MarkerOptions().position(latLng).title(map.get("name"))).setTag(map);
+                markers.add(mMap.addMarker(new MarkerOptions().position(latLng).title(map.get("name"))));
+                markers.get(markers.size() - 1).setTag(map);
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,15));
             }
 
@@ -380,6 +513,19 @@ public class FemaleStoreMapListActivity extends AppCompatActivity implements Nav
                     intent.putExtra("id", map.get("id"));
                     intent.putExtra("name", map.get("name"));
                     startActivity(intent);
+                }
+            });
+
+            mMap.setOnCameraIdleListener(new GoogleMap.OnCameraIdleListener() {
+                private boolean isNotFirst = false;
+
+                @Override
+                public void onCameraIdle() {
+                    if(isNotFirst) {
+                        Button btSurroundingStore = findViewById(R.id.btSurroundingStore);
+                        btSurroundingStore.setVisibility(View.VISIBLE);
+                    }
+                    isNotFirst = true;
                 }
             });
 
@@ -428,6 +574,9 @@ public class FemaleStoreMapListActivity extends AppCompatActivity implements Nav
                     startActivity(intent);
                 }
             });
+
+            mMap.setIndoorEnabled(false);
+            mMap.getUiSettings().setTiltGesturesEnabled(false);
         }
     }
 }

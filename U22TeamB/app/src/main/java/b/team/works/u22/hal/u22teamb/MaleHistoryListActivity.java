@@ -215,6 +215,7 @@ public class MaleHistoryListActivity extends AppCompatActivity  implements Navig
                         Intent intent = new Intent(MaleHistoryListActivity.this, FemaleStoreDetailsActivity.class);
                         Map<String, String> map = (Map<String, String>) adapter.getItem(position);
                         intent.putExtra("id", map.get("storeId"));
+                        intent.putExtra("mode", FemaleStoreDetailsActivity.MODE_MALE);
                         startActivity(intent);
                     }
                 });
