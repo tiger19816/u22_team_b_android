@@ -74,6 +74,7 @@
     <string name="female_registration_confirmation">奥様の情報</string>
 
     <!-- 画面06【妻】店の一覧表示-Map画面 -->
+    <string name="bt_surrounding_store">この周辺の店舗を表示</string>
     <string name="row_bt_store_detail">詳細</string>
     <string name="row_bt_store_reservation">予約</string>
 
