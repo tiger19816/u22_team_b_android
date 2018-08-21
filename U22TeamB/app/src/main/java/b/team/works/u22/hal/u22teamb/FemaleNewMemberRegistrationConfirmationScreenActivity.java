@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.app.Fragment;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -38,6 +39,7 @@ public class FemaleNewMemberRegistrationConfirmationScreenActivity extends AppCo
      */
     private static final String LOGIN_URL = "http://10.0.2.2:8080/U22Verification/Servlet";
 
+    private String _id;
 
     private String femaleName;
     private String femaleBirthday;
@@ -60,6 +62,7 @@ public class FemaleNewMemberRegistrationConfirmationScreenActivity extends AppCo
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.MyCustomTheme_Dark);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.female_new_member_registration_confirmation_screen);
 
@@ -273,12 +276,17 @@ public class FemaleNewMemberRegistrationConfirmationScreenActivity extends AppCo
             try {
                 JSONObject rootJSON = new JSONObject(result);
                 isInsert = rootJSON.getBoolean("result");
+                _id = rootJSON.getString("id");
             }
             catch (JSONException ex) {
                 Log.e(DEBUG_TAG, "JSON解析失敗", ex);
             }
             if (isInsert) {
                 Toast.makeText(FemaleNewMemberRegistrationConfirmationScreenActivity.this , "登録されました。" , Toast.LENGTH_SHORT).show();
+                SharedPreferences setting = getSharedPreferences("USER" , 0);
+                SharedPreferences.Editor editor = setting.edit();
+                editor.putString("ID" , _id);
+                editor.commit();
                 Intent intent = new Intent(FemaleNewMemberRegistrationConfirmationScreenActivity.this,FemaleStoreMapListActivity.class);
                 startActivity(intent);
             }else{

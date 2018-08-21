@@ -23,12 +23,14 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:gravity="center_horizontal"
-            android:text="@string/male_new_member"/>
+            android:text="@string/male_new_member"
+            style="@style/titleDuringText"/>
 
         <EditText
             android:id="@+id/etInputAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:hint="@string/female_new_place"
             android:inputType="text"/>
 
@@ -37,6 +39,7 @@
             android:onClick="onDateClick"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:hint="@string/male_birthday"
             android:inputType="date"/>
 
@@ -44,12 +47,14 @@
             android:id="@+id/etInputMail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:hint="@string/male_mail"
             android:inputType="textEmailAddress"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:orientation="horizontal">
 
             <EditText
@@ -70,6 +75,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:orientation="horizontal">
 
             <EditText
@@ -91,13 +97,16 @@
             android:id="@+id/spInputMaleOccupation"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:layout_marginTop="20dp"
             android:entries="@array/sp_male_profession"></Spinner>
 
         <Button
             android:onClick="onCardRegistrationClick"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/bt_female_check"/>
+            android:layout_marginTop="20dp"
+            android:text="@string/bt_female_check"
+            style="@style/femaleButton"/>
 
     </LinearLayout>
 

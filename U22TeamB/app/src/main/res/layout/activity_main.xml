@@ -13,7 +13,7 @@
         android:layout_weight="1"
         android:orientation="vertical"
         android:gravity="center">
-        
+
         <EditText
             android:id="@+id/etMail"
             android:hint="@string/tv_login_id"

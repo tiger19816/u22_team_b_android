@@ -217,7 +217,8 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="30sp"
-                android:text="@string/registration"/>
+                android:text="@string/registration"
+                style="@style/femaleButton"/>
 
         </LinearLayout>
 
