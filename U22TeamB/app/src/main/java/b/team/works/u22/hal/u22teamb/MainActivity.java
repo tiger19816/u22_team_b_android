@@ -44,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        setTheme(R.style.MyCustomTheme_Default);
+
         //ユーザーIDの取得。
         SharedPreferences setting = getSharedPreferences("USER" , 0);
         _id = setting.getString("ID" , "");

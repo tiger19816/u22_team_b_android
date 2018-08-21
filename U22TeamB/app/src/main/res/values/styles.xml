@@ -2,10 +2,6 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
     </style>
 
     <style name="CodeFont" parent="@android:style/TextAppearance.Medium">
@@ -15,42 +11,52 @@
         <item name="android:typeface">monospace</item>
     </style>
 
-  <!-- レフトナビ用 -->
+    <!-- レフトナビ用 -->
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <!-- 画面13【夫】夫側のパスワード設定-->
-    <style name="maleTopTitle" parent="maleTextBig">
-        <item name="android:textColor">#212121</item>
-    </style>
-    <style name="maleMain" >
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
+    <!-- 【夫】背景色 -->
+    <style name="maleBack" >
         <item name="android:background">#F2FFFF</item>
     </style>
-    <style name="maleMainButton" parent="maleTextMiddle" >
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
+
+    <!-- 【夫】ボタン -->
+    <style name="maleButton">
         <item name="android:background">#536dfe</item>
-        <item name="android:textColor">#FFFFFF</item>
-    </style>
-    <style name="primaryText">
-        <item name="android:textColor">#212121</item>
-    </style>
-    <style name="secondaryText">
-        <item name="android:textColor">#757575</item>
-    </style>
-    <style name="itemText" parent="maleTextSmall">
-        <item name="android:textColor">#757575</item>
-    </style>
-    <style name="maleTextBig">
+        <item name="android:textColor">#F2FFFF</item>
         <item name="android:textSize">30sp</item>
     </style>
-    <style name="maleTextMiddle">
+
+    <!-- 【妻】背景色 -->
+    <style name="femaleBack" >
+        <item name="android:background">#F2FFFF</item>
+    </style>
+
+    <!-- 【妻】ボタン -->
+    <style name="femaleButton">
+        <item name="android:background">@color/colorAccent</item>
+        <item name="android:textColor">#F2FFFF</item>
         <item name="android:textSize">20sp</item>
     </style>
-    <style name="maleTextSmall">
-        <item name="android:textSize">15sp</item>
+
+    <!-- カスタムベーステーマを追加 -->
+    <style name="MyCustomTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    </style>
+
+    <!-- カスタムベーステーマを継承するテーマを追加(夫用) -->
+    <style name="MyCustomTheme.Default" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="customTextColor">#536dfe</item>
+        <item name="colorPrimary">#536dfe</item>
+        <item name="colorAccent">#536dfe</item>
+        <item name="colorPrimaryDark">#536dfe</item>
+    </style>
+
+    <!-- カスタムベーステーマを継承するテーマを追加(妻用) -->
+    <style name="MyCustomTheme.Dark" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="customTextColor">#FF4081</item>
+        <item name="colorPrimary">#FF4081</item>
+        <item name="colorAccent">#FF4081</item>
+        <item name="colorPrimaryDark">#FF4081</item>
     </style>
 
 </resources>
