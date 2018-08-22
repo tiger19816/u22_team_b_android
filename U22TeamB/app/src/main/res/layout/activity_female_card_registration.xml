@@ -27,18 +27,21 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:gravity="center_horizontal"
-                android:text="@string/female_new_credit_card_title"/>
+                android:text="@string/female_new_credit_card_title"
+                style="@style/titleDuringText"/>
 
             <EditText
                 android:id="@+id/etInputCreditCardNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:hint="@string/female_new_credit_card_number"
                 android:inputType="number"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -76,6 +79,7 @@
                 android:id="@+id/etInputCardCardHolder"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:hint="@string/female_new_card_card_holder"
                 android:inputType="textCapCharacters"/>
 
@@ -83,6 +87,7 @@
                 android:id="@+id/etInputCardSecurityCode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:hint="@string/female_new_card_security_code"
                 android:inputType="number"/>
 
@@ -90,7 +95,9 @@
                 android:onClick="onMaleInformationClick"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:text="@string/female_new_registration"/>
+                android:layout_marginTop="20dp"
+                android:text="@string/female_new_registration"
+                style="@style/femaleButton"/>
 
         </LinearLayout>
 

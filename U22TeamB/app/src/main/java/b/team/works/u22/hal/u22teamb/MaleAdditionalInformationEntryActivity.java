@@ -36,6 +36,7 @@ public class MaleAdditionalInformationEntryActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.MyCustomTheme_Default);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.male_additional_information_entry);
 

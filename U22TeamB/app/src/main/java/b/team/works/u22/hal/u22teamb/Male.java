@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class Male  implements Serializable {
 
     private String maleId;
+    private String maleName;
     private String malePassword;
     private String maleBirthday;
     private String maleMail;
@@ -16,6 +17,7 @@ public class Male  implements Serializable {
     private Boolean isInputChecked;
 
     private String maleIdErrorMessage;
+    private String maleErrorName;
     private String malePasswordErrorMessage;
     private String maleBirthdayErrorMessage;
     private String maleMailErrorMessage;
@@ -25,6 +27,7 @@ public class Male  implements Serializable {
 
     public Male(){
         this.maleId = "";
+        this.maleName = "";
         this.malePassword = "";
         this.maleBirthday = "";
         this.maleMail = "";
@@ -36,6 +39,7 @@ public class Male  implements Serializable {
         this.isInputChecked = true;
 
         this.maleIdErrorMessage = "";
+        this.maleErrorName = "";
         this.malePasswordErrorMessage = "";
         this.maleBirthdayErrorMessage = "";
         this.maleMailErrorMessage = "";
@@ -44,8 +48,9 @@ public class Male  implements Serializable {
         this.maleProfessionErrorMessage = "";
     }
 
-    public Male(String maleId , String malePassword , String maleBirthday , String maleMail , String maleHeight , String maleWeight , String maleProfession){
+    public Male(String maleId , String maleName ,  String malePassword , String maleBirthday , String maleMail , String maleHeight , String maleWeight , String maleProfession){
         this.maleId = maleId;
+        this.maleName = maleName;
         this.malePassword = malePassword;
         this.maleBirthday = maleBirthday;
         this.maleMail = maleMail;
@@ -57,6 +62,7 @@ public class Male  implements Serializable {
         this.isInputChecked = true;
 
         this.maleIdErrorMessage = "";
+        this.maleErrorName = "";
         this.malePasswordErrorMessage = "";
         this.maleBirthdayErrorMessage = "";
         this.maleMailErrorMessage = "";
@@ -75,6 +81,21 @@ public class Male  implements Serializable {
         this.maleId = maleId;
         if("".equals(maleId)){
             this.maleIdErrorMessage = "IDを入力してください";
+            this.isInputChecked = false;
+        }
+    }
+
+    public String getMaleName() {
+        return maleName;
+    }
+
+    public String getMaleErrorName() {
+        return maleErrorName;
+    }
+    public void setMaleName(String maleName) {
+        this.maleName = maleName;
+        if("".equals(maleName)){
+            this.maleErrorName = "氏名を入力して下さい。";
             this.isInputChecked = false;
         }
     }

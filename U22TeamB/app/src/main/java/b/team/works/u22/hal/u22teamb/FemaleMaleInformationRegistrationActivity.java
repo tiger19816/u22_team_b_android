@@ -31,6 +31,7 @@ public class FemaleMaleInformationRegistrationActivity extends AppCompatActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.MyCustomTheme_Dark);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_female_male_information_registration);
 
@@ -65,6 +66,10 @@ public class FemaleMaleInformationRegistrationActivity extends AppCompatActivity
         female.setInputChecked();
 
         Male male = new Male();
+
+        EditText etMaleName = findViewById(R.id.etInputName);
+        String maleName = etMaleName.getText().toString();
+        male.setMaleName(maleName);
 
         EditText etMaleAddress = findViewById(R.id.etInputAddress);
         String maleAddress = etMaleAddress.getText().toString();//住所

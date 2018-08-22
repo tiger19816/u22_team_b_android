@@ -46,6 +46,7 @@ public class MaleReservationListActivity extends AppCompatActivity implements Na
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.MyCustomTheme_Default);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_male_reservation_list);
 
@@ -268,6 +269,10 @@ public class MaleReservationListActivity extends AppCompatActivity implements Na
             intent = new Intent(MaleReservationListActivity.this,MaleHistoryListActivity.class);
             startActivity(intent);
         }else if (id == R.id.nav_logout){
+            SharedPreferences setting = getSharedPreferences("USER" , 0);
+            SharedPreferences.Editor editor = setting.edit();
+            editor.remove("ID");
+            editor.commit();
             intent = new Intent(MaleReservationListActivity.this,MainActivity.class);
             startActivity(intent);
         }
