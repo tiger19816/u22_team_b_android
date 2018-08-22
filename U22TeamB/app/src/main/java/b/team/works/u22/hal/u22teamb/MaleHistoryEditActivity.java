@@ -53,6 +53,7 @@ public class MaleHistoryEditActivity extends AppCompatActivity implements ViewPa
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.MyCustomTheme_Default);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_male_history_edit);
 

@@ -67,6 +67,10 @@ public class FemaleMaleInformationRegistrationActivity extends AppCompatActivity
 
         Male male = new Male();
 
+        EditText etMaleName = findViewById(R.id.etInputName);
+        String maleName = etMaleName.getText().toString();
+        male.setMaleName(maleName);
+
         EditText etMaleAddress = findViewById(R.id.etInputAddress);
         String maleAddress = etMaleAddress.getText().toString();//住所
         female.setFemaleAddress(this , maleAddress);

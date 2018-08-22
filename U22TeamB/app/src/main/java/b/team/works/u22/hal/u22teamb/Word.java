@@ -21,4 +21,5 @@ public class Word {
     public static final String RESERVATION_URL = SERVER_URL + "ReservationInsert";
     public static final String USER_LOGIN_URL = SERVER_URL + "UserLoginJsonServlet";
     public static final String USER_LAT_LNG_URL = SERVER_URL + "UserLatLngServlet";
+    public static final String USER__URL = SERVER_URL + "RegistrationConfirmationServlet";
 }

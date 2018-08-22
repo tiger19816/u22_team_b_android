@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String LOGIN_URL = Word.USER_LOGIN_URL;
     private String _id;
+    private String _sex;
     private Boolean _maleRegistered = true;
 
     @Override
@@ -50,7 +51,13 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences setting = getSharedPreferences("USER" , 0);
         _id = setting.getString("ID" , "");
         if(!"".equals(_id)){
-            Intent intent = new Intent(MainActivity.this, FemaleStoreMapListActivity.class);
+            _sex = setting.getString("SEX" , "");
+            Intent intent;
+            if("0".equals(_sex)) {
+                intent = new Intent(MainActivity.this, FemaleStoreMapListActivity.class);
+            }else{
+                intent = new Intent(MainActivity.this, MaleReservationListActivity.class);
+            }
             startActivity(intent);
         }
     }
@@ -186,12 +193,14 @@ public class MainActivity extends AppCompatActivity {
                 if (userSex == 0) {
                     //妻がログインした時。
                     editor.putString("ID" , userId);
+                    editor.putString("SEX" , "0");
                     editor.commit();
                     intent = new Intent(MainActivity.this, FemaleStoreMapListActivity.class);
                     startActivity(intent);
                 } else if (userSex == 1) {
                     //夫がログインした時。
                     editor.putString("ID" , userId);
+                    editor.putString("SEX" , "1");
                     editor.commit();
                     intent = new Intent(MainActivity.this, MaleReservationListActivity.class);
                     startActivity(intent);

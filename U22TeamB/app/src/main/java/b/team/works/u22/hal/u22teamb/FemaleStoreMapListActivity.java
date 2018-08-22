@@ -1,5 +1,6 @@
 package b.team.works.u22.hal.u22teamb;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -66,6 +67,7 @@ public class FemaleStoreMapListActivity extends AppCompatActivity implements Nav
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.MyCustomTheme_Dark);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_female_store_map_list);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -107,6 +109,7 @@ public class FemaleStoreMapListActivity extends AppCompatActivity implements Nav
         FemaleStoreMapAnimation closeAnimation = new FemaleStoreMapAnimation(lvStoreList, -originalHeight, originalHeight);
         closeAnimation.setDuration(DURATION);
         lvStoreList.startAnimation(closeAnimation);
+
     }
 
     /**

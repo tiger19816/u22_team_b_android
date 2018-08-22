@@ -10,252 +10,259 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp">
-
-        <TextView
-            android:text="@string/tv_reservation_check_store_name"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_weight="0.3"
-            android:gravity="center_vertical"/>
-
-        <TextView
-            android:id="@+id/tvStoreName"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_weight="0.7"
-            android:gravity="center_vertical" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_weight="0.3"
-            android:gravity="center_vertical"
-            android:text="@string/tv_reservation_check_store_menu" />
-
-        <TextView
-            android:id="@+id/tvMenu"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_weight="0.7"
-            android:gravity="center_vertical" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="20dp">
-
-        <TextView
-            android:text="@string/tv_reservation_check_price_title"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:gravity="center_vertical|center_horizontal"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"/>
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:orientation="horizontal"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp">
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp">
 
             <TextView
-                android:text="@string/tv_reservation_check_price_subtotal"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_weight="0.2"
-                android:gravity="center_vertical|center_horizontal"/>
-
-            <TextView
-                android:id="@+id/tvSubtotal"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_weight="0.6"
-                android:gravity="center_vertical|center_horizontal"/>
-
-            <TextView
-                android:text="@string/tv_reservation_check_price_circle"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_weight="0.2"
-                android:gravity="center_vertical|center_horizontal"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp">
-
-            <TextView
-                android:text="@string/tv_reservation_check_price_total"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_weight="0.2"
-                android:gravity="center_vertical|center_horizontal"/>
-
-            <TextView
-                android:id="@+id/tvTotal"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_weight="0.6"
-                android:gravity="center_vertical|center_horizontal"/>
-
-            <TextView
-                android:text="@string/tv_reservation_check_price_circle"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_weight="0.2"
-                android:gravity="center_vertical|center_horizontal"/>
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="20dp">
-
-        <TextView
-            android:text="@string/tv_reservation_check_card_title"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:gravity="center_vertical|center_horizontal"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp">
-
-            <TextView
-                android:text="@string/tv_reservation_check_card_no"
+                android:text="@string/tv_reservation_check_store_name"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="0.3"
-                android:gravity="center_vertical|center_horizontal"/>
+                android:gravity="center_vertical"/>
 
             <TextView
-                android:id="@+id/tvCardNo"
+                android:id="@+id/tvStoreName"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="0.7"
-                android:gravity="center_vertical|center_horizontal" />
+                android:gravity="center_vertical" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="0.3"
+                android:gravity="center_vertical"
+                android:text="@string/tv_reservation_check_store_menu" />
+
+            <TextView
+                android:id="@+id/tvMenu"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="0.7"
+                android:gravity="center_vertical" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp">
+            android:orientation="vertical"
+            android:layout_marginTop="20dp">
 
             <TextView
-                android:text="@string/tv_reservation_check_card_name"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_weight="0.3"
-                android:gravity="center_vertical|center_horizontal"/>
+                android:text="@string/tv_reservation_check_price_title"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:gravity="center_vertical|center_horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"/>
 
-            <TextView
-                android:id="@+id/tvCardName"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_weight="0.7"
-                android:gravity="center_vertical|center_horizontal" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
+
+                <TextView
+                    android:text="@string/tv_reservation_check_price_subtotal"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="0.2"
+                    android:gravity="center_vertical|center_horizontal"/>
+
+                <TextView
+                    android:id="@+id/tvSubtotal"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="0.6"
+                    android:gravity="center_vertical|center_horizontal"/>
+
+                <TextView
+                    android:text="@string/tv_reservation_check_price_circle"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="0.2"
+                    android:gravity="center_vertical|center_horizontal"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
+
+                <TextView
+                    android:text="@string/tv_reservation_check_price_total"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="0.2"
+                    android:gravity="center_vertical|center_horizontal"/>
+
+                <TextView
+                    android:id="@+id/tvTotal"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="0.6"
+                    android:gravity="center_vertical|center_horizontal"/>
+
+                <TextView
+                    android:text="@string/tv_reservation_check_price_circle"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="0.2"
+                    android:gravity="center_vertical|center_horizontal"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp">
+            android:orientation="vertical"
+            android:layout_marginTop="20dp">
 
             <TextView
-                android:text="@string/tv_reservation_check_card_date"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_weight="0.3"
-                android:gravity="center_vertical|center_horizontal"/>
+                android:text="@string/tv_reservation_check_card_title"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:gravity="center_vertical|center_horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"/>
 
-            <TextView
-                android:id="@+id/tvCardDate"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_weight="0.7"
-                android:gravity="center_vertical|center_horizontal" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
+
+                <TextView
+                    android:text="@string/tv_reservation_check_card_no"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="0.3"
+                    android:gravity="center_vertical|center_horizontal"/>
+
+                <TextView
+                    android:id="@+id/tvCardNo"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="0.7"
+                    android:gravity="center_vertical|center_horizontal" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
+
+                <TextView
+                    android:text="@string/tv_reservation_check_card_name"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="0.3"
+                    android:gravity="center_vertical|center_horizontal"/>
+
+                <TextView
+                    android:id="@+id/tvCardName"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="0.7"
+                    android:gravity="center_vertical|center_horizontal" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
+
+                <TextView
+                    android:text="@string/tv_reservation_check_card_date"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="0.3"
+                    android:gravity="center_vertical|center_horizontal"/>
+
+                <TextView
+                    android:id="@+id/tvCardDate"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="0.7"
+                    android:gravity="center_vertical|center_horizontal" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
+
+                <TextView
+                    android:text="@string/tv_reservation_check_card_count01"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="0.3"
+                    android:gravity="center_vertical|center_horizontal"/>
+
+                <TextView
+                    android:text="@string/tv_reservation_check_card_count02"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="0.7"
+                    android:gravity="center_vertical|center_horizontal"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp">
+            android:layout_height="0dip"
+            android:layout_weight="1"
+            android:gravity="center|bottom"
+            android:orientation="vertical" >
 
-            <TextView
-                android:text="@string/tv_reservation_check_card_count01"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_weight="0.3"
-                android:gravity="center_vertical|center_horizontal"/>
-
-            <TextView
-                android:text="@string/tv_reservation_check_card_count02"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_weight="0.7"
-                android:gravity="center_vertical|center_horizontal"/>
+            <Button
+                android:onClick="onNextReservationListClick"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/bt_reservation_check_finish"
+                style="@style/femaleButton"/>
 
         </LinearLayout>
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dip"
-        android:layout_weight="1"
-        android:gravity="center|bottom"
-        android:orientation="vertical" >
-
-        <Button
-            android:onClick="onNextReservationListClick"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="10dp"
-            android:text="@string/bt_reservation_check_finish" />
-
-    </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

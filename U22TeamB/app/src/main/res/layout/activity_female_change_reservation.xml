@@ -189,7 +189,8 @@
             android:text="@string/bt_reservation_check_finish"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            style="@style/femaleButton"/>
 
     </LinearLayout>
 

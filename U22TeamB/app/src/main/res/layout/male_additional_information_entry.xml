@@ -59,7 +59,8 @@
                 android:onClick="onMalePasswordClick"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@string/female_new_registration"/>
+                android:text="@string/female_new_registration"
+                style="@style/maleButton"/>
 
         </LinearLayout>
 
