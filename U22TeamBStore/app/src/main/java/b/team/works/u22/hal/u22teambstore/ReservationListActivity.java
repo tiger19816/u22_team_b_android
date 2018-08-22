@@ -1,6 +1,7 @@
 package b.team.works.u22.hal.u22teambstore;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -16,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
@@ -29,6 +31,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.net.ConnectException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -76,11 +79,10 @@ public class ReservationListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reservation_list);
 
-//        this._shopId = getIntent().getStringExtra("shopId");
-        this._shopId = "7116760";   // デバッグ用。
+        this._shopId = getIntent().getStringExtra("shopsId");
 
-        this._lvReservationList = (ListView) findViewById(R.id.lvReservationList);
-        onResume();
+        this._lvReservationList = findViewById(R.id.lvReservationList);
+
     }
 
     /**
@@ -94,37 +96,6 @@ public class ReservationListActivity extends AppCompatActivity {
         GetListAsync gla = new GetListAsync(ReservationListActivity.this);
         gla.execute(this._shopId);
 
-        // ListViewに表示。
-        ListView lvReservationList = findViewById(R.id.lvReservationList);
-
-        String[] from = new String[]{"name", "date"};
-        List<Map<String, String>> list = new ArrayList<Map<String, String>>();
-        try {
-            for (int i = 0; i < this._reservationList.length(); i++) {
-                Map<String, String> map = new HashMap<String, String>();
-                map.put("name", this._reservationList.getJSONObject(i).getString("maleName"));
-                String strUseDateTime = "";
-                JSONObject aryUseDateTime = this._reservationList.getJSONObject(i).getJSONObject("use_date_time");
-                strUseDateTime += aryUseDateTime.getString("year");
-                strUseDateTime += "年";  // TODO:strings.xmlに対応。
-                strUseDateTime += aryUseDateTime.getString("month");
-                strUseDateTime += "月";
-                strUseDateTime += aryUseDateTime.getString("day");
-                strUseDateTime += "日";
-                strUseDateTime += " ";
-                strUseDateTime += aryUseDateTime.getString("hour");
-                strUseDateTime += "時";
-                strUseDateTime += aryUseDateTime.getString("minute");
-                strUseDateTime += "分";
-                map.put("date", strUseDateTime);
-                list.add(map);
-            }
-        } catch (JSONException e) {
-            Log.e("JSON", e.toString());
-        }
-        int[] to = new int[]{android.R.id.text1, android.R.id.text2};
-        SimpleAdapter adapter = new SimpleAdapter(ReservationListActivity.this, list, android.R.layout.simple_list_item_2, from, to);
-        lvReservationList.setAdapter(adapter);
     }
 
     /**
@@ -156,8 +127,9 @@ public class ReservationListActivity extends AppCompatActivity {
                 strData = result.getContents().toString();
                 Log.d("QRコード", "読み取った値:" + strData);
                 this._maleId = strData;
+
                 HttpResponseAsync hra = new HttpResponseAsync(this);
-                hra.execute(this._maleId);   // パラメータをサーブレットへ送信。
+                hra.execute(this._maleId,this._shopId);   // パラメータをサーブレットへ送信。
             } else {
                 // 戻るが押されたときの操作。
                 Log.i("QRコード", "読取取消");
@@ -194,13 +166,12 @@ public class ReservationListActivity extends AppCompatActivity {
          * @param shopId ①店ID。
          * @return null
          */
-        @RequiresApi(api = Build.VERSION_CODES.O)
         @Override
         protected JSONArray doInBackground(String... shopId) {
             HttpURLConnection cnct = null;
             URL url = null;
             OutputStream opStream = null;
-            String urlStr = "http://10.0.2.2:8080/team_b_web/SendReservationListServlet";   // 接続先URL
+            String urlStr = Word.RECEIVE_RESERVATION_LIST;   // 接続先URL
 
             String postData = "shop_id=" + shopId[0];  // POSTで送りたいデータ
 
@@ -249,15 +220,11 @@ public class ReservationListActivity extends AppCompatActivity {
                     //responseの読み込み。
                     inStream = cnct.getInputStream();
                     String encoding = cnct.getContentEncoding();
-                    inReader = new InputStreamReader(inStream, encoding);
+                    inReader = new InputStreamReader(inStream, "utf-8");
                     bufReader = new BufferedReader(inReader);
-                    String line = null;
-                    line = bufReader.readLine();
-                    while(line != null) {
-                        resultBuf.append(line);
-                    }
-                    String strResult = resultBuf.toString();
-                    result = new JSONArray(new JSONObject(strResult));
+                    String strJson = "";
+                    strJson = bufReader.readLine();
+                    result = new JSONArray(strJson);
 
                 } catch (Exception e) {
                     Log.e("URL", "POST送信エラー: " + e.toString());
@@ -313,9 +280,46 @@ public class ReservationListActivity extends AppCompatActivity {
         public void onPostExecute(JSONArray param) {
             Log.i("HTTP", "onPostExecute: 通過");
 
+
             _reservationList = param;
-//            onResume();
-//            finish();
+            // ListViewに表示。
+            _lvReservationList = findViewById(R.id.lvReservationList);
+
+            String[] from = new String[]{"name", "date"};
+            List<Map<String, String>> list = new ArrayList<Map<String, String>>();
+            try {
+                for (int i = 0; i < _reservationList.length(); i++) {
+                    Map<String, String> map = new HashMap<String, String>();
+                    map.put("name", _reservationList.getJSONObject(i).getString("male_name"));
+                    String strUseDateTime = "";
+                    JSONObject aryUseDateTime = _reservationList.getJSONObject(i).getJSONObject("use_date_time");
+                    strUseDateTime += aryUseDateTime.getString("year");
+                    strUseDateTime += "年";  // TODO:strings.xmlに対応。
+                    strUseDateTime += aryUseDateTime.getString("month");
+                    strUseDateTime += "月";
+                    strUseDateTime += aryUseDateTime.getString("date");
+                    strUseDateTime += "日";
+                    strUseDateTime += " ";
+                    strUseDateTime += aryUseDateTime.getString("hour");
+                    strUseDateTime += "時";
+                    strUseDateTime += aryUseDateTime.getString("minute");
+                    strUseDateTime += "分";
+                    map.put("date", strUseDateTime);
+                    list.add(map);
+                }
+            } catch (JSONException e) {
+                Log.e("JSON", e.toString());
+            } catch (NullPointerException e) {
+                Log.i("リスト", "ListViewに表示する情報が見つかりませんでした。");
+            } catch (Exception e) {
+                Log.e("不明なエラー", e.toString());
+            } finally {
+                int[] to = new int[]{android.R.id.text1, android.R.id.text2};
+                if (_reservationList != null) {
+                    SimpleAdapter adapter = new SimpleAdapter(ReservationListActivity.this, list, android.R.layout.simple_list_item_2, from, to);
+                    _lvReservationList.setAdapter(adapter);
+                }
+            }
         }
     }
 
@@ -340,17 +344,18 @@ public class ReservationListActivity extends AppCompatActivity {
         /**
          * サーブレットへパラメータを送信するメソッド。
          *
-         * @param maleId ①夫ID。
+         * @param params ①夫ID。 ②店ID。
          * @return null
          */
         @Override
-        protected JSONObject doInBackground(String... maleId) {
+        protected JSONObject doInBackground(String... params) {
             HttpURLConnection cnct = null;
             URL url = null;
             OutputStream opStream = null;
-            String urlStr = "http://10.0.2.2:8080/team_b_web/sendReceivationDetailServlet";   // 接続先URL
+            String urlStr = Word.RECEIVE_RESERVATION_DETAIL;   // 接続先URL
 
-            String postData = "male_id=" + maleId[0];  // POSTで送りたいデータ
+            String postData = "male_id=" + params[0];  // POSTで送りたいデータ
+            postData += "&shop_id=" + params[1];
 
             JSONObject result = null;
 
@@ -397,15 +402,15 @@ public class ReservationListActivity extends AppCompatActivity {
                     //responseの読み込み。
                     inStream = cnct.getInputStream();
                     String encoding = cnct.getContentEncoding();
-                    inReader = new InputStreamReader(inStream, encoding);
+                    Log.d("InputStreamer", "inputSteramer: " + inStream.toString());
+                    Log.d("InputStreamer", "encoding: " + encoding);
+                    inReader = new InputStreamReader(inStream, "utf-8");
                     bufReader = new BufferedReader(inReader);
-                    String line = null;
-                    line = bufReader.readLine();
-                    while(line != null) {
-                        resultBuf.append(line);
-                    }
-                    String strResult = resultBuf.toString();
-                    result = new JSONObject(strResult);
+                    String strJson = "";
+                    strJson = bufReader.readLine();
+                    result = new JSONObject(strJson);
+
+                    Log.d("JSON", "受け取った予約ID: " + result.getString("reservation_id"));
 
                 } catch (Exception e) {
                     Log.e("URL", "POST送信エラー: " + e.toString());
@@ -443,6 +448,8 @@ public class ReservationListActivity extends AppCompatActivity {
 
                 }
 
+            } catch (ConnectException e) {
+                Log.i("サーバ", "サーバに接続できませんでした。");
             } catch (Exception e) {
                 Log.e("URL", "コネクションエラー: " + e.toString());
             } finally {
@@ -461,11 +468,31 @@ public class ReservationListActivity extends AppCompatActivity {
         public void onPostExecute(JSONObject param) {
             Log.i("HTTP", "onPostExecute: 通過");
 
-            Intent intent = new Intent(getApplicationContext(), ReservationDetailActivity.class);
-            intent.putExtra("jsonParam", param.toString());
-            startActivity(intent);
-//            onResume();
-//            finish();
+            if (param != null) {
+                Log.d("JSON", param.toString());
+                Intent intent = new Intent(getApplicationContext(), ReservationDetailActivity.class);
+                intent.putExtra("jsonParam", param.toString());
+                startActivity(intent);
+            } else {    // サーバ接続失敗時の処理。
+                Log.d("JSON", "null");
+                String msg = "情報の取得に失敗";    // ListViewに表示するデータが空だった場合のトーストメッセージ。TODO:strings.xmlに対応。
+                Toast.makeText(ReservationListActivity.this, msg, Toast.LENGTH_SHORT).show();
+            }
+
+            onResume();
         }
     }
+
+    /**
+     * デバッグボタン用。（QRコードボタン押下と同様の処理。）
+     */
+    public void onClickDebug(MenuItem item) {
+        Log.i("デバッグ", "デバッグ開始");
+        this._maleId = "1"; //  デバッグ用。
+//        this._shopId = "7116760";   // デバッグ用。
+        HttpResponseAsync hra = new HttpResponseAsync(this);
+        hra.execute(this._maleId, this._shopId);   // パラメータをサーブレットへ送信。
+        this.onResume();
+    }
+
 }

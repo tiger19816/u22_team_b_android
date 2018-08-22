@@ -48,10 +48,17 @@ public class ReservationDetailActivity extends AppCompatActivity {
      */
     JSONObject _objReservation = null;
 
+    /**
+     * 処理後にトーストメッセージを格納するフィールド。
+     */
+    String _message = "処理失敗";   // 来店処理が失敗した場合のトーストメッセージ。TODO:strings.xmlに対応。
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reservation_detail);
+
+        String strJson = getIntent().getStringExtra("jsonParam");
 
         this._tvFemaleName = findViewById(R.id.tvFemaleName);
         this._tvMaleName = findViewById(R.id.tvMaleName);
@@ -59,7 +66,7 @@ public class ReservationDetailActivity extends AppCompatActivity {
         this._tvUseDateTime = findViewById(R.id.tvUseDateTime);
 
         try {
-            this._objReservation = new JSONObject(getIntent().getStringExtra("param"));
+            this._objReservation = new JSONObject(strJson);
 
             this._reservationId = this._objReservation.getString("reservation_id");
             this._tvFemaleName.setText(this._objReservation.getString("female_name"));
@@ -79,7 +86,7 @@ public class ReservationDetailActivity extends AppCompatActivity {
             strUseDateTime += "年";  // TODO:strings.xmlに対応。
             strUseDateTime += aryUseDateTime.getString("month");
             strUseDateTime += "月";
-            strUseDateTime += aryUseDateTime.getString("day");
+            strUseDateTime += aryUseDateTime.getString("date");
             strUseDateTime += "日";
             strUseDateTime += " ";
             strUseDateTime += aryUseDateTime.getString("hour");
@@ -93,18 +100,18 @@ public class ReservationDetailActivity extends AppCompatActivity {
 
     }
 
-    // ボタンクリック時。
+    // ボタンタップ時。
     public void onClickVisited(View view) {
         new AlertDialog.Builder(ReservationDetailActivity.this)
-                .setMessage("よろしいですか?")
+                .setMessage("よろしいですか?")     // ダイアログのメッセージ。TODO:strings.xmlに対応。
                 .setPositiveButton("はい", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                    public void onClick(DialogInterface dialog, int which) {    // Yesの表記。TODO:strings.xmlに対応。
                         HttpResponseAsync hra = new ReservationDetailActivity.HttpResponseAsync(ReservationDetailActivity.this);
                         hra.execute(ReservationDetailActivity.this._reservationId);
                     }
                 })
-                .setNegativeButton("いいえ", null)
+                .setNegativeButton("いいえ", null)     // Noの表記。TODO:strings.xmlに対応。
                 .show();
     }
 
@@ -134,7 +141,7 @@ public class ReservationDetailActivity extends AppCompatActivity {
             HttpURLConnection cnct = null;
             URL url = null;
             OutputStream opStream = null;
-            String urlStr = "http://10.0.2.2:8080/team_b_web/UpdateVisitFlagServlet";   // 接続先URL
+            String urlStr = Word.PROCESS_OF_VISIT;   // 接続先URL
 
             String postData = "reservation_id=" + reservationId[0];  // POSTで送りたいデータ
 
@@ -162,6 +169,7 @@ public class ReservationDetailActivity extends AppCompatActivity {
                     switch (cnct.getResponseCode()) {
                         case HttpURLConnection.HTTP_OK :
                             Log.d("URL", "コネクション状況: 成功");
+                            _message = "来店処理が完了しました。";  // 来店処理が成功した場合のトーストメッセージ。TODO:strings.xmlに対応。
                             break;
                         case HttpURLConnection.HTTP_INTERNAL_ERROR:
                             Log.e("URL", "エラー内容: 500 内部サーバーエラー");
@@ -194,6 +202,7 @@ public class ReservationDetailActivity extends AppCompatActivity {
                 }
             }
 
+
             return null;
         }
 
@@ -203,7 +212,7 @@ public class ReservationDetailActivity extends AppCompatActivity {
         @Override
         public void onPostExecute(Void param) {
             Log.d("HTTP", "onPostExecute: 通過");
-            String msg = "来店処理が完了しました。";
+            String msg = _message;
             Toast.makeText(ReservationDetailActivity.this, msg, Toast.LENGTH_SHORT).show();
             finish();
         }
