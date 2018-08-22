@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String LOGIN_URL = Word.USER_LOGIN_URL;
     private String _id;
+    private Boolean _maleRegistered = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
         public String doInBackground(String... params) {
             String urlStr = params[0];
             String mail = params[1];
-            String password = params[1];
+            String password = params[2];
 
             //POSTで送りたいデータ
             String postData = "mail=" + mail + "&password=" + password;
