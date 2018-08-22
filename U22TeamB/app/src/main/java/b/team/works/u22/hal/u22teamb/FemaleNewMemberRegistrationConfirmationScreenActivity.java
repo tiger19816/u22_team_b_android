@@ -2,8 +2,10 @@ package b.team.works.u22.hal.u22teamb;
 
 import android.app.DatePickerDialog;
 import android.app.Fragment;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -36,8 +38,9 @@ public class FemaleNewMemberRegistrationConfirmationScreenActivity extends AppCo
     /**
      * URL。
      */
-    private static final String LOGIN_URL = "http://10.0.2.2:8080/U22Verification/Servlet";
+    private static final String LOGIN_URL = Word.USER__URL;
 
+    private String _id;
 
     private String femaleName;
     private String femaleBirthday;
@@ -52,6 +55,7 @@ public class FemaleNewMemberRegistrationConfirmationScreenActivity extends AppCo
     private String femaleLatitude;//緯度
     private String femaleLongitude;//経度
 
+    private String maleName;
     private String maleBirthday;
     private String maleMail;
     private String maleHeight;
@@ -60,6 +64,7 @@ public class FemaleNewMemberRegistrationConfirmationScreenActivity extends AppCo
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.MyCustomTheme_Dark);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.female_new_member_registration_confirmation_screen);
 
@@ -84,7 +89,7 @@ public class FemaleNewMemberRegistrationConfirmationScreenActivity extends AppCo
         //非同期処理を開始する。
         LoginTaskReceiver receiver = new LoginTaskReceiver();
         //ここで渡した引数はLoginTaskReceiverクラスのdoInBackground(String... params)で受け取れる。
-        receiver.execute(LOGIN_URL , femaleName , femaleBirthday , femalePassword , femaleMail , femaleIcon , femaleCardNo , femaleCardDoneDeadline , femaleCardSecurityCode, femaleCardNomineeName , femaleAddress , femaleLatitude , femaleLongitude , maleBirthday , maleMail , maleHeight , maleWeight , maleProfession);
+        receiver.execute(LOGIN_URL , femaleName , femaleBirthday , femalePassword , femaleMail , femaleIcon , femaleCardNo , femaleCardDoneDeadline , femaleCardSecurityCode, femaleCardNomineeName , femaleAddress , femaleLatitude , femaleLongitude ,maleName , "" , maleBirthday , maleMail , maleHeight , maleWeight , maleProfession);
     }
 
     public void setUserTextCreate(){
@@ -105,6 +110,7 @@ public class FemaleNewMemberRegistrationConfirmationScreenActivity extends AppCo
         this.femaleLatitude = female.getFemaleLatitude();
         this.femaleLongitude = female.getFemaleLongitude();
 
+        this.maleName = male.getMaleName();
         this.maleBirthday = male.getMaleBirthday();
         this.maleMail = male.getMaleMail();
         this.maleHeight = male.getMaleHeight();
@@ -140,6 +146,9 @@ public class FemaleNewMemberRegistrationConfirmationScreenActivity extends AppCo
         tvFemaleNomineeName.setText(femaleCardNomineeName);
 
         //夫情報
+        TextView tvMaleName = findViewById(R.id.tvMaleName);
+        tvMaleName.setText(maleName);
+
         TextView tvMaleBirthDay = findViewById(R.id.tvMaleBirthday);
         tvMaleBirthDay.setText(maleBirthday);
 
@@ -187,15 +196,17 @@ public class FemaleNewMemberRegistrationConfirmationScreenActivity extends AppCo
             String femaleAddress = params[10];
             String femaleLatitude = params[11];
             String femaleLongitude = params[12];
-            String maleBirthday = female.getDataConversion(params[13]);
-            String maleMail = params[14];
-            String maleHeight = params[15];
-            String maleWeight = params[16];
-            String maleProfession = params[17];
+            String maleName = params[13];
+            String malePassword = params[14];
+            String maleBirthday = female.getDataConversion(params[15]);
+            String maleMail = params[16];
+            String maleHeight = params[17];
+            String maleWeight = params[18];
+            String maleProfession = params[19];
 
             //POSTで送りたいデータ
             String postData = "femaleName=" + femaleName + "&femaleBirthday=" + femaleBirthday + "&femalePassword=" + femalePassword + "&femaleMail=" + femaleMail + "&femaleIcon=" + femaleIcon + "&femaleCardNo=" + femaleCardNo + "&femaleCardDoneDeadline=" + femaleCardDoneDeadLine + "&femaleSecurityCode=" + femaleCardSecurityCode + "&femaleCardNomineeName=" + femaleCardNomineeName + "&femaleAddress=" + femaleAddress + "&femaleLatitude=" + femaleLatitude + "&femaleLongitude=" + femaleLongitude
-                    + "&maleBirthday=" + maleBirthday + "&maleMail=" + maleMail + "&maleHeight=" + maleHeight + "&maleWeight=" + maleWeight + "&maleProfession=" + maleProfession;
+                    + "&maleName=" + maleName + "&malePassword=" + malePassword + "&maleBirthday=" + maleBirthday + "&maleMail=" + maleMail + "&maleHeight=" + maleHeight + "&maleWeight=" + maleWeight + "&maleProfession=" + maleProfession;
 
             HttpURLConnection con = null;
             InputStream is = null;
@@ -273,12 +284,18 @@ public class FemaleNewMemberRegistrationConfirmationScreenActivity extends AppCo
             try {
                 JSONObject rootJSON = new JSONObject(result);
                 isInsert = rootJSON.getBoolean("result");
+                _id = rootJSON.getString("id");
             }
             catch (JSONException ex) {
                 Log.e(DEBUG_TAG, "JSON解析失敗", ex);
             }
             if (isInsert) {
                 Toast.makeText(FemaleNewMemberRegistrationConfirmationScreenActivity.this , "登録されました。" , Toast.LENGTH_SHORT).show();
+                SharedPreferences setting = getSharedPreferences("USER" , 0);
+                SharedPreferences.Editor editor = setting.edit();
+                editor.putString("ID" , _id);
+                editor.putString("SEX" , "0");
+                editor.commit();
                 Intent intent = new Intent(FemaleNewMemberRegistrationConfirmationScreenActivity.this,FemaleStoreMapListActivity.class);
                 startActivity(intent);
             }else{

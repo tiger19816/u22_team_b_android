@@ -20,6 +20,7 @@ public class FemaleCardRegistrationActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.MyCustomTheme_Dark);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_female_card_registration);
 
@@ -59,7 +60,7 @@ public class FemaleCardRegistrationActivity extends AppCompatActivity {
 
         Spinner etCardDoneDeadlineMonth = findViewById(R.id.spInputCardExpirationMonth);
         Spinner etCardDoneDeadlineYear = findViewById(R.id.spInputCardExpirationYear);
-        String cardDoneDeadline = etCardDoneDeadlineMonth.getSelectedItem() + "/" + etCardDoneDeadlineYear.getSelectedItem();
+        String cardDoneDeadline = etCardDoneDeadlineMonth.getSelectedItem() + "" + etCardDoneDeadlineYear.getSelectedItem();
         female.setFemaleCardExpirationDate(cardDoneDeadline);
 
         EditText etCardNominalName = findViewById(R.id.etInputCreditCardNumber);
