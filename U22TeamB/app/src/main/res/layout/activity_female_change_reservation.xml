@@ -185,6 +185,7 @@
         android:orientation="vertical" >
 
         <Button
+            android:id="@+id/ReservationUpdateClick"
             android:onClick="onReservationUpdateClick"
             android:text="@string/bt_reservation_check_finish"
             android:layout_width="match_parent"
