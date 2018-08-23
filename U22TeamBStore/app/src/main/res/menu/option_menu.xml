@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- TODO:strings.xmlに対応。btDebugは修正不要。 -->
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/btQrScannerRequest"
+        android:icon="@drawable/ic_qr_scanner"
+        android:title="Scan QR Code"
+        app:showAsAction="always"
+        tools:ignore="AppCompatResource"
+        android:onClick="onClickQr"/>
+
+    <!--<item-->
+        <!--android:id="@+id/btDebug"-->
+        <!--android:title="DEBUG"-->
+        <!--app:showAsAction="always"-->
+        <!--tools:ignore="AppCompatResource"-->
+        <!--android:onClick="onClickDebug"/>-->
+</menu>
