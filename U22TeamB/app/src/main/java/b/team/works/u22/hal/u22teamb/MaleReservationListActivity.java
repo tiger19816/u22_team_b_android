@@ -35,6 +35,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -182,8 +183,31 @@ public class MaleReservationListActivity extends AppCompatActivity implements Na
                     JSONObject data = datas.getJSONObject(i);
                     Map map = new HashMap<String , Object>();
                     map.put("storeName" , data.getString("storeName"));
-                    map.put("reservationDate" , data.getString("reservationDate"));
+
+                    //予約日を年、月、日の３つに分解する。
+                    String dy = data.getString("reservationDate").substring(0, 4);//年
+                    String dm = data.getString("reservationDate").substring(5, 7);//月
+                    String dd = data.getString("reservationDate").substring(8, 10);//日
+
+                    //現在日時の取得
+                    java.util.Calendar cal =  java.util.Calendar.getInstance();
+                    int nowYear = cal.get(Calendar.YEAR);
+                    int nowMonth = cal.get(Calendar.MONTH);
+                    int nowDay = cal.get(Calendar.DAY_OF_MONTH);
+
+                    //予約時当日の場合、「今日」と表示する
+                    if (    Integer.valueOf(dy) == nowYear &&
+                            Integer.valueOf(dm) == (nowMonth + 1) &&
+                            Integer.valueOf(dd) == nowDay){
+
+                        map.put("reservationDate" , "今日");
+
+                    }else{
+                        map.put("reservationDate" , data.getString("reservationDate"));
+                    }
+
                     _list.add(map);
+
                 }
 
                 String[] from = {"storeName", "reservationDate"};
