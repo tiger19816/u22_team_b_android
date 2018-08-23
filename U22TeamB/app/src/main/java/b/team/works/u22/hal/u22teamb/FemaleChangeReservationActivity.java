@@ -111,27 +111,7 @@ public class FemaleChangeReservationActivity extends AppCompatActivity {
             date = reservation2.getDate();
             isUpdate = true;
         }
-
-
-
-
-
-        //予約日時の取得
-        EditText etReservation = findViewById(R.id.etDate);
-        String Reservation = etReservation.getText().toString();
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
 
         EditText etTime = findViewById(R.id.etTime);
         reservation2.setTime(dataConversion.getTimeConversion01(etTime.getText().toString()));
