@@ -61,7 +61,13 @@ public class FemaleStoreDetailsActivity extends AppCompatActivity implements Vie
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setTheme(R.style.MyCustomTheme_Dark);
+        //IDの取得
+        Intent intent = getIntent();
+        storeId = intent.getStringExtra("id");
+        int mode = intent.getIntExtra("mode", 0);
+        if(mode == MODE_FEMALE) {
+            setTheme(R.style.MyCustomTheme_Dark);
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_female_store_details);
 
@@ -74,11 +80,6 @@ public class FemaleStoreDetailsActivity extends AppCompatActivity implements Vie
         //戻るボタンの表示。
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-
-        //IDの取得
-        Intent intent = getIntent();
-        storeId = intent.getStringExtra("id");
-        int mode = intent.getIntExtra("mode", 0);
 
         if(mode == MODE_MALE) {
             Button btNextReservation = findViewById(R.id.btNextReservation);
