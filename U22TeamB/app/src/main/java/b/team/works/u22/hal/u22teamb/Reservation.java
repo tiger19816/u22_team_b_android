@@ -14,10 +14,12 @@ public class Reservation implements Serializable {
     private String menuNo;
     private String date;
     private String time;
+    private String message;
 
     private String errorMenuNo;
     private String errorDate;
     private String errorTime;
+    private String errorMessage;
 
     private boolean hasNoError;
 
@@ -27,10 +29,12 @@ public class Reservation implements Serializable {
         this.menuNo = "";
         this.date = "";
         this.time = "";
+        this.message = "";
 
         this.errorMenuNo = "";
         this.errorDate = "";
         this.errorTime = "";
+        this.errorMessage = "";
 
         hasNoError = true;
     }
@@ -87,6 +91,10 @@ public class Reservation implements Serializable {
         }
     }
 
+    public String getMessage() { return message; }
+
+    public void setMessage(String message) { this.message = message; }
+
     public String getErrorMenuNo() {
         return errorMenuNo;
     }
@@ -110,6 +118,8 @@ public class Reservation implements Serializable {
     public void setErrorTime(String errorTime) {
         this.errorTime = errorTime;
     }
+
+    public String getErrorMessage() { return errorMessage; }
 
     public boolean isHasNoError() {
         return hasNoError;
