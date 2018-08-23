@@ -93,9 +93,9 @@
     <string name="tv_reservation_store_menu">メニュー:</string>
     <string-array name="sp_reservation_store_menu_list">
         <item>メニューを選択</item>
-        <item>メニューA</item>
-        <item>メニューB</item>
-        <item>メニューC</item>
+        <item>メニューA(500円)</item>
+        <item>メニューB(800円)</item>
+        <item>メニューC(1000円)</item>
     </string-array>
     <string name="tv_reservation_datetime">予約時間</string>
     <string name="bt_reservation_date">日付:</string>
