@@ -239,6 +239,8 @@ public class MaleReservationListActivity extends AppCompatActivity implements Na
                                 String newImage = Tools.replaceBr(strData);
                                 if("0".equals(newImage)) {
                                     ivNewImage.setImageResource(R.drawable.newicon);
+                                }else{
+                                    ivNewImage.setImageResource(R.drawable.colorwhite);
                                 }
                                 return true;
                         }
@@ -254,10 +256,16 @@ public class MaleReservationListActivity extends AppCompatActivity implements Na
                         Map<String, String> map = (Map<String, String>) adapter.getItem(position);
                         intent.putExtra("storeName", map.get("storeName"));
                         intent.putExtra("maleId", _id);
-                        //非同期処理を開始する。(初めて見る場合はUPDATE)
-                        ReservationCheckTaskReceiver receiver = new ReservationCheckTaskReceiver();
-                        //ここで渡した引数はLoginTaskReceiverクラスのdoInBackground(String... params)で受け取れる。
-                        receiver.execute(LOGIN_URL2 , map.get("reservationId") );
+
+                        if("0".equals(map.get("newImage"))) {
+                            //非同期処理を開始する。(初めて見る場合はUPDATE)
+                            ReservationCheckTaskReceiver receiver = new ReservationCheckTaskReceiver();
+                            //ここで渡した引数はLoginTaskReceiverクラスのdoInBackground(String... params)で受け取れる。
+                            receiver.execute(LOGIN_URL2, map.get("reservationId"));
+                            intent.putExtra("newInformation", "1");
+                        }else{
+                            intent.putExtra("newInformation", "0");
+                        }
 
                         startActivity(intent);
                     }
