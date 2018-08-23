@@ -69,6 +69,11 @@ public class FemaleFinishReservationActivity extends AppCompatActivity {
 
         TextView tvCardDate = findViewById(R.id.tvCardDate);
         tvCardDate.setText("08/20");
+
+        if(!"".equals(reservation.getMessage())) {
+            TextView tvMessage = findViewById(R.id.tvMessage);
+            tvMessage.setText(reservation.getMessage());
+        }
     }
 
     public void onNextReservationListClick(View view){
@@ -134,7 +139,7 @@ public class FemaleFinishReservationActivity extends AppCompatActivity {
             HttpURLConnection con = null;
             InputStream is = null;
             String result = null;
-            String postData = "shops_id=" + reservation.getId() + "&shop_name=" + reservation.getName() + "&menu_no=" + reservation.getMenuNo() + "&female_id=" + 1 + "&use_date_time=" + reservation.getDataConversion();
+            String postData = "shops_id=" + reservation.getId() + "&shop_name=" + reservation.getName() + "&menu_no=" + reservation.getMenuNo() + "&female_id=" + 1 + "&use_date_time=" + reservation.getDataConversion() + "&message=" + reservation.getMessage();
 
             try {
                 URL url = new URL(urlStr);

@@ -76,7 +76,6 @@ public class FemaleChangeReservationActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         this.reservationId = intent.getStringExtra("reservationId");
-        Log.e("クリックした予約ID" , reservationId);
         this.storeId = intent.getStringExtra("storeId");
 
         this.SIGNAL_VERSION = "START";
@@ -122,6 +121,14 @@ public class FemaleChangeReservationActivity extends AppCompatActivity {
             isUpdate = true;
         }
 
+        EditText etMessage = findViewById(R.id.etMessage);
+        reservation2.setTime(etMessage.getText().toString());
+        String message = "";
+        if(!reservation.getMessage().equals(reservation2.getMessage())){
+            message = reservation2.getMessage();
+            isUpdate = true;
+        }
+
         TextView tvSubtotal = findViewById(R.id.tvSubtotal);
         tvSubtotal.setText("650");
 
@@ -132,7 +139,7 @@ public class FemaleChangeReservationActivity extends AppCompatActivity {
             //非同期処理を開始する。
             ReservationTaskReceiver receiver = new ReservationTaskReceiver();
             //ここで渡した引数はLoginTaskReceiverクラスのdoInBackground(String... params)で受け取れる。
-            receiver.execute(LOGIN_URL, String.valueOf(isUpdate),  reservationId , menuNo , date , time);
+            receiver.execute(LOGIN_URL, String.valueOf(isUpdate),  reservationId , menuNo , date , time , message);
         }else{
             Toast.makeText(FemaleChangeReservationActivity.this , "入力チェック完了" , Toast.LENGTH_SHORT).show();
         }
@@ -169,7 +176,8 @@ public class FemaleChangeReservationActivity extends AppCompatActivity {
                 String menuNo = params[3];
                 String date = params[4];
                 String time = params[5];
-                postData = "version=" + isStart + "&id=" + id + "&menuNo=" + menuNo + "&date=" + date + "&time=" + time;
+                String message = params[6];
+                postData = "version=" + isStart + "&id=" + id + "&menuNo=" + menuNo + "&date=" + date + "&time=" + time + "&message=" + message;
             }
 
             HttpURLConnection con = null;
@@ -276,6 +284,11 @@ public class FemaleChangeReservationActivity extends AppCompatActivity {
                     date = dataConversion.getDataConversion02(date);
                     etDate.setText(date);
 
+                    EditText etMessage = findViewById(R.id.etMessage);
+                    String message = rootJSON.getString("message");
+                    reservation.setMessage(message);
+                    etMessage.setText(message);
+
                     //予約日時の分解
                     String reservationYear = etReservation.substring(0, 4);//年
                     String reservationMonth = etReservation.substring(5, 7);//月
@@ -298,6 +311,9 @@ public class FemaleChangeReservationActivity extends AppCompatActivity {
                         TextView tv2 = findViewById(R.id.etTime);
                         tv2.setEnabled(false);
 
+                        TextView tv3 = findViewById(R.id.etMessage);
+                        tv3.setEnabled(false);
+
                         Spinner spinner = (Spinner) findViewById(R.id.spMenu);
                         spinner.setEnabled(false);
 
@@ -319,14 +335,15 @@ public class FemaleChangeReservationActivity extends AppCompatActivity {
                         TextView tv2 = findViewById(R.id.etTime);
                         tv2.setEnabled(false);
 
+                        TextView tv3 = findViewById(R.id.etMessage);
+                        tv3.setEnabled(false);
+
                         Spinner spinner = (Spinner) findViewById(R.id.spMenu);
                         spinner.setEnabled(false);
 
                         Toast.makeText(FemaleChangeReservationActivity.this , "過去の予約は変更できません" , Toast.LENGTH_SHORT).show();
 
                     }
-
-
 
                     EditText etTime = findViewById(R.id.etTime);
                     String time = rootJSON.getString("dateTime");
