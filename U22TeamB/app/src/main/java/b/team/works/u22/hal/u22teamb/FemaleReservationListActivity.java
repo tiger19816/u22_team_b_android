@@ -95,7 +95,7 @@ public class FemaleReservationListActivity extends AppCompatActivity implements 
             String id = params[1];
 
             //POSTで送りたいデータ
-            String postData = "id=" + id;
+            String postData = "id=" + id + "&sex=0";
 
             HttpURLConnection con = null;
             InputStream is = null;
