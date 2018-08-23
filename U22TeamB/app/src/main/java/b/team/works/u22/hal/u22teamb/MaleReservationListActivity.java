@@ -219,9 +219,7 @@ public class MaleReservationListActivity extends AppCompatActivity implements Na
                                 ImageView ivNewImage = (ImageView) view;
                                 String newImage = Tools.replaceBr(strData);
                                 if("0".equals(newImage)) {
-                                    ivNewImage.setImageResource(R.drawable.icon);
-                                }else{
-                                    ivNewImage.setImageResource(R.drawable.button_background);
+                                    ivNewImage.setImageResource(R.drawable.newicon);
                                 }
                                 return true;
                         }
