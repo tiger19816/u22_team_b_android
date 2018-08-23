@@ -8,7 +8,13 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 
 import org.w3c.dom.Text;
 
@@ -73,9 +79,23 @@ public class FemaleFinishReservationActivity extends AppCompatActivity {
         //ここで渡した引数はLoginTaskReceiverクラスのdoInBackground(String... params)で受け取れる。
         receiver.execute(Word.RESERVATION_URL);
 
+
         Intent intent = new Intent(FemaleFinishReservationActivity.this , FemaleStoreMapListActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
+
+        // ImageViewをToast表示する
+        ImageView imageView = new ImageView(FemaleFinishReservationActivity.this);
+        GlideDrawableImageViewTarget target = new GlideDrawableImageViewTarget(imageView);
+        Glide.with(this).load(R.raw.gifsample01).into(target);
+        Toast toast = new Toast(FemaleFinishReservationActivity.this);
+        toast.setView(imageView);
+        /**
+         * 第1引数 : 水平方向のマージンを指定します。数値は-1~1の間で設定できます。正の値は水平右方向、負の値は水平左方向に移動されます。
+         * 第2引数 : 垂直方向のマージンを指定します。数値は-1~1の間で設定できます。正の値は垂直上方向、負の値は垂直下方向に移動されます。
+         */
+        toast.setMargin(1.0f,-1.0f);
+        toast.show();
     }
 
     /**

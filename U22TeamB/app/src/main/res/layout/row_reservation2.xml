@@ -12,9 +12,8 @@
     android:padding="10dp">
 
     <LinearLayout
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.8"
         android:orientation="vertical">
 
         <TextView
@@ -22,19 +21,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-        <TextView
-            android:id="@+id/tvReservationDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"/>
-
     </LinearLayout>
-
-    <ImageView
-        android:id="@+id/ivNewImage"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.2"
-        android:src="@drawable/icon"/>
 
 </LinearLayout>
