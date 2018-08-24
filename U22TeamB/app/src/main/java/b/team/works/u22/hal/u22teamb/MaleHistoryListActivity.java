@@ -42,6 +42,7 @@ public class MaleHistoryListActivity extends AppCompatActivity  implements Navig
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.MyCustomTheme_Default);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_male_history_list);
 
@@ -215,6 +216,7 @@ public class MaleHistoryListActivity extends AppCompatActivity  implements Navig
                         Intent intent = new Intent(MaleHistoryListActivity.this, FemaleStoreDetailsActivity.class);
                         Map<String, String> map = (Map<String, String>) adapter.getItem(position);
                         intent.putExtra("id", map.get("storeId"));
+                        intent.putExtra("mode", FemaleStoreDetailsActivity.MODE_MALE);
                         startActivity(intent);
                     }
                 });
@@ -268,6 +270,10 @@ public class MaleHistoryListActivity extends AppCompatActivity  implements Navig
             intent = new Intent(MaleHistoryListActivity.this,MaleHistoryListActivity.class);
             startActivity(intent);
         }else if (id == R.id.nav_logout){
+            SharedPreferences setting = getSharedPreferences("USER" , 0);
+            SharedPreferences.Editor editor = setting.edit();
+            editor.remove("ID");
+            editor.commit();
             intent = new Intent(MaleHistoryListActivity.this,MainActivity.class);
             startActivity(intent);
         }

@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -53,8 +54,11 @@ public class FemaleChangeReservationActivity extends AppCompatActivity {
     private SimpleDateFormat dfMonth = new SimpleDateFormat("MM");
     private SimpleDateFormat dfDayOfMonth = new SimpleDateFormat("dd");
 
+    private String etReservation ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.MyCustomTheme_Dark);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_female_change_reservation);
 
@@ -72,7 +76,6 @@ public class FemaleChangeReservationActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         this.reservationId = intent.getStringExtra("reservationId");
-        Log.e("クリックした予約ID" , reservationId);
         this.storeId = intent.getStringExtra("storeId");
 
         this.SIGNAL_VERSION = "START";
@@ -81,6 +84,7 @@ public class FemaleChangeReservationActivity extends AppCompatActivity {
         ReservationTaskReceiver receiver = new ReservationTaskReceiver();
         //ここで渡した引数はLoginTaskReceiverクラスのdoInBackground(String... params)で受け取れる。
         receiver.execute(LOGIN_URL , "false" , reservationId );
+
 
     }
 
@@ -107,12 +111,21 @@ public class FemaleChangeReservationActivity extends AppCompatActivity {
             date = reservation2.getDate();
             isUpdate = true;
         }
+        
 
         EditText etTime = findViewById(R.id.etTime);
         reservation2.setTime(dataConversion.getTimeConversion01(etTime.getText().toString()));
         String time = "";
         if(!reservation.getTime().equals(reservation2.getTime())){
             time = reservation2.getTime();
+            isUpdate = true;
+        }
+
+        EditText etMessage = findViewById(R.id.etMessage);
+        reservation2.setTime(etMessage.getText().toString());
+        String message = "";
+        if(!reservation.getMessage().equals(reservation2.getMessage())){
+            message = reservation2.getMessage();
             isUpdate = true;
         }
 
@@ -126,7 +139,7 @@ public class FemaleChangeReservationActivity extends AppCompatActivity {
             //非同期処理を開始する。
             ReservationTaskReceiver receiver = new ReservationTaskReceiver();
             //ここで渡した引数はLoginTaskReceiverクラスのdoInBackground(String... params)で受け取れる。
-            receiver.execute(LOGIN_URL, String.valueOf(isUpdate),  reservationId , menuNo , date , time);
+            receiver.execute(LOGIN_URL, String.valueOf(isUpdate),  reservationId , menuNo , date , time , message);
         }else{
             Toast.makeText(FemaleChangeReservationActivity.this , "入力チェック完了" , Toast.LENGTH_SHORT).show();
         }
@@ -163,7 +176,8 @@ public class FemaleChangeReservationActivity extends AppCompatActivity {
                 String menuNo = params[3];
                 String date = params[4];
                 String time = params[5];
-                postData = "version=" + isStart + "&id=" + id + "&menuNo=" + menuNo + "&date=" + date + "&time=" + time;
+                String message = params[6];
+                postData = "version=" + isStart + "&id=" + id + "&menuNo=" + menuNo + "&date=" + date + "&time=" + time + "&message=" + message;
             }
 
             HttpURLConnection con = null;
@@ -265,9 +279,71 @@ public class FemaleChangeReservationActivity extends AppCompatActivity {
 
                     EditText etDate = findViewById(R.id.etDate);
                     String date = rootJSON.getString("dateTime");
+                    etReservation = date;
                     reservation.setDate(date);
                     date = dataConversion.getDataConversion02(date);
                     etDate.setText(date);
+
+                    EditText etMessage = findViewById(R.id.etMessage);
+                    String message = rootJSON.getString("message");
+                    reservation.setMessage(message);
+                    etMessage.setText(message);
+
+                    //予約日時の分解
+                    String reservationYear = etReservation.substring(0, 4);//年
+                    String reservationMonth = etReservation.substring(5, 7);//月
+                    String reservationDay = etReservation.substring(8, 10);//日
+
+                    //現在日時の取得
+                    java.util.Calendar cal =  java.util.Calendar.getInstance();
+                    int nowYear = cal.get(Calendar.YEAR);
+                    int nowMonth = cal.get(Calendar.MONTH);
+                    int nowDay = cal.get(Calendar.DAY_OF_MONTH);
+
+
+                    if (    Integer.valueOf(reservationYear) == nowYear &&
+                            Integer.valueOf(reservationMonth) == (nowMonth + 1) &&
+                            Integer.valueOf(reservationDay) >= (nowDay+3) ){
+
+                        TextView tv1 = findViewById(R.id.etDate);
+                        tv1.setEnabled(false);
+
+                        TextView tv2 = findViewById(R.id.etTime);
+                        tv2.setEnabled(false);
+
+                        TextView tv3 = findViewById(R.id.etMessage);
+                        tv3.setEnabled(false);
+
+                        Spinner spinner = (Spinner) findViewById(R.id.spMenu);
+                        spinner.setEnabled(false);
+
+                        Toast.makeText(FemaleChangeReservationActivity.this , "予約日から3日以内のため変更はできません" , Toast.LENGTH_SHORT).show();
+
+                    }else if( Integer.valueOf(reservationYear) < nowYear ||
+                            Integer.valueOf(reservationYear) <= nowYear &&
+                            Integer.valueOf(reservationMonth) < (nowMonth + 1) ||
+                            Integer.valueOf(reservationYear) <= nowYear &&
+                            Integer.valueOf(reservationMonth) <= (nowMonth + 1) &&
+                            Integer.valueOf(reservationDay) <= nowDay ){
+
+                        TextView tv1 = findViewById(R.id.etDate);
+                        tv1.setEnabled(false);
+
+                        Button button = (Button) findViewById(R.id.ReservationUpdateClick);
+                        button.setEnabled(false);
+
+                        TextView tv2 = findViewById(R.id.etTime);
+                        tv2.setEnabled(false);
+
+                        TextView tv3 = findViewById(R.id.etMessage);
+                        tv3.setEnabled(false);
+
+                        Spinner spinner = (Spinner) findViewById(R.id.spMenu);
+                        spinner.setEnabled(false);
+
+                        Toast.makeText(FemaleChangeReservationActivity.this , "過去の予約は変更できません" , Toast.LENGTH_SHORT).show();
+
+                    }
 
                     EditText etTime = findViewById(R.id.etTime);
                     String time = rootJSON.getString("dateTime");

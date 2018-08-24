@@ -100,6 +100,13 @@
 
         </LinearLayout>
 
+        <EditText
+            android:id="@+id/etMessage"
+            android:hint="@string/bt_reservation_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -111,8 +118,10 @@
                 android:onClick="onFinishReservationClick"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
+                android:layout_marginBottom="10dp"
                 android:text="@string/bt_reservation_confirmation"
-                android:layout_gravity="center_horizontal"/>
+                android:layout_gravity="center_horizontal"
+                style="@style/femaleButton"/>
 
         </LinearLayout>
 

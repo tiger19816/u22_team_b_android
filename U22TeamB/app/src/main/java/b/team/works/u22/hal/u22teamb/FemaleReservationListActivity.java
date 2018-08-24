@@ -43,6 +43,7 @@ public class FemaleReservationListActivity extends AppCompatActivity implements 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.MyCustomTheme_Dark);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_female_reservation_list);
 
@@ -94,7 +95,7 @@ public class FemaleReservationListActivity extends AppCompatActivity implements 
             String id = params[1];
 
             //POSTで送りたいデータ
-            String postData = "id=" + id;
+            String postData = "id=" + id + "&sex=0";
 
             HttpURLConnection con = null;
             InputStream is = null;
@@ -237,30 +238,6 @@ public class FemaleReservationListActivity extends AppCompatActivity implements 
     }
 
     /**
-     * リストビューのカスタムビューバインダークラス。
-     */
-    private class CustomViewBinder implements SimpleAdapter.ViewBinder{
-        @Override
-        public boolean setViewValue(View view , Object data , String textRepresentation){
-            int viewId = view.getId();
-            switch (viewId){
-                case R.id.tvStoreName:
-                    TextView tvStoreName = (TextView) view;
-                    String strStoreName = (String) data;
-                    tvStoreName.setText(strStoreName);
-                    return true;
-                case R.id.tvReservationDate:
-                    TextView tvReservationDate = (TextView) view;
-                    String strReservationDate = (String) data;
-                    tvReservationDate.setText(strReservationDate);
-                    return true;
-            }
-            return false;
-        }
-    }
-
-
-    /**
      * レフトナビ以外をクリックした時の動き。
      */
     @Override
@@ -297,7 +274,12 @@ public class FemaleReservationListActivity extends AppCompatActivity implements 
             intent = new Intent(FemaleReservationListActivity.this,FemaleMyPageActivity.class);
             startActivity(intent);
         }else if (id == R.id.nav_logout){
+            SharedPreferences setting = getSharedPreferences("USER" , 0);
+            SharedPreferences.Editor editor = setting.edit();
+            editor.remove("ID");
+            editor.commit();
             intent = new Intent(FemaleReservationListActivity.this,MainActivity.class);
+            finish();
             startActivity(intent);
         }
 

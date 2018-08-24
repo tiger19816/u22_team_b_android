@@ -23,10 +23,12 @@
         android:layout_marginLeft="5dp" />
 
     <Button
+        android:id="@+id/btNextReservation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onNextReservationClick"
-        android:text="@string/bt_next_reservation_page" />
+        android:text="@string/bt_next_reservation_page"
+        style="@style/femaleButton"/>
 
     <android.support.design.widget.TabLayout
         android:id="@+id/tabs"

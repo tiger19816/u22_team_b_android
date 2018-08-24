@@ -24,7 +24,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/MyCustomTheme.Default">
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -59,7 +59,8 @@
 
         <activity android:name=".FemaleStoreDetailsActivity" />
         <activity android:name=".MaleEnterShopActivity" />
-        <activity android:name=".MaleHistoryEditActivity"></activity>
+        <activity android:name=".MaleHistoryEditActivity" />
+        <activity android:name=".FemaleQrCodeActivity"></activity>
     </application>
 
 </manifest>

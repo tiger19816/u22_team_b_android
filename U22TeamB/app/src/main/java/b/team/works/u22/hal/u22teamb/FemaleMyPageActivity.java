@@ -12,6 +12,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -36,9 +38,13 @@ public class FemaleMyPageActivity extends AppCompatActivity implements Navigatio
      */
     private static final String LOGIN_URL = Word.USER_MYPAGE_URL;
     private String _id;
+    private String maleRegistrationCode;
+    private Boolean maleRegistered = true;
+    private MenuItem menuToggleVisible;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.MyCustomTheme_Dark);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_female_my_page);
 
@@ -47,6 +53,11 @@ public class FemaleMyPageActivity extends AppCompatActivity implements Navigatio
         //ユーザーIDの取得。
         SharedPreferences setting = getSharedPreferences("USER" , 0);
         _id = setting.getString("ID" , "");
+
+        //非同期処理を開始する。
+        LoginTaskReceiver receiver = new LoginTaskReceiver();
+        //ここで渡した引数はLoginTaskReceiverクラスのdoInBackground(String... params)で受け取れる。
+        receiver.execute(LOGIN_URL , _id );
 
         //ツールバー(レイアウトを変更可)。
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -62,10 +73,38 @@ public class FemaleMyPageActivity extends AppCompatActivity implements Navigatio
         NavigationView navigationView = findViewById(R.id.nvSideMenuButton);
         navigationView.setNavigationItemSelectedListener(this);
 
-        //非同期処理を開始する。
-        LoginTaskReceiver receiver = new LoginTaskReceiver();
-        //ここで渡した引数はLoginTaskReceiverクラスのdoInBackground(String... params)で受け取れる。
-        receiver.execute(LOGIN_URL , _id );
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.female_my_page , menu);
+        return true;
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        super.onPrepareOptionsMenu(menu);
+        menuToggleVisible = menu.findItem(R.id.btnQrCode);
+        menuToggleVisible.setVisible(maleRegistered);
+        return true;
+    }
+
+    private void toggleMenuVisible() {
+        invalidateOptionsMenu();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        int itemid = item.getItemId();
+        switch (itemid) {
+            case R.id.btnQrCode:
+                Intent intent = new Intent(FemaleMyPageActivity.this,FemaleQrCodeActivity.class);
+                intent.putExtra("MALEREGISTRATIONCODE",maleRegistrationCode);
+                startActivity(intent);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     /**
@@ -74,6 +113,8 @@ public class FemaleMyPageActivity extends AppCompatActivity implements Navigatio
     private class LoginTaskReceiver extends AsyncTask<String, Void, String> {
 
         private static final String DEBUG_TAG = "RestAccess";
+//        private String maleRegistrationCode;
+//        private Boolean maleRegistered;
 
         /**
          * 非同期に処理したい内容を記述するメソッド.
@@ -209,9 +250,6 @@ public class FemaleMyPageActivity extends AppCompatActivity implements Navigatio
                 TextView tvFemaleNomineeName = findViewById(R.id.tvFemaleCreditCardHolder);
                 tvFemaleNomineeName.setText(femaleCardNominee);
 
-//                String femalePointLatitude = rootJSON.getString("pointLatitude");//緯度
-//                String femalePointLongitude = rootJSON.getString("pointLongitude");//経度
-
                 //夫情報
                 String maleName = rootJSON.getString("maleName");
                 TextView tvMaleName = findViewById(R.id.tvMaleName);
@@ -240,6 +278,16 @@ public class FemaleMyPageActivity extends AppCompatActivity implements Navigatio
                 String maleProfession = rootJSON.getString("profession");
                 TextView tvMaleProfession = findViewById(R.id.tvMaleProfession);
                 tvMaleProfession.setText(male.setMaleProfessionName(maleProfession));
+
+                maleRegistrationCode = rootJSON.getString("maleRegistrationCode");
+                if("".equals(maleRegistrationCode)) {
+                    maleRegistered = false;
+                    toggleMenuVisible();
+                }else{
+                    maleRegistered = true;
+                    toggleMenuVisible();
+                }
+
             }
             catch (JSONException ex) {
                 Log.e(DEBUG_TAG, "JSON解析失敗", ex);
@@ -295,7 +343,12 @@ public class FemaleMyPageActivity extends AppCompatActivity implements Navigatio
             intent = new Intent(FemaleMyPageActivity.this,FemaleMyPageActivity.class);
             startActivity(intent);
         }else if (id == R.id.nav_logout){
+            SharedPreferences setting = getSharedPreferences("USER" , 0);
+            SharedPreferences.Editor editor = setting.edit();
+            editor.remove("ID");
+            editor.commit();
             intent = new Intent(FemaleMyPageActivity.this,MainActivity.class);
+            finish();
             startActivity(intent);
         }
 

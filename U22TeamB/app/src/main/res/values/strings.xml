@@ -74,6 +74,7 @@
     <string name="female_registration_confirmation">奥様の情報</string>
 
     <!-- 画面06【妻】店の一覧表示-Map画面 -->
+    <string name="bt_surrounding_store">この周辺の店舗を表示</string>
     <string name="row_bt_store_detail">詳細</string>
     <string name="row_bt_store_reservation">予約</string>
 
@@ -92,14 +93,16 @@
     <string name="tv_reservation_store_menu">メニュー:</string>
     <string-array name="sp_reservation_store_menu_list">
         <item>メニューを選択</item>
-        <item>メニューA</item>
-        <item>メニューB</item>
-        <item>メニューC</item>
+        <item>メニューA(500円)</item>
+        <item>メニューB(800円)</item>
+        <item>メニューC(1000円)</item>
     </string-array>
     <string name="tv_reservation_datetime">予約時間</string>
     <string name="bt_reservation_date">日付:</string>
     <string name="bt_reservation_time">時間:</string>
+    <string name="bt_reservation_message">メッセージ</string>
     <string name="bt_reservation_confirmation">次へ</string>
+
 
     <!-- 画面09 【妻】予約の確認と決済画面 -->
     <string name="tv_reservation_check_store_name">店舗名:</string>
@@ -117,6 +120,7 @@
     <string name="tv_reservation_check_card_date">有効期限:</string>
     <string name="tv_reservation_check_card_count01">支払い回数:</string>
     <string name="tv_reservation_check_card_count02">一括払い</string>
+    <string name="tv_reservation_check_message">メッセージ無し</string>
     <string name="bt_reservation_check_finish">予約確定</string>
 
     <!-- 画面13【夫】夫側のパスワード設定-->

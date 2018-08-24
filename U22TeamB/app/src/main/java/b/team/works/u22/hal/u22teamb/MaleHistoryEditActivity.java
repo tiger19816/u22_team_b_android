@@ -53,6 +53,7 @@ public class MaleHistoryEditActivity extends AppCompatActivity implements ViewPa
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.MyCustomTheme_Default);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_male_history_edit);
 
@@ -69,7 +70,6 @@ public class MaleHistoryEditActivity extends AppCompatActivity implements ViewPa
         //IDの取得
         Intent intent = getIntent();
         storeId = intent.getStringExtra("id");
-        Log.e("送信された店舗ID" , storeId);
 
         //xmlからTabLayoutの取得
         TabLayout tabLayout = findViewById(R.id.tabs);

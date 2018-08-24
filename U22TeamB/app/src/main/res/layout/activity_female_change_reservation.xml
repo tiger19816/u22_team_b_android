@@ -10,6 +10,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
      <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -175,6 +184,14 @@
 
         </LinearLayout>
 
+        <EditText
+            android:id="@+id/etMessage"
+            android:hint="@string/tv_reservation_check_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:inputType="text"/>
+
     </LinearLayout>
 
     <LinearLayout
@@ -185,12 +202,18 @@
         android:orientation="vertical" >
 
         <Button
+            android:id="@+id/ReservationUpdateClick"
             android:onClick="onReservationUpdateClick"
             android:text="@string/bt_reservation_check_finish"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            style="@style/femaleButton"/>
 
     </LinearLayout>
+
+    </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>

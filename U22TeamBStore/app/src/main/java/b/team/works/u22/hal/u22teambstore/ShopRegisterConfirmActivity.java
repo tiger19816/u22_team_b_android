@@ -7,6 +7,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -238,6 +242,24 @@ public class ShopRegisterConfirmActivity extends AppCompatActivity {
             }
 
             return result;
+        }
+
+        @Override
+        public void onPostExecute(String result) {
+            try {
+                JSONObject rootJSON = new JSONObject(result);
+
+                boolean resultJSON  = rootJSON.getBoolean("result");
+                if(resultJSON) {
+                    Toast.makeText(ShopRegisterConfirmActivity.this, "登録が完了しました。", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(ShopRegisterConfirmActivity.this, "登録に失敗しました。", Toast.LENGTH_SHORT).show();
+                }
+            }
+            catch (JSONException ex) {
+                Log.e(DEBUG_TAG, "JSON解析失敗", ex);
+            }
         }
 
         private String is2String(InputStream is) throws IOException {

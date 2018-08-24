@@ -35,6 +35,7 @@ public class FemaleNewReservationActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.MyCustomTheme_Dark);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_female_new_reservation);
 
@@ -142,6 +143,9 @@ public class FemaleNewReservationActivity extends AppCompatActivity {
 
         EditText etTime = findViewById(R.id.etTime);
         reservation.setTime(etTime.getText().toString());
+
+        EditText etMessage = findViewById(R.id.etMessage);
+        reservation.setMessage(etMessage.getText().toString());
 
         if(reservation.isHasNoError()) {
             Intent intent = new Intent(FemaleNewReservationActivity.this, FemaleFinishReservationActivity.class);
