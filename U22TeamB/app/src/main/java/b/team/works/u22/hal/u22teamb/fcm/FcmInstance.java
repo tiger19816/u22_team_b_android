@@ -33,12 +33,12 @@ import com.google.firebase.messaging.FirebaseMessaging;
  * ④ Firebaseコンソール上から該当Androidプロジェクトに対応する「google-services.json」をダウンロードし、該当Androidプロジェクト下の「app\src」に配置。
  * ⑤ 「AndroidManifest.xml」の<Application>内に以下を追記。但し、meta-data上のパラメータは適当な値を入力。
  * --------------------------------------------------
- * <service android:name=".MyInstanceIDListenerService">
+ * <service android:name=".fcm.FcmInstance$MyInstanceIDListenerService">
  *     <intent-filter>
  *         <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
  *     </intent-filter>
  * </service>
- * <service android:name=".FcmInstance$MyFcmListenerService">
+ * <service android:name=".fcm.MyFcmListenerService">
  *     <intent-filter>
  *         <action android:name="com.google.firebase.MESSAGING_EVENT"/>
  *     </intent-filter>
@@ -47,7 +47,7 @@ import com.google.firebase.messaging.FirebaseMessaging;
  * <meta-data android:name="com.google.firebase.messaging.default_notification_color" android:resource="@android:color/holo_red_light" />
  * <meta-data android:name="com.google.firebase.messaging.default_notification_channel_id" android:value="notification_channel"/>
  * <meta-data android:name="firebase_messaging_auto_init_enabled" android:value="false" />
- * <meta-data android:name="firebase_analytics_collection_enabled"android:value="false" />
+ * <meta-data android:name="firebase_analytics_collection_enabled" android:value="false" />
  * --------------------------------------------------
  * ⑥ 該当Androidプロジェクト直下の「build.gradle」上で「buildscript{dependencies{}}」内に以下を追記。
  * --------------------------------------------------
