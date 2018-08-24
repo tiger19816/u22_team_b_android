@@ -3,6 +3,7 @@ package b.team.works.u22.hal.u22teamb;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -66,6 +67,17 @@ public class FemaleReservationListActivity extends AppCompatActivity implements 
         //レフトナビ本体。
         NavigationView navigationView = findViewById(R.id.nvSideMenuButton);
         navigationView.setNavigationItemSelectedListener(this);
+
+        //ユーザ名を表示する
+        SharedPreferences pref = getSharedPreferences("USER",0);
+        if(Build.VERSION.SDK_INT < 23) {
+            TextView navTvUserName = navigationView.findViewById(R.id.navTvUserName);
+            navTvUserName.setText(pref.getString("NAME", "ユーザー名"));
+        } else {
+            View headerView = navigationView.getHeaderView(0);
+            TextView navTvUserName = headerView.findViewById(R.id.navTvUserName);
+            navTvUserName.setText(pref.getString("NAME", "ユーザー名"));
+        }
 
         //非同期処理を開始する。
         ReservationTaskReceiver receiver = new ReservationTaskReceiver();

@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -15,6 +16,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -73,6 +75,16 @@ public class FemaleMyPageActivity extends AppCompatActivity implements Navigatio
         NavigationView navigationView = findViewById(R.id.nvSideMenuButton);
         navigationView.setNavigationItemSelectedListener(this);
 
+        //ユーザ名を表示する
+        SharedPreferences pref = getSharedPreferences("USER",0);
+        if(Build.VERSION.SDK_INT < 23) {
+            TextView navTvUserName = navigationView.findViewById(R.id.navTvUserName);
+            navTvUserName.setText(pref.getString("NAME", "ユーザー名"));
+        } else {
+            View headerView = navigationView.getHeaderView(0);
+            TextView navTvUserName = headerView.findViewById(R.id.navTvUserName);
+            navTvUserName.setText(pref.getString("NAME", "ユーザー名"));
+        }
     }
 
     @Override
