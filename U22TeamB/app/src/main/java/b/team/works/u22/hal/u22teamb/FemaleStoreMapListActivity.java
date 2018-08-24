@@ -81,6 +81,9 @@ public class FemaleStoreMapListActivity extends AppCompatActivity implements Nav
         SharedPreferences setting = getSharedPreferences("USER" , 0);
         id = setting.getString("ID" , "");
 
+        //トークンの更新 + バックグラウンド処理開始。 by Yuki Yoshida
+
+
         //ツールバー(レイアウトを変更可)。
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
