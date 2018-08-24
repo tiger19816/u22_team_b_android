@@ -276,15 +276,18 @@ public class FemaleHistoryListActivity extends AppCompatActivity  implements Nav
         Intent intent;
         if (id == R.id.nav_map) {
             intent = new Intent(FemaleHistoryListActivity.this,FemaleStoreMapListActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         } else if (id == R.id.nav_reservation) {
             intent = new Intent(FemaleHistoryListActivity.this,FemaleReservationListActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         } else if (id == R.id.nav_history) {
-            intent = new Intent(FemaleHistoryListActivity.this,FemaleHistoryListActivity.class);
-            startActivity(intent);
+//            intent = new Intent(FemaleHistoryListActivity.this,FemaleHistoryListActivity.class);
+//            startActivity(intent);
         } else if (id == R.id.nav_my_page) {
             intent = new Intent(FemaleHistoryListActivity.this,FemaleMyPageActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         }else if (id == R.id.nav_logout){
             SharedPreferences setting = getSharedPreferences("USER" , 0);

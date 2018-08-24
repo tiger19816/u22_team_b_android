@@ -275,15 +275,18 @@ public class FemaleReservationListActivity extends AppCompatActivity implements 
         Intent intent;
         if (id == R.id.nav_map) {
             intent = new Intent(FemaleReservationListActivity.this,FemaleStoreMapListActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         } else if (id == R.id.nav_reservation) {
-            intent = new Intent(FemaleReservationListActivity.this,FemaleReservationListActivity.class);
-            startActivity(intent);
+//            intent = new Intent(FemaleReservationListActivity.this,FemaleReservationListActivity.class);
+//            startActivity(intent);
         } else if (id == R.id.nav_history) {
             intent = new Intent(FemaleReservationListActivity.this,FemaleHistoryListActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         } else if (id == R.id.nav_my_page) {
             intent = new Intent(FemaleReservationListActivity.this,FemaleMyPageActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         }else if (id == R.id.nav_logout){
             SharedPreferences setting = getSharedPreferences("USER" , 0);

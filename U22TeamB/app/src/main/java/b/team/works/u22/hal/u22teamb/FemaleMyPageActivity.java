@@ -344,16 +344,19 @@ public class FemaleMyPageActivity extends AppCompatActivity implements Navigatio
         Intent intent;
         if (id == R.id.nav_map) {
             intent = new Intent(FemaleMyPageActivity.this,FemaleStoreMapListActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         } else if (id == R.id.nav_reservation) {
             intent = new Intent(FemaleMyPageActivity.this,FemaleReservationListActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         } else if (id == R.id.nav_history) {
             intent = new Intent(FemaleMyPageActivity.this,FemaleHistoryListActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         } else if (id == R.id.nav_my_page) {
-            intent = new Intent(FemaleMyPageActivity.this,FemaleMyPageActivity.class);
-            startActivity(intent);
+//            intent = new Intent(FemaleMyPageActivity.this,FemaleMyPageActivity.class);
+//            startActivity(intent);
         }else if (id == R.id.nav_logout){
             SharedPreferences setting = getSharedPreferences("USER" , 0);
             SharedPreferences.Editor editor = setting.edit();
