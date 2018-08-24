@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="b.team.works.u22.hal.u22teambstore">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -19,7 +19,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".ShopRegisterActivity" />
-        <activity android:name=".ShopRegisterConfirmActivity"></activity>
+        <activity android:name=".ShopRegisterConfirmActivity" />
+        <activity android:name=".ReservationListActivity" />
+        <activity android:name=".ReservationDetailActivity" />
     </application>
 
 </manifest>

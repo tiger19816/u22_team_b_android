@@ -10,6 +10,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -240,6 +249,16 @@
 
             </LinearLayout>
 
+            <TextView
+                android:id="@+id/tvMessage"
+                android:hint="@string/tv_reservation_check_message"
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"/>
+
         </LinearLayout>
 
         <LinearLayout
@@ -258,5 +277,9 @@
                 style="@style/femaleButton"/>
 
         </LinearLayout>
+
+    </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>

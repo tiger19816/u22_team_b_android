@@ -46,4 +46,12 @@
 
     </LinearLayout>
 
+    <!-- デバッグ用 by Yuki Yoshida -->
+    <!--<Button-->
+        <!--android:id="@+id/btDebug"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="デバッグ→"-->
+        <!--android:layout_gravity="right"-->
+        <!--android:onClick="onDebugClick"/>-->
 </LinearLayout>

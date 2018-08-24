@@ -211,4 +211,14 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * ReservationListActivityデバッグ用。
+     *
+     * @author Yuki Yoshida
+     */
+    public void onDebugClick(View view) {
+        Intent intent = new Intent(MainActivity.this, ReservationListActivity.class);
+        intent.putExtra("shopsId", "7116760");
+        startActivity(intent);
+    }
 }
