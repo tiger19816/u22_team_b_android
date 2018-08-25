@@ -199,7 +199,7 @@ public class FemaleReservationListActivity extends AppCompatActivity implements 
 
                 String[] from = {"storeName", "reservationDate"};
                 int[] to = {R.id.tvStoreName, R.id.tvReservationDate};
-                final SimpleAdapter adapter = new SimpleAdapter(FemaleReservationListActivity.this, _list, R.layout.row_reservation, from, to);
+                final SimpleAdapter adapter = new SimpleAdapter(FemaleReservationListActivity.this, _list, R.layout.row_reservation2, from, to);
                 adapter.setViewBinder(new SimpleAdapter.ViewBinder() {
                     @Override
                     public boolean setViewValue(View view, Object data, String textRepresentation) {
@@ -212,7 +212,8 @@ public class FemaleReservationListActivity extends AppCompatActivity implements 
                                 return true;
                             case R.id.tvReservationDate:
                                 TextView rowTvStoreShortPr = (TextView) view;
-                                rowTvStoreShortPr.setText(Tools.replaceBr(strData));
+                                DataConversion dc = new DataConversion();
+                                rowTvStoreShortPr.setText(dc.getFullDataConversion02(Tools.replaceBr(strData)));
                                 return true;
                         }
                         return false;

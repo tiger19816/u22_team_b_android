@@ -232,7 +232,11 @@ public class FemaleMyPageActivity extends AppCompatActivity implements Navigatio
 
                 String femalePassword = rootJSON.getString("femalePassword");
                 TextView tvFemalePassword = findViewById(R.id.tvFemalePassword);
-                tvFemalePassword.setText(femalePassword);
+                String password = "";
+                for(int i=0; i<femalePassword.length(); i++){
+                    password += "*";
+                }
+                tvFemalePassword.setText(password);
 
                 String femaleIcon = rootJSON.getString("femaleIcon");
                 ImageView imFemaleIcon = findViewById(R.id.ivFemaleIcon);

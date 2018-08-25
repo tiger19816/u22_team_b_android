@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.AsyncTask;
+import android.provider.ContactsContract;
 import android.os.Build;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -244,7 +245,8 @@ public class MaleReservationListActivity extends AppCompatActivity implements Na
                                 return true;
                             case R.id.tvReservationDate:
                                 TextView rowTvStoreShortPr = (TextView) view;
-                                rowTvStoreShortPr.setText(Tools.replaceBr(strData));
+                                DataConversion dc = new DataConversion();
+                                rowTvStoreShortPr.setText(dc.getFullDataConversion02(Tools.replaceBr(strData)));
                                 return true;
                             case R.id.ivNewImage:
                                 ImageView ivNewImage = (ImageView) view;
