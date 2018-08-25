@@ -2,6 +2,8 @@ package b.team.works.u22.hal.u22teamb;
 
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -84,11 +86,6 @@ public class FemaleFinishReservationActivity extends AppCompatActivity {
         //ここで渡した引数はLoginTaskReceiverクラスのdoInBackground(String... params)で受け取れる。
         receiver.execute(Word.RESERVATION_URL);
 
-
-        Intent intent = new Intent(FemaleFinishReservationActivity.this , FemaleStoreMapListActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
-
         // ImageViewをToast表示する
         ImageView imageView = new ImageView(FemaleFinishReservationActivity.this);
         GlideDrawableImageViewTarget target = new GlideDrawableImageViewTarget(imageView);
@@ -101,6 +98,16 @@ public class FemaleFinishReservationActivity extends AppCompatActivity {
          */
         toast.setMargin(1.0f,-1.0f);
         toast.show();
+
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // ここに３秒後に実行したい処理。
+                Intent intent = new Intent(FemaleFinishReservationActivity.this , FemaleStoreMapListActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+        }, 3000);
     }
 
     /**

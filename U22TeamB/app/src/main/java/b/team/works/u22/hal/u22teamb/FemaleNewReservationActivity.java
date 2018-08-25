@@ -97,7 +97,11 @@ public class FemaleNewReservationActivity extends AppCompatActivity {
     private class DatePickerDialogDateSetListener implements DatePickerDialog.OnDateSetListener{
         @Override
         public void onDateSet(DatePicker view , int year , int monthOfYear , int dayOfMonth){
-            String dateMessage = year + "年" + (monthOfYear + 1) + "月" + dayOfMonth + "日";
+            String dataMonth = "";
+            String dataDate = "";
+            if(monthOfYear<10){ dataMonth = "0" + String.valueOf(monthOfYear+1); }else{ dataMonth = String.valueOf(monthOfYear+1); }
+            if(dayOfMonth<10){ dataDate = "0" + String.valueOf(dayOfMonth); }else{ dataDate = String.valueOf(dayOfMonth); }
+            String dateMessage = year + "年" + dataMonth + "月" + dataDate + "日";
             EditText etDate = findViewById(R.id.etDate);
             etDate.setText(dateMessage);
         }
@@ -121,7 +125,12 @@ public class FemaleNewReservationActivity extends AppCompatActivity {
 
         @Override
         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-            String time = hourOfDay + "時" + minute + "分";
+            String time = "";
+            if(minute<10){
+                time = hourOfDay + "時" + minute + "0分";
+            }else{
+                time = hourOfDay + "時" + minute + "分";
+            }
             EditText etTime = findViewById(R.id.etTime);
             etTime.setText(time);
         }

@@ -32,7 +32,7 @@
             <ListView
                 android:id="@+id/lvReservationList"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"></ListView>
+                android:layout_height="wrap_content"/>
 
             </LinearLayout>
 

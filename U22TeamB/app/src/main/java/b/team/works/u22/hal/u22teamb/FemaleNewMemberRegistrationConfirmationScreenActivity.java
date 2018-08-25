@@ -125,7 +125,11 @@ public class FemaleNewMemberRegistrationConfirmationScreenActivity extends AppCo
         tvFemaleBirthday.setText(femaleBirthday);
 
         TextView tvFemalePassword = findViewById(R.id.tvFemalePassword);
-        tvFemalePassword.setText(femalePassword);
+        String password = "";
+        for(int i=0; i<femalePassword.length(); i++){
+            password += "*";
+        }
+        tvFemalePassword.setText(password);
 
         TextView tvFemaleAddress = findViewById(R.id.tvFemaleAddress);
         tvFemaleAddress.setText(femaleAddress);

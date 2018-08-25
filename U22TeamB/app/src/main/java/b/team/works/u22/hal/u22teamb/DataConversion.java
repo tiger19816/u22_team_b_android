@@ -15,6 +15,7 @@ import java.util.StringTokenizer;
 
 public class DataConversion {
 
+    private static final SimpleDateFormat dfFullDate01 = new SimpleDateFormat("yyyy年MM月dd日 hh時mm分");
     private static final SimpleDateFormat dfFullDate02 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
     private static final SimpleDateFormat dfDate01 = new SimpleDateFormat("yyyy年MM月dd日");
     private static final SimpleDateFormat dfDate02 = new SimpleDateFormat("yyyy-MM-dd");
@@ -26,12 +27,44 @@ public class DataConversion {
      * @param date(String)
      * @return
      */
+    public String getFullDataConversion01(String date){
+        String strData = "";
+        try {
+            Date d = dfFullDate01.parse(date);
+            strData = dfFullDate02.format(d);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            Log.e("データ変換失敗", "DataConversionクラスのgetFullDataConversion01時。");
+        }
+        return strData;
+    }
+
+    /**
+     *yyyy-MM-ddからyyyy年MM年dd日に変換。
+     * @param date(String)
+     * @return String
+     */
+    public String getFullDataConversion02(String date){
+        String strData = "";
+        try {
+            Date d = dfFullDate02.parse(date);
+            strData = dfFullDate01.format(d);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            Log.e("データ変換失敗", "DataConversionクラスのgetFullDataConversion02時。");
+        }
+        return strData;
+    }
+
+    /**
+     *yyyy年MM年dd日からyyyy-MM-ddに変換。
+     * @param date(String)
+     * @return
+     */
     public String getDataConversion01(String date){
         String strData = "";
         try {
-            Log.e("確認" , date);
             Date d = dfDate01.parse(date);
-            Log.e("確認" , String.valueOf(d));
             strData = dfDate02.format(d);
         } catch (ParseException e) {
             e.printStackTrace();

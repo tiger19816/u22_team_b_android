@@ -202,7 +202,8 @@ public class FemaleHistoryListActivity extends AppCompatActivity  implements Nav
                                 return true;
                             case R.id.tvHistoryDate:
                                 TextView tvHistryDate = (TextView) view;
-                                tvHistryDate.setText(Tools.replaceBr(strData));
+                                DataConversion dc = new DataConversion();
+                                tvHistryDate.setText(dc.getFullDataConversion02(Tools.replaceBr(strData)));
                                 return true;
                         }
                         return false;

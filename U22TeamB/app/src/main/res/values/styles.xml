@@ -11,6 +11,26 @@
         <item name="android:typeface">monospace</item>
     </style>
 
+    <!-- カスタムベーステーマを追加 -->
+    <style name="MyCustomTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    </style>
+
+    <!-- カスタムベーステーマを継承するテーマを追加(夫用) -->
+    <style name="MyCustomTheme.Default" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="customTextColor">#536dfe</item>
+        <item name="colorPrimary">#536dfe</item>
+        <item name="colorAccent">#536dfe</item>
+        <item name="colorPrimaryDark">#536dfe</item>
+    </style>
+
+    <!-- カスタムベーステーマを継承するテーマを追加(妻用) -->
+    <style name="MyCustomTheme.Dark" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="customTextColor">#FF4081</item>
+        <item name="colorPrimary">#FF4081</item>
+        <item name="colorAccent">#FF4081</item>
+        <item name="colorPrimaryDark">#FF4081</item>
+    </style>
+
     <!-- レフトナビ用 -->
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
@@ -42,26 +62,6 @@
         <item name="android:background">@color/colorAccent</item>
         <item name="android:textColor">#F2FFFF</item>
         <item name="android:textSize">20sp</item>
-    </style>
-
-    <!-- カスタムベーステーマを追加 -->
-    <style name="MyCustomTheme" parent="Theme.AppCompat.Light.NoActionBar">
-    </style>
-
-    <!-- カスタムベーステーマを継承するテーマを追加(夫用) -->
-    <style name="MyCustomTheme.Default" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="customTextColor">#536dfe</item>
-        <item name="colorPrimary">#536dfe</item>
-        <item name="colorAccent">#536dfe</item>
-        <item name="colorPrimaryDark">#536dfe</item>
-    </style>
-
-    <!-- カスタムベーステーマを継承するテーマを追加(妻用) -->
-    <style name="MyCustomTheme.Dark" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="customTextColor">#FF4081</item>
-        <item name="colorPrimary">#FF4081</item>
-        <item name="colorAccent">#FF4081</item>
-        <item name="colorPrimaryDark">#FF4081</item>
     </style>
 
 </resources>
