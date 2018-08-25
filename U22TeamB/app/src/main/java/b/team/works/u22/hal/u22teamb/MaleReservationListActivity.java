@@ -4,11 +4,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.AsyncTask;
-<<<<<<< HEAD
 import android.provider.ContactsContract;
-=======
 import android.os.Build;
->>>>>>> master
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
