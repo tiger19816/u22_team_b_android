@@ -23,4 +23,6 @@ public class Word {
     public static final String USER_LOGIN_URL = SERVER_URL + "UserLoginJsonServlet";
     public static final String USER_LAT_LNG_URL = SERVER_URL + "UserLatLngServlet";
     public static final String USER__URL = SERVER_URL + "RegistrationConfirmationServlet";
+
+    public static final String UPDATE_TOKEN_URL = "http://10.0.2.2:8080/team_b_web/UpdateToken";    // DB上のトークンを更新するサーブレット。
 }

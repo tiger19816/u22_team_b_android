@@ -9,8 +9,8 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.view.View;
 
+import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -20,6 +20,10 @@ import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
 import com.google.firebase.messaging.FirebaseMessaging;
+
+import java.io.Serializable;    // シリアライズ用。
+
+import b.team.works.u22.hal.u22teamb.Word;
 
 /**
  * プッシュ通知利用の手順。
@@ -76,13 +80,14 @@ import com.google.firebase.messaging.FirebaseMessaging;
  */
 public class FcmInstance {
     private String _token;
+    private final static String TAG = "Push通知";
 
     /**
      * コンストラクタFcmInstance()の引数に当メソッドを代入する。
      *
      * @return トークン。
      */
-    public static final String setChannel() {
+    public static final String setChannel(Context context) {
         /**
          * 起動アクティビティで実行しなければならないメソッド群
          */
@@ -93,12 +98,12 @@ public class FcmInstance {
 
         String channelId = "u22teamb_customer";
         String channelName = "notify_u22teamb_customer";
-        String channelDescription = "U22夫管理アプリのチャンネル";
+        String channelDescription = "U22夫管理アプリ";
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannelManager ncm = new NotificationChannelManager();
             ncm.create(
-                    getApplicationContext(),
+                    context.getApplicationContext(),
                     channelId,
                     channelName,
                     channelDescription);
@@ -114,23 +119,37 @@ public class FcmInstance {
      * @param token トークンID。
      */
     public FcmInstance(String token) {
+        this.setToken(token);
+    }
+
+    /**
+     * トークンのセッター。
+     *
+     * @param token トークン。
+     */
+    public void setToken(String token) {
         this._token = token;
+    }
+
+    /**
+     * シリアライズ化するメソッド。(未使用)
+     */
+    private static void Serialize(Object obj) {
     }
 
     /**
      * サーバへトークンを送信するメソッド。
      *
-     * @param view 画面部品。
+     * @param activity 遷移元アクティビティ。
+     * @param which ログイン者の性別。
      */
-    public void onSendClick(View view) {
-        HttpResponsAsync hra = new HttpResponsAsync(this);
-        hra.execute(this._token);   // パラメータをサーブレットへ送信。
+    public void sendToken(Activity activity, String userId, int which) {
+        HttpResponseAsync hra = new HttpResponseAsync(activity);
+        hra.execute(this._token, userId, String.valueOf(which));   // パラメータをサーブレットへ送信。
     }
 
 
-    public class MyInstanceIDListenerService extends FirebaseInstanceIdService {
-
-        private final String TAG = "インスタンスID";
+    public static class MyInstanceIDListenerService extends FirebaseInstanceIdService {
 
         /**
          * トークンを更新するメソッド。
@@ -144,7 +163,7 @@ public class FcmInstance {
 
     }
 
-    public class NotificationChannelManager {
+    public static class NotificationChannelManager {
 
         /**
          * 通知チャンネルを設定するメソッド。Android O以降で必須。
@@ -159,7 +178,7 @@ public class FcmInstance {
             String title = channelTitle;
             String description = channelDescription;
 
-            NotificationChannel channel = new NotificationChannel(channelId, title, NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationChannel channel = new NotificationChannel(channelId, title, NotificationManager.IMPORTANCE_HIGH);
             channel.setDescription(description);
 
             NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
@@ -167,7 +186,7 @@ public class FcmInstance {
         }
     }
 
-    public class HttpResponsAsync extends AsyncTask<String, Void, Void> {
+    public class HttpResponseAsync extends AsyncTask<String, Void, Void> {
 
         private Activity _activity;
 
@@ -176,28 +195,31 @@ public class FcmInstance {
          *
          * @param activity 遷移元アクティビティ。
          */
-        public HttpResponsAsync(Activity activity) {
+        public HttpResponseAsync(Activity activity) {
 
             this._activity = activity;
 
         }
 
         /**
-         * サーブレットへパラメータを送信するメソッド。
+         * トークンをDBサーバへ保存するメソッド。
          *
-         * @param token ①発行されたトークン
+         * @param params ①発行されたトークン ②ログイン者のID ③ログイン者の性別
          * @return null
          */
         @Override
-        protected Void doInBackground(String... token) {
+        protected Void doInBackground(String... params) {
             HttpURLConnection cnct = null;
             URL url = null;
             OutputStream opStream = null;
-            String urlStr = "http://10.0.2.2:8080/U22Verification/Verification01Servlet";   // 接続先URL
+            String urlStr = Word.UPDATE_TOKEN_URL;   // 接続先URL
 
-            String postData = "token=" + token[0];  // POSTで送りたいデータ
+            String postData = "token=" + params[0]  // POSTで送りたいデータ
+                            + "&user_id=" + params[1]
+                            + "&gender=" + params[2];
 
-//            Log.d("URL", "アクセス先: " + urlStr + "?" + postData);
+
+//            Log.d(TAG, "アクセス先: " + urlStr + "?" + postData);
 
             try {
                 url = new URL(urlStr);  // URLの作成
@@ -220,18 +242,18 @@ public class FcmInstance {
 
                     switch (cnct.getResponseCode()) {
                         case HttpURLConnection.HTTP_OK :
-                            Log.d("URL", "コネクション状況: 成功");
+                            Log.d(TAG, "コネクション状況: 成功");
                             break;
                         case HttpURLConnection.HTTP_INTERNAL_ERROR:
-                            Log.e("URL", "エラー内容: 500 内部サーバーエラー");
+                            Log.e(TAG, "エラー内容: 500 内部サーバーエラー");
                             break;
                         default:
-                            Log.e("URL", "コネクションレスポンスコード: " + cnct.getResponseCode());
+                            Log.e(TAG, "コネクションレスポンスコード: " + cnct.getResponseCode());
                             break;
                     }
                 }
                 catch (Exception e) {
-                    Log.e("URL", "POST送信エラー: " + e.toString());
+                    Log.e(TAG, "POST送信エラー: " + e.toString());
                 }
                 finally {
 
@@ -240,13 +262,13 @@ public class FcmInstance {
                             opStream.close();
                         }
                         catch (Exception e) {
-                            Log.e("URL", "OutputStream解放失敗: " + e.toString());
+                            Log.e(TAG, "OutputStream解放失敗: " + e.toString());
                         }
                     }
                 }
 
             } catch (Exception e) {
-                Log.e("URL", "コネクションエラー: " + e.toString());
+                Log.e(TAG, "コネクションエラー: " + e.toString());
             } finally {
                 if (cnct != null) {
                     cnct.disconnect();
@@ -261,7 +283,7 @@ public class FcmInstance {
          */
         @Override
         public void onPostExecute(Void param) {
-            Log.d("HTTP", "onPostExecute: 通過");
+            Log.d(TAG, "onPostExecute: 通過");
         }
 
     }
