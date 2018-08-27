@@ -11,7 +11,7 @@ public class Word {
      */
 //    private static final String SERVER_URL = "http://59.106.219.240:8080/u22_team_b_web/";
 //    private static final String SERVER_URL = "http://192.168.1.101:8080/U22TeamB/";//平井モバイルルータアドレス
-    private static final String SERVER_URL = "http://10.0.2.2:8080/u22_team_b_web/";//localhostアドレス
+    private static final String SERVER_URL = "http://10.0.2.2:8080/team_b_web/";//localhostアドレス
     public static final String STORE_MAP_URL = SERVER_URL + "StoreListServlet";
     public static final String STORE_DETAILS_URL = SERVER_URL + "StoreDetailsServlet";
     public static final String USER_MYPAGE_URL = SERVER_URL + "MypageJsonTestServlet";
@@ -24,5 +24,5 @@ public class Word {
     public static final String USER_LAT_LNG_URL = SERVER_URL + "UserLatLngServlet";
     public static final String USER__URL = SERVER_URL + "RegistrationConfirmationServlet";
 
-    public static final String UPDATE_TOKEN_URL = "http://10.0.2.2:8080/team_b_web/UpdateToken";    // DB上のトークンを更新するサーブレット。
+    public static final String UPDATE_TOKEN_URL = SERVER_URL + "UpdateToken";    // DB上のトークンを更新するサーブレット。
 }

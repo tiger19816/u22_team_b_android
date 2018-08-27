@@ -284,6 +284,7 @@ public class FcmInstance {
         @Override
         public void onPostExecute(Void param) {
             Log.d(TAG, "onPostExecute: 通過");
+            Log.d(TAG, "Token: " + _token);
         }
 
     }
