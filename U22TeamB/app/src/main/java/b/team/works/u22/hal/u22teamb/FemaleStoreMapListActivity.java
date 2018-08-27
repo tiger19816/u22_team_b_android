@@ -51,6 +51,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import b.team.works.u22.hal.u22teamb.fcm.FcmInstance;
+
 /**
  * 【妻】店の一覧表示-Map画面のアクティビティクラス.
  *
@@ -81,6 +83,15 @@ public class FemaleStoreMapListActivity extends AppCompatActivity implements Nav
         //ユーザーIDの取得。
         SharedPreferences setting = getSharedPreferences("USER" , 0);
         id = setting.getString("ID" , "");
+
+        //トークンの更新 + バックグラウンド処理開始(?)。 by Yuki Yoshida
+        FcmInstance fcm = new FcmInstance(FcmInstance.setChannel(getApplicationContext()));
+        try {
+            fcm.sendToken(this, id, 2);
+        } catch (Exception e) {
+            Log.e("Push通知",e.toString());
+        }
+
 
         //ツールバー(レイアウトを変更可)。
         Toolbar toolbar = findViewById(R.id.toolbar);

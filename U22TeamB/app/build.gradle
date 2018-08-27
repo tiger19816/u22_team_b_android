@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 27
+    buildToolsVersion "27.0.3"
     defaultConfig {
         applicationId "b.team.works.u22.hal.u22teamb"
         minSdkVersion 15
@@ -41,4 +42,12 @@ dependencies {
     implementation 'com.google.android.gms:play-services-maps:15.0.1'
     implementation 'com.journeyapps:zxing-android-embedded:3.6.0'
     compile 'com.github.bumptech.glide:glide:3.6.1'//GIF画像を表示する為に必要。
+
+    // プッシュ通知に必要。
+    implementation "com.google.android.gms:play-services-base:15.0.1"
+    implementation 'com.google.firebase:firebase-core:16.0.1'
+    implementation 'com.google.firebase:firebase-messaging:17.1.0'
+    implementation 'com.google.android.gms:play-services-gcm:15.0.1'
 }
+
+apply plugin: 'com.google.gms.google-services'  // プッシュ通知に必要。最下段に記述。
