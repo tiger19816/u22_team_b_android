@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.AsyncTask;
+import android.provider.ContactsContract;
+import android.os.Build;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -81,6 +83,17 @@ public class MaleReservationListActivity extends AppCompatActivity implements Na
         //レフトナビ本体。
         NavigationView navigationView = findViewById(R.id.nvSideMenuButton);
         navigationView.setNavigationItemSelectedListener(this);
+
+        //ユーザ名を表示する
+        SharedPreferences pref = getSharedPreferences("USER",0);
+        if(Build.VERSION.SDK_INT < 23) {
+            TextView navTvUserName = navigationView.findViewById(R.id.navTvUserName);
+            navTvUserName.setText(pref.getString("NAME", "ユーザー名"));
+        } else {
+            View headerView = navigationView.getHeaderView(0);
+            TextView navTvUserName = headerView.findViewById(R.id.navTvUserName);
+            navTvUserName.setText(pref.getString("NAME", "ユーザー名"));
+        }
 
         //非同期処理を開始する。
         ReservationTaskReceiver receiver = new ReservationTaskReceiver();
@@ -242,7 +255,8 @@ public class MaleReservationListActivity extends AppCompatActivity implements Na
                                 return true;
                             case R.id.tvReservationDate:
                                 TextView rowTvStoreShortPr = (TextView) view;
-                                rowTvStoreShortPr.setText(Tools.replaceBr(strData));
+                                DataConversion dc = new DataConversion();
+                                rowTvStoreShortPr.setText(dc.getFullDataConversion02(Tools.replaceBr(strData)));
                                 return true;
                             case R.id.ivNewImage:
                                 ImageView ivNewImage = (ImageView) view;
@@ -442,10 +456,11 @@ public class MaleReservationListActivity extends AppCompatActivity implements Na
 
         Intent intent;
         if (id == R.id.nav_reservation) {
-            intent = new Intent(MaleReservationListActivity.this,MaleReservationListActivity.class);
-            startActivity(intent);
+//            intent = new Intent(MaleReservationListActivity.this,MaleReservationListActivity.class);
+//            startActivity(intent);
         } else if (id == R.id.nav_history) {
             intent = new Intent(MaleReservationListActivity.this,MaleHistoryListActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         }else if (id == R.id.nav_logout){
             SharedPreferences setting = getSharedPreferences("USER" , 0);

@@ -3,6 +3,7 @@ package b.team.works.u22.hal.u22teamb;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -65,6 +66,17 @@ public class MaleHistoryListActivity extends AppCompatActivity  implements Navig
         //レフトナビ本体。
         NavigationView navigationView = findViewById(R.id.nvSideMenuButton);
         navigationView.setNavigationItemSelectedListener(this);
+
+        //ユーザ名を表示する
+        SharedPreferences pref = getSharedPreferences("USER",0);
+        if(Build.VERSION.SDK_INT < 23) {
+            TextView navTvUserName = navigationView.findViewById(R.id.navTvUserName);
+            navTvUserName.setText(pref.getString("NAME", "ユーザー名"));
+        } else {
+            View headerView = navigationView.getHeaderView(0);
+            TextView navTvUserName = headerView.findViewById(R.id.navTvUserName);
+            navTvUserName.setText(pref.getString("NAME", "ユーザー名"));
+        }
 
         //非同期処理を開始する。
         HistoryTaskReceiver receiver = new HistoryTaskReceiver();
@@ -202,7 +214,8 @@ public class MaleHistoryListActivity extends AppCompatActivity  implements Navig
                                 return true;
                             case R.id.tvHistoryDate:
                                 TextView tvHistryDate = (TextView) view;
-                                tvHistryDate.setText(Tools.replaceBr(strData));
+                                DataConversion dc = new DataConversion();
+                                tvHistryDate.setText(dc.getFullDataConversion02(Tools.replaceBr(strData)));
                                 return true;
                         }
                         return false;
@@ -265,10 +278,11 @@ public class MaleHistoryListActivity extends AppCompatActivity  implements Navig
         Intent intent;
         if (id == R.id.nav_reservation) {
             intent = new Intent(MaleHistoryListActivity.this,MaleReservationListActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         } else if (id == R.id.nav_history) {
-            intent = new Intent(MaleHistoryListActivity.this,MaleHistoryListActivity.class);
-            startActivity(intent);
+//            intent = new Intent(MaleHistoryListActivity.this,MaleHistoryListActivity.class);
+//            startActivity(intent);
         }else if (id == R.id.nav_logout){
             SharedPreferences setting = getSharedPreferences("USER" , 0);
             SharedPreferences.Editor editor = setting.edit();
