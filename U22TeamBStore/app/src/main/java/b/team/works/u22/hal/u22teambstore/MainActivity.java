@@ -38,8 +38,8 @@ public class MainActivity extends AppCompatActivity {
         //ユーザーIDの取得。
         SharedPreferences setting = getSharedPreferences("USER" , 0);
         _id = setting.getString("ID" , "");
-        if(_id != null){
-            Intent intent = new Intent(MainActivity.this, ShopRegisterActivity.class);
+        if(!"".equals(_id)){
+            Intent intent = new Intent(MainActivity.this, ReservationListActivity.class);
             startActivity(intent);
         }
     }
@@ -178,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
                     SharedPreferences.Editor editor = setting.edit();
                     editor.putString("ID" , _id);
                     editor.commit();
-                    intent = new Intent(MainActivity.this, ShopRegisterActivity.class);
+                    intent = new Intent(MainActivity.this, ReservationListActivity.class);
                     startActivity(intent);
                     Toast.makeText(MainActivity.this, "ようこそ、"+shopName+"様", Toast.LENGTH_SHORT).show();
                 } else {

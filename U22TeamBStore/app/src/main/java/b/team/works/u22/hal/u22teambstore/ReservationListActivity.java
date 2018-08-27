@@ -3,6 +3,7 @@ package b.team.works.u22.hal.u22teambstore;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
@@ -106,6 +107,23 @@ public class ReservationListActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.option_menu, menu);
         return true;
+    }
+
+    /**
+     * ログアウト。
+     */
+    public void onLogoutClick(MenuItem item) {
+//        FullDialogFragment dialog = new FullDialogFragment();
+//        FragmentManager manager = getSupportFragmentManager();
+//        dialog.show(manager,"FullDialogFragment");
+
+        SharedPreferences setting = getSharedPreferences("USER", 0);
+        SharedPreferences.Editor editor = setting.edit();
+        editor.remove("ID");
+        editor.commit();
+        Intent intent = new Intent(ReservationListActivity.this, MainActivity.class);
+        finish();
+        startActivity(intent);
     }
 
     /**
