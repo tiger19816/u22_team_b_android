@@ -5,6 +5,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/btLogout"
+        android:onClick="onLogoutClick"
+        android:icon="@android:drawable/ic_menu_close_clear_cancel"
+        android:title="Logout"
+        app:showAsAction="always"
+        tools:ignore="AppCompatResource"/>
+
+    <item
         android:id="@+id/btQrScannerRequest"
         android:icon="@drawable/ic_qr_scanner"
         android:title="Scan QR Code"
