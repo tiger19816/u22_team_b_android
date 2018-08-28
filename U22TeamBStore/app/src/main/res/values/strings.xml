@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">U22TeamBStore</string>
+    <string name="app_name">予約管理</string>
 
     <!-- 【店】ログイン画面 -->
     <string name="tv_login_title">ログイン</string>
