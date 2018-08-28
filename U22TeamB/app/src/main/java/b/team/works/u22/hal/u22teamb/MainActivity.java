@@ -16,6 +16,9 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessaging;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -46,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         setTheme(R.style.MyCustomTheme_Default);
+
+        // インスタンス自動生成の有効化。
+        FirebaseMessaging.getInstance().setAutoInitEnabled(true);
 
         //ユーザーIDの取得。
         SharedPreferences setting = getSharedPreferences("USER" , 0);
