@@ -174,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
 
                     //DBチェックの結果により、画面遷移先を変更。
                     Intent intent;
-                    SharedPreferences setting = getSharedPreferences("USER" , 0);
+                    SharedPreferences setting = getSharedPreferences("SHOPUSER" , 0);
                     SharedPreferences.Editor editor = setting.edit();
                     editor.putString("ID" , _id);
                     editor.commit();

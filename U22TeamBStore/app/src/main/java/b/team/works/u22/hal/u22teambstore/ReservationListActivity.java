@@ -81,7 +81,7 @@ public class ReservationListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_reservation_list);
 
         //ユーザーIDの取得。
-        SharedPreferences setting = getSharedPreferences("USER" , 0);
+        SharedPreferences setting = getSharedPreferences("SHOPUSER" , 0);
         this._shopId = setting.getString("ID" , "");
 
         this._lvReservationList = findViewById(R.id.lvReservationList);
