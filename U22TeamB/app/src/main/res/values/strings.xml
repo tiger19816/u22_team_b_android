@@ -12,7 +12,7 @@
     <string name="my_page_password">パスワード</string>
     <string name="my_page_address">住所</string>
     <string name="my_page_mail">メールアドレス</string>
-    <string name="my_page_credit_card_number">クレジットカード番号</string>
+    <string name="my_page_credit_card_number">カード番号の下4桁</string>
     <string name="my_page_credit_card_expiration_date">カード有効期限</string>
     <string name="my_page_credit_card_security_code">セキュリティコード</string>
     <string name="my_page_credit_card_holder">カード名義人</string>
