@@ -50,7 +50,9 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:gravity="center_horizontal"
-                            android:text="@string/female_registration_confirmation"/>
+                            android:text="@string/female_registration_confirmation"
+                            android:textColor="@android:color/holo_red_light"
+                            android:textSize="24sp" />
 
                     </FrameLayout>
 
@@ -64,85 +66,254 @@
                         android:background="@drawable/layout_shape"
                         android:orientation="vertical" >
 
-                        <TextView
-                            android:id="@+id/tvFemaleName"
-                            android:layout_width="match_parent"
+                        <LinearLayout
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_gravity="center_vertical"/>
+                            android:layout_marginRight="10dp"
+                            android:orientation="horizontal" >
 
-                        <TextView
-                            android:id="@+id/tvFemaleBirthday"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_marginTop="5sp"
-                            android:layout_gravity="center_vertical"/>
+                            <TextView
+                                android:id="@+id/tvMyPageFemaleName"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:text="@string/my_page_name"
+                                android:textStyle="bold" />
 
-                        <TextView
-                            android:id="@+id/tvFemalePassword"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_marginTop="5sp"
-                            android:layout_gravity="center_vertical"/>
+                            <TextView
+                                android:id="@+id/tvFemaleName"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp" />
+                        </LinearLayout>
 
-                        <TextView
-                            android:id="@+id/tvFemaleAddress"
-                            android:layout_width="match_parent"
+                        <LinearLayout
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
                             android:layout_marginTop="5sp"
-                            android:layout_gravity="center_vertical"/>
+                            android:layout_marginRight="10dp"
+                            android:orientation="horizontal" >
 
-                        <TextView
-                            android:id="@+id/tvFemaleMail"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_marginTop="5sp"
-                            android:layout_gravity="center_vertical"/>
+                            <TextView
+                                android:id="@+id/tvMyPageFemaleBirthday"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="5sp"
+                                android:layout_gravity="center_vertical"
+                                android:text="@string/my_page_birthday"
+                                android:textStyle="bold"/>
 
-                        <TextView
-                            android:id="@+id/tvFemaleCreditCardNumber"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_marginTop="5sp"
-                            android:layout_gravity="center_vertical"/>
+                            <TextView
+                                android:id="@+id/tvFemaleBirthday"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="5sp"
+                                android:layout_gravity="center_vertical"/>
+                        </LinearLayout>
 
-                        <TextView
-                            android:id="@+id/tvFemaleCreditCardExpirationDate"
-                            android:layout_width="match_parent"
+                        <LinearLayout
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
                             android:layout_marginTop="5sp"
-                            android:layout_gravity="center_vertical"/>
+                            android:layout_marginRight="10dp"
+                            android:orientation="horizontal" >
 
-                        <TextView
-                            android:id="@+id/tvFemaleCreditCardSecurityNumber"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_marginTop="5sp"
-                            android:layout_gravity="center_vertical"/>
+                            <TextView
+                                android:id="@+id/tvMyPageFemalePassword"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="5sp"
+                                android:layout_gravity="center_vertical"
+                                android:text="@string/my_page_password"
+                                android:textStyle="bold"/>
 
-                        <TextView
-                            android:id="@+id/tvFemaleCreditCardHolder"
-                            android:layout_width="match_parent"
+                            <TextView
+                                android:id="@+id/tvFemalePassword"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="5sp"
+                                android:layout_gravity="center_vertical"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
                             android:layout_marginTop="5sp"
-                            android:layout_gravity="center_vertical"/>
+                            android:layout_marginRight="10dp"
+                            android:orientation="horizontal" >
+
+                            <TextView
+                                android:id="@+id/tvMyPageFemaleAddress"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="5sp"
+                                android:layout_gravity="center_vertical"
+                                android:text="@string/my_page_address"
+                                android:textStyle="bold"/>
+
+                            <TextView
+                                android:id="@+id/tvFemaleAddress"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="5sp"
+                                android:layout_gravity="center_vertical"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5sp"
+                            android:layout_marginRight="10dp"
+                            android:orientation="horizontal" >
+
+                            <TextView
+                                android:id="@+id/tvMyPageFemaleMail"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="5sp"
+                                android:layout_gravity="center_vertical"
+                                android:text="@string/my_page_mail"
+                                android:textStyle="bold"/>
+
+                            <TextView
+                                android:id="@+id/tvFemaleMail"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="5sp"
+                                android:layout_gravity="center_vertical"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5sp"
+                            android:layout_marginRight="10dp"
+                            android:orientation="horizontal" >
+
+                            <TextView
+                                android:id="@+id/tvMyPageFemaleCreditCardNumber"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="5sp"
+                                android:layout_gravity="center_vertical"
+                                android:text="@string/my_page_credit_card_number"
+                                android:textStyle="bold"/>
+
+                            <TextView
+                                android:id="@+id/tvFemaleCreditCardNumber"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="5sp"
+                                android:layout_gravity="center_vertical"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5sp"
+                            android:layout_marginRight="10dp"
+                            android:orientation="horizontal" >
+
+                            <TextView
+                                android:id="@+id/tvMyPageFemaleCreditCardExpirationDate"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="5sp"
+                                android:layout_gravity="center_vertical"
+                                android:text="@string/my_page_credit_card_expiration_date"
+                                android:textStyle="bold"/>
+
+                            <TextView
+                                android:id="@+id/tvFemaleCreditCardExpirationDate"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="5sp"
+                                android:layout_gravity="center_vertical"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5sp"
+                            android:layout_marginRight="10dp"
+                            android:orientation="horizontal" >
+
+                            <TextView
+                                android:id="@+id/tvMyPageFemaleCreditCardSecurityNumber"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="5sp"
+                                android:layout_gravity="center_vertical"
+                                android:text="@string/my_page_credit_card_security_code"
+                                android:textStyle="bold"/>
+
+                            <TextView
+                                android:id="@+id/tvFemaleCreditCardSecurityNumber"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="5sp"
+                                android:layout_gravity="center_vertical"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5sp"
+                            android:layout_marginRight="10dp"
+                            android:orientation="horizontal" >
+
+                            <TextView
+                                android:id="@+id/tvMyPageFemaleCreditCardHolder"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="5sp"
+                                android:layout_gravity="center_vertical"
+                                android:text="@string/my_page_credit_card_holder"
+                                android:textStyle="bold"/>
+
+                            <TextView
+                                android:id="@+id/tvFemaleCreditCardHolder"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="5sp"
+                                android:layout_gravity="center_vertical"/>
+                        </LinearLayout>
 
                     </LinearLayout>
 
@@ -156,7 +327,9 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:gravity="center_horizontal"
-                            android:text="@string/male_registration_confirmation"/>
+                            android:text="@string/male_registration_confirmation"
+                            android:textColor="@android:color/holo_blue_light"
+                            android:textSize="24sp" />
 
                     </FrameLayout>
 
@@ -170,68 +343,201 @@
                         android:background="@drawable/layout_shape"
                         android:orientation="vertical" >
 
-                        <TextView
-                            android:id="@+id/tvMaleName"
-                            android:layout_width="match_parent"
+                        <LinearLayout
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
                             android:layout_marginTop="5sp"
-                            android:layout_gravity="center_vertical"/>
+                            android:layout_marginRight="10dp"
+                            android:orientation="horizontal" >
 
-                        <TextView
-                            android:id="@+id/tvMalePassword"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_marginTop="5sp"
-                            android:layout_gravity="center_vertical"/>
+                            <TextView
+                                android:id="@+id/tvMyPageMaleName"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="5sp"
+                                android:layout_gravity="center_vertical"
+                                android:text="@string/my_page_name"
+                                android:textStyle="bold"/>
 
-                        <TextView
-                            android:id="@+id/tvMaleBirthday"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_marginTop="5sp"
-                            android:layout_gravity="center_vertical"/>
+                            <TextView
+                                android:id="@+id/tvMaleName"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="5sp"
+                                android:layout_gravity="center_vertical"/>
+                        </LinearLayout>
 
-                        <TextView
-                            android:id="@+id/tvMaleMail"
-                            android:layout_width="match_parent"
+                        <LinearLayout
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
                             android:layout_marginTop="5sp"
-                            android:layout_gravity="center_vertical"/>
+                            android:layout_marginRight="10dp"
+                            android:orientation="horizontal" >
 
-                        <TextView
-                            android:id="@+id/tvMaleHeight"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_marginTop="5sp"
-                            android:layout_gravity="center_vertical"/>
+                            <TextView
+                                android:id="@+id/tvMyPageMalePassword"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="5sp"
+                                android:layout_gravity="center_vertical"
+                                android:text="@string/my_page_password"
+                                android:textStyle="bold"/>
 
-                        <TextView
-                            android:id="@+id/tvMaleWeight"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_marginTop="5sp"
-                            android:layout_gravity="center_vertical"/>
+                            <TextView
+                                android:id="@+id/tvMalePassword"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="5sp"
+                                android:layout_gravity="center_vertical"/>
+                        </LinearLayout>
 
-                        <TextView
-                            android:id="@+id/tvMaleProfession"
-                            android:layout_width="match_parent"
+                        <LinearLayout
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
                             android:layout_marginTop="5sp"
-                            android:layout_gravity="center_vertical"/>
+                            android:layout_marginRight="10dp"
+                            android:orientation="horizontal" >
+
+                            <TextView
+                                android:id="@+id/tvMyPageMaleBirthday"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="5sp"
+                                android:layout_gravity="center_vertical"
+                                android:text="@string/my_page_birthday"
+                                android:textStyle="bold"/>
+
+                            <TextView
+                                android:id="@+id/tvMaleBirthday"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="5sp"
+                                android:layout_gravity="center_vertical"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5sp"
+                            android:layout_marginRight="10dp"
+                            android:orientation="horizontal" >
+
+                            <TextView
+                                android:id="@+id/tvMyPageMaleMail"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="5sp"
+                                android:layout_gravity="center_vertical"
+                                android:text="@string/my_page_mail"
+                                android:textStyle="bold"/>
+
+                            <TextView
+                                android:id="@+id/tvMaleMail"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="5sp"
+                                android:layout_gravity="center_vertical"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5sp"
+                            android:layout_marginRight="10dp"
+                            android:orientation="horizontal" >
+
+                            <TextView
+                                android:id="@+id/tvMyPageMaleHeight"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="5sp"
+                                android:layout_gravity="center_vertical"
+                                android:text="@string/my_page_height"
+                                android:textStyle="bold"/>
+
+                            <TextView
+                                android:id="@+id/tvMaleHeight"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="5sp"
+                                android:layout_gravity="center_vertical"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5sp"
+                            android:layout_marginRight="10dp"
+                            android:orientation="horizontal" >
+
+                            <TextView
+                                android:id="@+id/tvMyPageMaleWeight"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="5sp"
+                                android:layout_gravity="center_vertical"
+                                android:text="@string/my_page_weight"
+                                android:textStyle="bold"/>
+
+                            <TextView
+                                android:id="@+id/tvMaleWeight"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="5sp"
+                                android:layout_gravity="center_vertical"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5sp"
+                            android:layout_marginRight="10dp"
+                            android:orientation="horizontal" >
+
+                            <TextView
+                                android:id="@+id/tvMyPageMaleProfession"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="5sp"
+                                android:layout_gravity="center_vertical"
+                                android:text="@string/my_page_profession"
+                                android:textStyle="bold"/>
+
+                            <TextView
+                                android:id="@+id/tvMaleProfession"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="5sp"
+                                android:layout_gravity="center_vertical"/>
+                        </LinearLayout>
 
                     </LinearLayout>
 
