@@ -326,10 +326,12 @@ public class FemaleStoreDetailsActivity extends AppCompatActivity implements Vie
             }
 
 
-            //マーカー表示
-            LatLng latLng = new LatLng(Float.parseFloat(map.get("latitude")), Float.parseFloat(map.get("longitude")));
-            mMap.addMarker(new MarkerOptions().position(latLng).title(map.get("name"))).showInfoWindow();
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
+            if( (!"0".equals(map.get("latitude"))) && (!"0".equals(map.get("longitude"))) && (map.get("latitude") != null) && (map.get("longitude") != null) ) {
+                //マーカー表示
+                LatLng latLng = new LatLng(Float.parseFloat(map.get("latitude")), Float.parseFloat(map.get("longitude")));
+                mMap.addMarker(new MarkerOptions().position(latLng).title(map.get("name"))).showInfoWindow();
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
+            }
 
             TextView tvStoreDetail = findViewById(R.id.tvStoreTitle);
             tvStoreDetail.setText(map.get("name"));
@@ -434,7 +436,9 @@ public class FemaleStoreDetailsActivity extends AppCompatActivity implements Vie
             ImageView ivStoreImage = findViewById(R.id.ivStoreImage);
 
             //ビットマップをImageViewに設定
-            ivStoreImage.setImageBitmap(result);
+            if (result != null) {
+                ivStoreImage.setImageBitmap(result);
+            }
         }
     }
 }
