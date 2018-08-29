@@ -128,4 +128,6 @@
     <string name="RePasswordInputDescription">パスワード再入力</string>
     <string name="title_activity_maps">Map</string>
 
+    <!-- ロード画面 -->
+    <string name="progress_message">ロード中...</string>
 </resources>

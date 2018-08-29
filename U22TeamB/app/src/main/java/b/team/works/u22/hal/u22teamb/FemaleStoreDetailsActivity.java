@@ -1,5 +1,6 @@
 package b.team.works.u22.hal.u22teamb;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -203,6 +204,20 @@ public class FemaleStoreDetailsActivity extends AppCompatActivity implements Vie
     private class StoreDetailsTaskReceiver extends AsyncTask<String, Void, String> {
 
         private static final String DEBUG_TAG = "RestAccess";
+        private ProgressDialog _pDialog;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+            // プログレスダイアログの生成。
+            _pDialog = new ProgressDialog(FemaleStoreDetailsActivity.this);
+            _pDialog.setMessage(getString(R.string.progress_message));  // メッセージを設定。
+
+            // プログレスダイアログの表示。
+            _pDialog.show();
+
+        }
 
         /**
          * 非同期に処理したい内容を記述するメソッド.
@@ -310,10 +325,13 @@ public class FemaleStoreDetailsActivity extends AppCompatActivity implements Vie
                 Log.e(DEBUG_TAG, "JSON解析失敗", ex);
             }
 
-            //マーカー表示
-            LatLng latLng = new LatLng(Float.parseFloat(map.get("latitude")), Float.parseFloat(map.get("longitude")));
-            mMap.addMarker(new MarkerOptions().position(latLng).title(map.get("name"))).showInfoWindow();
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,15));
+
+            if( (!"0".equals(map.get("latitude"))) && (!"0".equals(map.get("longitude"))) && (map.get("latitude") != null) && (map.get("longitude") != null) ) {
+                //マーカー表示
+                LatLng latLng = new LatLng(Float.parseFloat(map.get("latitude")), Float.parseFloat(map.get("longitude")));
+                mMap.addMarker(new MarkerOptions().position(latLng).title(map.get("name"))).showInfoWindow();
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
+            }
 
             TextView tvStoreDetail = findViewById(R.id.tvStoreTitle);
             tvStoreDetail.setText(map.get("name"));
@@ -328,7 +346,7 @@ public class FemaleStoreDetailsActivity extends AppCompatActivity implements Vie
             tvStoreDetail.setText(Tools.replaceBr(map.get("opentime")));
 
             tvStoreDetail = findViewById(R.id.tvStoreDetailBudget);
-            tvStoreDetail.setText("約" + map.get("budget") +  "円");
+            tvStoreDetail.setText("約" + map.get("budget") + "円");
 
             tvStoreDetail = findViewById(R.id.tvStoreDetailPr);
             tvStoreDetail.setText(Tools.replaceBr(map.get("pr_long")));
@@ -338,6 +356,12 @@ public class FemaleStoreDetailsActivity extends AppCompatActivity implements Vie
 
             //ここで渡した引数はLoginTaskReceiverクラスのdoInBackground(String... params)で受け取れる。
             imageGetTaskReceiver.execute(map.get("image1"));
+
+            // ロード画面を消す。
+            if (_pDialog != null && _pDialog.isShowing()) {
+                _pDialog.dismiss();
+            }
+
         }
     }
 
@@ -412,7 +436,9 @@ public class FemaleStoreDetailsActivity extends AppCompatActivity implements Vie
             ImageView ivStoreImage = findViewById(R.id.ivStoreImage);
 
             //ビットマップをImageViewに設定
-            ivStoreImage.setImageBitmap(result);
+            if (result != null) {
+                ivStoreImage.setImageBitmap(result);
+            }
         }
     }
 }
