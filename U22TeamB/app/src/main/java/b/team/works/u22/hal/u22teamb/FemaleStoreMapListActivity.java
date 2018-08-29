@@ -68,6 +68,8 @@ public class FemaleStoreMapListActivity extends AppCompatActivity implements Nav
     private ArrayList<Marker> markers;
     private String id;
 
+    public ProgressDialog _pDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.MyCustomTheme_Dark);
@@ -300,6 +302,24 @@ public class FemaleStoreMapListActivity extends AppCompatActivity implements Nav
     private class UserLatLngTaskReceiver extends AsyncTask<String, Void, String> {
 
         private static final String DEBUG_TAG = "RestAccess";
+
+        /**
+         * 通信開始前に実行されるメソッド。
+         *
+         * ここで、プログレスダイアログを生成しましょう。
+         */
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+            // プログレスダイアログの生成。
+            _pDialog = new ProgressDialog(FemaleStoreMapListActivity.this);
+            _pDialog.setMessage(getString(R.string.progress_message));  // メッセージを設定。
+
+            // プログレスダイアログの表示。
+            _pDialog.show();
+
+        }
 
         /**
          * 非同期に処理したい内容を記述するメソッド.
@@ -602,6 +622,11 @@ public class FemaleStoreMapListActivity extends AppCompatActivity implements Nav
 
             mMap.setIndoorEnabled(false);
             mMap.getUiSettings().setTiltGesturesEnabled(false);
+
+            // ロード画面を消す。
+            if (_pDialog != null && _pDialog.isShowing()) {
+                _pDialog.dismiss();
+            }
         }
     }
 }
