@@ -10,7 +10,7 @@ MyPage画面 オプションメニュー。
         android:id="@+id/btnQrCode"
         android:icon="@android:drawable/ic_lock_lock"
         android:tint="@android:color/background_light"
-        android:title="タイトル1"
-        app:showAsAction="ifRoom" />
+        android:title="夫登録"
+        app:showAsAction="withText"/>
 
 </menu>

@@ -1,6 +1,7 @@
 package b.team.works.u22.hal.u22teamb;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Looper;
@@ -30,6 +31,7 @@ import java.net.URL;
 public class FemaleFinishReservationActivity extends AppCompatActivity {
 
     private Reservation reservation;
+    private String _id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +50,10 @@ public class FemaleFinishReservationActivity extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+
+        //ユーザーIDの取得。
+        SharedPreferences setting = getSharedPreferences("USER" , 0);
+        _id = setting.getString("ID" , "");
 
         //Intentからの取得
         reservation = (Reservation) getIntent().getSerializableExtra("reservation");
@@ -146,7 +152,7 @@ public class FemaleFinishReservationActivity extends AppCompatActivity {
             HttpURLConnection con = null;
             InputStream is = null;
             String result = null;
-            String postData = "shops_id=" + reservation.getId() + "&shop_name=" + reservation.getName() + "&menu_no=" + reservation.getMenuNo() + "&female_id=" + 1 + "&use_date_time=" + reservation.getDataConversion() + "&message=" + reservation.getMessage();
+            String postData = "shops_id=" + reservation.getId() + "&shop_name=" + reservation.getName() + "&menu_no=" + reservation.getMenuNo() + "&female_id=" +  _id + "&use_date_time=" + reservation.getDataConversion() + "&message=" + reservation.getMessage();
 
             try {
                 URL url = new URL(urlStr);

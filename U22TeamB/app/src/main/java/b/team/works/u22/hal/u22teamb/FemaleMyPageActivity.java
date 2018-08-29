@@ -296,13 +296,14 @@ public class FemaleMyPageActivity extends AppCompatActivity implements Navigatio
                 tvMaleProfession.setText(male.setMaleProfessionName(maleProfession));
 
                 maleRegistrationCode = rootJSON.getString("maleRegistrationCode");
-                if("".equals(maleRegistrationCode)) {
-                    maleRegistered = false;
-                    toggleMenuVisible();
-                }else{
-                    maleRegistered = true;
-                    toggleMenuVisible();
-                }
+//                Log.e("確認" , maleRegistrationCode);
+//                if("".equals(maleRegistrationCode)) {
+//                    maleRegistered = false;
+//                    toggleMenuVisible();
+//                }else{
+//                    maleRegistered = true;
+//                    toggleMenuVisible();
+//                }
 
             }
             catch (JSONException ex) {
