@@ -84,6 +84,17 @@ public class MaleHistoryListActivity extends AppCompatActivity  implements Navig
         receiver.execute(LOGIN_URL , _id );
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        //非同期処理を開始する。
+        HistoryTaskReceiver receiver = new HistoryTaskReceiver();
+        //ここで渡した引数はLoginTaskReceiverクラスのdoInBackground(String... params)で受け取れる。
+        receiver.execute(LOGIN_URL , _id );
+
+    }
+
     /**
      * 非同期通信を行うAsyncTaskクラスを継承したメンバクラス.
      */

@@ -86,6 +86,17 @@ public class FemaleReservationListActivity extends AppCompatActivity implements 
 
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        //非同期処理を開始する。
+        ReservationTaskReceiver receiver = new ReservationTaskReceiver();
+        //ここで渡した引数はLoginTaskReceiverクラスのdoInBackground(String... params)で受け取れる。
+        receiver.execute(LOGIN_URL , _id );
+
+    }
+
     /**
      * 非同期通信を行うAsyncTaskクラスを継承したメンバクラス.
      */
