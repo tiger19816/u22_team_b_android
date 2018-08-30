@@ -351,11 +351,16 @@ public class FemaleChangeReservationActivity extends AppCompatActivity {
                     time = dataConversion.getTimeConversion02(time);
                     etTime.setText(time);
 
+                    int price = 0;
+                    if(Integer.parseInt(menuNo) != 0){
+                        price = Integer.parseInt(menuNo)-1;
+                    }
+
                     TextView tvSubtotal = findViewById(R.id.tvSubtotal);
-                    tvSubtotal.setText("650");
+                    tvSubtotal.setText(getResources().getStringArray(R.array.sp_reservation_store_menu_price_list)[price]);
 
                     TextView tvTotal = findViewById(R.id.tvTotal);
-                    tvTotal.setText("650");
+                    tvTotal.setText(getResources().getStringArray(R.array.sp_reservation_store_menu_price_list)[price]);
                 }
                 else{
                     JSONObject rootJSON = new JSONObject(result);
