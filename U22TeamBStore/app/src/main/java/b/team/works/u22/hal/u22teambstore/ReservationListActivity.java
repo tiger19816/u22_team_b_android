@@ -119,7 +119,7 @@ public class ReservationListActivity extends AppCompatActivity {
 //        FragmentManager manager = getSupportFragmentManager();
 //        dialog.show(manager,"FullDialogFragment");
 
-        SharedPreferences setting = getSharedPreferences("USER", 0);
+        SharedPreferences setting = getSharedPreferences("SHOPUSER", 0);
         SharedPreferences.Editor editor = setting.edit();
         editor.remove("ID");
         editor.commit();

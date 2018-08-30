@@ -19,6 +19,9 @@ public class DataConversion {
     private static final SimpleDateFormat dfFullDate02 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
     private static final SimpleDateFormat dfDate01 = new SimpleDateFormat("yyyy年MM月dd日");
     private static final SimpleDateFormat dfDate02 = new SimpleDateFormat("yyyy-MM-dd");
+    private static final SimpleDateFormat dfDate03 = new SimpleDateFormat("yyyy");
+    private static final SimpleDateFormat dfDate04 = new SimpleDateFormat("MM");
+    private static final SimpleDateFormat dfDate05 = new SimpleDateFormat("dd");
     private static final SimpleDateFormat dfTime01 = new SimpleDateFormat("hh時mm分");
     private static final SimpleDateFormat dfTime02 = new SimpleDateFormat("hh:mm:ss");
 
@@ -83,6 +86,57 @@ public class DataConversion {
         try {
             Date d = dfDate02.parse(date);
             strData = dfDate01.format(d);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            Log.e("データ変換失敗", "DataConversionクラスの時。");
+        }
+        return strData;
+    }
+
+    /**
+     *yyyy-MM-ddからyyyyに変換。
+     * @param date(String)
+     * @return String
+     */
+    public String getDataConversion03(String date){
+        String strData = "";
+        try {
+            Date d = dfDate02.parse(date);
+            strData = dfDate03.format(d);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            Log.e("データ変換失敗", "DataConversionクラスの時。");
+        }
+        return strData;
+    }
+
+    /**
+     *yyyy-MM-ddからMMに変換。
+     * @param date(String)
+     * @return String
+     */
+    public String getDataConversion04(String date){
+        String strData = "";
+        try {
+            Date d = dfDate02.parse(date);
+            strData = dfDate04.format(d);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            Log.e("データ変換失敗", "DataConversionクラスの時。");
+        }
+        return strData;
+    }
+
+    /**
+     *yyyy-MM-ddからddに変換。
+     * @param date(String)
+     * @return String
+     */
+    public String getDataConversion05(String date){
+        String strData = "";
+        try {
+            Date d = dfDate02.parse(date);
+            strData = dfDate05.format(d);
         } catch (ParseException e) {
             e.printStackTrace();
             Log.e("データ変換失敗", "DataConversionクラスの時。");

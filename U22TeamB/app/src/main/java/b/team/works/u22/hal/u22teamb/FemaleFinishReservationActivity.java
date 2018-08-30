@@ -19,10 +19,14 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.w3c.dom.Text;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -63,20 +67,22 @@ public class FemaleFinishReservationActivity extends AppCompatActivity {
         TextView tvMenu = findViewById(R.id.tvMenu);
         tvMenu.setText(getResources().obtainTypedArray(R.array.sp_reservation_store_menu_list).getString(Integer.valueOf(reservation.getMenuNo())));
 
+        TextView tvDate = findViewById(R.id.tvDate);
+        tvDate.setText(reservation.getDate());
+
+        TextView tvTime = findViewById(R.id.tvTime);
+        tvTime.setText(reservation.getTime());
+
         TextView tvSubtotal = findViewById(R.id.tvSubtotal);
-        tvSubtotal.setText("650");
+        tvSubtotal.setText(getResources().getStringArray(R.array.sp_reservation_store_menu_price_list)[Integer.parseInt(reservation.getMenuNo())]);
 
         TextView tvTotal = findViewById(R.id.tvTotal);
-        tvTotal.setText("650");
+        tvTotal.setText(getResources().getStringArray(R.array.sp_reservation_store_menu_price_list)[Integer.parseInt(reservation.getMenuNo())]);
 
-        TextView tvCardNo = findViewById(R.id.tvCardNo);
-        tvCardNo.setText("XXXX-XXXX-XXXX-1234");
-
-        TextView tvCardname = findViewById(R.id.tvCardName);
-        tvCardname.setText("TARO YAMADA");
-
-        TextView tvCardDate = findViewById(R.id.tvCardDate);
-        tvCardDate.setText("08/20");
+        //非同期処理を開始する。
+        CardInformationTaskReceiver receiver = new CardInformationTaskReceiver();
+        //ここで渡した引数はLoginTaskReceiverクラスのdoInBackground(String... params)で受け取れる。
+        receiver.execute(Word.RESERVATION_CARD_URL);
 
         if(!"".equals(reservation.getMessage())) {
             TextView tvMessage = findViewById(R.id.tvMessage);
@@ -84,11 +90,137 @@ public class FemaleFinishReservationActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * 非同期通信を行うAsyncTaskクラスを継承したメンバクラス.
+     */
+    private class CardInformationTaskReceiver extends AsyncTask<String, Void, String> {
+
+        private static final String DEBUG_TAG = "RestAccess";
+
+        /**
+         * 非同期に処理したい内容を記述するメソッド.
+         * このメソッドは必ず実装する必要がある。
+         *
+         * @param params String型の配列。（可変長）
+         * @return String型の結果JSONデータ。
+         */
+        @Override
+        public String doInBackground(String... params) {
+            String urlStr = params[0];
+
+            //POSTで送りたいデータ
+            String postData = "femaleId=" + _id;
+
+            HttpURLConnection con = null;
+            InputStream is = null;
+            String result = "";
+
+            try {
+                URL url = new URL(urlStr);
+                con = (HttpURLConnection) url.openConnection();
+
+                //GET通信かPOST通信かを指定する。
+                con.setRequestMethod("POST");
+
+                //自動リダイレクトを許可するかどうか。
+                con.setInstanceFollowRedirects(false);
+
+                //時間制限。（ミリ秒単位）
+                con.setReadTimeout(10000);
+                con.setConnectTimeout(20000);
+
+                con.connect();
+
+                //POSTデータ送信処理。InputStream処理よりも先に記述する。
+                OutputStream os = null;
+                try {
+                    os = con.getOutputStream();
+
+                    //送信する値をByteデータに変換する（UTF-8）
+                    os.write(postData.getBytes("UTF-8"));
+                    os.flush();
+                }
+                catch (IOException ex) {
+                    Log.e(DEBUG_TAG, "POST送信エラー", ex);
+                }
+                finally {
+                    if(os != null) {
+                        try {
+                            os.close();
+                        }
+                        catch (IOException ex) {
+                            Log.e(DEBUG_TAG, "OutputStream解放失敗", ex);
+                        }
+                    }
+                }
+
+                is = con.getInputStream();
+
+                result = is2String(is);
+            }
+            catch (MalformedURLException ex) {
+                Log.e(DEBUG_TAG, "URL変換失敗", ex);
+            }
+            catch (IOException ex) {
+                Log.e(DEBUG_TAG, "通信失敗", ex);
+            }
+            finally {
+                if(con != null) {
+                    con.disconnect();
+                }
+                if(is != null) {
+                    try {
+                        is.close();
+                    }
+                    catch (IOException ex) {
+                        Log.e(DEBUG_TAG, "InputStream解放失敗", ex);
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        @Override
+        public void onPostExecute(String result) {
+            try {
+                JSONObject rootJSON = new JSONObject(result);
+                String cardNo = rootJSON.getString("cardNo");
+                String cardName = rootJSON.getString("cardName");
+                String cardDate = rootJSON.getString("cardDate");
+                String cardCode = rootJSON.getString("cardCode");
+
+                TextView tvCardNo = findViewById(R.id.tvCardNo);
+                tvCardNo.setText(cardNo);
+
+                TextView tvCardname = findViewById(R.id.tvCardName);
+                tvCardname.setText(cardName);
+
+                TextView tvCardDate = findViewById(R.id.tvCardDate);
+                tvCardDate.setText(cardDate);
+
+            }
+            catch (JSONException ex) {
+                Log.e(DEBUG_TAG, "JSON解析失敗", ex);
+            }
+        }
+
+        private String is2String(InputStream is) throws IOException {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+            StringBuffer sb = new StringBuffer();
+            char[] b = new char[1024];
+            int line;
+            while (0 <= (line = reader.read(b))) {
+                sb.append(b, 0, line);
+            }
+            return sb.toString();
+        }
+    }
+
     public void onNextReservationListClick(View view){
 
         //非同期処理を開始する。
-        FemaleFinishReservationActivity.ReservationTaskReceiver receiver = new FemaleFinishReservationActivity.ReservationTaskReceiver();
-
+        ReservationTaskReceiver receiver = new ReservationTaskReceiver();
         //ここで渡した引数はLoginTaskReceiverクラスのdoInBackground(String... params)で受け取れる。
         receiver.execute(Word.RESERVATION_URL);
 

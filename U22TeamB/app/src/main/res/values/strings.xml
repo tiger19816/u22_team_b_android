@@ -97,6 +97,11 @@
         <item>メニューB(800円)</item>
         <item>メニューC(1000円)</item>
     </string-array>
+    <string-array name="sp_reservation_store_menu_price_list">
+        <item>500円</item>
+        <item>800円</item>
+        <item>1000円</item>
+    </string-array>
     <string name="tv_reservation_datetime">予約時間</string>
     <string name="bt_reservation_date">日付:</string>
     <string name="bt_reservation_time">時間:</string>
@@ -108,8 +113,8 @@
     <string name="tv_reservation_check_store_name">店舗名:</string>
     <string name="tv_reservation_check_store_menu">メニュー:</string>
     <string name="tv_reservation_check_datetime">予約時間</string>
-    <string name="tv_reservation_check_date">日付</string>
-    <string name="tv_reservation_check_time">時間</string>
+    <string name="tv_reservation_check_date">日付:</string>
+    <string name="tv_reservation_check_time">時間:</string>
     <string name="tv_reservation_check_price_title">決済金額</string>
     <string name="tv_reservation_check_price_subtotal">小計:</string>
     <string name="tv_reservation_check_price_total">合計:</string>
