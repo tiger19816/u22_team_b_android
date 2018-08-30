@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         if(!"".equals(_id)){
             Intent intent = new Intent(MainActivity.this, ReservationListActivity.class);
             startActivity(intent);
+            finish();
         }
     }
 
@@ -181,6 +182,7 @@ public class MainActivity extends AppCompatActivity {
                     intent = new Intent(MainActivity.this, ReservationListActivity.class);
                     startActivity(intent);
                     Toast.makeText(MainActivity.this, "ようこそ、"+shopName+"様", Toast.LENGTH_SHORT).show();
+                    finish();
                 } else {
                     Toast.makeText(MainActivity.this, "IDか、パスワードを間違えています。", Toast.LENGTH_SHORT).show();
                 }

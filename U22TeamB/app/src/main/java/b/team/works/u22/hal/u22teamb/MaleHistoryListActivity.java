@@ -301,6 +301,7 @@ public class MaleHistoryListActivity extends AppCompatActivity  implements Navig
             editor.commit();
             intent = new Intent(MaleHistoryListActivity.this,MainActivity.class);
             startActivity(intent);
+            finish();
         }
 
         DrawerLayout drawer = findViewById(R.id.dlMainContent);
