@@ -38,6 +38,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -217,7 +218,7 @@ public class MaleReservationListActivity extends AppCompatActivity implements Na
                     Map map = new HashMap<String , Object>();
                     map.put("reservationId" , data.getString("reservationId"));
                     map.put("storeName" , data.getString("storeName"));
-                    map.put("reservationDate" , data.getString("reservationDate"));
+
                     //予約日を年、月、日の３つに分解する。
                     String dy = data.getString("reservationDate").substring(0, 4);//年
                     String dm = data.getString("reservationDate").substring(5, 7);//月
@@ -233,7 +234,8 @@ public class MaleReservationListActivity extends AppCompatActivity implements Na
                             Integer.valueOf(dd) == nowDay){
                         map.put("reservationDate" , "今日");
                     }else{
-                        map.put("reservationDate" , data.getString("reservationDate"));
+                        DataConversion dc = new DataConversion();
+                        map.put("reservationDate" , dc.getFullDataConversion02(data.getString("reservationDate")));
                     }
                     map.put("newImage" , data.getString("newImage"));
                     _list.add(map);
@@ -255,8 +257,7 @@ public class MaleReservationListActivity extends AppCompatActivity implements Na
                                 return true;
                             case R.id.tvReservationDate:
                                 TextView rowTvStoreShortPr = (TextView) view;
-                                DataConversion dc = new DataConversion();
-                                rowTvStoreShortPr.setText(dc.getFullDataConversion02(Tools.replaceBr(strData)));
+                                rowTvStoreShortPr.setText(Tools.replaceBr(strData));
                                 return true;
                             case R.id.ivNewImage:
                                 ImageView ivNewImage = (ImageView) view;

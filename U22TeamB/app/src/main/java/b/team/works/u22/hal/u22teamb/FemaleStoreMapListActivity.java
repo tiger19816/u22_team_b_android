@@ -180,9 +180,6 @@ public class FemaleStoreMapListActivity extends AppCompatActivity implements Nav
 
         Intent intent;
         if (id == R.id.nav_map) {
-//            intent = new Intent(FemaleStoreMapListActivity.this,FemaleStoreMapListActivity.class);
-//            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//            startActivity(intent);
         } else if (id == R.id.nav_reservation) {
             intent = new Intent(FemaleStoreMapListActivity.this,FemaleReservationListActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
