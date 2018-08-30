@@ -73,11 +73,16 @@ public class FemaleFinishReservationActivity extends AppCompatActivity {
         TextView tvTime = findViewById(R.id.tvTime);
         tvTime.setText(reservation.getTime());
 
+        int price = 0;
+        if(Integer.parseInt(reservation.getMenuNo()) != 0){
+            price = Integer.parseInt(reservation.getMenuNo())-1;
+        }
+
         TextView tvSubtotal = findViewById(R.id.tvSubtotal);
-        tvSubtotal.setText(getResources().getStringArray(R.array.sp_reservation_store_menu_price_list)[Integer.parseInt(reservation.getMenuNo())]);
+        tvSubtotal.setText(getResources().getStringArray(R.array.sp_reservation_store_menu_price_list)[price]);
 
         TextView tvTotal = findViewById(R.id.tvTotal);
-        tvTotal.setText(getResources().getStringArray(R.array.sp_reservation_store_menu_price_list)[Integer.parseInt(reservation.getMenuNo())]);
+        tvTotal.setText(getResources().getStringArray(R.array.sp_reservation_store_menu_price_list)[price]);
 
         //非同期処理を開始する。
         CardInformationTaskReceiver receiver = new CardInformationTaskReceiver();

@@ -161,7 +161,7 @@ public class FemaleNewReservationActivity extends AppCompatActivity {
             intent.putExtra("reservation", reservation);
             startActivity(intent);
         } else {
-            Toast.makeText(FemaleNewReservationActivity.this , "入力チェック完了" , Toast.LENGTH_SHORT).show();
+            Toast.makeText(FemaleNewReservationActivity.this , "メッセージ以外は、入力してください。" , Toast.LENGTH_SHORT).show();
         }
     }
 
