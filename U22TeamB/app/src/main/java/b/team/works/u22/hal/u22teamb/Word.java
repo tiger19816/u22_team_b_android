@@ -25,6 +25,7 @@ public class Word {
     public static final String USER_LOGIN_URL = SERVER_URL + "UserLoginJsonServlet";
     public static final String USER_LAT_LNG_URL = SERVER_URL + "UserLatLngServlet";
     public static final String USER__URL = SERVER_URL + "RegistrationConfirmationServlet";
+    public static final String MAIL_CHECK_URL = SERVER_URL + "RegistrationMailCheckJsonServlet";
 
     public static final String UPDATE_TOKEN_URL = SERVER_URL + "UpdateToken";    // DB上のトークンを更新するサーブレット。
 }

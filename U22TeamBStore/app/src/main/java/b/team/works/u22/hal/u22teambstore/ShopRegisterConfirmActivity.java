@@ -59,7 +59,7 @@ public class ShopRegisterConfirmActivity extends AppCompatActivity {
     Intent _intent;
 
     //URL
-    private static final String LOGIN_URL = "http://localhost:8080/u22_team_b_web/ShopRegisterServlet";
+    private String LOGIN_URL = Word.SHOP_URL;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,14 +73,6 @@ public class ShopRegisterConfirmActivity extends AppCompatActivity {
 
         //取得した画面部品に値をセット
         viewSet();
-    }
-
-    /**
-     * 戻るボタンが押されたとき
-     */
-    public void onClickBack(View view) {
-        _intent = new Intent(ShopRegisterConfirmActivity.this, ShopRegisterActivity.class);
-        startActivity(_intent);
     }
 
     /**
@@ -137,23 +129,28 @@ public class ShopRegisterConfirmActivity extends AppCompatActivity {
             String noStr = params[11];
             String freeNameStr = params[12];
 
-            //POSTで送りたいデータ
-            String postShopName = shopNameStr;
-            String postPhonetic = phoneticStr;
-            String postOpenTime = openTimeStr;
-            String postTel = telStr;
-            String postAddress = addressStr;
-            String postAverageBudget = averageBudgetStr;
-            String postLunchService = lunchServiceStr;
-            String postNonSmokingSeat = nonSmokingSeatStr;
-            String postCardUsage = cardUsageStr;
-            String postPassword = passwordStr;
-            String postNo = noStr;
-            String postFreeName = freeNameStr;
+//            //POSTで送りたいデータ
+//            String postShopName = shopNameStr;
+//            String postPhonetic = phoneticStr;
+//            String postOpenTime = openTimeStr;
+//            String postTel = telStr;
+//            String postAddress = addressStr;
+//            String postAverageBudget = averageBudgetStr;
+//            String postLunchService = lunchServiceStr;
+//            String postNonSmokingSeat = nonSmokingSeatStr;
+//            String postCardUsage = cardUsageStr;
+//            String postPassword = passwordStr;
+//            String postNo = noStr;
+//            String postFreeName = freeNameStr;
 
             HttpURLConnection con = null;
             InputStream is = null;
             String result = "";
+
+            //POSTで送りたいデータ
+            String postData = "postPassword="+passwordStr+"&postShopName="+shopNameStr+"&postPhonetic="+phoneticStr+"&postOpenTime="+openTimeStr+"&postTel="+telStr+"&postAddress="+addressStr
+                    +"&postAverageBudget="+averageBudgetStr+"&postPointLatitude="+""+"&postLongitude="+""+"&postLunchService="+lunchServiceStr+"&postNonSmokingSeat="+nonSmokingSeatStr
+                    +"&postCardUsage="+cardUsageStr+"&image1="+""+"&image2="+""+"&postNo="+noStr+"&postFreeName="+freeNameStr;
 
             try {
                 URL url = new URL(urlStr);
@@ -177,20 +174,9 @@ public class ShopRegisterConfirmActivity extends AppCompatActivity {
                     os = con.getOutputStream();
 
                     //送信する値をByteデータに変換する（UTF-8）
-                    os.write(postShopName.getBytes("UTF-8"));
-                    os.write(postPhonetic.getBytes("UTF-8"));
-                    os.write(postOpenTime.getBytes("UTF-8"));
-                    os.write(postTel.getBytes("UTF-8"));
-                    os.write(postAddress.getBytes("UTF-8"));
-                    os.write(postAverageBudget.getBytes("UTF-8"));
-                    os.write(postLunchService.getBytes("UTF-8"));
-                    os.write(postNonSmokingSeat.getBytes("UTF-8"));
-                    os.write(postCardUsage.getBytes("UTF-8"));
-                    os.write(postPassword.getBytes("UTF-8"));
-                    os.write(postNo.getBytes("UTF-8"));
-                    os.write(postFreeName.getBytes("UTF-8"));
-
+                    os.write(postData.getBytes("UTF-8"));
                     os.flush();
+
                 } catch (IOException ex) {
                     Log.e(DEBUG_TAG, "POST送信エラー", ex);
                 } finally {

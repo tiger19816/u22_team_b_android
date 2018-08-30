@@ -115,17 +115,9 @@ public class ReservationListActivity extends AppCompatActivity {
      * ログアウト。
      */
     public void onLogoutClick(MenuItem item) {
-//        FullDialogFragment dialog = new FullDialogFragment();
-//        FragmentManager manager = getSupportFragmentManager();
-//        dialog.show(manager,"FullDialogFragment");
-
-        SharedPreferences setting = getSharedPreferences("SHOPUSER", 0);
-        SharedPreferences.Editor editor = setting.edit();
-        editor.remove("ID");
-        editor.commit();
-        Intent intent = new Intent(ReservationListActivity.this, MainActivity.class);
-        finish();
-        startActivity(intent);
+        FullDialogFragment dialog = new FullDialogFragment();
+        FragmentManager manager = getSupportFragmentManager();
+        dialog.show(manager,"FullDialogFragment");
     }
 
     /**
