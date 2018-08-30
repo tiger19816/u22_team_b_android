@@ -24,15 +24,12 @@ import java.net.URL;
 public class ShopRegisterConfirmActivity extends AppCompatActivity {
 
     //各部品取得用定数
-    TextView tvShopId; //店舗ID
     TextView tvShopName; //店舗名
     TextView tvPhonetic; //店舗名（カナ）
     TextView tvOpenTime; //営業時間
     TextView tvTel; //電話番号
     TextView tvAddress; //住所
     TextView tvAverageBudget; //平均予算
-    TextView tvPointLatitude; //緯度
-    TextView tvPointLongitude; //経度
     TextView tvLunchService; //ランチ営業
     TextView tvNonSmokingSeat; //禁煙席
     TextView tvCardUsage; //カード利用
@@ -43,15 +40,12 @@ public class ShopRegisterConfirmActivity extends AppCompatActivity {
     TextView tvFreeName; //フリーワード
 
     //取得した画面部品にセットされた値を格納する変数
-    String shopId;
     String shopName;
     String phonetic;
     String openTime;
     String tel;
     String address;
     String averageBudget;
-    String pointLatitude;
-    String pointLongitude;
     String lunchService;
     String nonSmokingSeat;
     String cardUsage;
@@ -97,15 +91,12 @@ public class ShopRegisterConfirmActivity extends AppCompatActivity {
         LoginTaskReceiver receiver = new LoginTaskReceiver();
         receiver.execute(
                 LOGIN_URL,
-                shopId,
                 shopName,
                 phonetic,
                 openTime,
                 tel,
                 address,
                 averageBudget,
-                pointLatitude,
-                pointLongitude,
                 lunchService,
                 nonSmokingSeat,
                 cardUsage,
@@ -133,32 +124,26 @@ public class ShopRegisterConfirmActivity extends AppCompatActivity {
         @Override
         public String doInBackground(String... params) {
             String urlStr = params[0];
-            String shopIdStr = params[1];
-            String shopNameStr = params[2];
-            String phoneticStr = params[3];
-            String openTimeStr = params[4];
-            String telStr = params[5];
-            String addressStr = params[6];
-            String averageBudgetStr = params[7];
-            String pointLatitudeStr = params[8];
-            String pointLongitudeStr = params[9];
-            String lunchServiceStr = params[10];
-            String nonSmokingSeatStr = params[11];
-            String cardUsageStr = params[12];
-            String passwordStr = params[13];
-            String noStr = params[14];
-            String freeNameStr = params[15];
+            String shopNameStr = params[1];
+            String phoneticStr = params[2];
+            String openTimeStr = params[3];
+            String telStr = params[4];
+            String addressStr = params[5];
+            String averageBudgetStr = params[6];
+            String lunchServiceStr = params[7];
+            String nonSmokingSeatStr = params[8];
+            String cardUsageStr = params[9];
+            String passwordStr = params[10];
+            String noStr = params[11];
+            String freeNameStr = params[12];
 
             //POSTで送りたいデータ
-            String postShopId = shopIdStr;
             String postShopName = shopNameStr;
             String postPhonetic = phoneticStr;
             String postOpenTime = openTimeStr;
             String postTel = telStr;
             String postAddress = addressStr;
             String postAverageBudget = averageBudgetStr;
-            String postPointLatitude = pointLatitudeStr;
-            String postPointLongitude = pointLongitudeStr;
             String postLunchService = lunchServiceStr;
             String postNonSmokingSeat = nonSmokingSeatStr;
             String postCardUsage = cardUsageStr;
@@ -192,15 +177,12 @@ public class ShopRegisterConfirmActivity extends AppCompatActivity {
                     os = con.getOutputStream();
 
                     //送信する値をByteデータに変換する（UTF-8）
-                    os.write(postShopId.getBytes("UTF-8"));
                     os.write(postShopName.getBytes("UTF-8"));
                     os.write(postPhonetic.getBytes("UTF-8"));
                     os.write(postOpenTime.getBytes("UTF-8"));
                     os.write(postTel.getBytes("UTF-8"));
                     os.write(postAddress.getBytes("UTF-8"));
                     os.write(postAverageBudget.getBytes("UTF-8"));
-                    os.write(postPointLatitude.getBytes("UTF-8"));
-                    os.write(postPointLongitude.getBytes("UTF-8"));
                     os.write(postLunchService.getBytes("UTF-8"));
                     os.write(postNonSmokingSeat.getBytes("UTF-8"));
                     os.write(postCardUsage.getBytes("UTF-8"));
@@ -278,10 +260,6 @@ public class ShopRegisterConfirmActivity extends AppCompatActivity {
      * インテントから取得した値を各画面部品にセット＋変数へ格納するメソッド
      */
     private void viewSet() {
-        //店舗ID
-        tvShopId.setText( _intent.getStringExtra("shopId") );
-        shopId = tvShopId.getText().toString();
-
         //店舗名
         tvShopName.setText( _intent.getStringExtra("shopName") );
         shopName = tvShopName.getText().toString();
@@ -305,14 +283,6 @@ public class ShopRegisterConfirmActivity extends AppCompatActivity {
         //平均予算
         tvAverageBudget.setText( _intent.getStringExtra("averageBudget") );
         averageBudget = tvAverageBudget.getText().toString();
-
-        //緯度
-        tvPointLatitude.setText( _intent.getStringExtra("pointLatitude") );
-        pointLatitude = tvPointLatitude.getText().toString();
-
-        //経度
-        tvPointLongitude.setText( _intent.getStringExtra("pointLongitude") );
-        pointLongitude = tvPointLongitude.getText().toString();
 
         //ランチ営業
         tvLunchService.setText( _intent.getStringExtra("lunchService") );
@@ -349,15 +319,12 @@ public class ShopRegisterConfirmActivity extends AppCompatActivity {
      * 各部品の取得を行うメソッド
      */
     private void findViewAll() {
-        tvShopId = findViewById(R.id.tvShopId);
         tvShopName = findViewById(R.id.tvShopName);
         tvPhonetic = findViewById(R.id.tvPhonetic);
         tvOpenTime = findViewById(R.id.tvOpenTime);
         tvTel = findViewById(R.id.tvTel);
         tvAddress = findViewById(R.id.tvAddress);
         tvAverageBudget = findViewById(R.id.tvAverageBudget);
-        tvPointLatitude = findViewById(R.id.tvPointLatitude);
-        tvPointLongitude = findViewById(R.id.tvPointLongitude);
         tvLunchService = findViewById(R.id.tvLunchService);
         tvNonSmokingSeat = findViewById(R.id.tvNonSmokingSeat);
         tvCardUsage = findViewById(R.id.tvCardUsage);

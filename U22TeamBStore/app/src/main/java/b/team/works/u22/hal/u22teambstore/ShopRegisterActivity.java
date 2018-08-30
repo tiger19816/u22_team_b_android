@@ -15,15 +15,12 @@ import android.widget.Toast;
 public class ShopRegisterActivity extends AppCompatActivity {
 
     //各部品取得用定数
-    EditText etShopId; //店舗ID
     EditText etShopName; //店舗名
     EditText etPhonetic; //店舗名（カナ）
     EditText etOpenTime; //営業時間
     EditText etTel; //電話番号
     EditText etAddress; //住所
     EditText etAverageBudget; //平均予算
-    EditText etPointLatitude; //緯度
-    EditText etPointLongitude; //経度
     RadioButton rbLunchServiceAvailable; //ランチ営業有
     RadioButton rbLunchServiceNotAvailable; //ランチ営業無
     RadioButton rbNonSmokingSeatAvailable; //禁煙席有
@@ -63,15 +60,12 @@ public class ShopRegisterActivity extends AppCompatActivity {
     public void onClickConfirm(View view) {
         _intent = new Intent(ShopRegisterActivity.this, ShopRegisterConfirmActivity.class);
 
-        _intent.putExtra("shopId", etShopId.getText().toString());
         _intent.putExtra("shopName", etShopName.getText().toString());
         _intent.putExtra("phonetic", etPhonetic.getText().toString());
         _intent.putExtra("openTime", etOpenTime.getText().toString());
         _intent.putExtra("tel", etTel.getText().toString());
         _intent.putExtra("address", etAddress.getText().toString());
         _intent.putExtra("averageBudget", etAverageBudget.getText().toString());
-        _intent.putExtra("pointLatitude", etPointLatitude.getText().toString());
-        _intent.putExtra("pointLongitude", etPointLongitude.getText().toString());
 
         //ランチ営業有りか無しか
         String lunchService;
@@ -121,15 +115,12 @@ public class ShopRegisterActivity extends AppCompatActivity {
      * 各部品の取得を行うメソッド
      */
     private void findViewAll() {
-        etShopId = findViewById(R.id.etShopId);
         etShopName = findViewById(R.id.etShopName);
         etPhonetic = findViewById(R.id.etPhonetic);
         etOpenTime = findViewById(R.id.etOpenTime);
         etTel = findViewById(R.id.etTel);
         etAddress = findViewById(R.id.etAddress);
         etAverageBudget = findViewById(R.id.etAverageBudget);
-        etPointLatitude = findViewById(R.id.etPointLatitude);
-        etPointLongitude = findViewById(R.id.etPointLongitude);
         rbLunchServiceAvailable = findViewById(R.id.rbLunchServiceAvailable);
         rbLunchServiceNotAvailable = findViewById(R.id.rbLunchServiceNotAvailable);
         rbNonSmokingSeatAvailable = findViewById(R.id.rbNonSmokingSeatAvailable);
@@ -150,11 +141,7 @@ public class ShopRegisterActivity extends AppCompatActivity {
         //エラーがあることを示すフラグ
         Boolean flag = false;
 
-        if( "".equals( etShopId.getText().toString() ) ) {
-            etShopId.setError("店舗IDを入力してください。");
-            flag = true;
-        }
-        else if( "".equals( etShopName.getText().toString() ) ) {
+        if( "".equals( etShopName.getText().toString() ) ) {
             etShopName.setError("店舗名を入力してください。");
             flag = true;
         }
@@ -177,16 +164,7 @@ public class ShopRegisterActivity extends AppCompatActivity {
         else if( "".equals( etAverageBudget.getText().toString() ) ) {
             etAverageBudget.setError("平均予算を入力してください。");
             flag = true;
-        }
-        else if( "".equals( etPointLatitude.getText().toString() ) ) {
-            etPointLatitude.setError("緯度を入力してください。");
-            flag = true;
-        }
-        else if( "".equals( etPointLongitude.getText().toString() ) ) {
-            etPointLongitude.setError("経度を入力してください。");
-            flag = true;
-        }
-        else if( "".equals( etPassword.getText().toString() ) ) {
+        }else if( "".equals( etPassword.getText().toString() ) ) {
             etPassword.setError("パスワードを入力してください。");
             flag = true;
         }
