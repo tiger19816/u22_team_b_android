@@ -35,7 +35,7 @@ public class FemaleMaleInformationRegistrationActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_female_male_information_registration);
 
-        setTitle(getString(R.string.female_male_infomation_registration_title));
+        setTitle(getString(R.string.female_male_information_registration_title));
 
         //ツールバー(レイアウトを変更可)。
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -103,7 +103,7 @@ public class FemaleMaleInformationRegistrationActivity extends AppCompatActivity
             intent.putExtra("MALE", male);
             startActivity(intent);
         }else{
-            Toast.makeText(FemaleMaleInformationRegistrationActivity.this , getString(R.string.female_male_infomation_registration_input_check_complete_3) , Toast.LENGTH_SHORT).show();
+            Toast.makeText(FemaleMaleInformationRegistrationActivity.this , getString(R.string.female_male_information_registration_input_check_complete_3) , Toast.LENGTH_SHORT).show();
         }
    }
 

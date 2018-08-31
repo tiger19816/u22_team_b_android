@@ -148,7 +148,7 @@
     <string name="female_card_registration_title">カード情報入力画面</string>
     <string name="female_card_registration_input_card_complete_2">入力チェック2完了</string>
 
-    <!--FemaleChangeReservationActiviry-->
+    <!--FemaleChangeReservationActivity-->
     <string name="female_change_reservation_title">予約内容変更</string>
     <string name="female_change_reservation_input_check_complete">入力チェック完了</string>
     <string name="female_change_reservation_can_not_change_warning_before_3_days">予約日から3日以内のため変更はできません</string>
@@ -160,9 +160,9 @@
     <string name="female_history_list_title">履歴一覧</string>
     <string name="female_history_list_user_name_title">ユーザー名</string>
 
-    <!--FemaleMaleInfomationRegistrationActivity-->
-    <string name="female_male_infomation_registration_title">夫情報入力画面</string>
-    <string name="female_male_infomation_registration_input_check_complete_3">入力チェック3完了</string>
+    <!--FemaleMaleInformationRegistrationActivity-->
+    <string name="female_male_information_registration_title">夫情報入力画面</string>
+    <string name="female_male_information_registration_input_check_complete_3">入力チェック3完了</string>
 
     <!--FemaleMyPageActivity-->
     <string name="female_my_page_title">MyPage</string>
@@ -171,4 +171,10 @@
     <!--FemaleNewMemberRegistrationActivity-->
     <string name="female_new_member_registration_title">妻情報入力画面</string>
     <string name="female_new_member_registration_input_check_complete">入力チェック完了</string>
+
+    <!--FemaleNewMemberRegistrationConfirmationScreenActivity-->
+    <string name="female_new_member_registration_confirmation_screen_title">カード情報入力画面</string>
+    <string name="female_new_member_registration_confirmation_screen_registered_message">登録されました。</string>
+    <string name="female_new_member_registration_confirmation_screen_did_not_register_warning">登録が失敗しました。もう一度お願いいたします。</string>
+
 </resources>
