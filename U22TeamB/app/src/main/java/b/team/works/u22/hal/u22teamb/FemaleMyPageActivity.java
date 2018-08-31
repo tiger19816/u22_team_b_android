@@ -50,7 +50,7 @@ public class FemaleMyPageActivity extends AppCompatActivity implements Navigatio
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_female_my_page);
 
-        setTitle("MyPage");
+        setTitle(getString(R.string.female_my_page_title));
 
         //ユーザーIDの取得。
         SharedPreferences setting = getSharedPreferences("USER" , 0);
@@ -79,11 +79,11 @@ public class FemaleMyPageActivity extends AppCompatActivity implements Navigatio
         SharedPreferences pref = getSharedPreferences("USER",0);
         if(Build.VERSION.SDK_INT < 23) {
             TextView navTvUserName = navigationView.findViewById(R.id.navTvUserName);
-            navTvUserName.setText(pref.getString("NAME", "ユーザー名"));
+            navTvUserName.setText(pref.getString("NAME", getString(R.string.female_my_page_title_user_name)));
         } else {
             View headerView = navigationView.getHeaderView(0);
             TextView navTvUserName = headerView.findViewById(R.id.navTvUserName);
-            navTvUserName.setText(pref.getString("NAME", "ユーザー名"));
+            navTvUserName.setText(pref.getString("NAME", getString(R.string.female_my_page_title_user_name)));
         }
     }
 
