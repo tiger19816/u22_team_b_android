@@ -47,7 +47,7 @@ public class FemaleHistoryListActivity extends AppCompatActivity  implements Nav
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_female_history_list);
 
-        setTitle("履歴一覧");
+        setTitle(getString(R.string.female_history_list_title));
 
         //ユーザーIDの取得。
         SharedPreferences setting = getSharedPreferences("USER" , 0);
@@ -71,11 +71,11 @@ public class FemaleHistoryListActivity extends AppCompatActivity  implements Nav
         SharedPreferences pref = getSharedPreferences("USER",0);
         if(Build.VERSION.SDK_INT < 23) {
             TextView navTvUserName = navigationView.findViewById(R.id.navTvUserName);
-            navTvUserName.setText(pref.getString("NAME", "ユーザー名"));
+            navTvUserName.setText(pref.getString("NAME", getString(R.string.female_history_list_user_name_title)));
         } else {
             View headerView = navigationView.getHeaderView(0);
             TextView navTvUserName = headerView.findViewById(R.id.navTvUserName);
-            navTvUserName.setText(pref.getString("NAME", "ユーザー名"));
+            navTvUserName.setText(pref.getString("NAME", getString(R.string.female_history_list_user_name_title)));
         }
 
         //非同期処理を開始する。
@@ -221,7 +221,7 @@ public class FemaleHistoryListActivity extends AppCompatActivity  implements Nav
                                 return true;
                             case R.id.tvPrice:
                                 TextView tvPrice = (TextView) view;
-                                tvPrice.setText(strData + "円");
+                                tvPrice.setText(strData + getString(R.string.money_title));
                                 return true;
                             case R.id.tvHistoryDate:
                                 TextView tvHistryDate = (TextView) view;

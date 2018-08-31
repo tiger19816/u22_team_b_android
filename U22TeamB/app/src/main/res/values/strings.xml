@@ -8,6 +8,7 @@
     <string name="date_title">日</string>
     <string name="hour_title">時</string>
     <string name="minute_title">分</string>
+    <string name="money_title">円</string>
 
     <!-- 左のメニュー用 -->
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -154,4 +155,9 @@
     <string name="female_change_reservation_can_not_change_warning_for_past_rsv">過去の予約は変更できません</string>
     <string name="female_change_reservation_changed_message">変更完了</string>
     <string name="female_change_reservation_did_not_change_message">変更されませんでした。</string>
+
+    <!--FemaleHistoryListActivity-->
+    <string name="female_history_list_title">履歴一覧</string>
+    <string name="female_history_list_user_name_title">ユーザー名</string>
+
 </resources>
