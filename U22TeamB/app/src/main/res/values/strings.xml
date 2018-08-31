@@ -177,4 +177,12 @@
     <string name="female_new_member_registration_confirmation_screen_registered_message">登録されました。</string>
     <string name="female_new_member_registration_confirmation_screen_did_not_register_warning">登録が失敗しました。もう一度お願いいたします。</string>
 
+    <!--FemaleNewReservationActivity-->
+    <string name="female_new_reservation_title">予約内容入力</string>
+    <string name="female_new_reservation_complete_without_message_warning">メッセージ以外は、入力してください。</string>
+
+    <!--FemaleQrCodeActivity-->
+    <string name="female_qr_code_title">夫情報読み取り</string>
+
+
 </resources>

@@ -28,7 +28,7 @@ public class FemaleNewReservationActivity extends AppCompatActivity {
     private int nowYear;
     private int nowMonth;
     private int nowDayOfMonth;
-    private SimpleDateFormat dfBirthday = new SimpleDateFormat("yyyy年MM月dd日");
+    private SimpleDateFormat dfBirthday = new SimpleDateFormat("yyyy"+getString(R.string.year_title)+"MM"+getString(R.string.month_title)+"dd"+getString(R.string.date_title));
     private SimpleDateFormat dfYear = new SimpleDateFormat("yyyy");
     private SimpleDateFormat dfMonth = new SimpleDateFormat("MM");
     private SimpleDateFormat dfDayOfMonth = new SimpleDateFormat("dd");
@@ -39,7 +39,7 @@ public class FemaleNewReservationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_female_new_reservation);
 
-        setTitle( "予約内容入力" );
+        setTitle( getString(R.string.female_new_reservation_title) );
 
         //ツールバー(レイアウトを変更可)。
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -101,7 +101,7 @@ public class FemaleNewReservationActivity extends AppCompatActivity {
             String dataDate = "";
             if(monthOfYear<10){ dataMonth = "0" + String.valueOf(monthOfYear+1); }else{ dataMonth = String.valueOf(monthOfYear+1); }
             if(dayOfMonth<10){ dataDate = "0" + String.valueOf(dayOfMonth); }else{ dataDate = String.valueOf(dayOfMonth); }
-            String dateMessage = year + "年" + dataMonth + "月" + dataDate + "日";
+            String dateMessage = year + getString(R.string.year_title) + dataMonth + getString(R.string.month_title) + dataDate + getString(R.string.date_title);
             EditText etDate = findViewById(R.id.etDate);
             etDate.setText(dateMessage);
         }
@@ -127,9 +127,9 @@ public class FemaleNewReservationActivity extends AppCompatActivity {
         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
             String time = "";
             if(minute<10){
-                time = hourOfDay + "時" + minute + "0分";
+                time = hourOfDay + getString(R.string.hour_title) + minute + "0" + getString(R.string.minute_title);
             }else{
-                time = hourOfDay + "時" + minute + "分";
+                time = hourOfDay + getString(R.string.hour_title) + minute + getString(R.string.minute_title);
             }
             EditText etTime = findViewById(R.id.etTime);
             etTime.setText(time);
@@ -161,7 +161,7 @@ public class FemaleNewReservationActivity extends AppCompatActivity {
             intent.putExtra("reservation", reservation);
             startActivity(intent);
         } else {
-            Toast.makeText(FemaleNewReservationActivity.this , "メッセージ以外は、入力してください。" , Toast.LENGTH_SHORT).show();
+            Toast.makeText(FemaleNewReservationActivity.this , getString(R.string.female_new_reservation_complete_without_message_warning) , Toast.LENGTH_SHORT).show();
         }
     }
 
