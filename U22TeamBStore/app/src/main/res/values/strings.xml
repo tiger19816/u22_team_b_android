@@ -64,6 +64,11 @@
     <string name="date_title">日</string>
     <string name="hour_title">時</string>
     <string name="minute_title">分</string>
+    <string name="tv_female_name_title">予約者:</string>
+    <string name="tv_male_name_title">来店者:</string>
+    <string name="tv_menu_title">メニュー:</string>
+    <string name="tv_use_date_time_title">予約時刻:</string>
+    <string name="bt_visited">来店</string>
 
     <!--ReservationListActivity-->
     <string name="did_not_get_info_warning">情報の取得に失敗</string>
