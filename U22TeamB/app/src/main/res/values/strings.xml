@@ -2,6 +2,13 @@
 
     <string name="app_name">束縛</string>
 
+    <!--汎用-->
+    <string name="year_title">年</string>
+    <string name="month_title">月</string>
+    <string name="date_title">日</string>
+    <string name="hour_title">時</string>
+    <string name="minute_title">分</string>
+
     <!-- 左のメニュー用 -->
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -139,4 +146,12 @@
     <!--FemaleCardRegistrationActivity-->
     <string name="female_card_registration_title">カード情報入力画面</string>
     <string name="female_card_registration_input_card_complete_2">入力チェック2完了</string>
+
+    <!--FemaleChangeReservationActiviry-->
+    <string name="female_change_reservation_title">予約内容変更</string>
+    <string name="female_change_reservation_input_check_complete">入力チェック完了</string>
+    <string name="female_change_reservation_can_not_change_warning_before_3_days">予約日から3日以内のため変更はできません</string>
+    <string name="female_change_reservation_can_not_change_warning_for_past_rsv">過去の予約は変更できません</string>
+    <string name="female_change_reservation_changed_message">変更完了</string>
+    <string name="female_change_reservation_did_not_change_message">変更されませんでした。</string>
 </resources>
