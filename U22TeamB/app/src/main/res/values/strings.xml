@@ -160,4 +160,7 @@
     <string name="female_history_list_title">履歴一覧</string>
     <string name="female_history_list_user_name_title">ユーザー名</string>
 
+    <!--FemaleMaleInfomationRegistrationActivity-->
+    <string name="female_male_infomation_registration_title">夫情報入力画面</string>
+    <string name="female_male_infomation_registration_input_check_complete_3">入力チェック3完了</string>
 </resources>

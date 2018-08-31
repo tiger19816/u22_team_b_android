@@ -24,7 +24,7 @@ public class FemaleMaleInformationRegistrationActivity extends AppCompatActivity
     private int nowYear;
     private int nowMonth;
     private int nowDayOfMonth;
-    private SimpleDateFormat dfBirthday = new SimpleDateFormat("yyyy年MM月dd日");
+    private SimpleDateFormat dfBirthday = new SimpleDateFormat("yyyy"+getString(R.string.year_title)+"MM"+getString(R.string.month_title)+"dd"+getString(R.string.date_title));
     private SimpleDateFormat dfYear = new SimpleDateFormat("yyyy");
     private SimpleDateFormat dfMonth = new SimpleDateFormat("MM");
     private SimpleDateFormat dfDayOfMonth = new SimpleDateFormat("dd");
@@ -35,7 +35,7 @@ public class FemaleMaleInformationRegistrationActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_female_male_information_registration);
 
-        setTitle("夫情報入力画面");
+        setTitle(getString(R.string.female_male_infomation_registration_title));
 
         //ツールバー(レイアウトを変更可)。
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -103,7 +103,7 @@ public class FemaleMaleInformationRegistrationActivity extends AppCompatActivity
             intent.putExtra("MALE", male);
             startActivity(intent);
         }else{
-            Toast.makeText(FemaleMaleInformationRegistrationActivity.this , "入力チェック3完了" , Toast.LENGTH_SHORT).show();
+            Toast.makeText(FemaleMaleInformationRegistrationActivity.this , getString(R.string.female_male_infomation_registration_input_check_complete_3) , Toast.LENGTH_SHORT).show();
         }
    }
 
@@ -137,7 +137,7 @@ public class FemaleMaleInformationRegistrationActivity extends AppCompatActivity
     private class DatePickerDialogDateSetListener implements DatePickerDialog.OnDateSetListener{
         @Override
         public void onDateSet(DatePicker view , int year , int monthOfYear , int dayOfMonth){
-            String dateMessage = year + "年" + (monthOfYear + 1) + "月" + dayOfMonth + "日";
+            String dateMessage = year + getString(R.string.year_title) + (monthOfYear + 1) + getString(R.string.month_title) + dayOfMonth + getString(R.string.date_title);
             EditText etBirthday = findViewById(R.id.etInputBirthday);
             etBirthday.setText(dateMessage);
         }
