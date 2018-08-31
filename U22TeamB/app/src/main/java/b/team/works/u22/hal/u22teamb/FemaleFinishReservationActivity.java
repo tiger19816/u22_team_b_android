@@ -1,5 +1,6 @@
 package b.team.works.u22.hal.u22teamb;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -9,8 +10,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -36,6 +40,9 @@ public class FemaleFinishReservationActivity extends AppCompatActivity {
 
     private Reservation reservation;
     private String _id;
+
+    private Context context;
+    private String toastMessage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -239,7 +246,10 @@ public class FemaleFinishReservationActivity extends AppCompatActivity {
          * 第1引数 : 水平方向のマージンを指定します。数値は-1~1の間で設定できます。正の値は水平右方向、負の値は水平左方向に移動されます。
          * 第2引数 : 垂直方向のマージンを指定します。数値は-1~1の間で設定できます。正の値は垂直上方向、負の値は垂直下方向に移動されます。
          */
-        toast.setMargin(1.0f,-1.0f);
+        // 位置調整
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        //時間
+        toast.setDuration(Toast.LENGTH_LONG);
         toast.show();
 
         new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
@@ -250,7 +260,7 @@ public class FemaleFinishReservationActivity extends AppCompatActivity {
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
-        }, 3000);
+        }, 4000);
     }
 
     /**
