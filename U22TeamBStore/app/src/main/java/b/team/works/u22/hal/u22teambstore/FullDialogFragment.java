@@ -31,9 +31,15 @@ public class FullDialogFragment extends DialogFragment {
         @Override
         public void onClick(DialogInterface dialog , int which){
             Activity parent = getActivity();
-            Intent intent;
             switch (which){
                 case DialogInterface.BUTTON_POSITIVE:
+                    SharedPreferences setting = parent.getSharedPreferences("SHOPUSER", 0);
+                    SharedPreferences.Editor editor = setting.edit();
+                    editor.remove("ID");
+                    editor.commit();
+                    Intent intent = new Intent(parent,MainActivity.class);
+                    parent.finish();
+                    startActivity(intent);
                     break;
                 case DialogInterface.BUTTON_NEGATIVE:
                     break;

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
@@ -20,9 +21,21 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -43,6 +56,9 @@ public class FemaleNewMemberRegistrationActivity extends AppCompatActivity {
     private SimpleDateFormat dfMonth = new SimpleDateFormat("MM");
     private SimpleDateFormat dfDayOfMonth = new SimpleDateFormat("dd");
     private static final int REQUEST_GALLERY = 0;
+    private String mail;
+    private Female female;
+    private static final String MAIL_CHECK_URL = Word.MAIL_CHECK_URL;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -148,7 +164,7 @@ public class FemaleNewMemberRegistrationActivity extends AppCompatActivity {
     public void onMaleInformationClick(View view){
 
         //妻情報のエンティティークラス
-        Female female = new Female();
+        female = new Female();
 
         String femaleIcon = "icon.jpg";
         female.setFemaleIcon(femaleIcon);
@@ -163,6 +179,7 @@ public class FemaleNewMemberRegistrationActivity extends AppCompatActivity {
 
         EditText etFemaleMail = findViewById(R.id.etInputMail);
         String femaleMail = etFemaleMail.getText().toString();
+        mail = femaleMail;
         female.setFemaleMail(femaleMail);
 
         EditText etFemalePassword = findViewById(R.id.etInputPassword);
@@ -170,11 +187,134 @@ public class FemaleNewMemberRegistrationActivity extends AppCompatActivity {
         female.setFemalePassword(femalePassword);
 
         if(female.getInputChecked()) {
-            Intent intent = new Intent(FemaleNewMemberRegistrationActivity.this, FemaleCardRegistrationActivity.class);
-            intent.putExtra("FEMALE", female);
-            startActivity(intent);
+            //非同期処理を開始する。
+            MailInformationCheckTaskReceiver receiver = new MailInformationCheckTaskReceiver();
+            //ここで渡した引数はLoginTaskReceiverクラスのdoInBackground(String... params)で受け取れる。
+            receiver.execute(MAIL_CHECK_URL);
         }else{
             Toast.makeText(FemaleNewMemberRegistrationActivity.this , getString(R.string.female_new_member_registration_input_check_complete) , Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    /**
+     * 非同期通信を行うAsyncTaskクラスを継承したメンバクラス.
+     */
+    private class MailInformationCheckTaskReceiver extends AsyncTask<String, Void, String> {
+
+        private static final String DEBUG_TAG = "RestAccess";
+
+        /**
+         * 非同期に処理したい内容を記述するメソッド.
+         * このメソッドは必ず実装する必要がある。
+         *
+         * @param params String型の配列。（可変長）
+         * @return String型の結果JSONデータ。
+         */
+        @Override
+        public String doInBackground(String... params) {
+            String urlStr = params[0];
+
+            //POSTで送りたいデータ
+            String postData = "mail=" + mail;
+
+            HttpURLConnection con = null;
+            InputStream is = null;
+            String result = "";
+
+            try {
+                URL url = new URL(urlStr);
+                con = (HttpURLConnection) url.openConnection();
+
+                //GET通信かPOST通信かを指定する。
+                con.setRequestMethod("POST");
+
+                //自動リダイレクトを許可するかどうか。
+                con.setInstanceFollowRedirects(false);
+
+                //時間制限。（ミリ秒単位）
+                con.setReadTimeout(10000);
+                con.setConnectTimeout(20000);
+
+                con.connect();
+
+                //POSTデータ送信処理。InputStream処理よりも先に記述する。
+                OutputStream os = null;
+                try {
+                    os = con.getOutputStream();
+
+                    //送信する値をByteデータに変換する（UTF-8）
+                    os.write(postData.getBytes("UTF-8"));
+                    os.flush();
+                }
+                catch (IOException ex) {
+                    Log.e(DEBUG_TAG, "POST送信エラー", ex);
+                }
+                finally {
+                    if(os != null) {
+                        try {
+                            os.close();
+                        }
+                        catch (IOException ex) {
+                            Log.e(DEBUG_TAG, "OutputStream解放失敗", ex);
+                        }
+                    }
+                }
+
+                is = con.getInputStream();
+
+                result = is2String(is);
+            }
+            catch (MalformedURLException ex) {
+                Log.e(DEBUG_TAG, "URL変換失敗", ex);
+            }
+            catch (IOException ex) {
+                Log.e(DEBUG_TAG, "通信失敗", ex);
+            }
+            finally {
+                if(con != null) {
+                    con.disconnect();
+                }
+                if(is != null) {
+                    try {
+                        is.close();
+                    }
+                    catch (IOException ex) {
+                        Log.e(DEBUG_TAG, "InputStream解放失敗", ex);
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        @Override
+        public void onPostExecute(String result) {
+            try {
+                JSONObject rootJSON = new JSONObject(result);
+                Boolean checkMail = rootJSON.getBoolean("checkMail");
+                if(checkMail) {
+                    Intent intent = new Intent(FemaleNewMemberRegistrationActivity.this, FemaleCardRegistrationActivity.class);
+                    intent.putExtra("FEMALE", female);
+                    startActivity(intent);
+                }else{
+                    Toast.makeText(FemaleNewMemberRegistrationActivity.this , "このメールアドレスはすでに登録されています。" , Toast.LENGTH_SHORT).show();
+                }
+
+            }
+            catch (JSONException ex) {
+                Log.e(DEBUG_TAG, "JSON解析失敗", ex);
+            }
+        }
+
+        private String is2String(InputStream is) throws IOException {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+            StringBuffer sb = new StringBuffer();
+            char[] b = new char[1024];
+            int line;
+            while (0 <= (line = reader.read(b))) {
+                sb.append(b, 0, line);
+            }
+            return sb.toString();
         }
     }
 

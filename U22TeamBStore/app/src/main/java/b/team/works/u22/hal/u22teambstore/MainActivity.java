@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         if(!"".equals(_id)){
             Intent intent = new Intent(MainActivity.this, ReservationListActivity.class);
             startActivity(intent);
+            finish();
         }
     }
 
@@ -181,6 +182,7 @@ public class MainActivity extends AppCompatActivity {
                     intent = new Intent(MainActivity.this, ReservationListActivity.class);
                     startActivity(intent);
                     Toast.makeText(MainActivity.this, getString(R.string.main_welcome_message)+shopName+getString(R.string.honor_title), Toast.LENGTH_SHORT).show();
+                    finish();
                 } else {
                     Toast.makeText(MainActivity.this, getString(R.string.main_incorrect_id_or_password), Toast.LENGTH_SHORT).show();
                 }

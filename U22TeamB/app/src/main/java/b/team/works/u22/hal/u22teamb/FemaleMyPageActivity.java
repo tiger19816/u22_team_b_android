@@ -6,7 +6,9 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -230,14 +232,6 @@ public class FemaleMyPageActivity extends AppCompatActivity implements Navigatio
                 TextView tvFemaleBirthday = findViewById(R.id.tvFemaleBirthday);
                 tvFemaleBirthday.setText(female.getDataConversion2(femaleBirthday));
 
-                String femalePassword = rootJSON.getString("femalePassword");
-                TextView tvFemalePassword = findViewById(R.id.tvFemalePassword);
-                String password = "";
-                for(int i=0; i<femalePassword.length(); i++){
-                    password += "*";
-                }
-                tvFemalePassword.setText(password);
-
                 String femaleIcon = rootJSON.getString("femaleIcon");
                 ImageView imFemaleIcon = findViewById(R.id.ivFemaleIcon);
                 imFemaleIcon.setImageResource(R.drawable.icon);
@@ -251,20 +245,15 @@ public class FemaleMyPageActivity extends AppCompatActivity implements Navigatio
                 tvFemaleMail.setText(femaleMail);
 
                 String femaleCardNo = rootJSON.getString("cardNumber");
+                String cardNo = femaleCardNo.substring(0, 4);
+                cardNo = femaleCardNo.replace(cardNo, "*");
+                String subFemaleCardNo = femaleCardNo.substring(12, 16);
                 TextView tvFemaleCardNo = findViewById(R.id.tvFemaleCreditCardNumber);
-                tvFemaleCardNo.setText(femaleCardNo);
+                tvFemaleCardNo.setText(cardNo + " " + subFemaleCardNo);
 
                 String femaleCardDoneDeadline = rootJSON.getString("cardExpirationDate");
                 TextView tvFemaleCardDoneDeadline = findViewById(R.id.tvFemaleCreditCardExpirationDate);
                 tvFemaleCardDoneDeadline.setText(femaleCardDoneDeadline);
-
-                String femaleCardSecurityCode = rootJSON.getString("cardSecurityCode");
-                TextView tvFemaleCardSecurityCode = findViewById(R.id.tvFemaleCreditCardSecurityNumber);
-                tvFemaleCardSecurityCode.setText(femaleCardSecurityCode);
-
-                String femaleCardNominee = rootJSON.getString("cardNominee");
-                TextView tvFemaleNomineeName = findViewById(R.id.tvFemaleCreditCardHolder);
-                tvFemaleNomineeName.setText(femaleCardNominee);
 
                 //夫情報
                 String maleName = rootJSON.getString("maleName");
@@ -274,10 +263,6 @@ public class FemaleMyPageActivity extends AppCompatActivity implements Navigatio
                 String maleMail = rootJSON.getString("maleMail");
                 TextView tvMaleMail = findViewById(R.id.tvMaleMail);
                 tvMaleMail.setText(maleMail);
-
-                String malePassword = rootJSON.getString("malePassword");
-                TextView tvMalePassword = findViewById(R.id.tvMalePassword);
-                tvMalePassword.setText(malePassword);
 
                 String maleBirthday = rootJSON.getString("maleBirthday");
                 TextView tvMaleBirthday = findViewById(R.id.tvMaleBirthday);
@@ -365,6 +350,8 @@ public class FemaleMyPageActivity extends AppCompatActivity implements Navigatio
             SharedPreferences setting = getSharedPreferences("USER" , 0);
             SharedPreferences.Editor editor = setting.edit();
             editor.remove("ID");
+            editor.remove("SEX");
+            editor.remove("NAME");
             editor.commit();
             intent = new Intent(FemaleMyPageActivity.this,MainActivity.class);
             finish();

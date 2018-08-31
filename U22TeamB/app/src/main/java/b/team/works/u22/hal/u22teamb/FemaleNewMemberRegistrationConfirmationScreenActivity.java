@@ -299,6 +299,7 @@ public class FemaleNewMemberRegistrationConfirmationScreenActivity extends AppCo
                 SharedPreferences.Editor editor = setting.edit();
                 editor.putString("ID" , _id);
                 editor.putString("SEX" , "0");
+                editor.putString("NAME" , femaleName);
                 editor.commit();
                 Intent intent = new Intent(FemaleNewMemberRegistrationConfirmationScreenActivity.this,FemaleStoreMapListActivity.class);
                 startActivity(intent);

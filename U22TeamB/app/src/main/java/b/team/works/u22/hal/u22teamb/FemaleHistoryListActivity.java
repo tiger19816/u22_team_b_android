@@ -305,6 +305,8 @@ public class FemaleHistoryListActivity extends AppCompatActivity  implements Nav
             SharedPreferences setting = getSharedPreferences("USER" , 0);
             SharedPreferences.Editor editor = setting.edit();
             editor.remove("ID");
+            editor.remove("SEX");
+            editor.remove("NAME");
             editor.commit();
             intent = new Intent(FemaleHistoryListActivity.this,MainActivity.class);
             finish();

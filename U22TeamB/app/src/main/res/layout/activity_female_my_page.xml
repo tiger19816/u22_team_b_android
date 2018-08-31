@@ -27,22 +27,23 @@
 
             <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="25sp"
+                    android:layout_marginTop="20sp"
                     android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/ivFemaleIcon"
                         android:layout_width="match_parent"
-                        android:layout_height="150dp" />
+                        android:layout_height="130dp" />
 
                     <FrameLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5sp">
 
                         <TextView
                             android:id="@+id/tvFemaleInformation"
@@ -50,105 +51,205 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:gravity="center_horizontal"
-                            android:text="@string/female_registration_confirmation"/>
+                            android:text="@string/female_registration_confirmation"
+                            android:textColor="@android:color/holo_red_light"
+                            android:textSize="24sp" />
 
                     </FrameLayout>
 
-                    <LinearLayout
+                    <TableLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5sp"
                         android:layout_marginBottom="10sp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:background="@drawable/layout_shape"
-                        android:orientation="vertical" >
+                        android:layout_marginTop="5sp"
+                        android:orientation="vertical"
+                        android:shrinkColumns="1"
+                        android:stretchColumns="1">
 
-                        <TextView
-                            android:id="@+id/tvFemaleName"
-                            android:layout_width="match_parent"
+                        <TableRow
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_gravity="center_vertical"/>
+                            android:layout_marginRight="10dp"
+                            android:orientation="horizontal">
 
-                        <TextView
-                            android:id="@+id/tvFemaleBirthday"
-                            android:layout_width="match_parent"
+                            <TextView
+                                android:id="@+id/tvMyPageFemaleName"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:text="@string/my_page_name"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvFemaleName"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:textSize="18sp" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
+                            android:layout_marginRight="10dp"
                             android:layout_marginTop="5sp"
-                            android:layout_gravity="center_vertical"/>
+                            android:orientation="horizontal">
 
-                        <TextView
-                            android:id="@+id/tvFemalePassword"
-                            android:layout_width="match_parent"
+                            <TextView
+                                android:id="@+id/tvMyPageFemaleBirthday"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="5sp"
+                                android:text="@string/my_page_birthday"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvFemaleBirthday"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="5sp"
+                                android:textSize="18sp" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_marginTop="5sp"
-                            android:layout_gravity="center_vertical"/>
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="5sp">
 
-                        <TextView
-                            android:id="@+id/tvFemaleAddress"
-                            android:layout_width="match_parent"
+                            <TextView
+                                android:id="@+id/tvMyPageFemaleAddress"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="top"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="5sp"
+                                android:text="@string/my_page_address"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvFemaleAddress"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="5sp"
+                                android:textSize="18sp" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
+                            android:layout_marginRight="10dp"
                             android:layout_marginTop="5sp"
-                            android:layout_gravity="center_vertical"/>
+                            android:orientation="horizontal">
 
-                        <TextView
-                            android:id="@+id/tvFemaleMail"
-                            android:layout_width="match_parent"
+                            <TextView
+                                android:id="@+id/tvMyPageFemaleMail"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="5sp"
+                                android:text="@string/my_page_mail"
+                                android:textStyle="bold"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:id="@+id/tvFemaleMail"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="5sp"
+                                android:textSize="18sp" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
+                            android:layout_marginRight="10dp"
                             android:layout_marginTop="5sp"
-                            android:layout_gravity="center_vertical"/>
+                            android:orientation="horizontal">
 
-                        <TextView
-                            android:id="@+id/tvFemaleCreditCardNumber"
-                            android:layout_width="match_parent"
+                            <TextView
+                                android:id="@+id/tvMyPageFemaleCreditCardNumber"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="5sp"
+                                android:text="@string/my_page_credit_card_number"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvFemaleCreditCardNumber"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="5sp"
+                                android:textSize="18sp" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
+                            android:layout_marginRight="10dp"
                             android:layout_marginTop="5sp"
-                            android:layout_gravity="center_vertical"/>
+                            android:orientation="horizontal">
 
-                        <TextView
-                            android:id="@+id/tvFemaleCreditCardExpirationDate"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_marginTop="5sp"
-                            android:layout_gravity="center_vertical"/>
+                            <TextView
+                                android:id="@+id/tvMyPageFemaleCreditCardExpirationDate"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="5sp"
+                                android:text="@string/my_page_credit_card_expiration_date"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
 
-                        <TextView
-                            android:id="@+id/tvFemaleCreditCardSecurityNumber"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_marginTop="5sp"
-                            android:layout_gravity="center_vertical"/>
+                            <TextView
+                                android:id="@+id/tvFemaleCreditCardExpirationDate"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="5sp"
+                                android:textSize="18sp" />
+                        </TableRow>
 
-                        <TextView
-                            android:id="@+id/tvFemaleCreditCardHolder"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_marginTop="5sp"
-                            android:layout_gravity="center_vertical"/>
-
-                    </LinearLayout>
+                    </TableLayout>
 
                     <FrameLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15sp">
 
                         <TextView
                             android:id="@+id/tvMaleInformation"
@@ -156,84 +257,201 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:gravity="center_horizontal"
-                            android:text="@string/male_registration_confirmation"/>
+                            android:text="@string/male_registration_confirmation"
+                            android:textColor="@android:color/holo_blue_light"
+                            android:textSize="24sp" />
 
                     </FrameLayout>
 
-                    <LinearLayout
+                    <TableLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10sp"
-                        android:layout_marginBottom="30sp"
+                        android:layout_marginBottom="40sp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:background="@drawable/layout_shape"
-                        android:orientation="vertical" >
+                        android:layout_marginTop="5sp"
+                        android:orientation="vertical"
+                        android:shrinkColumns="1"
+                        android:stretchColumns="1">
 
-                        <TextView
-                            android:id="@+id/tvMaleName"
-                            android:layout_width="match_parent"
+                        <TableRow
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_marginTop="5sp"
-                            android:layout_gravity="center_vertical"/>
+                            android:layout_marginRight="10dp"
+                            android:orientation="horizontal">
 
-                        <TextView
-                            android:id="@+id/tvMalePassword"
-                            android:layout_width="match_parent"
+                            <TextView
+                                android:id="@+id/tvMyPageMaleName"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:text="@string/my_page_name"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvMaleName"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:textSize="18sp" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
+                            android:layout_marginRight="10dp"
                             android:layout_marginTop="5sp"
-                            android:layout_gravity="center_vertical"/>
+                            android:orientation="horizontal">
 
-                        <TextView
-                            android:id="@+id/tvMaleBirthday"
-                            android:layout_width="match_parent"
+                            <TextView
+                                android:id="@+id/tvMyPageMaleBirthday"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="5sp"
+                                android:text="@string/my_page_birthday"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvMaleBirthday"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="5sp"
+                                android:textSize="18sp" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
+                            android:layout_marginRight="10dp"
                             android:layout_marginTop="5sp"
-                            android:layout_gravity="center_vertical"/>
+                            android:orientation="horizontal">
 
-                        <TextView
-                            android:id="@+id/tvMaleMail"
-                            android:layout_width="match_parent"
+                            <TextView
+                                android:id="@+id/tvMyPageMaleMail"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="5sp"
+                                android:text="@string/my_page_mail"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvMaleMail"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="5sp"
+                                android:textSize="18sp" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
+                            android:layout_marginRight="10dp"
                             android:layout_marginTop="5sp"
-                            android:layout_gravity="center_vertical"/>
+                            android:orientation="horizontal">
 
-                        <TextView
-                            android:id="@+id/tvMaleHeight"
-                            android:layout_width="match_parent"
+                            <TextView
+                                android:id="@+id/tvMyPageMaleHeight"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="5sp"
+                                android:text="@string/my_page_height"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvMaleHeight"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="5sp"
+                                android:textSize="18sp" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
+                            android:layout_marginRight="10dp"
                             android:layout_marginTop="5sp"
-                            android:layout_gravity="center_vertical"/>
+                            android:orientation="horizontal">
 
-                        <TextView
-                            android:id="@+id/tvMaleWeight"
-                            android:layout_width="match_parent"
+                            <TextView
+                                android:id="@+id/tvMyPageMaleWeight"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="5sp"
+                                android:text="@string/my_page_weight"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvMaleWeight"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="5sp"
+                                android:textSize="18sp" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
+                            android:layout_marginRight="10dp"
                             android:layout_marginTop="5sp"
-                            android:layout_gravity="center_vertical"/>
+                            android:orientation="horizontal">
 
-                        <TextView
-                            android:id="@+id/tvMaleProfession"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_marginTop="5sp"
-                            android:layout_gravity="center_vertical"/>
+                            <TextView
+                                android:id="@+id/tvMyPageMaleProfession"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="5sp"
+                                android:text="@string/my_page_profession"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
 
-                    </LinearLayout>
+                            <TextView
+                                android:id="@+id/tvMaleProfession"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="5dp"
+                                android:layout_marginTop="5sp"
+                                android:textSize="18sp" />
+                        </TableRow>
+
+                    </TableLayout>
 
                 </LinearLayout>
 

@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
@@ -73,6 +74,11 @@ public class ReservationListActivity extends AppCompatActivity {
     private JSONArray _reservationList;
 
     /**
+     * リスト用。
+     */
+    private SimpleAdapter adapter;
+
+    /**
      * onCreate
      */
     @Override
@@ -115,17 +121,9 @@ public class ReservationListActivity extends AppCompatActivity {
      * ログアウト。
      */
     public void onLogoutClick(MenuItem item) {
-//        FullDialogFragment dialog = new FullDialogFragment();
-//        FragmentManager manager = getSupportFragmentManager();
-//        dialog.show(manager,"FullDialogFragment");
-
-        SharedPreferences setting = getSharedPreferences("SHOPUSER", 0);
-        SharedPreferences.Editor editor = setting.edit();
-        editor.remove("ID");
-        editor.commit();
-        Intent intent = new Intent(ReservationListActivity.this, MainActivity.class);
-        finish();
-        startActivity(intent);
+        FullDialogFragment dialog = new FullDialogFragment();
+        FragmentManager manager = getSupportFragmentManager();
+        dialog.show(manager,"FullDialogFragment");
     }
 
     /**
@@ -311,6 +309,7 @@ public class ReservationListActivity extends AppCompatActivity {
                 for (int i = 0; i < _reservationList.length(); i++) {
                     Map<String, String> map = new HashMap<String, String>();
                     map.put("name", _reservationList.getJSONObject(i).getString("male_name"));
+                    map.put("reservation_id", _reservationList.getJSONObject(i).getString("reservationId"));
                     String strUseDateTime = "";
                     JSONObject aryUseDateTime = _reservationList.getJSONObject(i).getJSONObject("use_date_time");
                     strUseDateTime += aryUseDateTime.getString("year");
@@ -327,6 +326,15 @@ public class ReservationListActivity extends AppCompatActivity {
                     map.put("date", strUseDateTime);
                     list.add(map);
                 }
+                _lvReservationList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Map<String, String> map = (Map<String, String>) adapter.getItem(position);
+                        String _reservationId = map.get("reservation_id");
+                        HttpResponseAsync2 hra2 = new HttpResponseAsync2(ReservationListActivity.this);
+                        hra2.execute(_reservationId);
+                    }
+                });
             } catch (JSONException e) {
                 Log.e("JSON", e.toString());
             } catch (NullPointerException e) {
@@ -336,7 +344,7 @@ public class ReservationListActivity extends AppCompatActivity {
             } finally {
                 int[] to = new int[]{android.R.id.text1, android.R.id.text2};
                 if (_reservationList != null) {
-                    SimpleAdapter adapter = new SimpleAdapter(ReservationListActivity.this, list, android.R.layout.simple_list_item_2, from, to);
+                    adapter = new SimpleAdapter(ReservationListActivity.this, list, android.R.layout.simple_list_item_2, from, to);
                     _lvReservationList.setAdapter(adapter);
                 }
             }
@@ -485,7 +493,166 @@ public class ReservationListActivity extends AppCompatActivity {
          * サーブレットへアクセスした後に実行されるメソッド。
          */
         @Override
-        public void onPostExecute(JSONObject param) {
+        public void onPostExecute(final JSONObject param) {
+            Log.i("HTTP", "onPostExecute: 通過");
+
+            if (param != null) {
+                Log.d("JSON", param.toString());
+                Intent intent = new Intent(getApplicationContext(), ReservationDetailActivity.class);
+                intent.putExtra("jsonParam", param.toString());
+                startActivity(intent);
+            } else {    // サーバ接続失敗時の処理。
+                Log.d("JSON", "null");
+                String msg = "情報の取得に失敗";    // ListViewに表示するデータが空だった場合のトーストメッセージ。TODO:strings.xmlに対応。
+                Toast.makeText(ReservationListActivity.this, msg, Toast.LENGTH_SHORT).show();
+            }
+
+            onResume();
+        }
+    }
+
+    /**
+     * サーブレットへパラメータを送信する
+     */
+    public class HttpResponseAsync2 extends AsyncTask<String, Void, JSONObject> {
+
+        private Activity _activity;
+
+        /**
+         * コンストラクタ。
+         *
+         * @param activity 実行元アクティビティ。
+         */
+        public HttpResponseAsync2(Activity activity) {
+
+            this._activity = activity;
+
+        }
+
+        /**
+         * サーブレットへパラメータを送信するメソッド。
+         *
+         * @param params ①予約ID。
+         * @return null
+         */
+        @Override
+        protected JSONObject doInBackground(String... params) {
+            HttpURLConnection cnct = null;
+            URL url = null;
+            OutputStream opStream = null;
+            String urlStr = Word.RECEIVE_RESERVATION_DETAIL2;   // 接続先URL
+
+            String postData = "reservation_id=" + params[0];  // POSTで送りたいデータ
+
+            JSONObject result = null;
+
+            InputStream inStream = null;
+            InputStreamReader inReader = null;
+            BufferedReader bufReader = null;
+
+//            Log.d("URL", "アクセス先: " + urlStr + "?" + postData);
+
+            try {
+                url = new URL(urlStr);  // URLの作成
+                cnct = (HttpURLConnection) url.openConnection(); // 接続用HttpURLConnectionオブジェクト作成
+                cnct.setRequestMethod("POST");  // リクエストメソッドの設定
+                cnct.setInstanceFollowRedirects(false); // リダイレクトの可否
+                cnct.setDoOutput(true); // データ書き込みの可否
+                cnct.setReadTimeout(10000); // タイムアウトまでの時間（読込）
+                cnct.setConnectTimeout(20000);  // タイムアウトまでの時間（接続）
+                cnct.setUseCaches(false);   // キャッシュ使用の可否
+
+                cnct.connect(); // 接続
+
+                try {
+                    opStream = cnct.getOutputStream();
+
+                    // 送信する値をByteデータに変換する。（UTF-8）
+                    opStream.write(postData.getBytes("UTF-8"));
+                    opStream.flush();
+
+                    // エラーコードの取得。
+                    switch (cnct.getResponseCode()) {
+                        case HttpURLConnection.HTTP_OK:
+                            Log.d("URL", "コネクション状況: 成功");
+                            break;
+                        case HttpURLConnection.HTTP_INTERNAL_ERROR:
+                            Log.e("URL", "エラー内容: 500 内部サーバーエラー");
+                            break;
+                        default:
+                            Log.e("URL", "コネクションレスポンスコード: " + cnct.getResponseCode());
+                            break;
+                    }
+
+                    // JSON文字列を取得。
+                    StringBuilder resultBuf = null;
+                    //responseの読み込み。
+                    inStream = cnct.getInputStream();
+                    String encoding = cnct.getContentEncoding();
+                    Log.d("InputStreamer", "inputSteramer: " + inStream.toString());
+                    Log.d("InputStreamer", "encoding: " + encoding);
+                    inReader = new InputStreamReader(inStream, "utf-8");
+                    bufReader = new BufferedReader(inReader);
+                    String strJson = "";
+                    strJson = bufReader.readLine();
+                    result = new JSONObject(strJson);
+
+                    Log.d("JSON", "受け取った予約ID: " + result.getString("reservation_id"));
+
+                } catch (Exception e) {
+                    Log.e("URL", "POST送信エラー: " + e.toString());
+                } finally {
+
+                    if (opStream != null) {
+                        try {
+                            opStream.close();
+                        } catch (Exception e) {
+                            Log.e("URL", "OutputStream解放失敗: " + e.toString());
+                        }
+                    }
+
+                    if (bufReader != null) {
+                        try {
+                            bufReader.close();
+                        } catch (Exception e) {
+                            Log.e("JSON", "InputStream解放失敗: " + e.toString());
+                        }
+                    }
+                    if (inReader != null) {
+                        try {
+                            inReader.close();
+                        } catch (Exception e) {
+                            Log.e("JSON", "InputStream解放失敗: " + e.toString());
+                        }
+                    }
+                    if (inStream != null) {
+                        try {
+                            inStream.close();
+                        } catch (Exception e) {
+                            Log.e("JSON", "InputStream解放失敗: " + e.toString());
+                        }
+                    }
+
+                }
+
+            } catch (ConnectException e) {
+                Log.i("サーバ", "サーバに接続できませんでした。");
+            } catch (Exception e) {
+                Log.e("URL", "コネクションエラー: " + e.toString());
+            } finally {
+                if (cnct != null) {
+                    cnct.disconnect();
+                }
+            }
+
+            return result;
+        }
+
+        /**
+         * サーブレットへアクセスした後に実行されるメソッド。
+         */
+        @Override
+        public void onPostExecute(final JSONObject param) {
             Log.i("HTTP", "onPostExecute: 通過");
 
             if (param != null) {
@@ -514,5 +681,4 @@ public class ReservationListActivity extends AppCompatActivity {
         hra.execute(this._maleId, this._shopId);   // パラメータをサーブレットへ送信。
         this.onResume();
     }
-
 }

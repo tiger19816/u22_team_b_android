@@ -187,6 +187,11 @@ public class Female implements Serializable{
         if("".equals(femaleCardNo)){
             this.femaleCardNoErrorMessage = "カードNoを入力してください";
             this.isInputChecked = false;
+        }else{
+            if(femaleCardNo.length() != 16){
+                this.femaleCardNoErrorMessage = "カードNoの桁数が違います。";
+                this.isInputChecked = false;
+            }
         }
     }
 

@@ -289,43 +289,9 @@ public class FemaleChangeReservationActivity extends AppCompatActivity {
                     reservation.setMessage(message);
                     etMessage.setText(message);
 
-                    //予約日時の分解
-                    String reservationYear = etReservation.substring(0, 4);//年
-                    String reservationMonth = etReservation.substring(5, 7);//月
-                    String reservationDay = etReservation.substring(8, 10);//日
-
-                    //現在日時の取得
-                    java.util.Calendar cal =  java.util.Calendar.getInstance();
-                    int nowYear = cal.get(Calendar.YEAR);
-                    int nowMonth = cal.get(Calendar.MONTH);
-                    int nowDay = cal.get(Calendar.DAY_OF_MONTH);
-
-
-                    if (    Integer.valueOf(reservationYear) == nowYear &&
-                            Integer.valueOf(reservationMonth) == (nowMonth + 1) &&
-                            Integer.valueOf(reservationDay) >= (nowDay+3) ){
-
-                        TextView tv1 = findViewById(R.id.etDate);
-                        tv1.setEnabled(false);
-
-                        TextView tv2 = findViewById(R.id.etTime);
-                        tv2.setEnabled(false);
-
-                        TextView tv3 = findViewById(R.id.etMessage);
-                        tv3.setEnabled(false);
-
-                        Spinner spinner = (Spinner) findViewById(R.id.spMenu);
-                        spinner.setEnabled(false);
-
-                        Toast.makeText(FemaleChangeReservationActivity.this , getString(R.string.female_change_reservation_can_not_change_warning_before_3_days) , Toast.LENGTH_SHORT).show();
-
-                    }else if( Integer.valueOf(reservationYear) < nowYear ||
-                            Integer.valueOf(reservationYear) <= nowYear &&
-                            Integer.valueOf(reservationMonth) < (nowMonth + 1) ||
-                            Integer.valueOf(reservationYear) <= nowYear &&
-                            Integer.valueOf(reservationMonth) <= (nowMonth + 1) &&
-                            Integer.valueOf(reservationDay) <= nowDay ){
-
+                    DataConversion dc = new DataConversion();
+                    Boolean isCheckDate = dc.getDateCheckConversion01(etReservation);
+                    if(!isCheckDate){
                         TextView tv1 = findViewById(R.id.etDate);
                         tv1.setEnabled(false);
 
@@ -342,7 +308,6 @@ public class FemaleChangeReservationActivity extends AppCompatActivity {
                         spinner.setEnabled(false);
 
                         Toast.makeText(FemaleChangeReservationActivity.this , getString(R.string.female_change_reservation_can_not_change_warning_for_past_rsv) , Toast.LENGTH_SHORT).show();
-
                     }
 
                     EditText etTime = findViewById(R.id.etTime);

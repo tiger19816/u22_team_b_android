@@ -89,7 +89,7 @@ public class MaleEnterShopActivity extends AppCompatActivity {
         // ImageViewをToast表示する
         ImageView imageView = new ImageView(MaleEnterShopActivity.this);
         GlideDrawableImageViewTarget target = new GlideDrawableImageViewTarget(imageView);
-        Glide.with(this).load(R.raw.gifsample01).into(target);
+        Glide.with(this).load(R.raw.male_gif).into(target);
         Toast toast = new Toast(MaleEnterShopActivity.this);
         toast.setView(imageView);
         /**
