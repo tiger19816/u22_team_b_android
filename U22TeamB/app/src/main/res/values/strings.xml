@@ -192,4 +192,8 @@
     <!--FemaleStoreDetailsActivity-->
     <string name="female_store_detail_title">店舗詳細</string>
 
+    <!--FemaleStoreMapListActivity-->
+    <string name="female_store_map_list_title">店一覧</string>
+    <string name="female_store_map_list_user_name">ユーザー名</string>
+
 </resources>

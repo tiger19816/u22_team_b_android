@@ -80,7 +80,7 @@ public class FemaleStoreMapListActivity extends AppCompatActivity implements Nav
                 .findFragmentById(R.id.storeMaps);
         mapFragment.getMapAsync(this);
 
-        setTitle("店一覧");
+        setTitle(getString(R.string.female_store_map_list_title));
 
         //ユーザーIDの取得。
         SharedPreferences setting = getSharedPreferences("USER" , 0);
@@ -128,11 +128,11 @@ public class FemaleStoreMapListActivity extends AppCompatActivity implements Nav
         SharedPreferences pref = getSharedPreferences("USER",0);
         if(Build.VERSION.SDK_INT < 23) {
             TextView navTvUserName = navigationView.findViewById(R.id.navTvUserName);
-            navTvUserName.setText(pref.getString("NAME", "ユーザー名"));
+            navTvUserName.setText(pref.getString("NAME", getString(R.string.female_store_map_list_user_name)));
         } else {
             View headerView = navigationView.getHeaderView(0);
             TextView navTvUserName = headerView.findViewById(R.id.navTvUserName);
-            navTvUserName.setText(pref.getString("NAME", "ユーザー名"));
+            navTvUserName.setText(pref.getString("NAME", getString(R.string.female_store_map_list_user_name)));
         }
     }
 
