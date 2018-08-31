@@ -51,7 +51,7 @@ public class ReservationDetailActivity extends AppCompatActivity {
     /**
      * 処理後にトーストメッセージを格納するフィールド。
      */
-    String _message = getString(R.string.visit_failure);   // 来店処理が失敗した場合のトーストメッセージ。TODO:strings.xmlに対応。
+    String _message = "通信失敗";   // 来店処理が失敗した場合のトーストメッセージ。TODO:strings.xmlに対応。
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,16 +83,16 @@ public class ReservationDetailActivity extends AppCompatActivity {
             String strUseDateTime = "";
             JSONObject aryUseDateTime =this._objReservation.getJSONObject("use_date_time");
             strUseDateTime += aryUseDateTime.getString("year");
-            strUseDateTime += getString(R.string.year_title);  // TODO:strings.xmlに対応。
+            strUseDateTime += "年";  // TODO:strings.xmlに対応。
             strUseDateTime += aryUseDateTime.getString("month");
-            strUseDateTime += getString(R.string.month_title);
+            strUseDateTime += "月";
             strUseDateTime += aryUseDateTime.getString("date");
-            strUseDateTime += getString(R.string.date_title);
+            strUseDateTime += "日";
             strUseDateTime += " ";
             strUseDateTime += aryUseDateTime.getString("hour");
-            strUseDateTime += getString(R.string.hour_title);
+            strUseDateTime += "時";
             strUseDateTime += aryUseDateTime.getString("minute");
-            strUseDateTime += getString(R.string.minute_title);
+            strUseDateTime += "分";
             this._tvUseDateTime.setText(strUseDateTime);
         } catch (JSONException e) {
             Log.e("JSON", e.toString());
