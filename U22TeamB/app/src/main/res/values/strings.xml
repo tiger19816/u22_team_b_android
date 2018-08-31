@@ -222,4 +222,11 @@
     <!--MaleReservationListActivity-->
     <string name="male_reservation_list_title">予約一覧</string>
     <string name="male_reservation_list_user_name">ユーザー名</string>
+
+    <!--FullDialogFragment-->
+    <string name="dialog_title">新規登録</string>
+    <string name="dialog_message">貴方は奥様ですか？旦那様ですか?</string>
+    <string name="dialog_female">奥様</string>
+    <string name="dialog_male">旦那様</string>
+    <string name="dialog_cancel">キャンセル</string>
 </resources>
