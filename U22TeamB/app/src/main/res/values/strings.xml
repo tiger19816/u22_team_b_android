@@ -135,4 +135,8 @@
 
     <!-- ロード画面 -->
     <string name="progress_message">ロード中...</string>
+
+    <!--FemaleCardRegistrationActivity-->
+    <string name="female_card_registration_title">カード情報入力画面</string>
+    <string name="female_card_registration_input_card_complete_2">入力チェック2完了</string>
 </resources>

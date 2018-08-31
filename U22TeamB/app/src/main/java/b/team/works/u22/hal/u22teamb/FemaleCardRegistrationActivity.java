@@ -24,7 +24,7 @@ public class FemaleCardRegistrationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_female_card_registration);
 
-        setTitle("カード情報入力画面");
+        setTitle(getString(R.string.female_card_registration_title));
 
         //ツールバー(レイアウトを変更可)。
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -76,7 +76,7 @@ public class FemaleCardRegistrationActivity extends AppCompatActivity {
             intent.putExtra("FEMALE", female);
             startActivity(intent);
         }else{
-            Toast.makeText(FemaleCardRegistrationActivity.this , "入力チェック2完了" , Toast.LENGTH_SHORT).show();
+            Toast.makeText(FemaleCardRegistrationActivity.this , getString(R.string.female_card_registration_input_card_complete_2) , Toast.LENGTH_SHORT).show();
         }
     }
 
