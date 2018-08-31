@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         setTitle("ログイン画面");
         //ユーザーIDの取得。
-        SharedPreferences setting = getSharedPreferences("USER" , 0);
+        SharedPreferences setting = getSharedPreferences("SHOPUSER" , 0);
         _id = setting.getString("ID" , "");
         if(!"".equals(_id)){
             Intent intent = new Intent(MainActivity.this, ReservationListActivity.class);

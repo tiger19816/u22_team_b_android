@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
@@ -65,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
                 intent = new Intent(MainActivity.this, MaleReservationListActivity.class);
             }
             startActivity(intent);
+            finish();
         }
     }
 
@@ -191,6 +193,8 @@ public class MainActivity extends AppCompatActivity {
                 JSONObject rootJSON = new JSONObject(result);
                 int userSex = rootJSON.getInt("userSex");
                 String userId = rootJSON.getString("userId");
+                String userName = rootJSON.getString("userName");
+
 
                 //DBチェックの結果により、画面遷移先を変更。
                 Intent intent;
@@ -200,16 +204,20 @@ public class MainActivity extends AppCompatActivity {
                     //妻がログインした時。
                     editor.putString("ID" , userId);
                     editor.putString("SEX" , "0");
+                    editor.putString("NAME" , userName);
                     editor.commit();
                     intent = new Intent(MainActivity.this, FemaleStoreMapListActivity.class);
                     startActivity(intent);
+                    finish();
                 } else if (userSex == 1) {
                     //夫がログインした時。
                     editor.putString("ID" , userId);
                     editor.putString("SEX" , "1");
+                    editor.putString("NAME" , userName);
                     editor.commit();
                     intent = new Intent(MainActivity.this, MaleReservationListActivity.class);
                     startActivity(intent);
+                    finish();
                 } else {
                     Toast.makeText(MainActivity.this, "メールアドレスか、パスワードを間違えています。", Toast.LENGTH_SHORT).show();
                 }

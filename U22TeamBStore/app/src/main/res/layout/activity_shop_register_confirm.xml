@@ -7,8 +7,8 @@
     tools:context=".ShopRegisterActivity">
 
     <ScrollView
-        android:layout_width="368dp"
-        android:layout_height="495dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
@@ -17,8 +17,10 @@
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -27,35 +29,16 @@
 
             <TextView
                 android:id="@+id/tvConfirm"
+                style="@style/TitleText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginStart="8dp"
-                android:text="@string/tv_confirm"
-                android:textSize="24sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp"
-                android:text="@string/tv_shop_id"
-                android:textSize="14sp"/>
-
-            <TextView
-                android:id="@+id/tvShopId"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:ems="10"
-                android:textSize="14sp" />
+                android:text="@string/tv_confirm" />
 
 
             <TextView
+                style="@style/NormalText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
@@ -64,6 +47,7 @@
 
             <TextView
                 android:id="@+id/tvShopName"
+                style="@style/indexText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -71,10 +55,10 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:ems="10"
-                android:textSize="14sp" />
+                android:ems="10" />
 
             <TextView
+                style="@style/NormalText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
@@ -83,6 +67,7 @@
 
             <TextView
                 android:id="@+id/tvPhonetic"
+                style="@style/indexText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -90,18 +75,19 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:ems="10"
-                android:textSize="14sp" />
+                android:ems="10" />
 
             <TextView
+                style="@style/NormalText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginStart="8dp"
-                android:text="@string/tv_open_time"/>
+                android:text="@string/tv_open_time" />
 
             <TextView
                 android:id="@+id/tvOpenTime"
+                style="@style/indexText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -109,10 +95,10 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:ems="10"
-                android:textSize="14sp"/>
+                android:ems="10" />
 
             <TextView
+                style="@style/NormalText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
@@ -121,6 +107,7 @@
 
             <TextView
                 android:id="@+id/tvTel"
+                style="@style/indexText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -128,18 +115,19 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:ems="10"
-                android:textSize="14sp" />
+                android:ems="10" />
 
             <TextView
+                style="@style/NormalText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginStart="8dp"
-                android:text="@string/tv_address"/>
+                android:text="@string/tv_address" />
 
             <TextView
                 android:id="@+id/tvAddress"
+                style="@style/indexText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -147,10 +135,10 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:ems="10"
-                android:textSize="14sp"/>
+                android:ems="10" />
 
             <TextView
+                style="@style/NormalText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
@@ -160,6 +148,7 @@
 
             <TextView
                 android:id="@+id/tvAverageBudget"
+                style="@style/indexText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -167,50 +156,10 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:ems="10"
-                android:textSize="14sp"  />
+                android:ems="10" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="@string/tv_point_latitude" />
-
-            <TextView
-                android:id="@+id/tvPointLatitude"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:ems="10"
-                android:textSize="14sp"  />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="@string/tv_point_longitude" />
-
-            <TextView
-                android:id="@+id/tvPointLongitude"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:ems="10"
-                android:textSize="14sp"  />
-
-            <TextView
+                style="@style/NormalText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
@@ -220,6 +169,7 @@
 
             <TextView
                 android:id="@+id/tvLunchService"
+                style="@style/indexText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -227,10 +177,10 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:ems="10"
-                android:textSize="14sp"  />
+                android:ems="10" />
 
             <TextView
+                style="@style/NormalText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
@@ -240,6 +190,7 @@
 
             <TextView
                 android:id="@+id/tvNonSmokingSeat"
+                style="@style/indexText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -247,10 +198,10 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:ems="10"
-                android:textSize="14sp"  />
+                android:ems="10" />
 
             <TextView
+                style="@style/NormalText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
@@ -260,6 +211,7 @@
 
             <TextView
                 android:id="@+id/tvCardUsage"
+                style="@style/indexText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -267,10 +219,10 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:ems="10"
-                android:textSize="14sp"  />
+                android:ems="10" />
 
             <TextView
+                style="@style/NormalText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
@@ -280,6 +232,7 @@
 
             <TextView
                 android:id="@+id/tvImage1"
+                style="@style/indexText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -287,10 +240,10 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:ems="10"
-                android:textSize="14sp"  />
+                android:ems="10" />
 
             <TextView
+                style="@style/NormalText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
@@ -300,6 +253,7 @@
 
             <TextView
                 android:id="@+id/tvImage2"
+                style="@style/indexText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -307,10 +261,10 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:ems="10"
-                android:textSize="14sp"  />
+                android:ems="10" />
 
             <TextView
+                style="@style/NormalText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
@@ -320,6 +274,7 @@
 
             <TextView
                 android:id="@+id/tvPassword"
+                style="@style/indexText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -327,11 +282,11 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:ems="10"
-                android:textSize="14sp"  />
+                android:ems="10" />
 
             <!-- フリーワードテーブル部分 -->
             <TextView
+                style="@style/NormalText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
@@ -341,6 +296,7 @@
 
             <TextView
                 android:id="@+id/tvNo"
+                style="@style/indexText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -348,10 +304,10 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:ems="10"
-                android:textSize="14sp"  />
+                android:ems="10" />
 
             <TextView
+                style="@style/NormalText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
@@ -361,6 +317,7 @@
 
             <TextView
                 android:id="@+id/tvFreeName"
+                style="@style/indexText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -368,8 +325,7 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:ems="10"
-                android:textSize="14sp"  />
+                android:ems="10" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -381,14 +337,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:onClick="onClickBack"
-                    android:text="@string/bt_back"/>
+                    android:text="@string/bt_back" />
 
                 <Button
                     android:id="@+id/btSend"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:onClick="onClickSend"
-                    android:text="@string/bt_send"/>
+                    android:text="@string/bt_send" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

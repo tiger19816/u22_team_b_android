@@ -7,96 +7,107 @@
     android:layout_height="match_parent"
     tools:context=".ReservationDetailActivity">
 
-    <android.support.constraint.Guideline
-        android:id="@+id/glStartOfDetail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="115dp" />
-
     <TextView
         android:id="@+id/tvFemaleNameTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="0dp"
-        android:text="予約者:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvFemaleName" />
-
-    <TextView
-        android:id="@+id/tvFemaleName"
+        style="@style/NormalText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintStart_toEndOf="@+id/glStartOfDetail"
+        android:text="予約者:"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/tvFemaleName"
+        style="@style/NormalText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tvFemaleNameTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline" />
+
+    <TextView
         android:id="@+id/tvMaleNameTitle"
+        style="@style/NormalText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="8dp"
         android:text="来店者:"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvMaleName" />
+        app:layout_constraintTop_toBottomOf="@+id/tvFemaleNameTitle" />
 
     <TextView
         android:id="@+id/tvMaleName"
-        android:layout_width="wrap_content"
+        style="@style/NormalText"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toEndOf="@+id/glStartOfDetail"
-        app:layout_constraintTop_toBottomOf="@+id/tvFemaleName" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/tvMaleNameTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline" />
 
     <TextView
         android:id="@+id/tvMenuTitle"
+        style="@style/NormalText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="8dp"
         android:text="メニュー:"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvMenu" />
+        app:layout_constraintTop_toBottomOf="@+id/tvMaleNameTitle" />
 
     <TextView
         android:id="@+id/tvMenu"
-        android:layout_width="wrap_content"
+        style="@style/NormalText"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toEndOf="@+id/glStartOfDetail"
-        app:layout_constraintTop_toBottomOf="@+id/tvMaleName" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/tvMenuTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline" />
 
     <TextView
         android:id="@+id/tvUseDateTimeTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="0dp"
-        android:text="予約時刻:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvUseDateTime" />
-
-    <TextView
-        android:id="@+id/tvUseDateTime"
+        style="@style/NormalText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintStart_toEndOf="@+id/glStartOfDetail"
-        app:layout_constraintTop_toBottomOf="@+id/tvMenu" />
+        android:text="予約時刻:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvMenuTitle" />
+
+    <TextView
+        android:id="@+id/tvUseDateTime"
+        style="@style/NormalText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tvUseDateTimeTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline" />
 
     <Button
         android:id="@+id/btVisited"
@@ -112,5 +123,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.23" />
 
 </android.support.constraint.ConstraintLayout>
