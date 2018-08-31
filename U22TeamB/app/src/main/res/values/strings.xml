@@ -2,6 +2,16 @@
 
     <string name="app_name">束縛</string>
 
+    <!--汎用-->
+    <string name="year_title">年</string>
+    <string name="month_title">月</string>
+    <string name="date_title">日</string>
+    <string name="hour_title">時</string>
+    <string name="minute_title">分</string>
+    <string name="money_title">円</string>
+    <string name="honor_title">様</string>
+    <string name="about_title">約</string>
+
     <!-- 左のメニュー用 -->
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -149,4 +159,88 @@
 
     <!-- ロード画面 -->
     <string name="progress_message">ロード中...</string>
+
+    <!--FemaleCardRegistrationActivity-->
+    <string name="female_card_registration_title">カード情報入力画面</string>
+    <string name="female_card_registration_input_card_complete_2">入力チェック2完了</string>
+
+    <!--FemaleChangeReservationActivity-->
+    <string name="female_change_reservation_title">予約内容変更</string>
+    <string name="female_change_reservation_input_check_complete">入力チェック完了</string>
+    <string name="female_change_reservation_can_not_change_warning_before_3_days">予約日から3日以内のため変更はできません</string>
+    <string name="female_change_reservation_can_not_change_warning_for_past_rsv">過去の予約は変更できません</string>
+    <string name="female_change_reservation_changed_message">変更完了</string>
+    <string name="female_change_reservation_did_not_change_message">変更されませんでした。</string>
+
+    <!--FemaleHistoryListActivity-->
+    <string name="female_history_list_title">履歴一覧</string>
+    <string name="female_history_list_user_name_title">ユーザー名</string>
+
+    <!--FemaleMaleInformationRegistrationActivity-->
+    <string name="female_male_information_registration_title">夫情報入力画面</string>
+    <string name="female_male_information_registration_input_check_complete_3">入力チェック3完了</string>
+
+    <!--FemaleMyPageActivity-->
+    <string name="female_my_page_title">MyPage</string>
+    <string name="female_my_page_title_user_name">ユーザー名</string>
+
+    <!--FemaleNewMemberRegistrationActivity-->
+    <string name="female_new_member_registration_title">妻情報入力画面</string>
+    <string name="female_new_member_registration_input_check_complete">入力チェック完了</string>
+
+    <!--FemaleNewMemberRegistrationConfirmationScreenActivity-->
+    <string name="female_new_member_registration_confirmation_screen_title">カード情報入力画面</string>
+    <string name="female_new_member_registration_confirmation_screen_registered_message">登録されました。</string>
+    <string name="female_new_member_registration_confirmation_screen_did_not_register_warning">登録が失敗しました。もう一度お願いいたします。</string>
+
+    <!--FemaleNewReservationActivity-->
+    <string name="female_new_reservation_title">予約内容入力</string>
+    <string name="female_new_reservation_complete_without_message_warning">メッセージ以外は、入力してください。</string>
+
+    <!--FemaleQrCodeActivity-->
+    <string name="female_qr_code_title">夫情報読み取り</string>
+
+    <!--FemaleReservationListActivity-->
+    <string name="female_reservation_list_title">予約一覧</string>
+    <string name="female_reservation_list_user_name">ユーザー名</string>
+    <string name="female_reservation_list_today">今日</string>
+
+    <!--FemaleStoreDetailsActivity-->
+    <string name="female_store_detail_title">店舗詳細</string>
+
+    <!--FemaleStoreMapListActivity-->
+    <string name="female_store_map_list_title">店一覧</string>
+    <string name="female_store_map_list_user_name">ユーザー名</string>
+
+    <!--MainActivity-->
+    <string name="main_input_message">登録された、メールアドレスとパスワードを入力してください。</string>
+    <string name="main_invalid_warning">メールアドレスか、パスワードを間違えています。</string>
+
+    <!--MaleAdditionalInformationEntryActivity-->
+    <string name="male_additional_information_entry_title">追加情報</string>
+    <string name="male_additional_information_entry_empty_password_warning">どちらもパスワードを入力してください。</string>
+    <string name="male_additional_information_entry_incorrect_password_warning">どちらも同じパスワードを入力してください。</string>
+    <string name="male_additional_information_entry_registered_message">登録されました。</string>
+    <string name="male_additional_information_entry_did_not_register_warning">登録されませんでした。</string>
+
+    <!--MaleEnterShopActivity-->
+    <string name="male_enter_shop_title">QRコード表示</string>
+
+    <!--MaleHistoryEditActivity-->
+    <string name="male_history_edit_title">店舗詳細</string>
+
+    <!--MaleHistoryListActivity-->
+    <string name="male_history_list_title">履歴一覧</string>
+    <string name="male_history_list_user_name">ユーザー名</string>
+
+    <!--MaleReservationListActivity-->
+    <string name="male_reservation_list_title">予約一覧</string>
+    <string name="male_reservation_list_user_name">ユーザー名</string>
+
+    <!--FullDialogFragment-->
+    <string name="dialog_title">新規登録</string>
+    <string name="dialog_message">貴方は奥様ですか？旦那様ですか?</string>
+    <string name="dialog_female">奥様</string>
+    <string name="dialog_male">旦那様</string>
+    <string name="dialog_cancel">キャンセル</string>
 </resources>

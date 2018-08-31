@@ -70,30 +70,30 @@ public class ShopRegisterActivity extends AppCompatActivity {
         //ランチ営業有りか無しか
         String lunchService;
         if(rbLunchServiceAvailable.isChecked()) {
-            lunchService = "有";
+            lunchService = getString(R.string.register_info_possitive);
         }
         else {
-            lunchService = "無";
+            lunchService = getString(R.string.register_info_negative);
         }
         _intent.putExtra("lunchService", lunchService);
 
         //禁煙席有りか無しか
         String nonSmokingSeat;
         if(rbNonSmokingSeatAvailable.isChecked()) {
-            nonSmokingSeat = "有";
+            nonSmokingSeat = getString(R.string.register_info_possitive);
         }
         else {
-            nonSmokingSeat = "無";
+            nonSmokingSeat = getString(R.string.register_info_negative);
         }
         _intent.putExtra("nonSmokingSeat", nonSmokingSeat);
 
         //カード利用有りか無しか
         String cardUsage;
         if(rbCardUsageAvailable.isChecked()) {
-            cardUsage = "有";
+            cardUsage = getString(R.string.register_info_possitive);
         }
         else {
-            cardUsage = "無";
+            cardUsage = getString(R.string.register_info_negative);
         }
         _intent.putExtra("cardUsage", cardUsage);
 
@@ -142,38 +142,38 @@ public class ShopRegisterActivity extends AppCompatActivity {
         Boolean flag = false;
 
         if( "".equals( etShopName.getText().toString() ) ) {
-            etShopName.setError("店舗名を入力してください。");
+            etShopName.setError(getString(R.string.info_shop_name_title) + getString(R.string.register_missing_info_warning));
             flag = true;
         }
         else if( "".equals( etPhonetic.getText().toString() ) ) {
-            etPhonetic.setError("店舗名（カナ）を入力してください。");
+            etPhonetic.setError(getString(R.string.info_shop_phonetic_title) + getString(R.string.register_missing_info_warning));
             flag = true;
         }
         else if( "".equals( etOpenTime.getText().toString() ) ) {
-            etOpenTime.setError("営業時間を入力してください。");
+            etOpenTime.setError(getString(R.string.info_open_time_title) + getString(R.string.register_missing_info_warning));
             flag = true;
         }
         else if( "".equals( etTel.getText().toString() ) ) {
-            etTel.setError("電話番号を入力してください。");
+            etTel.setError(getString(R.string.info_tel_title) + getString(R.string.register_missing_info_warning));
             flag = true;
         }
         else if( "".equals( etAddress.getText().toString() ) ) {
-            etAddress.setError("住所を入力してください。");
+            etAddress.setError(getString(R.string.info_address_title) + getString(R.string.register_missing_info_warning));
             flag = true;
         }
         else if( "".equals( etAverageBudget.getText().toString() ) ) {
-            etAverageBudget.setError("平均予算を入力してください。");
+            etAverageBudget.setError(getString(R.string.info_average_budget_title) + getString(R.string.register_missing_info_warning));
             flag = true;
         }else if( "".equals( etPassword.getText().toString() ) ) {
-            etPassword.setError("パスワードを入力してください。");
+            etPassword.setError(getString(R.string.password_title) + getString(R.string.register_missing_info_warning));
             flag = true;
         }
         else if( "".equals( etNo.getText().toString() ) ) {
-            etNo.setError("項番を入力してください。");
+            etNo.setError(getString(R.string.info_number_title) + getString(R.string.register_missing_info_warning));
             flag = true;
         }
         else if( "".equals( etFreeName.getText().toString() ) ) {
-            etFreeName.setError("フリーワードを入力してください。");
+            etFreeName.setError(getString(R.string.info_free_name_title) + getString(R.string.register_missing_info_warning));
             flag = true;
         }
 

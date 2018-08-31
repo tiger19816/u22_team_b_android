@@ -16,11 +16,11 @@ public class FullDialogFragment extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState){
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle("新規登録");
-        builder.setMessage("貴方は奥様ですか？旦那様ですか?");
-        builder.setPositiveButton("奥様" , new DialogButtonClickListener());
-        builder.setNeutralButton("キャンセル" , new DialogButtonClickListener());
-        builder.setNegativeButton("旦那様" , new DialogButtonClickListener());
+        builder.setTitle(getString(R.string.dialog_title));
+        builder.setMessage(getString(R.string.dialog_message));
+        builder.setPositiveButton(getString(R.string.dialog_female) , new DialogButtonClickListener());
+        builder.setNeutralButton(getString(R.string.dialog_cancel) , new DialogButtonClickListener());
+        builder.setNegativeButton(getString(R.string.dialog_male) , new DialogButtonClickListener());
         AlertDialog dialog = builder.create();
         return dialog;
     }

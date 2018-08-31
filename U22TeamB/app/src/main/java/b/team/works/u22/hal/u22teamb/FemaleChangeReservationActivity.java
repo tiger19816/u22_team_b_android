@@ -62,7 +62,7 @@ public class FemaleChangeReservationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_female_change_reservation);
 
-        setTitle("予約内容変更");
+        setTitle(getString(R.string.female_change_reservation_title));
 
         //ツールバー(レイアウトを変更可)。
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -141,7 +141,7 @@ public class FemaleChangeReservationActivity extends AppCompatActivity {
             //ここで渡した引数はLoginTaskReceiverクラスのdoInBackground(String... params)で受け取れる。
             receiver.execute(LOGIN_URL, String.valueOf(isUpdate),  reservationId , menuNo , date , time , message);
         }else{
-            Toast.makeText(FemaleChangeReservationActivity.this , "入力チェック完了" , Toast.LENGTH_SHORT).show();
+            Toast.makeText(FemaleChangeReservationActivity.this , getString(R.string.female_change_reservation_input_check_complete) , Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -307,7 +307,7 @@ public class FemaleChangeReservationActivity extends AppCompatActivity {
                         Spinner spinner = (Spinner) findViewById(R.id.spMenu);
                         spinner.setEnabled(false);
 
-                        Toast.makeText(FemaleChangeReservationActivity.this , "予約日から3日以内のため変更はできません。" , Toast.LENGTH_SHORT).show();
+                        Toast.makeText(FemaleChangeReservationActivity.this , getString(R.string.female_change_reservation_can_not_change_warning_for_past_rsv) , Toast.LENGTH_SHORT).show();
                     }
 
                     EditText etTime = findViewById(R.id.etTime);
@@ -331,9 +331,9 @@ public class FemaleChangeReservationActivity extends AppCompatActivity {
                     JSONObject rootJSON = new JSONObject(result);
                     Boolean executionResult = rootJSON.getBoolean("result");
                     if(executionResult){
-                        Toast.makeText(FemaleChangeReservationActivity.this , "変更完了" , Toast.LENGTH_SHORT).show();
+                        Toast.makeText(FemaleChangeReservationActivity.this , getString(R.string.female_change_reservation_changed_message) , Toast.LENGTH_SHORT).show();
                     }else{
-                        Toast.makeText(FemaleChangeReservationActivity.this , "変更されませんでした。" , Toast.LENGTH_SHORT).show();
+                        Toast.makeText(FemaleChangeReservationActivity.this , getString(R.string.female_change_reservation_did_not_change_message) , Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -384,7 +384,7 @@ public class FemaleChangeReservationActivity extends AppCompatActivity {
     private class DatePickerDialogDateSetListener implements DatePickerDialog.OnDateSetListener{
         @Override
         public void onDateSet(DatePicker view , int year , int monthOfYear , int dayOfMonth){
-            String dateMessage = year + "年" + (monthOfYear + 1) + "月" + dayOfMonth + "日";
+            String dateMessage = year + getString(R.string.year_title) + (monthOfYear + 1) + getString(R.string.month_title) + dayOfMonth + getString(R.string.date_title);
             EditText etBirthday = findViewById(R.id.etDate);
             etBirthday.setText(dateMessage);
         }
@@ -408,7 +408,7 @@ public class FemaleChangeReservationActivity extends AppCompatActivity {
 
         @Override
         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-            String time = hourOfDay + "時" + minute + "分";
+            String time = hourOfDay + getString(R.string.hour_title) + minute + getString(R.string.minute_title);
             EditText etTime = findViewById(R.id.etTime);
             etTime.setText(time);
         }

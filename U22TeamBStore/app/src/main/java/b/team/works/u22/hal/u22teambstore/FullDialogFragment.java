@@ -15,10 +15,10 @@ public class FullDialogFragment extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState){
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle("ログアウト");
-        builder.setMessage("ログアウトしますか?");
-        builder.setPositiveButton("Yes" , new DialogButtonClickListener());
-        builder.setNegativeButton("No" , new DialogButtonClickListener());
+        builder.setTitle(getString(R.string.signout_dialog_title));
+        builder.setMessage(getString(R.string.signout_dialog_message));
+        builder.setPositiveButton(getString(R.string.signout_dialog_possitive) , new DialogButtonClickListener());
+        builder.setNegativeButton(getString(R.string.signout_dialog_negative) , new DialogButtonClickListener());
         AlertDialog dialog = builder.create();
         return dialog;
     }

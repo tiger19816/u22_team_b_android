@@ -57,7 +57,7 @@ public class MaleHistoryEditActivity extends AppCompatActivity implements ViewPa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_male_history_edit);
 
-        setTitle("店舗詳細");
+        setTitle(getString(R.string.male_history_edit_title));
 
         //ツールバー(レイアウトを変更可)。
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -311,7 +311,7 @@ public class MaleHistoryEditActivity extends AppCompatActivity implements ViewPa
             tvStoreDetail.setText(Tools.replaceBr(map.get("opentime")));
 
             tvStoreDetail = findViewById(R.id.tvStoreDetailBudget);
-            tvStoreDetail.setText("約" + map.get("budget") +  "円");
+            tvStoreDetail.setText(getString(R.string.about_title) + map.get("budget") +  getString(R.string.money_title));
 
             tvStoreDetail = findViewById(R.id.tvStoreDetailPr);
             tvStoreDetail.setText(Tools.replaceBr(map.get("pr_long")));

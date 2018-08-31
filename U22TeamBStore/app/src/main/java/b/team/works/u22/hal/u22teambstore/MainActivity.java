@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
             receiver.execute(LOGIN_URL , strShopId , strPassword);
 
         }else{
-            strMessage = "登録された、IDとパスワードを入力してください。";
+            strMessage = getString(R.string.main_was_not_registered_warning);
             Toast.makeText(MainActivity.this, strMessage, Toast.LENGTH_SHORT).show();
         }
     }
@@ -181,10 +181,10 @@ public class MainActivity extends AppCompatActivity {
                     editor.commit();
                     intent = new Intent(MainActivity.this, ReservationListActivity.class);
                     startActivity(intent);
-                    Toast.makeText(MainActivity.this, "ようこそ、"+shopName+"様", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, getString(R.string.main_welcome_message)+shopName+getString(R.string.honor_title), Toast.LENGTH_SHORT).show();
                     finish();
                 } else {
-                    Toast.makeText(MainActivity.this, "IDか、パスワードを間違えています。", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, getString(R.string.main_incorrect_id_or_password), Toast.LENGTH_SHORT).show();
                 }
 
             }

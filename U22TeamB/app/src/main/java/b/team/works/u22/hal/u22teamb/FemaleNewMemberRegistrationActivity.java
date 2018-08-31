@@ -51,7 +51,7 @@ public class FemaleNewMemberRegistrationActivity extends AppCompatActivity {
     private int nowYear;
     private int nowMonth;
     private int nowDayOfMonth;
-    private SimpleDateFormat dfBirthday = new SimpleDateFormat("yyyy年MM月dd日");
+    private SimpleDateFormat dfBirthday = new SimpleDateFormat("yyyy"+getString(R.string.year_title)+"MM"+getString(R.string.month_title)+"dd"+getString(R.string.date_title));
     private SimpleDateFormat dfYear = new SimpleDateFormat("yyyy");
     private SimpleDateFormat dfMonth = new SimpleDateFormat("MM");
     private SimpleDateFormat dfDayOfMonth = new SimpleDateFormat("dd");
@@ -66,7 +66,7 @@ public class FemaleNewMemberRegistrationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.female_new_member_registration);
 
-        setTitle("妻情報入力画面");
+        setTitle(getString(R.string.female_new_member_registration_title));
 
         //ツールバー(レイアウトを変更可)。
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -151,7 +151,7 @@ public class FemaleNewMemberRegistrationActivity extends AppCompatActivity {
     private class DatePickerDialogDateSetListener implements DatePickerDialog.OnDateSetListener{
         @Override
         public void onDateSet(DatePicker view , int year , int monthOfYear , int dayOfMonth){
-            String dateMessage = year + "年" + (monthOfYear + 1) + "月" + dayOfMonth + "日";
+            String dateMessage = year + getString(R.string.year_title) + (monthOfYear + 1) + getString(R.string.month_title) + dayOfMonth + getString(R.string.date_title);
             EditText etBirthday = findViewById(R.id.etInputBirthdate);
             etBirthday.setText(dateMessage);
         }
@@ -192,7 +192,7 @@ public class FemaleNewMemberRegistrationActivity extends AppCompatActivity {
             //ここで渡した引数はLoginTaskReceiverクラスのdoInBackground(String... params)で受け取れる。
             receiver.execute(MAIL_CHECK_URL);
         }else{
-            Toast.makeText(FemaleNewMemberRegistrationActivity.this , "入力チェック完了" , Toast.LENGTH_SHORT).show();
+            Toast.makeText(FemaleNewMemberRegistrationActivity.this , getString(R.string.female_new_member_registration_input_check_complete) , Toast.LENGTH_SHORT).show();
         }
     }
 

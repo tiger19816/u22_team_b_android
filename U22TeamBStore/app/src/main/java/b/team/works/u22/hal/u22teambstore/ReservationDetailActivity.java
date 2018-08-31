@@ -51,7 +51,7 @@ public class ReservationDetailActivity extends AppCompatActivity {
     /**
      * 処理後にトーストメッセージを格納するフィールド。
      */
-    String _message = "処理失敗";   // 来店処理が失敗した場合のトーストメッセージ。TODO:strings.xmlに対応。
+    String _message = getString(R.string.visit_failure);   // 来店処理が失敗した場合のトーストメッセージ。TODO:strings.xmlに対応。
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,16 +83,16 @@ public class ReservationDetailActivity extends AppCompatActivity {
             String strUseDateTime = "";
             JSONObject aryUseDateTime =this._objReservation.getJSONObject("use_date_time");
             strUseDateTime += aryUseDateTime.getString("year");
-            strUseDateTime += "年";  // TODO:strings.xmlに対応。
+            strUseDateTime += getString(R.string.year_title);  // TODO:strings.xmlに対応。
             strUseDateTime += aryUseDateTime.getString("month");
-            strUseDateTime += "月";
+            strUseDateTime += getString(R.string.month_title);
             strUseDateTime += aryUseDateTime.getString("date");
-            strUseDateTime += "日";
+            strUseDateTime += getString(R.string.date_title);
             strUseDateTime += " ";
             strUseDateTime += aryUseDateTime.getString("hour");
-            strUseDateTime += "時";
+            strUseDateTime += getString(R.string.hour_title);
             strUseDateTime += aryUseDateTime.getString("minute");
-            strUseDateTime += "分";
+            strUseDateTime += getString(R.string.minute_title);
             this._tvUseDateTime.setText(strUseDateTime);
         } catch (JSONException e) {
             Log.e("JSON", e.toString());
@@ -103,15 +103,15 @@ public class ReservationDetailActivity extends AppCompatActivity {
     // ボタンタップ時。
     public void onClickVisited(View view) {
         new AlertDialog.Builder(ReservationDetailActivity.this)
-                .setMessage("よろしいですか?")     // ダイアログのメッセージ。TODO:strings.xmlに対応。
-                .setPositiveButton("はい", new DialogInterface.OnClickListener() {
+                .setMessage(getString(R.string.dialog_message))     // ダイアログのメッセージ。TODO:strings.xmlに対応。
+                .setPositiveButton(getString(R.string.dialog_possitive), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {    // Yesの表記。TODO:strings.xmlに対応。
                         HttpResponseAsync hra = new ReservationDetailActivity.HttpResponseAsync(ReservationDetailActivity.this);
                         hra.execute(ReservationDetailActivity.this._reservationId);
                     }
                 })
-                .setNegativeButton("いいえ", null)     // Noの表記。TODO:strings.xmlに対応。
+                .setNegativeButton(getString(R.string.dialog_negative), null)     // Noの表記。TODO:strings.xmlに対応。
                 .show();
     }
 
@@ -169,7 +169,7 @@ public class ReservationDetailActivity extends AppCompatActivity {
                     switch (cnct.getResponseCode()) {
                         case HttpURLConnection.HTTP_OK :
                             Log.d("URL", "コネクション状況: 成功");
-                            _message = "来店処理が完了しました。";  // 来店処理が成功した場合のトーストメッセージ。TODO:strings.xmlに対応。
+                            _message = getString(R.string.visit_successful);  // 来店処理が成功した場合のトーストメッセージ。TODO:strings.xmlに対応。
                             break;
                         case HttpURLConnection.HTTP_INTERNAL_ERROR:
                             Log.e("URL", "エラー内容: 500 内部サーバーエラー");
