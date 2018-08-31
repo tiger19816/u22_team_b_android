@@ -232,7 +232,7 @@ public class FemaleFinishReservationActivity extends AppCompatActivity {
         // ImageViewをToast表示する
         ImageView imageView = new ImageView(FemaleFinishReservationActivity.this);
         GlideDrawableImageViewTarget target = new GlideDrawableImageViewTarget(imageView);
-        Glide.with(this).load(R.raw.gifsample01).into(target);
+        Glide.with(this).load(R.raw.female_gif).into(target);
         Toast toast = new Toast(FemaleFinishReservationActivity.this);
         toast.setView(imageView);
         /**
