@@ -63,7 +63,7 @@ public class FemaleCardRegistrationActivity extends AppCompatActivity {
         String cardDoneDeadline = etCardDoneDeadlineMonth.getSelectedItem() + "" + etCardDoneDeadlineYear.getSelectedItem();
         female.setFemaleCardExpirationDate(cardDoneDeadline);
 
-        EditText etCardNominalName = findViewById(R.id.etInputCreditCardNumber);
+        EditText etCardNominalName = findViewById(R.id.etInputCardCardHolder);
         String cardNominalName = etCardNominalName.getText().toString();
         female.setFemaleCardNominee(cardNominalName);
 
