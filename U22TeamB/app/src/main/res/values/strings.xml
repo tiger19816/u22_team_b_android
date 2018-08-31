@@ -196,4 +196,8 @@
     <string name="female_store_map_list_title">店一覧</string>
     <string name="female_store_map_list_user_name">ユーザー名</string>
 
+    <!--MainActivity-->
+    <string name="main_input_message">登録された、メールアドレスとパスワードを入力してください。</string>
+    <string name="main_invalid_warning">メールアドレスか、パスワードを間違えています。</string>
+
 </resources>
