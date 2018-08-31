@@ -31,7 +31,7 @@ public class MaleEnterShopActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_male_enter_shop);
 
-        setTitle("QRコード表示");
+        setTitle(getString(R.string.male_enter_shop_title));
 
         //ツールバー(レイアウトを変更可)。
         Toolbar toolbar = findViewById(R.id.toolbar);

@@ -15,5 +15,6 @@ public class Word {
     public static final String RECEIVE_RESERVATION_DETAIL = SERVER_URL + "SendReservationDetailServlet";
     public static final String RECEIVE_RESERVATION_DETAIL2 = SERVER_URL + "SendReservationDetailServlet2";
     public static final String PROCESS_OF_VISIT = SERVER_URL + "UpdateVisitFlagServlet";
+    public static final String SHOP_REGISTER = SERVER_URL + "ShopRegisterServlet";
     public static final String SHOP_URL = SERVER_URL + "StoreNewRegistrationServlet";
 }

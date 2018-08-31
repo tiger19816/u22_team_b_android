@@ -59,7 +59,7 @@ public class ShopRegisterConfirmActivity extends AppCompatActivity {
     Intent _intent;
 
     //URL
-    private String LOGIN_URL = Word.SHOP_URL;
+    private static final String LOGIN_URL = Word.SHOP_REGISTER;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -219,10 +219,10 @@ public class ShopRegisterConfirmActivity extends AppCompatActivity {
 
                 boolean resultJSON  = rootJSON.getBoolean("result");
                 if(resultJSON) {
-                    Toast.makeText(ShopRegisterConfirmActivity.this, "登録が完了しました。", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ShopRegisterConfirmActivity.this, getString(R.string.register_successful_message), Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    Toast.makeText(ShopRegisterConfirmActivity.this, "登録に失敗しました。", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ShopRegisterConfirmActivity.this, getString(R.string.register_failure_warning), Toast.LENGTH_SHORT).show();
                 }
             }
             catch (JSONException ex) {

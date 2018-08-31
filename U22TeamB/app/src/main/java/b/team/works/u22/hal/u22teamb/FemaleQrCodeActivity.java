@@ -33,7 +33,7 @@ public class FemaleQrCodeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_female_qr_code);
 
-        setTitle("夫情報読み取り");
+        setTitle(getString(R.string.female_qr_code_title));
 
         //ツールバー(レイアウトを変更可)。
         Toolbar toolbar = findViewById(R.id.toolbar);

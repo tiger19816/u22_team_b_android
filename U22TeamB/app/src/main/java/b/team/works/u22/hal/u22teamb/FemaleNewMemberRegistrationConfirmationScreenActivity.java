@@ -68,7 +68,7 @@ public class FemaleNewMemberRegistrationConfirmationScreenActivity extends AppCo
         super.onCreate(savedInstanceState);
         setContentView(R.layout.female_new_member_registration_confirmation_screen);
 
-        setTitle("カード情報入力画面");
+        setTitle(getString(R.string.female_new_member_registration_confirmation_screen_title));
 
         //ツールバー(レイアウトを変更可)。
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -294,7 +294,7 @@ public class FemaleNewMemberRegistrationConfirmationScreenActivity extends AppCo
                 Log.e(DEBUG_TAG, "JSON解析失敗", ex);
             }
             if (isInsert) {
-                Toast.makeText(FemaleNewMemberRegistrationConfirmationScreenActivity.this , "登録されました。" , Toast.LENGTH_SHORT).show();
+                Toast.makeText(FemaleNewMemberRegistrationConfirmationScreenActivity.this , getString(R.string.female_new_member_registration_confirmation_screen_registered_message) , Toast.LENGTH_SHORT).show();
                 SharedPreferences setting = getSharedPreferences("USER" , 0);
                 SharedPreferences.Editor editor = setting.edit();
                 editor.putString("ID" , _id);
@@ -304,7 +304,7 @@ public class FemaleNewMemberRegistrationConfirmationScreenActivity extends AppCo
                 Intent intent = new Intent(FemaleNewMemberRegistrationConfirmationScreenActivity.this,FemaleStoreMapListActivity.class);
                 startActivity(intent);
             }else{
-                Toast.makeText(FemaleNewMemberRegistrationConfirmationScreenActivity.this , "登録が失敗しました。もう一度お願いいたします。" , Toast.LENGTH_SHORT).show();
+                Toast.makeText(FemaleNewMemberRegistrationConfirmationScreenActivity.this , getString(R.string.female_new_member_registration_confirmation_screen_did_not_register_warning) , Toast.LENGTH_SHORT).show();
             }
         }
 

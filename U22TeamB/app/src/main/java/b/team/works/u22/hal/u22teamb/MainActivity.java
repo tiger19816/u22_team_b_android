@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
             receiver.execute(LOGIN_URL , strMail , strPassword);
 
         }else{
-            strMessage = "登録された、メールアドレスとパスワードを入力してください。";
+            strMessage = getString(R.string.main_input_message);
             Toast.makeText(MainActivity.this, strMessage, Toast.LENGTH_SHORT).show();
         }
     }
@@ -219,7 +219,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 } else {
-                    Toast.makeText(MainActivity.this, "メールアドレスか、パスワードを間違えています。", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, getString(R.string.main_invalid_warning), Toast.LENGTH_SHORT).show();
                 }
 
             }

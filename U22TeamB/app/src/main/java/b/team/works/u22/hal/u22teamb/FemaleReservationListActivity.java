@@ -49,7 +49,7 @@ public class FemaleReservationListActivity extends AppCompatActivity implements 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_female_reservation_list);
 
-        setTitle("予約一覧");
+        setTitle(getString(R.string.female_reservation_list_title));
 
         //ユーザーIDの取得。
         SharedPreferences setting = getSharedPreferences("USER" , 0);
@@ -73,11 +73,11 @@ public class FemaleReservationListActivity extends AppCompatActivity implements 
         SharedPreferences pref = getSharedPreferences("USER",0);
         if(Build.VERSION.SDK_INT < 23) {
             TextView navTvUserName = navigationView.findViewById(R.id.navTvUserName);
-            navTvUserName.setText(pref.getString("NAME", "ユーザー名"));
+            navTvUserName.setText(pref.getString("NAME", getString(R.string.female_reservation_list_user_name)));
         } else {
             View headerView = navigationView.getHeaderView(0);
             TextView navTvUserName = headerView.findViewById(R.id.navTvUserName);
-            navTvUserName.setText(pref.getString("NAME", "ユーザー名"));
+            navTvUserName.setText(pref.getString("NAME", getString(R.string.female_reservation_list_user_name)));
         }
 
         //非同期処理を開始する。
@@ -216,7 +216,7 @@ public class FemaleReservationListActivity extends AppCompatActivity implements 
                     if (    Integer.valueOf(dy) == nowYear &&
                             Integer.valueOf(dm) == (nowMonth + 1) &&
                             Integer.valueOf(dd) == nowDay){
-                        map.put("reservationDate" , "今日");
+                        map.put("reservationDate" , getString(R.string.female_reservation_list_today));
                     }else{
                         DataConversion dc = new DataConversion();
                         map.put("reservationDate" , dc.getFullDataConversion02(data.getString("reservationDate")));

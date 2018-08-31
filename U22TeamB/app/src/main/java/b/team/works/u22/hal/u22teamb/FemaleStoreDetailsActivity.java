@@ -72,7 +72,7 @@ public class FemaleStoreDetailsActivity extends AppCompatActivity implements Vie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_female_store_details);
 
-        setTitle("店舗詳細");
+        setTitle(getString(R.string.female_store_detail_title));
 
         //ツールバー(レイアウトを変更可)。
         Toolbar toolbar = findViewById(R.id.toolbar);
