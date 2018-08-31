@@ -30,7 +30,7 @@ import java.net.URL;
 
 public class MaleAdditionalInformationEntryActivity extends AppCompatActivity {
 
-    private static final String LOGIN_URL = Word.USER_LOGIN_URL;
+    private static final String LOGIN_URL = Word.MALE_PASS_URL;
     private String _id;
     private String _code;
 
@@ -215,6 +215,8 @@ public class MaleAdditionalInformationEntryActivity extends AppCompatActivity {
                 JSONObject rootJSON = new JSONObject(result);
                 Boolean done = rootJSON.getBoolean("done");
                 _id = rootJSON.getString("maleId");
+
+                Log.e("確認" , String.valueOf(done));
                 if(done){
                     Toast.makeText(MaleAdditionalInformationEntryActivity.this , getString(R.string.male_additional_information_entry_registered_message) , Toast.LENGTH_SHORT).show();
                     SharedPreferences setting = getSharedPreferences("USER" , 0);
@@ -223,6 +225,7 @@ public class MaleAdditionalInformationEntryActivity extends AppCompatActivity {
                     editor.commit();
                     Intent intent = new Intent(MaleAdditionalInformationEntryActivity.this, MaleReservationListActivity.class);
                     startActivity(intent);
+                    finish();
                 }else{
                     Toast.makeText(MaleAdditionalInformationEntryActivity.this , getString(R.string.male_additional_information_entry_did_not_register_warning) , Toast.LENGTH_SHORT).show();
                 }

@@ -2,10 +2,13 @@ package b.team.works.u22.hal.u22teamb;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.AndroidRuntimeException;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -86,6 +89,7 @@ public class MaleEnterShopActivity extends AppCompatActivity {
      * GIF画像をToastで表示。
      */
     public void gifStart(){
+
         // ImageViewをToast表示する
         ImageView imageView = new ImageView(MaleEnterShopActivity.this);
         GlideDrawableImageViewTarget target = new GlideDrawableImageViewTarget(imageView);
@@ -96,7 +100,10 @@ public class MaleEnterShopActivity extends AppCompatActivity {
          * 第1引数 : 水平方向のマージンを指定します。数値は-1~1の間で設定できます。正の値は水平右方向、負の値は水平左方向に移動されます。
          * 第2引数 : 垂直方向のマージンを指定します。数値は-1~1の間で設定できます。正の値は垂直上方向、負の値は垂直下方向に移動されます。
          */
-        toast.setMargin(1.0f,-1.0f);
+        // 位置調整
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        //時間
+        toast.setDuration(Toast.LENGTH_LONG);
         toast.show();
     }
 

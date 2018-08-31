@@ -37,7 +37,7 @@ public class FemaleMaleInformationRegistrationActivity extends AppCompatActivity
     private int nowYear;
     private int nowMonth;
     private int nowDayOfMonth;
-    private SimpleDateFormat dfBirthday = new SimpleDateFormat("yyyy"+getString(R.string.year_title)+"MM"+getString(R.string.month_title)+"dd"+getString(R.string.date_title));
+    private SimpleDateFormat dfBirthday = new SimpleDateFormat("yyyy年MM月dd日");
     private SimpleDateFormat dfYear = new SimpleDateFormat("yyyy");
     private SimpleDateFormat dfMonth = new SimpleDateFormat("MM");
     private SimpleDateFormat dfDayOfMonth = new SimpleDateFormat("dd");
