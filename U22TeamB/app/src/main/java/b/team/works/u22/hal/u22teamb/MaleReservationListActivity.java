@@ -470,6 +470,7 @@ public class MaleReservationListActivity extends AppCompatActivity implements Na
             editor.commit();
             intent = new Intent(MaleReservationListActivity.this,MainActivity.class);
             startActivity(intent);
+            finish();
         }
 
         DrawerLayout drawer = findViewById(R.id.dlMainContent);

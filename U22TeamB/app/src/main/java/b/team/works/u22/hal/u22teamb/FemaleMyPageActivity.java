@@ -350,6 +350,8 @@ public class FemaleMyPageActivity extends AppCompatActivity implements Navigatio
             SharedPreferences setting = getSharedPreferences("USER" , 0);
             SharedPreferences.Editor editor = setting.edit();
             editor.remove("ID");
+            editor.remove("SEX");
+            editor.remove("NAME");
             editor.commit();
             intent = new Intent(FemaleMyPageActivity.this,MainActivity.class);
             finish();

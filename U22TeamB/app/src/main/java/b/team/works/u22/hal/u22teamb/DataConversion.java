@@ -4,6 +4,7 @@ import android.util.Log;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.StringTokenizer;
 
@@ -24,6 +25,40 @@ public class DataConversion {
     private static final SimpleDateFormat dfDate05 = new SimpleDateFormat("dd");
     private static final SimpleDateFormat dfTime01 = new SimpleDateFormat("hh時mm分");
     private static final SimpleDateFormat dfTime02 = new SimpleDateFormat("hh:mm:ss");
+
+    /**
+     * yyyy-MM-ddから3日前より未来の日付だった場合、false。
+     */
+    public Boolean getDateCheckConversion01(String date){
+        Boolean result = false;
+        try {
+            //予約日の3日前を求める。
+            Date d = dfFullDate02.parse(date);
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(d);
+            calendar.add(Calendar.DAY_OF_MONTH, -3);
+            Date d2 = calendar.getTime();
+            //今日の日月を求める。
+            Calendar calendar2 = Calendar.getInstance();
+            Date d3 = calendar2.getTime();
+            //比較する(d2 = 予約日の三日前,d3 = 今日の日月)。
+            int diff = d2.compareTo(d3);
+            Log.e("確認(d2)", String.valueOf(d2));
+            Log.e("確認(d3)", String.valueOf(d3));
+            if (diff == 0) {
+                result = false;
+            }else if (diff > 0) {
+                result = true;
+            }else{
+                result = false;
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+            Log.e("データ変換失敗", "DataConversionクラスのgetFullDataConversion01時。");
+        }
+        Log.e("確認", String.valueOf(result));
+        return result;
+    }
 
     /**
      *yyyy年MM年dd日からyyyy-MM-ddに変換。
