@@ -10,6 +10,7 @@
     <string name="minute_title">分</string>
     <string name="money_title">円</string>
     <string name="honor_title">様</string>
+    <string name="about_title">約</string>
 
     <!-- 左のメニュー用 -->
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -210,5 +211,9 @@
 
     <!--MaleEnterShopActivity-->
     <string name="male_enter_shop_title">QRコード表示</string>
+
+    <!--MaleHistoryEditActivity-->
+    <string name="male_history_edit_title">店舗詳細</string>
+
 
 </resources>
