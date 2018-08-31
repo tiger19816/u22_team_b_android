@@ -184,5 +184,9 @@
     <!--FemaleQrCodeActivity-->
     <string name="female_qr_code_title">夫情報読み取り</string>
 
+    <!--FemaleReservationListActivity-->
+    <string name="female_reservation_list_title">予約一覧</string>
+    <string name="female_reservation_list_user_name">ユーザー名</string>
+    <string name="female_reservation_list_today">今日</string>
 
 </resources>
