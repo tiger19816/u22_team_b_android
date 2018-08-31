@@ -219,4 +219,7 @@
     <string name="male_history_list_title">履歴一覧</string>
     <string name="male_history_list_user_name">ユーザー名</string>
 
+    <!--MaleReservationListActivity-->
+    <string name="male_reservation_list_title">予約一覧</string>
+    <string name="male_reservation_list_user_name">ユーザー名</string>
 </resources>
