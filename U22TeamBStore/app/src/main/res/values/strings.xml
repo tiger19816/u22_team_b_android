@@ -40,4 +40,49 @@
     <string name="bt_confirm">確認</string>
     <string name="bt_send">送信</string>
     <string name="bt_back">戻る</string>
+
+    <!--FullDialogFragment-->
+    <string name="signout_dialog_title">ログアウト</string>
+    <string name="signout_dialog_message">ログアウトしますか?"</string>
+    <string name="signout_dialog_possitive">Yes</string>
+    <string name="signout_dialog_negative">No</string>
+
+    <!--MainActivity-->
+    <string name="main_was_not_registered_warning">登録された、IDとパスワードを入力してください。</string>
+    <string name="main_incorrect_id_or_password">IDか、パスワードを間違えています。</string>
+    <string name="main_welcome_message">ようこそ、</string>
+    <string name="honor_title">様</string>
+
+    <!--ReservationDetailActivity-->
+    <string name="dialog_message">よろしいですか?</string>
+    <string name="dialog_possitive">はい</string>
+    <string name="dialog_negative">いいえ</string>
+    <string name="visit_successful">来店処理が完了しました。</string>
+    <string name="visit_failure">処理失敗</string>
+    <string name="year_title">年</string>
+    <string name="month_title">月</string>
+    <string name="date_title">日</string>
+    <string name="hour_title">時</string>
+    <string name="minute_title">分</string>
+
+    <!--ReservationListActivity-->
+    <string name="did_not_get_info_warning">情報の取得に失敗</string>
+
+    <!--ShopRegisterActivity-->
+    <string name="register_info_possitive">有</string>
+    <string name="register_info_negative">無</string>
+    <string name="info_shop_name_title">店舗名</string>
+    <string name="info_shop_phonetic_title">店舗名（カナ）</string>
+    <string name="info_open_time_title">営業時間</string>
+    <string name="info_tel_title">電話番号</string>
+    <string name="info_address_title">住所</string>
+    <string name="info_average_budget_title">平均予算</string>
+    <string name="password_title">パスワード</string>
+    <string name="info_number_title">項番</string>
+    <string name="info_free_name_title">フリーワード</string>
+    <string name="register_missing_info_warning">を入力してください。</string>
+
+    <!--ShopRegisterConfirmActivity-->
+    <string name="register_successful_message">登録が完了しました。</string>
+    <string name="register_failure_warning">登録に失敗しました。</string>
 </resources>

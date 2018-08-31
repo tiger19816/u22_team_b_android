@@ -314,16 +314,16 @@ public class ReservationListActivity extends AppCompatActivity {
                     String strUseDateTime = "";
                     JSONObject aryUseDateTime = _reservationList.getJSONObject(i).getJSONObject("use_date_time");
                     strUseDateTime += aryUseDateTime.getString("year");
-                    strUseDateTime += "年";  // TODO:strings.xmlに対応。
+                    strUseDateTime += getString(R.string.year_title);  // TODO:strings.xmlに対応。
                     strUseDateTime += aryUseDateTime.getString("month");
-                    strUseDateTime += "月";
+                    strUseDateTime += getString(R.string.month_title);
                     strUseDateTime += aryUseDateTime.getString("date");
-                    strUseDateTime += "日";
+                    strUseDateTime += getString(R.string.date_title);
                     strUseDateTime += " ";
                     strUseDateTime += aryUseDateTime.getString("hour");
-                    strUseDateTime += "時";
+                    strUseDateTime += getString(R.string.hour_title);
                     strUseDateTime += aryUseDateTime.getString("minute");
-                    strUseDateTime += "分";
+                    strUseDateTime += getString(R.string.minute_title);
                     map.put("date", strUseDateTime);
                     list.add(map);
                 }
@@ -495,7 +495,7 @@ public class ReservationListActivity extends AppCompatActivity {
                 startActivity(intent);
             } else {    // サーバ接続失敗時の処理。
                 Log.d("JSON", "null");
-                String msg = "情報の取得に失敗";    // ListViewに表示するデータが空だった場合のトーストメッセージ。TODO:strings.xmlに対応。
+                String msg = getString(R.string.did_not_get_info_warning);    // ListViewに表示するデータが空だった場合のトーストメッセージ。TODO:strings.xmlに対応。
                 Toast.makeText(ReservationListActivity.this, msg, Toast.LENGTH_SHORT).show();
             }
 
