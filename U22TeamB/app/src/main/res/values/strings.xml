@@ -215,5 +215,8 @@
     <!--MaleHistoryEditActivity-->
     <string name="male_history_edit_title">店舗詳細</string>
 
+    <!--MaleHistoryListActivity-->
+    <string name="male_history_list_title">履歴一覧</string>
+    <string name="male_history_list_user_name">ユーザー名</string>
 
 </resources>
