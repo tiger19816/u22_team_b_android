@@ -1,6 +1,7 @@
 package b.team.works.u22.hal.u22teambstore;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,6 +24,8 @@ import java.net.URL;
 
 public class ShopRegisterConfirmActivity extends AppCompatActivity {
 
+    private String _id;
+
     //各部品取得用定数
     TextView tvShopName; //店舗名
     TextView tvPhonetic; //店舗名（カナ）
@@ -36,7 +39,6 @@ public class ShopRegisterConfirmActivity extends AppCompatActivity {
     TextView tvImage1; //店舗画像01
     TextView tvImage2; //店舗画像02
     TextView tvPassword; //パスワード
-    TextView tvNo; //項番
     TextView tvFreeName; //フリーワード
 
     //取得した画面部品にセットされた値を格納する変数
@@ -52,14 +54,13 @@ public class ShopRegisterConfirmActivity extends AppCompatActivity {
     String image1;
     String image2;
     String password;
-    String no;
     String freeName;
 
     //インテントオブジェクト
     Intent _intent;
 
     //URL
-    private static final String LOGIN_URL = Word.SHOP_REGISTER;
+    private static final String LOGIN_URL = Word.SHOP_URL;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,35 +81,20 @@ public class ShopRegisterConfirmActivity extends AppCompatActivity {
      */
     public void onClickSend(View view) {
         //非同期処理を開始する。
-        LoginTaskReceiver receiver = new LoginTaskReceiver();
-        receiver.execute(
-                LOGIN_URL,
-                shopName,
-                phonetic,
-                openTime,
-                tel,
-                address,
-                averageBudget,
-                lunchService,
-                nonSmokingSeat,
-                cardUsage,
-                image1,
-                image2,
-                password,
-                no,
-                freeName
-        );
+        UserInformationTaskReceiver receiver = new UserInformationTaskReceiver();
+        receiver.execute(LOGIN_URL);
     }
 
     /**
-     * 非同期通信を行うAsyncTaskクラスを継承したメンバクラス
+     * 非同期通信を行うAsyncTaskクラスを継承したメンバクラス.
      */
-    private class LoginTaskReceiver extends AsyncTask<String, Void, String> {
+    private class UserInformationTaskReceiver extends AsyncTask<String, Void, String> {
 
         private static final String DEBUG_TAG = "RestAccess";
 
         /**
-         * 非同期に処理したい内容を記述するメソッド
+         * 非同期に処理したい内容を記述するメソッド.
+         * このメソッドは必ず実装する必要がある。
          *
          * @param params String型の配列。（可変長）
          * @return String型の結果JSONデータ。
@@ -116,41 +102,17 @@ public class ShopRegisterConfirmActivity extends AppCompatActivity {
         @Override
         public String doInBackground(String... params) {
             String urlStr = params[0];
-            String shopNameStr = params[1];
-            String phoneticStr = params[2];
-            String openTimeStr = params[3];
-            String telStr = params[4];
-            String addressStr = params[5];
-            String averageBudgetStr = params[6];
-            String lunchServiceStr = params[7];
-            String nonSmokingSeatStr = params[8];
-            String cardUsageStr = params[9];
-            String passwordStr = params[10];
-            String noStr = params[11];
-            String freeNameStr = params[12];
 
-//            //POSTで送りたいデータ
-//            String postShopName = shopNameStr;
-//            String postPhonetic = phoneticStr;
-//            String postOpenTime = openTimeStr;
-//            String postTel = telStr;
-//            String postAddress = addressStr;
-//            String postAverageBudget = averageBudgetStr;
-//            String postLunchService = lunchServiceStr;
-//            String postNonSmokingSeat = nonSmokingSeatStr;
-//            String postCardUsage = cardUsageStr;
-//            String postPassword = passwordStr;
-//            String postNo = noStr;
-//            String postFreeName = freeNameStr;
+            //POSTで送りたいデータ
+            String postData = "postPassword="+password+"&postShopName="+shopName+"&postPhonetic="+phonetic
+                    +"&postOpenTime="+openTime+"&postTel="+tel+"&postAddress="+address
+                    +"&postAverageBudget="+averageBudget+"&postPointLatitude="+"3.121311"+"&postLongitude="+"2.31111"+"&postLunchService="+lunchService+"&postNonSmokingSeat="+nonSmokingSeat
+                    +"&postCardUsage="+cardUsage+"&image1="+"image01.jpg"+"&image2="+"image02.jpg"+"&postFreeName="+freeName;
+
 
             HttpURLConnection con = null;
             InputStream is = null;
             String result = "";
-
-            //POSTで送りたいデータ
-            String postData = "postPassword="+passwordStr+"&postShopName="+shopNameStr+"&postPhonetic="+phoneticStr+"&postOpenTime="+openTimeStr+"&postTel="+telStr+"&postAddress="+addressStr
-                    +"&postAverageBudget="+averageBudgetStr+"&postPointLatitude="+""+"&postLongitude="+""+"&postLunchService="+lunchServiceStr+"&postNonSmokingSeat="+nonSmokingSeatStr
-                    +"&postCardUsage="+cardUsageStr+"&image1="+""+"&image2="+""+"&postNo="+noStr+"&postFreeName="+freeNameStr;
 
             try {
                 URL url = new URL(urlStr);
@@ -176,14 +138,16 @@ public class ShopRegisterConfirmActivity extends AppCompatActivity {
                     //送信する値をByteデータに変換する（UTF-8）
                     os.write(postData.getBytes("UTF-8"));
                     os.flush();
-
-                } catch (IOException ex) {
+                }
+                catch (IOException ex) {
                     Log.e(DEBUG_TAG, "POST送信エラー", ex);
-                } finally {
-                    if (os != null) {
+                }
+                finally {
+                    if(os != null) {
                         try {
                             os.close();
-                        } catch (IOException ex) {
+                        }
+                        catch (IOException ex) {
                             Log.e(DEBUG_TAG, "OutputStream解放失敗", ex);
                         }
                     }
@@ -192,18 +156,22 @@ public class ShopRegisterConfirmActivity extends AppCompatActivity {
                 is = con.getInputStream();
 
                 result = is2String(is);
-            } catch (MalformedURLException ex) {
+            }
+            catch (MalformedURLException ex) {
                 Log.e(DEBUG_TAG, "URL変換失敗", ex);
-            } catch (IOException ex) {
+            }
+            catch (IOException ex) {
                 Log.e(DEBUG_TAG, "通信失敗", ex);
-            } finally {
-                if (con != null) {
+            }
+            finally {
+                if(con != null) {
                     con.disconnect();
                 }
-                if (is != null) {
+                if(is != null) {
                     try {
                         is.close();
-                    } catch (IOException ex) {
+                    }
+                    catch (IOException ex) {
                         Log.e(DEBUG_TAG, "InputStream解放失敗", ex);
                     }
                 }
@@ -218,12 +186,25 @@ public class ShopRegisterConfirmActivity extends AppCompatActivity {
                 JSONObject rootJSON = new JSONObject(result);
 
                 boolean resultJSON  = rootJSON.getBoolean("result");
+                _id  = rootJSON.getString("shop_id");
+
                 if(resultJSON) {
-                    Toast.makeText(ShopRegisterConfirmActivity.this, getString(R.string.register_successful_message), Toast.LENGTH_SHORT).show();
+                    //DBチェックの結果により、画面遷移先を変更。
+                    Intent intent;
+                    SharedPreferences setting = getSharedPreferences("SHOPUSER" , 0);
+                    SharedPreferences.Editor editor = setting.edit();
+                    editor.putString("ID" , _id);
+                    editor.commit();
+                    intent = new Intent(ShopRegisterConfirmActivity.this, ReservationListActivity.class);
+                    startActivity(intent);
+                    Toast.makeText(ShopRegisterConfirmActivity.this, getString(R.string.main_welcome_message)+shopName+getString(R.string.honor_title), Toast.LENGTH_SHORT).show();
+                    finish();
                 }
                 else {
                     Toast.makeText(ShopRegisterConfirmActivity.this, getString(R.string.register_failure_warning), Toast.LENGTH_SHORT).show();
                 }
+
+
             }
             catch (JSONException ex) {
                 Log.e(DEBUG_TAG, "JSON解析失敗", ex);
@@ -273,14 +254,29 @@ public class ShopRegisterConfirmActivity extends AppCompatActivity {
         //ランチ営業
         tvLunchService.setText( _intent.getStringExtra("lunchService") );
         lunchService = tvLunchService.getText().toString();
+        if("有".equals(lunchService)){
+            lunchService = "1";
+        }else{
+            lunchService = "0";
+        }
 
         //禁煙席
         tvNonSmokingSeat.setText( _intent.getStringExtra("nonSmokingSeat") );
         nonSmokingSeat = tvNonSmokingSeat.getText().toString();
+        if("有".equals(nonSmokingSeat)){
+            nonSmokingSeat = "1";
+        }else{
+            nonSmokingSeat = "0";
+        }
 
         //カード利用
         tvCardUsage.setText( _intent.getStringExtra("cardUsage") );
         cardUsage = tvCardUsage.getText().toString();
+        if("有".equals(cardUsage)){
+            cardUsage = "1";
+        }else{
+            cardUsage = "0";
+        }
 
         //画像（※ファイルパスを想定してます）
         tvImage1.setText( _intent.getStringExtra("image1") );
@@ -291,10 +287,6 @@ public class ShopRegisterConfirmActivity extends AppCompatActivity {
         //パスワード
         tvPassword.setText( _intent.getStringExtra("password") );
         password = tvPassword.getText().toString();
-
-        //項番
-        tvNo.setText( _intent.getStringExtra("no") );
-        no = tvNo.getText().toString();
 
         //フリーワード
         tvFreeName.setText( _intent.getStringExtra("freeName") );
@@ -317,7 +309,6 @@ public class ShopRegisterConfirmActivity extends AppCompatActivity {
         tvImage1 = findViewById(R.id.tvImage1);
         tvImage2 = findViewById(R.id.tvImage2);
         tvPassword = findViewById(R.id.tvPassword);
-        tvNo = findViewById(R.id.tvNo);
         tvFreeName = findViewById(R.id.tvFreeName);
     }
 }
