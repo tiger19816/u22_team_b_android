@@ -189,4 +189,7 @@
     <string name="female_reservation_list_user_name">ユーザー名</string>
     <string name="female_reservation_list_today">今日</string>
 
+    <!--FemaleStoreDetailsActivity-->
+    <string name="female_store_detail_title">店舗詳細</string>
+
 </resources>
