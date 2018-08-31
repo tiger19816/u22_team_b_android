@@ -164,7 +164,11 @@
     <string name="female_male_infomation_registration_title">夫情報入力画面</string>
     <string name="female_male_infomation_registration_input_check_complete_3">入力チェック3完了</string>
 
-    <!--FemaleMyPage-->
+    <!--FemaleMyPageActivity-->
     <string name="female_my_page_title">MyPage</string>
     <string name="female_my_page_title_user_name">ユーザー名</string>
+
+    <!--FemaleNewMemberRegistrationActivity-->
+    <string name="female_new_member_registration_title">妻情報入力画面</string>
+    <string name="female_new_member_registration_input_check_complete">入力チェック完了</string>
 </resources>
