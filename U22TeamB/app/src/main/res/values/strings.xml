@@ -6,6 +6,20 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
+    <!-- マイページ項目用 -->
+    <string name="my_page_name">氏名</string>
+    <string name="my_page_birthday">生年月日</string>
+    <string name="my_page_password">パスワード</string>
+    <string name="my_page_address">住所</string>
+    <string name="my_page_mail">メールアドレス</string>
+    <string name="my_page_credit_card_number">カード番号</string>
+    <string name="my_page_credit_card_expiration_date">カード有効期限</string>
+    <string name="my_page_credit_card_security_code">セキュリティコード</string>
+    <string name="my_page_credit_card_holder">カード名義人</string>
+    <string name="my_page_height">身長</string>
+    <string name="my_page_weight">体重</string>
+    <string name="my_page_profession">職業</string>
+
     <!-- 画面01 【妻&夫】ログイン画面 -->
     <string name="tv_login_title">ログイン</string>
     <string name="tv_login_id">MailAddress</string>
