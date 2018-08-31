@@ -9,6 +9,7 @@
     <string name="hour_title">時</string>
     <string name="minute_title">分</string>
     <string name="money_title">円</string>
+    <string name="honor_title">様</string>
 
     <!-- 左のメニュー用 -->
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -199,5 +200,12 @@
     <!--MainActivity-->
     <string name="main_input_message">登録された、メールアドレスとパスワードを入力してください。</string>
     <string name="main_invalid_warning">メールアドレスか、パスワードを間違えています。</string>
+
+    <!--MaleAdditionalInformationEntryActivity-->
+    <string name="male_additional_information_entry_title">追加情報</string>
+    <string name="male_additional_information_entry_empty_password_warning">どちらもパスワードを入力してください。</string>
+    <string name="male_additional_information_entry_incorrect_password_warning">どちらも同じパスワードを入力してください。</string>
+    <string name="male_additional_information_entry_registered_message">登録されました。</string>
+    <string name="male_additional_information_entry_did_not_register_warning">登録されませんでした。</string>
 
 </resources>

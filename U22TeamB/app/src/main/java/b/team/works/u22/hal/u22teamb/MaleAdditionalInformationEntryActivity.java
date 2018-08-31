@@ -40,7 +40,7 @@ public class MaleAdditionalInformationEntryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.male_additional_information_entry);
 
-        setTitle("追加情報");
+        setTitle(getString(R.string.male_additional_information_entry_title));
 
         //ツールバー(レイアウトを変更可)。
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -72,7 +72,7 @@ public class MaleAdditionalInformationEntryActivity extends AppCompatActivity {
             //読み込まれた文字列。
             _code = result.getContents();
             TextView tvUserName = findViewById(R.id.tvUserName);
-            tvUserName.setText(_code+"様");
+            tvUserName.setText(_code+getString(R.string.honor_title));
         } else {
             finish();
         }
@@ -87,9 +87,9 @@ public class MaleAdditionalInformationEntryActivity extends AppCompatActivity {
         EditText etMalePasswordRe = findViewById(R.id.etInputPasswordRe);
         String malePasswordRe = etMalePasswordRe.getText().toString();
         if("".equals(malePassword) || "".equals(malePasswordRe)){
-            Toast.makeText(MaleAdditionalInformationEntryActivity.this , "どちらもパスワードを入力してください。" , Toast.LENGTH_SHORT).show();
+            Toast.makeText(MaleAdditionalInformationEntryActivity.this , getString(R.string.male_additional_information_entry_empty_password_warning) , Toast.LENGTH_SHORT).show();
         }else if(!malePassword.equals(malePasswordRe)){
-            Toast.makeText(MaleAdditionalInformationEntryActivity.this , "どちらも同じパスワードを入力してください。" , Toast.LENGTH_SHORT).show();
+            Toast.makeText(MaleAdditionalInformationEntryActivity.this , getString(R.string.male_additional_information_entry_incorrect_password_warning) , Toast.LENGTH_SHORT).show();
         }else{
             //非同期処理を開始する。
             MaleAdditionalInformationEntrTaskReceiver receiver = new MaleAdditionalInformationEntrTaskReceiver();
@@ -213,7 +213,7 @@ public class MaleAdditionalInformationEntryActivity extends AppCompatActivity {
                 Boolean done = rootJSON.getBoolean("done");
                 _id = rootJSON.getString("maleId");
                 if(done){
-                    Toast.makeText(MaleAdditionalInformationEntryActivity.this , "登録されました。" , Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MaleAdditionalInformationEntryActivity.this , getString(R.string.male_additional_information_entry_registered_message) , Toast.LENGTH_SHORT).show();
                     SharedPreferences setting = getSharedPreferences("USER" , 0);
                     SharedPreferences.Editor editor = setting.edit();
                     editor.putString("ID" , _id);
@@ -221,7 +221,7 @@ public class MaleAdditionalInformationEntryActivity extends AppCompatActivity {
                     Intent intent = new Intent(MaleAdditionalInformationEntryActivity.this, MaleReservationListActivity.class);
                     startActivity(intent);
                 }else{
-                    Toast.makeText(MaleAdditionalInformationEntryActivity.this , "登録されませんでした。" , Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MaleAdditionalInformationEntryActivity.this , getString(R.string.male_additional_information_entry_did_not_register_warning) , Toast.LENGTH_SHORT).show();
                 }
             }
             catch (JSONException ex) {
