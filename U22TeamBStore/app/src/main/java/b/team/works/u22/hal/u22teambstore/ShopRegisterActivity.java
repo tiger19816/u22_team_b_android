@@ -30,7 +30,6 @@ public class ShopRegisterActivity extends AppCompatActivity {
     ImageView ivImage1; //店舗画像01
     ImageView ivImage2; //店舗画像02
     EditText etPassword; //パスワード
-    EditText etNo; //項番
     EditText etFreeName; //フリーワード
 
     //インテントオブジェクト
@@ -102,7 +101,6 @@ public class ShopRegisterActivity extends AppCompatActivity {
         _intent.putExtra("image2", "2018-07-24-00-00-02.jpg");
 
         _intent.putExtra("password", etPassword.getText().toString());
-        _intent.putExtra("no", etNo.getText().toString());
         _intent.putExtra("freeName", etFreeName.getText().toString());
 
         //エラーがなければ次画面へ遷移する
@@ -130,7 +128,6 @@ public class ShopRegisterActivity extends AppCompatActivity {
         ivImage1 = findViewById(R.id.ivImage1);
         ivImage2 = findViewById(R.id.ivImage2);
         etPassword = findViewById(R.id.etPassword);
-        etNo = findViewById(R.id.etNo);
         etFreeName = findViewById(R.id.etFreeName);
     }
 
@@ -166,10 +163,6 @@ public class ShopRegisterActivity extends AppCompatActivity {
             flag = true;
         }else if( "".equals( etPassword.getText().toString() ) ) {
             etPassword.setError(getString(R.string.password_title) + getString(R.string.register_missing_info_warning));
-            flag = true;
-        }
-        else if( "".equals( etNo.getText().toString() ) ) {
-            etNo.setError(getString(R.string.info_number_title) + getString(R.string.register_missing_info_warning));
             flag = true;
         }
         else if( "".equals( etFreeName.getText().toString() ) ) {
