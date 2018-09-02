@@ -21,6 +21,7 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 
 public class ShopRegisterConfirmActivity extends AppCompatActivity {
 
@@ -55,6 +56,8 @@ public class ShopRegisterConfirmActivity extends AppCompatActivity {
     String image2;
     String password;
     String freeName;
+    String latitude;
+    String longitude;
 
     //インテントオブジェクト
     Intent _intent;
@@ -106,7 +109,7 @@ public class ShopRegisterConfirmActivity extends AppCompatActivity {
             //POSTで送りたいデータ
             String postData = "postPassword="+password+"&postShopName="+shopName+"&postPhonetic="+phonetic
                     +"&postOpenTime="+openTime+"&postTel="+tel+"&postAddress="+address
-                    +"&postAverageBudget="+averageBudget+"&postPointLatitude="+"3.121311"+"&postLongitude="+"2.31111"+"&postLunchService="+lunchService+"&postNonSmokingSeat="+nonSmokingSeat
+                    +"&postAverageBudget="+averageBudget+"&postPointLatitude="+latitude+"&postLongitude="+longitude+"&postLunchService="+lunchService+"&postNonSmokingSeat="+nonSmokingSeat
                     +"&postCardUsage="+cardUsage+"&image1="+"image01.jpg"+"&image2="+"image02.jpg"+"&postFreeName="+freeName;
 
 
@@ -246,6 +249,11 @@ public class ShopRegisterConfirmActivity extends AppCompatActivity {
         //住所
         tvAddress.setText( _intent.getStringExtra("address") );
         address = tvAddress.getText().toString();
+        DataConversion dc = new DataConversion();
+        List<String> listAddress = dc.getLatLongFromAddress(this,address);
+        //緯度経度
+        latitude = listAddress.get(0);
+        longitude = listAddress.get(1);
 
         //平均予算
         tvAverageBudget.setText( _intent.getStringExtra("averageBudget") );
