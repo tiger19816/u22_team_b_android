@@ -75,6 +75,7 @@ public class FemaleStoreMapListActivity extends AppCompatActivity implements Nav
         setTheme(R.style.MyCustomTheme_Dark);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_female_store_map_list);
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.storeMaps);
@@ -93,7 +94,6 @@ public class FemaleStoreMapListActivity extends AppCompatActivity implements Nav
         } catch (Exception e) {
             Log.e("Push通知",e.toString());
         }
-
 
         //ツールバー(レイアウトを変更可)。
         Toolbar toolbar = findViewById(R.id.toolbar);

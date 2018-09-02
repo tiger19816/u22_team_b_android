@@ -1,5 +1,6 @@
 package b.team.works.u22.hal.u22teamb;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -45,6 +46,8 @@ public class FemaleMyPageActivity extends AppCompatActivity implements Navigatio
     private String maleRegistrationCode;
     private Boolean maleRegistered = true;
     private MenuItem menuToggleVisible;
+
+    public ProgressDialog _pDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,6 +132,24 @@ public class FemaleMyPageActivity extends AppCompatActivity implements Navigatio
         private static final String DEBUG_TAG = "RestAccess";
 //        private String maleRegistrationCode;
 //        private Boolean maleRegistered;
+
+        /**
+         * 通信開始前に実行されるメソッド。
+         *
+         * ここで、プログレスダイアログを生成しましょう。
+         */
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+            // プログレスダイアログの生成。
+            _pDialog = new ProgressDialog(FemaleMyPageActivity.this);
+            _pDialog.setMessage(getString(R.string.progress_message));  // メッセージを設定。
+
+            // プログレスダイアログの表示。
+            _pDialog.show();
+
+        }
 
         /**
          * 非同期に処理したい内容を記述するメソッド.
@@ -287,6 +308,11 @@ public class FemaleMyPageActivity extends AppCompatActivity implements Navigatio
                 }else{
                     maleRegistered = true;
                     toggleMenuVisible();
+                }
+
+                // ロード画面を消す。
+                if (_pDialog != null && _pDialog.isShowing()) {
+                    _pDialog.dismiss();
                 }
 
             }

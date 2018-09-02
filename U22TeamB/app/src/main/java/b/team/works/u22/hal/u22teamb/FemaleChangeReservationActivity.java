@@ -1,6 +1,7 @@
 package b.team.works.u22.hal.u22teamb;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -55,6 +56,7 @@ public class FemaleChangeReservationActivity extends AppCompatActivity {
     private SimpleDateFormat dfDayOfMonth = new SimpleDateFormat("dd");
 
     private String etReservation ;
+    public ProgressDialog _pDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -152,6 +154,24 @@ public class FemaleChangeReservationActivity extends AppCompatActivity {
 
         private static final String DEBUG_TAG = "RestAccess";
         private Map map = new HashMap<String , Object>();
+
+        /**
+         * 通信開始前に実行されるメソッド。
+         *
+         * ここで、プログレスダイアログを生成しましょう。
+         */
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+            // プログレスダイアログの生成。
+            _pDialog = new ProgressDialog(FemaleChangeReservationActivity.this);
+            _pDialog.setMessage(getString(R.string.progress_message));  // メッセージを設定。
+
+            // プログレスダイアログの表示。
+            _pDialog.show();
+
+        }
 
         /**
          * 非同期に処理したい内容を記述するメソッド.
@@ -336,6 +356,12 @@ public class FemaleChangeReservationActivity extends AppCompatActivity {
                         Toast.makeText(FemaleChangeReservationActivity.this , getString(R.string.female_change_reservation_did_not_change_message) , Toast.LENGTH_SHORT).show();
                     }
                 }
+
+                // ロード画面を消す。
+                if (_pDialog != null && _pDialog.isShowing()) {
+                    _pDialog.dismiss();
+                }
+
             }
             catch (JSONException ex) {
                 Log.e(DEBUG_TAG, "JSON解析失敗", ex);
