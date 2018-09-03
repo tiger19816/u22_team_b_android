@@ -501,6 +501,7 @@ public class ReservationListActivity extends AppCompatActivity {
                 Log.d("JSON", param.toString());
                 Intent intent = new Intent(getApplicationContext(), ReservationDetailActivity.class);
                 intent.putExtra("jsonParam", param.toString());
+                intent.putExtra("mode",1);
                 startActivity(intent);
             } else {    // サーバ接続失敗時の処理。
                 Log.d("JSON", "null");
