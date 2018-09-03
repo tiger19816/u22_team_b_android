@@ -119,8 +119,8 @@ public class FemaleNewMemberRegistrationConfirmationScreenActivity extends AppCo
         this.maleProfession = male.getMaleProfession();
 
         //妻情報
-//        ImageView ivIcon = findViewById(R.id.ivFemaleIcon);
-//        ivIcon.setImageResource(R.drawable.icon);
+      ImageView ivIcon = findViewById(R.id.ivFemaleIcon);
+        ivIcon.setImageResource(R.drawable.icon);
 
         TextView tvFemaleName = findViewById(R.id.tvFemaleName);
         tvFemaleName.setText(femaleName);
@@ -128,12 +128,12 @@ public class FemaleNewMemberRegistrationConfirmationScreenActivity extends AppCo
         TextView tvFemaleBirthday = findViewById(R.id.tvFemaleBirthday);
         tvFemaleBirthday.setText(femaleBirthday);
 
-        TextView tvFemalePassword = findViewById(R.id.tvFemalePassword);
-        String password = "";
-        for(int i=0; i<femalePassword.length(); i++){
-            password += "*";
-        }
-        tvFemalePassword.setText(password);
+//        TextView tvFemalePassword = findViewById(R.id.tvFemalePassword);
+//        String password = "";
+//        for(int i=0; i<femalePassword.length(); i++){
+//            password += "*";
+//        }
+//        tvFemalePassword.setText(password);
 
         TextView tvFemaleAddress = findViewById(R.id.tvFemaleAddress);
         tvFemaleAddress.setText(femaleAddress);
@@ -147,11 +147,11 @@ public class FemaleNewMemberRegistrationConfirmationScreenActivity extends AppCo
         TextView tvFemaleDoneDeadline = findViewById(R.id.tvFemaleCreditCardExpirationDate);
         tvFemaleDoneDeadline.setText(femaleCardDoneDeadline);
 
-        TextView tvFemaleSecurityCode = findViewById(R.id.tvFemaleCreditCardSecurityNumber);
-        tvFemaleSecurityCode.setText(femaleCardSecurityCode);
+//        TextView tvFemaleSecurityCode = findViewById(R.id.tvFemaleCreditCardSecurityNumber);
+//        tvFemaleSecurityCode.setText(femaleCardSecurityCode);
 
-        TextView tvFemaleNomineeName = findViewById(R.id.tvFemaleCreditCardHolder);
-        tvFemaleNomineeName.setText(femaleCardNomineeName);
+//        TextView tvFemaleNomineeName = findViewById(R.id.tvFemaleCreditCardHolder);
+//        tvFemaleNomineeName.setText(femaleCardNomineeName);
 
         //夫情報
         TextView tvMaleName = findViewById(R.id.tvMaleName);
