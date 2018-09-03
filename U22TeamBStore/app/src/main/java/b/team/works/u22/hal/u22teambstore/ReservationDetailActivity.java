@@ -4,10 +4,12 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -58,6 +60,8 @@ public class ReservationDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reservation_detail);
 
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
         String strJson = getIntent().getStringExtra("jsonParam");
 
         this._tvFemaleName = findViewById(R.id.tvFemaleName);
@@ -98,6 +102,19 @@ public class ReservationDetailActivity extends AppCompatActivity {
             Log.e("JSON", e.toString());
         }
 
+    }
+
+    /**
+     * 選択されたアクションバーのイベント処理用メソッド
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     // ボタンタップ時。
