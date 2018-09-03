@@ -16,15 +16,15 @@ import java.util.StringTokenizer;
 
 public class DataConversion {
 
-    private static final SimpleDateFormat dfFullDate01 = new SimpleDateFormat("yyyy年MM月dd日 hh時mm分");
-    private static final SimpleDateFormat dfFullDate02 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+    private static final SimpleDateFormat dfFullDate01 = new SimpleDateFormat("yyyy年MM月dd日 HH時mm分");
+    private static final SimpleDateFormat dfFullDate02 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     private static final SimpleDateFormat dfDate01 = new SimpleDateFormat("yyyy年MM月dd日");
     private static final SimpleDateFormat dfDate02 = new SimpleDateFormat("yyyy-MM-dd");
     private static final SimpleDateFormat dfDate03 = new SimpleDateFormat("yyyy");
     private static final SimpleDateFormat dfDate04 = new SimpleDateFormat("MM");
     private static final SimpleDateFormat dfDate05 = new SimpleDateFormat("dd");
-    private static final SimpleDateFormat dfTime01 = new SimpleDateFormat("hh時mm分");
-    private static final SimpleDateFormat dfTime02 = new SimpleDateFormat("hh:mm:ss");
+    private static final SimpleDateFormat dfTime01 = new SimpleDateFormat("HH時mm分");
+    private static final SimpleDateFormat dfTime02 = new SimpleDateFormat("HH:mm:ss");
 
     /**
      * yyyy-MM-ddから3日前より未来の日付だった場合、false。
@@ -43,8 +43,6 @@ public class DataConversion {
             Date d3 = calendar2.getTime();
             //比較する(d2 = 予約日の三日前,d3 = 今日の日月)。
             int diff = d2.compareTo(d3);
-            Log.e("確認(d2)", String.valueOf(d2));
-            Log.e("確認(d3)", String.valueOf(d3));
             if (diff == 0) {
                 result = false;
             }else if (diff > 0) {
@@ -56,7 +54,6 @@ public class DataConversion {
             e.printStackTrace();
             Log.e("データ変換失敗", "DataConversionクラスのgetFullDataConversion01時。");
         }
-        Log.e("確認", String.valueOf(result));
         return result;
     }
 
