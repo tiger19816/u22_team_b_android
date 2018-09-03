@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="24dp"
         android:text="@string/tv_female_name_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -30,8 +30,7 @@
         android:layout_marginStart="8dp"
         app:layout_constraintBaseline_toBaselineOf="@+id/tvFemaleNameTitle"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline" />
+        app:layout_constraintStart_toEndOf="@+id/tvUseDateTimeTitle" />
 
     <TextView
         android:id="@+id/tvMaleNameTitle"
@@ -40,7 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:text="@string/tv_male_name_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvFemaleNameTitle" />
@@ -56,8 +55,7 @@
         android:layout_marginStart="8dp"
         app:layout_constraintBaseline_toBaselineOf="@+id/tvMaleNameTitle"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline" />
+        app:layout_constraintStart_toEndOf="@+id/tvUseDateTimeTitle" />
 
     <TextView
         android:id="@+id/tvMenuTitle"
@@ -66,7 +64,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:text="@string/tv_menu_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvMaleNameTitle" />
@@ -82,7 +80,7 @@
         android:layout_marginStart="8dp"
         app:layout_constraintBaseline_toBaselineOf="@+id/tvMenuTitle"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline" />
+        app:layout_constraintStart_toEndOf="@+id/tvUseDateTimeTitle" />
 
     <TextView
         android:id="@+id/tvUseDateTimeTitle"
@@ -91,7 +89,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:text="@string/tv_use_date_time_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvMenuTitle" />
@@ -107,7 +105,7 @@
         android:layout_marginStart="8dp"
         app:layout_constraintBaseline_toBaselineOf="@+id/tvUseDateTimeTitle"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline" />
+        app:layout_constraintStart_toEndOf="@+id/tvUseDateTimeTitle" />
 
     <Button
         android:id="@+id/btVisited"
@@ -123,12 +121,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.23" />
 
 </android.support.constraint.ConstraintLayout>
