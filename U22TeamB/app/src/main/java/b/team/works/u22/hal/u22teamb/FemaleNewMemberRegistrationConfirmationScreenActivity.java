@@ -119,7 +119,7 @@ public class FemaleNewMemberRegistrationConfirmationScreenActivity extends AppCo
         this.maleProfession = male.getMaleProfession();
 
         //妻情報
-        ImageView ivIcon = findViewById(R.id.ivFemaleIcon);
+      ImageView ivIcon = findViewById(R.id.ivFemaleIcon);
         ivIcon.setImageResource(R.drawable.icon);
 
         TextView tvFemaleName = findViewById(R.id.tvFemaleName);
