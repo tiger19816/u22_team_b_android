@@ -2,6 +2,8 @@ package b.team.works.u22.hal.u22teamb;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,8 +29,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 
 public class FemaleMaleInformationRegistrationActivity extends AppCompatActivity {
 
@@ -90,8 +95,9 @@ public class FemaleMaleInformationRegistrationActivity extends AppCompatActivity
         EditText etMaleAddress = findViewById(R.id.etInputAddress);
         String maleAddress = etMaleAddress.getText().toString();//住所
         female.setFemaleAddress(this , maleAddress);
-        String mpMaleLatitude = female.getFemaleLatitude();//緯度
-        String mpMaleLongitude = female.getFemaleLongitude();//経度
+        List<String> priceList = this.getLatLongFromAddress(maleAddress);
+        female.setFemaleLongitude(priceList.get(0)); //緯度
+        female.setFemaleLatitude(priceList.get(1));//経度
 
         EditText etMaleBirthDate = findViewById(R.id.etInputBirthday);
         String maleBirthDate = etMaleBirthDate.getText().toString();
@@ -297,4 +303,29 @@ public class FemaleMaleInformationRegistrationActivity extends AppCompatActivity
         }
         return super.onOptionsItemSelected(item);
     }
+
+    /**
+     * 住所から座標を返却する
+     * @param address
+     * @return
+     */
+    public List<String> getLatLongFromAddress(String address)
+    {
+        Geocoder geoCoder = new Geocoder(FemaleMaleInformationRegistrationActivity.this, Locale.getDefault());
+        List<String> latLong = new ArrayList<>();
+        try {
+            List<Address> addresses = geoCoder.getFromLocationName(address , 1);
+            if (addresses.size() > 0) {
+                latLong.add(String.valueOf(addresses.get(0).getLatitude()));
+                latLong.add(String.valueOf(addresses.get(0).getLongitude()));
+            }
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+            return latLong;
+        }
+
+        return latLong;
+    }
+
 }
