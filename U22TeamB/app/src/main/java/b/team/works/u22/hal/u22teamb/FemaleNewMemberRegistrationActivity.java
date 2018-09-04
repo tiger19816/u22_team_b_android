@@ -192,7 +192,7 @@ public class FemaleNewMemberRegistrationActivity extends AppCompatActivity {
             //ここで渡した引数はLoginTaskReceiverクラスのdoInBackground(String... params)で受け取れる。
             receiver.execute(MAIL_CHECK_URL);
         }else{
-            Toast.makeText(FemaleNewMemberRegistrationActivity.this , getString(R.string.female_new_member_registration_input_check_complete) , Toast.LENGTH_SHORT).show();
+            Toast.makeText(FemaleNewMemberRegistrationActivity.this , "全て入力してください。" , Toast.LENGTH_SHORT).show();
         }
     }
 

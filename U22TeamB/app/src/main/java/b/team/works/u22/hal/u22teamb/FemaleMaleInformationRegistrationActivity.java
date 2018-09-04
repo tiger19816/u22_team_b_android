@@ -120,13 +120,15 @@ public class FemaleMaleInformationRegistrationActivity extends AppCompatActivity
         String maleProfession = String.valueOf(spMaleProfession.getSelectedItemPosition());
         male.setMaleProfession(maleProfession);
 
+        female.getIsMailChecked(female.getFemaleMail(),male.getMaleMail());
+
         if(female.getInputChecked() && male.getInputChecked()) {
             //非同期処理を開始する。
             MailInformationCheckTaskReceiver receiver = new MailInformationCheckTaskReceiver();
             //ここで渡した引数はLoginTaskReceiverクラスのdoInBackground(String... params)で受け取れる。
             receiver.execute(MAIL_CHECK_URL);
         }else{
-            Toast.makeText(FemaleMaleInformationRegistrationActivity.this , getString(R.string.female_male_information_registration_input_check_complete_3) , Toast.LENGTH_SHORT).show();
+            Toast.makeText(FemaleMaleInformationRegistrationActivity.this , "全て入力してください。" , Toast.LENGTH_SHORT).show();
         }
    }
 
