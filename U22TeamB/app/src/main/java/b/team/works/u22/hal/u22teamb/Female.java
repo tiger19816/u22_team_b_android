@@ -229,14 +229,15 @@ public class Female implements Serializable{
     public String getFemaleAddressErrorMessage(){return  femaleAddressErrorMessage;}
     public void setFemaleAddress(Context context , String femaleAddress){
         this.femaleAddress = femaleAddress;
-        if("".equals(femaleAddress)){
+        if("".equals(femaleAddress)) {
             this.femaleAddressErrorMessage = "住所を入力してください";
             this.isInputChecked = false;
-        }else{
+        }
+        else{
             //住所から緯度経度を求める。
             List<String> _price = getLatLongFromAddress(context , femaleAddress);
-            this.femaleLatitude = _price.get(0);
-            this.femaleLongitude = _price.get(1);
+            this.femaleLatitude = _price.get(1);
+            this.femaleLongitude = _price.get(0);
         }
     }
 

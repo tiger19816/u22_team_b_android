@@ -63,11 +63,20 @@ public class FemaleNewMemberRegistrationConfirmationScreenActivity extends AppCo
     private String maleWeight;
     private String maleProfession;
 
+    public ProgressDialog _pDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.MyCustomTheme_Dark);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.female_new_member_registration_confirmation_screen);
+
+        // プログレスダイアログの生成。
+        _pDialog = new ProgressDialog(FemaleNewMemberRegistrationConfirmationScreenActivity.this);
+        _pDialog.setMessage(getString(R.string.progress_message));  // メッセージを設定。
+
+        // プログレスダイアログの表示。
+        _pDialog.show();
 
         setTitle(getString(R.string.female_new_member_registration_confirmation_screen_title));
 
@@ -83,6 +92,11 @@ public class FemaleNewMemberRegistrationConfirmationScreenActivity extends AppCo
 
         //確認画面に値をセットする。
         setUserTextCreate();
+
+        // ロード画面を消す。
+        if (_pDialog != null && _pDialog.isShowing()) {
+            _pDialog.dismiss();
+        }
 
     }
 
@@ -119,7 +133,7 @@ public class FemaleNewMemberRegistrationConfirmationScreenActivity extends AppCo
         this.maleProfession = male.getMaleProfession();
 
         //妻情報
-        ImageView ivIcon = findViewById(R.id.ivFemaleIcon);
+      ImageView ivIcon = findViewById(R.id.ivFemaleIcon);
         ivIcon.setImageResource(R.drawable.icon);
 
         TextView tvFemaleName = findViewById(R.id.tvFemaleName);
@@ -213,7 +227,9 @@ public class FemaleNewMemberRegistrationConfirmationScreenActivity extends AppCo
             String maleProfession = params[19];
 
             //POSTで送りたいデータ
-            String postData = "femaleName=" + femaleName + "&femaleBirthday=" + femaleBirthday + "&femalePassword=" + femalePassword + "&femaleMail=" + femaleMail + "&femaleIcon=" + femaleIcon + "&femaleCardNo=" + femaleCardNo + "&femaleCardDoneDeadline=" + femaleCardDoneDeadLine + "&femaleSecurityCode=" + femaleCardSecurityCode + "&femaleCardNomineeName=" + femaleCardNomineeName + "&femaleAddress=" + femaleAddress + "&femaleLatitude=" + femaleLatitude + "&femaleLongitude=" + femaleLongitude
+            String postData = "femaleName=" + femaleName + "&femaleBirthday=" + femaleBirthday + "&femalePassword=" + femalePassword + "&femaleMail=" + femaleMail + "&femaleIcon=" + femaleIcon
+                    + "&femaleCardNo=" + femaleCardNo + "&femaleCardDoneDeadline=" + femaleCardDoneDeadLine + "&femaleSecurityCode=" + femaleCardSecurityCode + "&femaleCardNomineeName=" + femaleCardNomineeName
+                    + "&femaleAddress=" + femaleAddress + "&femaleLatitude=" + femaleLatitude + "&femaleLongitude=" + femaleLongitude
                     + "&maleName=" + maleName + "&malePassword=" + malePassword + "&maleBirthday=" + maleBirthday + "&maleMail=" + maleMail + "&maleHeight=" + maleHeight + "&maleWeight=" + maleWeight + "&maleProfession=" + maleProfession;
 
             HttpURLConnection con = null;

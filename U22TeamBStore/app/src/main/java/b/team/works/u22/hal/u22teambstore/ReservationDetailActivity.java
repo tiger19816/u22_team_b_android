@@ -68,7 +68,7 @@ public class ReservationDetailActivity extends AppCompatActivity {
             btNextReservation.setVisibility(View.GONE);
         }
 
-        ActionBar actionBar = getSupportActionBar();
+      ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         String strJson = getIntent().getStringExtra("jsonParam");
 
