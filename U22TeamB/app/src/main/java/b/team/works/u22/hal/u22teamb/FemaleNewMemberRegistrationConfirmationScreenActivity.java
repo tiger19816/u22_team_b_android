@@ -213,7 +213,9 @@ public class FemaleNewMemberRegistrationConfirmationScreenActivity extends AppCo
             String maleProfession = params[19];
 
             //POSTで送りたいデータ
-            String postData = "femaleName=" + femaleName + "&femaleBirthday=" + femaleBirthday + "&femalePassword=" + femalePassword + "&femaleMail=" + femaleMail + "&femaleIcon=" + femaleIcon + "&femaleCardNo=" + femaleCardNo + "&femaleCardDoneDeadline=" + femaleCardDoneDeadLine + "&femaleSecurityCode=" + femaleCardSecurityCode + "&femaleCardNomineeName=" + femaleCardNomineeName + "&femaleAddress=" + femaleAddress + "&femaleLatitude=" + femaleLatitude + "&femaleLongitude=" + femaleLongitude
+            String postData = "femaleName=" + femaleName + "&femaleBirthday=" + femaleBirthday + "&femalePassword=" + femalePassword + "&femaleMail=" + femaleMail + "&femaleIcon=" + femaleIcon
+                    + "&femaleCardNo=" + femaleCardNo + "&femaleCardDoneDeadline=" + femaleCardDoneDeadLine + "&femaleSecurityCode=" + femaleCardSecurityCode + "&femaleCardNomineeName=" + femaleCardNomineeName
+                    + "&femaleAddress=" + femaleAddress + "&femaleLatitude=" + femaleLatitude + "&femaleLongitude=" + femaleLongitude
                     + "&maleName=" + maleName + "&malePassword=" + malePassword + "&maleBirthday=" + maleBirthday + "&maleMail=" + maleMail + "&maleHeight=" + maleHeight + "&maleWeight=" + maleWeight + "&maleProfession=" + maleProfession;
 
             HttpURLConnection con = null;
