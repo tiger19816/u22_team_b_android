@@ -63,11 +63,20 @@ public class FemaleNewMemberRegistrationConfirmationScreenActivity extends AppCo
     private String maleWeight;
     private String maleProfession;
 
+    public ProgressDialog _pDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.MyCustomTheme_Dark);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.female_new_member_registration_confirmation_screen);
+
+        // プログレスダイアログの生成。
+        _pDialog = new ProgressDialog(FemaleNewMemberRegistrationConfirmationScreenActivity.this);
+        _pDialog.setMessage(getString(R.string.progress_message));  // メッセージを設定。
+
+        // プログレスダイアログの表示。
+        _pDialog.show();
 
         setTitle(getString(R.string.female_new_member_registration_confirmation_screen_title));
 
@@ -83,6 +92,11 @@ public class FemaleNewMemberRegistrationConfirmationScreenActivity extends AppCo
 
         //確認画面に値をセットする。
         setUserTextCreate();
+
+        // ロード画面を消す。
+        if (_pDialog != null && _pDialog.isShowing()) {
+            _pDialog.dismiss();
+        }
 
     }
 
