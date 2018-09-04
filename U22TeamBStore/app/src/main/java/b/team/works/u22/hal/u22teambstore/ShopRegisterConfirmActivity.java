@@ -3,6 +3,7 @@ package b.team.works.u22.hal.u22teambstore;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -193,15 +194,21 @@ public class ShopRegisterConfirmActivity extends AppCompatActivity {
 
                 if(resultJSON) {
                     //DBチェックの結果により、画面遷移先を変更。
-                    Intent intent;
                     SharedPreferences setting = getSharedPreferences("SHOPUSER" , 0);
                     SharedPreferences.Editor editor = setting.edit();
                     editor.putString("ID" , _id);
                     editor.commit();
-                    intent = new Intent(ShopRegisterConfirmActivity.this, ReservationListActivity.class);
-                    startActivity(intent);
-                    Toast.makeText(ShopRegisterConfirmActivity.this, getString(R.string.main_welcome_message)+shopName+getString(R.string.honor_title), Toast.LENGTH_SHORT).show();
-                    finish();
+
+                    FullDialogFragment2 dialog = new FullDialogFragment2();
+                    // ダイアログに値を渡す
+                    Bundle bundle = new Bundle();
+                    // キーと値の順で渡す
+                    bundle.putString("id", _id);
+                    bundle.putString("name", shopName);
+                    // 値をdialogにセット
+                    dialog.setArguments(bundle);
+                    FragmentManager manager = getSupportFragmentManager();
+                    dialog.show(manager,"FullDialogFragment2");
                 }
                 else {
                     Toast.makeText(ShopRegisterConfirmActivity.this, getString(R.string.register_failure_warning), Toast.LENGTH_SHORT).show();
