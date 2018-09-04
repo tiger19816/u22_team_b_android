@@ -17,6 +17,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
@@ -500,6 +501,7 @@ public class ReservationListActivity extends AppCompatActivity {
                 Log.d("JSON", param.toString());
                 Intent intent = new Intent(getApplicationContext(), ReservationDetailActivity.class);
                 intent.putExtra("jsonParam", param.toString());
+                intent.putExtra("mode",1);
                 startActivity(intent);
             } else {    // サーバ接続失敗時の処理。
                 Log.d("JSON", "null");
