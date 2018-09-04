@@ -411,6 +411,18 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="10dp"
                         android:layout_marginTop="5sp"
+                        android:textSize="18sp" />
+                </TableRow>
+
+            </TableLayout>
+            <Button
+                android:onClick="onFinishRegistrationClick"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="30sp"
+                android:text="@string/registration"
+                style="@style/femaleButton"/>
                         android:orientation="horizontal">
 
                         <TextView

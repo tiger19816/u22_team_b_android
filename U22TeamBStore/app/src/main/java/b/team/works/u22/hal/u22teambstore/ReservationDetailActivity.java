@@ -3,6 +3,7 @@ package b.team.works.u22.hal.u22teambstore;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
@@ -57,10 +58,17 @@ public class ReservationDetailActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Intent intent = getIntent();
+        int mode = intent.getIntExtra("mode",0);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reservation_detail);
 
-        ActionBar actionBar = getSupportActionBar();
+        if(mode == 0){
+            Button btNextReservation = findViewById(R.id.btVisited);
+            btNextReservation.setVisibility(View.GONE);
+        }
+
+      ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         String strJson = getIntent().getStringExtra("jsonParam");
 
