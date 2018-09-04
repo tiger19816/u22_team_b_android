@@ -215,13 +215,15 @@ public class MaleAdditionalInformationEntryActivity extends AppCompatActivity {
                 JSONObject rootJSON = new JSONObject(result);
                 Boolean done = rootJSON.getBoolean("done");
                 _id = rootJSON.getString("maleId");
+                String maleName = rootJSON.getString("maleName");
 
-                Log.e("確認" , String.valueOf(done));
                 if(done){
                     Toast.makeText(MaleAdditionalInformationEntryActivity.this , getString(R.string.male_additional_information_entry_registered_message) , Toast.LENGTH_SHORT).show();
                     SharedPreferences setting = getSharedPreferences("USER" , 0);
                     SharedPreferences.Editor editor = setting.edit();
                     editor.putString("ID" , _id);
+                    editor.putString("SEX" , "1");
+                    editor.putString("NAME" , maleName);
                     editor.commit();
                     Intent intent = new Intent(MaleAdditionalInformationEntryActivity.this, MaleReservationListActivity.class);
                     startActivity(intent);
