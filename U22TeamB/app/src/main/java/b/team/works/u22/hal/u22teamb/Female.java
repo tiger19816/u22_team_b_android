@@ -233,12 +233,12 @@ public class Female implements Serializable{
             this.femaleAddressErrorMessage = "住所を入力してください";
             this.isInputChecked = false;
         }
-// else{
-//            //住所から緯度経度を求める。
-//            List<String> _price = getLatLongFromAddress(context , femaleAddress);
-//            this.femaleLatitude = _price.get(0);
-//            this.femaleLongitude = _price.get(1);
-//        }
+        else{
+            //住所から緯度経度を求める。
+            List<String> _price = getLatLongFromAddress(context , femaleAddress);
+            this.femaleLatitude = _price.get(1);
+            this.femaleLongitude = _price.get(0);
+        }
     }
 
     public String getFemaleLatitude(){return femaleLatitude;}
