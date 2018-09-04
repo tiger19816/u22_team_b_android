@@ -20,7 +20,7 @@ import java.util.Locale;
  * @autho Honoka Takada
  */
 
-public class Female implements Serializable{
+public class Female implements Serializable {
 
     private String femaleId;
     private String femaleName;
@@ -52,7 +52,7 @@ public class Female implements Serializable{
     private String femaleLatitudeErrorMessage;//緯度
     private String femaleLongitudeErrorMessage;//経度
 
-    public Female(){
+    public Female() {
         this.femaleId = "";
         this.femaleName = "";
         this.femaleBirthDay = "";
@@ -84,7 +84,7 @@ public class Female implements Serializable{
         this.femaleLongitudeErrorMessage = "";//経度
     }
 
-    public Female(String femaleId , String femaleName , String femaleBirthDay , String femaleMail , String femalePassword , String femaleIcon , String femaleCardNo , String femaleCardExpirationDate , String femaleCardSecurityCode , String femaleCardNominee , String femaleAddress , String femaleLatitude , String femaleLongitude){
+    public Female(String femaleId, String femaleName, String femaleBirthDay, String femaleMail, String femalePassword, String femaleIcon, String femaleCardNo, String femaleCardExpirationDate, String femaleCardSecurityCode, String femaleCardNominee, String femaleAddress, String femaleLatitude, String femaleLongitude) {
         this.femaleId = femaleId;
         this.femaleName = femaleName;
         this.femaleBirthDay = femaleBirthDay;
@@ -116,9 +116,20 @@ public class Female implements Serializable{
         this.femaleLongitudeErrorMessage = "";//経度
     }
 
-    public Boolean getInputChecked() { return isInputChecked; }
-    public void setInputChecked() { this.isInputChecked = true; }
+    public Boolean getInputChecked() {
+        return isInputChecked;
+    }
 
+    public void setInputChecked() {
+        this.isInputChecked = true;
+    }
+
+
+    public void getIsMailChecked(String femaleMail, String maleMail) {
+        if (femaleMail.equals(maleMail)) {
+            this.isInputChecked = false;
+        }
+    }
 
     public String getFemaleId(){return femaleId;}
     public String getFemaleIdErrorMessage(){return this.femaleIdErrorMessage;}

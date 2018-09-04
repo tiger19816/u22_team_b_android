@@ -131,11 +131,16 @@ public class FemaleChangeReservationActivity extends AppCompatActivity {
             isUpdate = true;
         }
 
+        int price = 0;
+        if(Integer.parseInt(reservation.getMenuNo()) != 0){
+            price = Integer.parseInt(reservation.getMenuNo())-1;
+        }
+
         TextView tvSubtotal = findViewById(R.id.tvSubtotal);
-        tvSubtotal.setText("650");
+        tvSubtotal.setText(getResources().getStringArray(R.array.sp_reservation_store_menu_price_list)[price]);
 
         TextView tvTotal = findViewById(R.id.tvTotal);
-        tvTotal.setText("650");
+        tvTotal.setText(getResources().getStringArray(R.array.sp_reservation_store_menu_price_list)[price]);
 
         if(reservation2.isHasNoError()) {
             //非同期処理を開始する。

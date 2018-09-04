@@ -76,7 +76,7 @@ public class FemaleCardRegistrationActivity extends AppCompatActivity {
             intent.putExtra("FEMALE", female);
             startActivity(intent);
         }else{
-            Toast.makeText(FemaleCardRegistrationActivity.this , getString(R.string.female_card_registration_input_card_complete_2) , Toast.LENGTH_SHORT).show();
+            Toast.makeText(FemaleCardRegistrationActivity.this , "全て入力してください。" , Toast.LENGTH_SHORT).show();
         }
     }
 
