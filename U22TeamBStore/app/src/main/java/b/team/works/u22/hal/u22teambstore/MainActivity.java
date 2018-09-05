@@ -86,11 +86,11 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public String doInBackground(String... params) {
             String urlStr = params[0];
-            String mail = params[1];
-            String password = params[1];
+            String id = params[1];
+            String password = params[2];
 
             //POSTで送りたいデータ
-            String postData = "id=" + mail + "&password=" + password;
+            String postData = "id=" + id + "&password=" + password;
 
             HttpURLConnection con = null;
             InputStream is = null;
