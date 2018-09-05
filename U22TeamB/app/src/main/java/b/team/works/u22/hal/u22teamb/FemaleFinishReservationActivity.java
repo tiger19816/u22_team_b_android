@@ -202,14 +202,17 @@ public class FemaleFinishReservationActivity extends AppCompatActivity {
                 String cardDate = rootJSON.getString("cardDate");
                 String cardCode = rootJSON.getString("cardCode");
 
-                TextView tvCardNo = findViewById(R.id.tvCardNo);
-                tvCardNo.setText(cardNo);
+                String cardNumber = cardNo.substring(0, 4);
+                cardNumber = cardNo.replace(cardNumber, "*");
+                String subFemaleCardNo = cardNo.substring(12, 16);
+                TextView tvFemaleCardNo = findViewById(R.id.tvCardNo);
+                tvFemaleCardNo.setText(cardNumber + " " + subFemaleCardNo);
 
                 TextView tvCardname = findViewById(R.id.tvCardName);
                 tvCardname.setText(cardName);
 
                 TextView tvCardDate = findViewById(R.id.tvCardDate);
-                tvCardDate.setText(cardDate);
+                tvCardDate.setText(cardDate.substring(0,2) + "/" + cardDate.substring(2,4));
 
             }
             catch (JSONException ex) {
