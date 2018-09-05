@@ -127,6 +127,8 @@ public class FemaleMaleInformationRegistrationActivity extends AppCompatActivity
             MailInformationCheckTaskReceiver receiver = new MailInformationCheckTaskReceiver();
             //ここで渡した引数はLoginTaskReceiverクラスのdoInBackground(String... params)で受け取れる。
             receiver.execute(MAIL_CHECK_URL);
+        }else if(!female.getAddressChecked()){
+            Toast.makeText(FemaleMaleInformationRegistrationActivity.this , "住所で、緯度経度を求めることができませんでした。。" , Toast.LENGTH_SHORT).show();
         }else{
             Toast.makeText(FemaleMaleInformationRegistrationActivity.this , "全て入力してください。" , Toast.LENGTH_SHORT).show();
         }
