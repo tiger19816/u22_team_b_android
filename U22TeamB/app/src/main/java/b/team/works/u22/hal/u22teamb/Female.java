@@ -37,6 +37,7 @@ public class Female implements Serializable {
     private String femaleLongitude;//経度
 
     private Boolean isInputChecked;
+    private Boolean isAddressChecked;
 
     private String femaleIdErrorMessage;
     private String femaleNameErrorMessage;
@@ -68,6 +69,7 @@ public class Female implements Serializable {
         this.femaleLongitude = "";//経度
 
         this.isInputChecked = true;
+        this.isAddressChecked = true;
 
         this.femaleIdErrorMessage = "";
         this.femaleNameErrorMessage = "";
@@ -100,6 +102,7 @@ public class Female implements Serializable {
         this.femaleLongitude = femaleLongitude;//経度
 
         this.isInputChecked = true;
+        this.isAddressChecked = true;
 
         this.femaleIdErrorMessage = "";
         this.femaleNameErrorMessage = "";
@@ -114,6 +117,10 @@ public class Female implements Serializable {
         this.femaleAddressErrorMessage = "";
         this.femaleLatitudeErrorMessage = "";//緯度
         this.femaleLongitudeErrorMessage = "";//経度
+    }
+
+    public Boolean getAddressChecked() {
+        return isAddressChecked;
     }
 
     public Boolean getInputChecked() {
@@ -247,8 +254,12 @@ public class Female implements Serializable {
         else{
             //住所から緯度経度を求める。
             List<String> _price = getLatLongFromAddress(context , femaleAddress);
-            this.femaleLatitude = _price.get(1);
-            this.femaleLongitude = _price.get(0);
+            if("false".equals(_price.get(0))){
+                this.isAddressChecked = false;
+            }else {
+                this.femaleLatitude = _price.get(1);
+                this.femaleLongitude = _price.get(0);
+            }
         }
     }
 
@@ -290,6 +301,8 @@ public class Female implements Serializable {
         }
         catch(Exception e) {
             e.printStackTrace();
+            List<Address> addresses = new ArrayList<>();
+            latLong.add(String.valueOf(false));
             return latLong;
         }
 
