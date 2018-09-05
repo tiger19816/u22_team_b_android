@@ -274,7 +274,7 @@ public class FemaleMyPageActivity extends AppCompatActivity implements Navigatio
 
                 String femaleCardDoneDeadline = rootJSON.getString("cardExpirationDate");
                 TextView tvFemaleCardDoneDeadline = findViewById(R.id.tvFemaleCreditCardExpirationDate);
-                tvFemaleCardDoneDeadline.setText(femaleCardDoneDeadline);
+                tvFemaleCardDoneDeadline.setText(femaleCardDoneDeadline.substring(0,2) + "/" + femaleCardDoneDeadline.substring(2,4));
 
                 //夫情報
                 String maleName = rootJSON.getString("maleName");
