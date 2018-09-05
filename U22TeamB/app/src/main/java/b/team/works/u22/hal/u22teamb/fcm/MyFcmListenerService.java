@@ -39,8 +39,8 @@ public class MyFcmListenerService extends FirebaseMessagingService {
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.mipmap.ic_launcher) // アイコン。
                 .setContentTitle("U22夫管理アプリからの通知")  // タイトル。
-                .setContentText(subTitle)    // メッセージの1行目。
-                .setSubText(message)  // メッセージの2行目。
+                .setContentText(message)    // メッセージ。
+                .setSubText(subTitle)  // メッセージの概要。
                 .setPriority(NotificationCompat.PRIORITY_MAX)   // 表示の優先度。
 //                .setSound(defaultSoundUri)    // 通知音の設定(?)
 //                .setStyle(new NotificationCompat.BigTextStyle().bigText(message)) // 表示スタイルの設定(?)
